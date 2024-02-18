@@ -20,10 +20,6 @@ const userSchema = new Schema({
       "Must contain at least one smallercase letter, one uppercase letter, one digit, and one special character. Must also be a minimum of 8 characters.",
     ],
   },
-  favoriteItem: [{
-    type: Schema.Types.ObjectId,
-    ref: "Item"
-  }]
 });
 
 userSchema.pre("save", async function (next) {
