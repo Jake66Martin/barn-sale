@@ -3,6 +3,11 @@ const { Schema, model } = require("mongoose");
 const itemSchema = new Schema({
   item: {
     type: String,
+    required: true
+  },
+  category: {
+    type: String,
+    required: true,
   },
   description: {
     type: String,
@@ -14,8 +19,8 @@ const itemSchema = new Schema({
   },
   image: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
 });
 
 const Item = model("Item", itemSchema);
