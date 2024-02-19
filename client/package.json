@@ -11,7 +11,18 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "@apollo/client": "^3.7.14",
+    "@cloudinary/react": "^1.4.0",
+    "@cloudinary/url-gen": "^1.8.0",
+    "graphql": "^16.6.0",
+    "jwt-decode": "^3.1.2",
+    "react-bootstrap": "^2.7.4",
+    "react-modal": "^3.16.1",
+    "react-router-dom": "^6.11.2",
+    "sweetalert2": "^11.10.4"
+
+
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
