@@ -8,6 +8,7 @@ import Homepage from './pages/homepage/homepage.jsx'
 import About from './pages/about/about.jsx'
 import Browse from './pages/browse/browse.jsx'
 import Login from './pages/login/login.jsx'
+import Contact from './pages/contact/contact.jsx'
 import Register from './pages/register/register.jsx'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -26,6 +27,7 @@ const router = createBrowserRouter ([
       {path: '/About', element: <About />},
       {path: '/Browse', element: <Browse />},
       {path: '/Login', element: <Login />},
+      {path: '/Contact', element: <Contact />},
       {path: '/Register', element: <Register />}
     ]
   }
@@ -33,5 +35,5 @@ const router = createBrowserRouter ([
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
- <RouterProvider router={router} />
+ <RouterProvider router={router}/>
 )

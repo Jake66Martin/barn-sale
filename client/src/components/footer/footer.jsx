@@ -1,5 +1,11 @@
+import './footer.css'
+
 export default function Footer() {
   return(
-    <h1>hello</h1>
-  )
+    
+      <footer className="bg-primary d-flex justify-content-center align-items-center text-white footer-height text-size">
+      Barn-Sale © Copyright 2024
+      </footer>
+    
+  );
 }

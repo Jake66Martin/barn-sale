@@ -1,5 +1,10 @@
+import './about.css'
+
 export default function About() {
     return (
-        <h1>hello</h1>
+        <div className='about-height'>
+            <h1>About</h1>
+        </div>
+        
     )
 };
