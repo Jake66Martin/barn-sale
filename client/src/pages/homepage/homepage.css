@@ -1,0 +1,11 @@
+.height {
+    height:75vh;
+}
+
+.background{
+    background-image: url('../../../public/barn.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+}
