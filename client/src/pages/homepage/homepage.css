@@ -3,7 +3,7 @@
 }
 
 .background{
-    background-image: url('../../../public/barn.jpg');
+    background-image: url('../../../barn.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

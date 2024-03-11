@@ -1,0 +1,13 @@
+.img-size {
+    width: 200px;
+    height: 180px;
+}
+
+.overflow-container {
+     overflow: scroll;
+    
+  }
+
+  .div-width {
+    width: 33%;
+  }
