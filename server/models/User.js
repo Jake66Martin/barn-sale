@@ -1,40 +1,74 @@
-const { Schema, model } = require("mongoose");
-const bcrypt = require("bcrypt");
+const { Model, DataTypes } = require("sequelize");
 
-const userSchema = new Schema({
-  userName: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    match: [/.+@.+\..+/, "Must provide a valid e-mail format."],
-  },
-  password: {
-    type: String,
-    required: true,
-    match: [
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-      "Must contain at least one smallercase letter, one uppercase letter, one digit, and one special character. Must also be a minimum of 8 characters.",
-    ],
-  },
-});
+const sequelize = require("../config/connection.js");
 
-userSchema.pre("save", async function (next) {
-  if (this.isNew || this.isModified("password")) {
-    const saltRounds = 10;
-    this.password = await bcrypt.hash(this.password, saltRounds);
+class User extends Model {
+  async beforeSave() {
+    if (this.isNew || this.isModified("password")) {
+      const saltRounds = 10;
+      this.password = await bcrypt.hash(this.password, saltRounds);
+    }
   }
+  async isCorrectPassword(password) {
+    return bcrypt.compare(password, this.password);
+  }
+}
 
-  next();
-});
+User.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    user_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: function(value) {
+          if (!/.+@.+\..+/.test(value)) {
+            throw new Error('Must enter a valid email.')
+          }
+        }
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isPassword: function(value) {
+          if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(value)) {
+            throw new Error('Must enter a proper password format.')
+          }
+        }
+      }
+    }
+  },
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "user",
+  }
+);
 
-userSchema.methods.isCorrectPassword = async function (password) {
-  return bcrypt.compare(password, this.password);
-};
-
-const User = model("User", userSchema);
+User.addHook("beforeSave", async (user) => {
+  if (user.password) {
+    const saltRounds = 10;
+    user.password = await bcrypt.hash(user.password, saltRounds);
+    }
+  
+    next();
+  });
+  
+  
 
 module.exports = User;

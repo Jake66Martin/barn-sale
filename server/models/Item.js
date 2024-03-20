@@ -1,32 +1,3 @@
-// const { Schema, model } = require("mongoose");
-
-// const itemSchema = new Schema({
-//   item: {
-//     type: String,
-//     required: true
-//   },
-//   category: {
-//     type: String,
-//     required: true,
-//   },
-//   description: {
-//     type: String,
-//     required: true,
-//   },
-//   price: {
-//     type: Number,
-//     required: true,
-//   },
-//   image: {
-//     type: String,
-//     required: true,
-//   },
-// });
-
-// const Item = model("Item", itemSchema);
-
-// module.exports = Item;
-
 const { Model, DataTypes } = require("sequelize");
 
 const sequelize = require("../config/connection.js");
@@ -45,9 +16,19 @@ Item.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    category: {
-      type: DataTypes.STRING,
-      allowNull: false,
+    category_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'category',
+        key:'id'
+      }
+    },
+    subcategory_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'subcategory',
+        key: 'id'
+      }
     },
     description: {
       type: DataTypes.STRING,
@@ -58,7 +39,8 @@ Item.init(
       allowNull: false
     },
     image: {
-
+      type: DataTypes.STRING,
+      allowNull: false
     },
   },
   {
@@ -66,8 +48,8 @@ Item.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "category",
+    modelName: "item",
   }
 );
 
-module.exports = Category;
+module.exports = Item;

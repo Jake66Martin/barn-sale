@@ -22,7 +22,7 @@ const resolvers = {
 
     itemsByCategory: async (parent, { category }, context) => {
       try {
-        const items = await Item.findOne({ category });
+        const items = await Item.findAll({ category });
         return items;
       } catch (err) {
         console.log(err);
@@ -104,10 +104,10 @@ const resolvers = {
       }
     },
 
-    removeItem: async (parent, { _id }, context) => {
+    removeItem: async (parent, { id }, context) => {
       try {
         const itemDeleted = await Item.findOneAndDelete({
-          _id: _id,
+          _id: id,
         });
         return itemDeleted;
       } catch (err) {

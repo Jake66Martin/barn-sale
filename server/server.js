@@ -32,7 +32,7 @@ const startApolloServer = async () => {
         });
     }
 
-    db.once('open', () => {
+    db.sync({force: false}).then(() => {
         app.listen(PORT, () => {
             console.log(`API servers running on port ${PORT}`);
             console.log(`Use GraphQL at http://localhost:${PORT}/graphql`)
