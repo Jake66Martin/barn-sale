@@ -1,4 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
+const bcrypt = require("bcrypt");
+
 
 const sequelize = require("../config/connection.js");
 
@@ -22,7 +24,7 @@ User.init(
       autoIncrement: true,
       allowNull: false,
     },
-    user_name: {
+    userName: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true
@@ -32,7 +34,7 @@ User.init(
       allowNull: false,
       unique: true,
       validate: {
-        isEmail: function(value) {
+        isEmail(value) {
           if (!/.+@.+\..+/.test(value)) {
             throw new Error('Must enter a valid email.')
           }
@@ -43,7 +45,7 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isPassword: function(value) {
+        isPassword(value) {
           if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(value)) {
             throw new Error('Must enter a proper password format.')
           }
@@ -65,8 +67,6 @@ User.addHook("beforeSave", async (user) => {
     const saltRounds = 10;
     user.password = await bcrypt.hash(user.password, saltRounds);
     }
-  
-    next();
   });
   
   

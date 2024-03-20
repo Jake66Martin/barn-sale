@@ -43,13 +43,13 @@ const resolvers = {
       try {
         const isDuplicateEmail = await User.findOne({ email });
 
-        if (isDuplicaterEmail) {
+        if (isDuplicateEmail) {
           throw new Error(
             "Email already exists. Please choose a different email."
           );
         }
 
-        if (emailValidation.test(email) && passwordValidaiton.test(password)) {
+        if (emailValidation.test(email) && passwordValidation.test(password)) {
           const user = User.create({
             userName,
             email,
@@ -98,16 +98,20 @@ const resolvers = {
           price,
           image,
         });
-        return itemAdded;
+        console.log(itemAdded)
+        return itemAdded; 
+        
       } catch (err) {
         console.log(err);
       }
     },
 
-    removeItem: async (parent, { id }, context) => {
+    removeItem: async (parent, { _id }, context) => {
       try {
-        const itemDeleted = await Item.findOneAndDelete({
-          _id: id,
+        const itemDeleted = await Item.destroy({
+          where: {
+            id: _id
+          }
         });
         return itemDeleted;
       } catch (err) {

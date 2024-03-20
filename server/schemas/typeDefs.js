@@ -2,11 +2,24 @@ const typeDefs = `
 
 type Item {
     _id: ID,
+    category_id: ID,
+    subcategory_id: ID,
     item: String,
     category: String,
     description: String,
     price: Int,
     image: String
+}
+
+type Category {
+    _id: ID,
+    name: String
+}
+
+type Subcategory {
+   _id: ID,
+   name: String,
+   category_id: ID
 }
 
 type User {
