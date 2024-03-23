@@ -23,6 +23,7 @@ export default function Browse() {
     return(
         <>
       {!isMobile ? (
+        <div className='browse-height'>
         <div className="d-flex justify-content-center align-items-center text-white position-absolute w-100 height">
           <div className="w-100 h-100 d-flex flex-column">
             <div className="w-100 h-50 d-flex">
@@ -78,7 +79,9 @@ export default function Browse() {
             </div>
           </div>
         </div>
+        </div>
       ) : (
+        <div className='browse-height-mobile'>
         <div className="d-flex flex-column overflow-container align-items-center text-white position-absolute w-100 height">
           <div className="application-div m-3 d-flex justify-content-center align-items-center position-relative">
             <img
@@ -128,6 +131,7 @@ export default function Browse() {
             />
             
           </div>
+        </div>
         </div>
       )}
     </>

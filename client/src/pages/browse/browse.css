@@ -11,3 +11,15 @@
   .div-width {
     width: 33%;
   }
+
+  .browse-height {
+    min-height: 678px;
+}
+
+.browse-height {
+  min-height: 678px;
+}
+
+.browse-height-mobile {
+  min-height: 500px;
+}

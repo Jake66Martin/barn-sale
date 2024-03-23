@@ -109,7 +109,7 @@ export default function Header() {
     <nav className="navbar bg-danger navbar-dark navbar-expand-lg">
       <div className="container">
         <Link className="navbar-brand nav-title" to="/">
-          <i className="fa fa-smile-o" aria-hidden="true"></i> Barn-Sale
+          <i className="fa fa-smile-o" aria-hidden="true"></i> ThriftBarnFurniture
         </Link>
         <button
           type="button"

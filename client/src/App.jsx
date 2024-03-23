@@ -11,15 +11,15 @@ import Footer from './components/footer/footer'
 import "./App.css";
 
 const httpLink = createHttpLink({
-  uri: "graphql",
+  uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
-  const oken = localStorage.getItem("id_token");
+  const token = localStorage.getItem("id_token");
   return {
     headers: {
       ...headers,
-      authorization: token ? "Bearer ${token}" : "",
+      authorization: token ? `Bearer ${token}` : "",
     },
   };
 });
@@ -34,7 +34,7 @@ function App() {
     <ApolloProvider client={client}>
       <>
         <Header />
-        <main className='height'>
+        <main>
           <Outlet />
         </main>
         <Footer />
