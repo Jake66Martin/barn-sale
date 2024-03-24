@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import Modal from "react-modal";
 import { Link } from 'react-router-dom';
 import { useMutation, useQuery } from "@apollo/client";
-// import Auth from "../../utils/auth";
+import Auth from "../../utils/auth";
 import { ADD_USER } from "../../utils/mutations";
 import { USER_EMAIL } from "../../utils/queries";
 import { Container, Col, Form, Button, Card, Row } from "react-bootstrap";
@@ -12,7 +12,6 @@ export default function Registration() {
   const [formState, setFormState] = useState({
     email: "",
     password: "",
-    phoneNumber: "",
     userName: "",
   });
   const [addUser] = useMutation(ADD_USER);
@@ -68,7 +67,7 @@ export default function Registration() {
 
   const handleEmpty = (event) => {
     const { name, value } = event.target;
-    if (name === "name" && value === "") {
+    if (name === "userName" && value === "") {
       Swal.fire({
         position: "center-center",
         icon: "error",
@@ -168,11 +167,7 @@ export default function Registration() {
         },
         }
         );
-      
-        
-
-        
-      
+  
       const token = mutationResponse.data.addUser.token;
       Auth.login(token);
     } catch (err) {

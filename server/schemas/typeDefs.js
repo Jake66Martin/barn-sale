@@ -37,7 +37,8 @@ type Auth {
 type Query {
     me: User,
     itemsByCategory(category: String!): [Item],
-    itemById(_id:ID!): Item
+    itemById(_id:ID!): Item,
+    userEmail(email: String!): Boolean
 }
 
 type Mutation {

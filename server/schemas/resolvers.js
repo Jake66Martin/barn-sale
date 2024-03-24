@@ -37,11 +37,35 @@ const resolvers = {
         console.log(err);
       }
     },
+
+    userEmail: async (parent, { email }, context) => {
+      try {
+
+        if (emailValidation.test(email)) {
+
+        const user = await User.findOne({
+           where: {
+            email: email
+           } 
+          });
+
+        return user !== null
+        }
+      } catch (error) {
+        console.error("Error while checking duplicate email:", error);
+        throw error;
+      }
+    },
   },
   Mutation: {
     addUser: async (parent, { userName, email, password }, context) => {
       try {
-        const isDuplicateEmail = await User.findOne({ email });
+        const isDuplicateEmail = await User.findOne({ 
+          
+          where: {
+            email: email
+          }
+          });
 
         if (isDuplicateEmail) {
           throw new Error(
