@@ -196,13 +196,13 @@ export default function Registration() {
                 className="form-control"
                 name="userName"
                 id="userName"
-                value={formState.name}
+                value={formState.userName}
                 placeholder="First Name"
                 onChange={handleChange}
                 onBlur={handleEmpty}
                 required
               />
-              <label htmlFor="name" className="form-label">
+              <label htmlFor="userName" className="form-label">
                 Name
               </label>
             </div>
@@ -213,7 +213,7 @@ export default function Registration() {
             <div className="form-floating mb-3">
               <input
                 className="form-control"
-                placeholder="youremail@lost-pets.com"
+                placeholder="youremail@thrift-barn.com"
                 name="email"
                 value={formState.email}
                 type="text"
@@ -258,28 +258,6 @@ export default function Registration() {
         </div>
 
         <div className="col-12">
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              value=""
-              name="iAgree"
-              id="iAgree"
-              required
-            />
-            <label className="form-check-label text-secondary" htmlFor="iAgree">
-              I agree to the{" "}
-              <a
-                href="#!"
-                className="link-danger text-decoration-none"
-                onClick={openModal}
-              >
-                terms and conditions
-              </a>
-            </label>
-          </div>
-        </div>
-        <div className="col-12">
           <div className="d-grid">
             <button className="btn btn-danger btn-lg" type="submit">
               Sign up
@@ -287,62 +265,7 @@ export default function Registration() {
           </div>
         </div>
       </div>
-      <Modal
-        isOpen={modalState}
-        onRequestClose={closeModal}
-        contentLabel="Example Modal"
-        style={{
-          overlay: {
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            zIndex: 1000,
-          },
-          content: {
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: "400px",
-            height: "600px",
-            backgroundColor: "white",
-            borderRadius: "20px",
-          },
-        }}
-      >
-        <div className="h-25 bg-primary">
-          <h4 className="text-center text-white mb-4 display-5">
-            Terms and Conditions
-          </h4>
-        </div>
-        <div className="h-75 d-flex flex-column justify-content-center align-items-center">
-          <p className = "overflow-y-scroll">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-            bibendum eros et ex ultrices tempus. Donec aliquet tristique tortor,
-            vitae posuere lorem. Mauris et urna quis neque finibus interdum.
-            Pellentesque erat purus, pellentesque nec libero vel, mattis lacinia
-            risus. Pellentesque in tortor in mauris egestas cursus. Nulla dictum
-            risus ipsum, nec venenatis libero tincidunt vitae. Nullam in ante
-            consequat, dictum elit quis, tincidunt felis. Quisque tempor erat ac
-            ligula dignissim, nec luctus purus convallis. Integer pretium ipsum
-            sit amet mollis sodales. Sed non metus quam. Nulla sollicitudin quam
-            at erat egestas auctor. Duis sapien neque, mollis nec scelerisque
-            sed, semper vel purus. Curabitur non posuere ligula. Maecenas
-            laoreet, diam at dapibus blandit, ex lacus gravida purus, a finibus
-            dolor neque quis lacus. Phasellus tristique odio sed nisl
-            consectetur, quis eleifend dui consectetur. Phasellus nec turpis vel
-            mauris pretium imperdiet. Fusce pharetra, enim ac vulputate
-            convallis, odio enim tincidunt felis, eget dictum risus enim non
-            sem. 
-          </p>
-          <button className="btn btn-primary btn-lg align-self-end align-self-center" onClick={closeModal}>
-            Close
-          </button>
-        </div>
-      </Modal>
+      
     </Form>
   );
 }
