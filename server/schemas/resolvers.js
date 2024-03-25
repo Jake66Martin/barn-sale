@@ -56,6 +56,19 @@ const resolvers = {
         throw error;
       }
     },
+
+    subcategoryById: async (parent, { category_id }, context) => {
+      try {
+        const subcategory = Subcategory.findAll({ 
+          where: {
+            category_id: category_id
+          }
+         });
+        return subcategory;
+      } catch (err) {
+        console.log(err);
+      }
+    },
   },
   Mutation: {
     addUser: async (parent, { userName, email, password }, context) => {

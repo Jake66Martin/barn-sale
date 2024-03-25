@@ -48,7 +48,7 @@ export default function Browse() {
                 </Link>
               </div>
               <div className="application-div d-flex justify-content-center align-items-center position-relative div-width">
-                <Link to = '/Subcategories'>
+                <Link to = '/Subcategories/3'>
                 <img
                   src="/bedroom.jpg"
                   alt="bedroom category"
@@ -59,7 +59,7 @@ export default function Browse() {
             </div>
             <div className="w-100 h-50 d-flex">
               <div className="application-div d-flex justify-content-center align-items-center position-relative div-width">
-                <Link to = '/Subcategories'>
+                <Link to = '/Subcategories/4'>
                 <img
                   src="/dining-room.jpg"
                   alt="dining room category"
@@ -68,7 +68,7 @@ export default function Browse() {
                 </Link>
               </div>
               <div className="application-div d-flex justify-content-center align-items-center position-relative div-width">
-                <Link to = '/Subcategories'>
+                <Link to = '/Subcategories/5'>
                 <img
                   src="/kitchen.jpg"
                   alt="kitchen category"
@@ -77,7 +77,7 @@ export default function Browse() {
                 </Link>
               </div>
               <div className="application-div d-flex justify-content-center align-items-center position-relative div-width">
-                <Link to = '/Subcategories'>
+                <Link to = '/Subcategories/6'>
                 <img
                   src="/office.jpg"
                   alt="office category"
@@ -93,7 +93,7 @@ export default function Browse() {
         <div className='browse-height-mobile'>
         <div className="d-flex flex-column overflow-container align-items-center text-white position-absolute w-100 height">
           <div className="application-div m-3 d-flex justify-content-center align-items-center position-relative">
-            <Link to = '/Subcategories'>
+            <Link to = '/Subcategories/1'>
             <img
               src="/basement.jpg"
               alt="basement category"
@@ -102,7 +102,7 @@ export default function Browse() {
            </Link>
           </div>
           <div className="m-3 application-div d-flex justify-content-center align-items-center position-relative">
-            <Link to = '/Subcategories'>
+            <Link to = '/Subcategories/2'>
             <img
               src="/bathroom.png"
               alt="bathroom category"
@@ -111,7 +111,7 @@ export default function Browse() {
             </Link>
           </div>
           <div className="m-3 application-div d-flex justify-content-center align-items-center position-relative">
-            <Link to = '/Subcategories'>
+            <Link to = '/Subcategories/3'>
             <img
               src="/bedroom.jpg"
               alt="bedroom category"
@@ -120,7 +120,7 @@ export default function Browse() {
            </Link>
           </div>
           <div className="m-3 application-div d-flex justify-content-center align-items-center position-relative">
-            <Link to = '/Subcategories'>
+            <Link to = '/Subcategories/4'>
             <img
               src="/dining-room.jpg"
               alt="dining room category"
@@ -129,7 +129,7 @@ export default function Browse() {
             </Link>
           </div>
           <div className="m-3 application-div d-flex justify-content-center align-items-center position-relative">
-            <Link to = '/Subcategories'>
+            <Link to = '/Subcategories/5'>
             <img
               src="/kitchen.jpg"
               alt="kitchen category"
@@ -138,7 +138,7 @@ export default function Browse() {
             </Link>
           </div>
           <div className="m-3 application-div d-flex justify-content-center align-items-center position-relative">
-            <Link to = '/Subcategories'>
+            <Link to = '/Subcategories/6'>
             <img
               src="/office.jpg"
               alt="office category"

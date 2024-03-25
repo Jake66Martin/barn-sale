@@ -31,7 +31,7 @@ const router = createBrowserRouter ([
       {path: '/Login', element: <Login />},
       {path: '/Contact', element: <Contact />},
       {path: '/Register', element: <Register />},
-      {path: '/Subcategories', element: <Subcategories/>},
+      {path: '/Subcategories/:id', element: <Subcategories/>},
       {path: '/Items', element: <Items/>}
     ]
   }

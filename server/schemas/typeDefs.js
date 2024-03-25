@@ -39,6 +39,7 @@ type Query {
     itemsByCategory(category: String!): [Item],
     itemById(_id:ID!): Item,
     userEmail(email: String!): Boolean
+    subcategoryById(category_id:ID!): [Subcategory]
 }
 
 type Mutation {
