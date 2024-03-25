@@ -62,6 +62,20 @@ const resolvers = {
         const subcategory = Subcategory.findAll({ 
           where: {
             category_id: category_id
+          },
+          attributes: ['id', 'name', 'category_id']
+         });
+        return subcategory;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
+    itemsByCategory: async (parent, { subcategory_id }, context) => {
+      try {
+        const subcategory = Item.findAll({ 
+          where: {
+            subcategory_id: subcategory_id
           }
          });
         return subcategory;

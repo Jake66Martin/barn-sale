@@ -21,7 +21,7 @@ const Subcategories = () => {
     <ul>
       {data?.subcategoryById && data?.subcategoryById.map((subcategory) => (
         <li key={subcategory.name}>
-          <Link to = {`/Items/${subcategory.name}`}>
+          <Link to = {`/Items/${subcategory._id}`}>
           {subcategory.name}
           </Link>
           </li>
