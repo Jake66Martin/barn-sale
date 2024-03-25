@@ -6,3 +6,12 @@ export const USER_EMAIL = gql`
   }
 `
 
+export const SUB_CATEGORY = gql`
+query SubcategoryById($categoryId: ID!) {
+  subcategoryById(category_id: $categoryId) {
+    name
+    category_id
+  }
+}
+`
+
