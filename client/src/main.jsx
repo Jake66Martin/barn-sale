@@ -10,6 +10,8 @@ import Browse from './pages/browse/browse.jsx'
 import Login from './pages/login/login.jsx'
 import Contact from './pages/contact/contact.jsx'
 import Register from './pages/register/register.jsx'
+import Subcategories from './pages/sub-categories/sub-categories.jsx'
+import Items from './pages/items/items.jsx'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
@@ -28,7 +30,9 @@ const router = createBrowserRouter ([
       {path: '/Browse', element: <Browse />},
       {path: '/Login', element: <Login />},
       {path: '/Contact', element: <Contact />},
-      {path: '/Register', element: <Register />}
+      {path: '/Register', element: <Register />},
+      {path: '/Subcategories', element: <Subcategories/>},
+      {path: '/Items', element: <Items/>}
     ]
   }
 ]);

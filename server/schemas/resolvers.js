@@ -1,4 +1,4 @@
-const { User, Item } = require("../models/index");
+const { User, Item, Category, Subcategory } = require("../models/index");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 const emailValidation = /^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/;
@@ -113,16 +113,16 @@ const resolvers = {
       }
     },
 
-    addItem: async (parent, { item, category, description, price, image }) => {
+    addItem: async (parent, { item, description, price, image, category_id, subcategory_id }) => {
       try {
         const itemAdded = await Item.create({
           item,
-          category,
           description,
           price,
           image,
+          category_id,
+          subcategory_id
         });
-        console.log(itemAdded)
         return itemAdded; 
         
       } catch (err) {
@@ -142,6 +142,24 @@ const resolvers = {
         console.log(err)
       }
     },
+
+    addCategory: async (parent, {name}, context) => {
+      try {
+       const category = await Category.create({name})
+       return category
+      } catch (err) {
+        console.log(err)
+      }
+    },
+
+    addSubcategory: async (parent, {name, category_id}, context) => {
+      try {
+      const subcategory = await Subcategory.create({name, category_id})
+      return subcategory
+      } catch (err) {
+        console.log(err)
+      }
+    }
   },
 };
 

@@ -45,8 +45,11 @@ type Mutation {
     addUser(userName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
 
-    addItem(item: String!, category: String!, description: String!, price: Int!, image: String!): Item,
+    addItem(item: String!, description: String!, price: Int!, image: String!, category_id:ID!, subcategory_id:ID!): Item,
     removeItem(_id: ID!): Item
+
+    addCategory(name: String!): Category
+    addSubcategory(name: String!, category_id:ID!): Subcategory
 }
 
 `;
