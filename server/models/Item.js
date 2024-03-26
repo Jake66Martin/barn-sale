@@ -6,7 +6,7 @@ class Item extends Model {}
 
 Item.init(
   {
-    id: {
+    _id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,

@@ -63,7 +63,7 @@ const resolvers = {
           where: {
             category_id: category_id
           },
-          attributes: ['id', 'name', 'category_id']
+          attributes: ['_id', 'name', 'category_id']
          });
         return subcategory;
       } catch (err) {

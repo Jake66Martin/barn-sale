@@ -30,12 +30,11 @@ mutation Login($email: String!, $password: String!) {
 
 export const ADD_ITEM = gql`
 mutation AddItem($item: String!, $category: String!, $description: String!, $price: Int!, $image: String!) {
-  addItem(item: $item, category: $category, description: $description, price: $price, image: $image) {
+  addItem(item: $item, description: $description, price: $price, image: $image) {
     item
     subcategory_id
     category_id
     _id
-    category
     description
     price
     image

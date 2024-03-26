@@ -6,7 +6,7 @@ class Subcategory extends Model { }
 
 Subcategory.init(
     {
-      id: {
+      _id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
