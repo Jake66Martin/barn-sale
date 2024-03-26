@@ -15,13 +15,24 @@ export default function Items() {
 
     return(
         <div className='item-height'>
-    <ul>
+    
       {data?.itemsByCategory && data?.itemsByCategory.map((item) => (
-        <li key={item._id}>
-          {item.item}
-          </li>
+        <div key={item._id} className="card" style={{width: '18rem', margin: '20px'}}>
+        <img src="..." className="card-img-top" alt="..."/>
+        <div className="card-body">
+          <h5 className="card-title">{item.item}</h5>
+          <p className="card-text">{item.description}</p>
+        </div>
+        <ul className="list-group list-group-flush">
+          <li className="list-group-item">{item.price}</li>
+        </ul>
+        <div className="card-body">
+          <a href="#" className="card-link">Card link</a>
+          <a href="#" className="card-link">Another link</a>
+        </div>
+      </div>
       ))}
-    </ul>
+    
     </div>
    
     )
