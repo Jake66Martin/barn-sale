@@ -16,3 +16,17 @@ query SubcategoryById($categoryId: ID!) {
 }
 `
 
+export const ITEMS_SUB = gql`
+query Query($subcategoryId: ID!) {
+  itemsByCategory(subcategory_id: $subcategoryId) {
+    _id
+    category_id
+    subcategory_id
+    item
+    description
+    price
+    image
+  }
+}
+`
+

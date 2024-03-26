@@ -20,15 +20,6 @@ const resolvers = {
       }
     },
 
-    itemsByCategory: async (parent, { category }, context) => {
-      try {
-        const items = await Item.findAll({ category });
-        return items;
-      } catch (err) {
-        console.log(err);
-      }
-    },
-
     itemById: async (parent, { _id }, context) => {
       try {
         const item = Item.findOne({ _id });
