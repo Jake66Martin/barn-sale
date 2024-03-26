@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from "@apollo/client";
 import { SUB_CATEGORY } from "../../utils/queries";
 import { Link } from "react-router-dom";
+import './sub-categories.css'
 
 
 
@@ -17,10 +18,10 @@ const Subcategories = () => {
   console.log(data?.subcategoryById)
 
   return (
-   <div>
+   <div className='sub-height'>
     <ul>
       {data?.subcategoryById && data?.subcategoryById.map((subcategory) => (
-        <li key={subcategory.name}>
+        <li key={subcategory._id}>
           <Link to = {`/Items/${subcategory._id}`}>
           {subcategory.name}
           </Link>

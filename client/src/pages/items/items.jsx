@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { ITEMS_SUB} from '../../utils/queries'
 import { useParams } from 'react-router-dom';
+import './items.css'
 
 
 export default function Items() {
@@ -13,7 +14,7 @@ export default function Items() {
       console.log(data?.itemsByCategory)
 
     return(
-        <div>
+        <div className='item-height'>
     <ul>
       {data?.itemsByCategory && data?.itemsByCategory.map((item) => (
         <li key={item._id}>
@@ -21,6 +22,7 @@ export default function Items() {
           </li>
       ))}
     </ul>
-   </div>
+    </div>
+   
     )
 };

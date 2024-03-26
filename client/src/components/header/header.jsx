@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import "./header.css";
+import './header.css'
 import Auth from "../../utils/auth";
 
 export default function Header() {
@@ -109,7 +109,7 @@ export default function Header() {
     <nav className="navbar bg-danger navbar-dark navbar-expand-lg">
       <div className="container">
         <Link className="navbar-brand nav-title" to="/">
-          <i className="fa fa-smile-o" aria-hidden="true"></i> ThriftBarnFurniture
+          <i className="fa fa-smile-o" aria-hidden="true"></i> <h1 className='font-fam'>Thrift-Barn-Furniture</h1>
         </Link>
         <button
           type="button"

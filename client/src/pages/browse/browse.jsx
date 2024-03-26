@@ -38,7 +38,10 @@ export default function Browse() {
                 />
                 </Link>
               </div>
-              <div className="application-div d-flex justify-content-center align-items-center position-relative div-width">
+              <div className="application-div d-flex justify-content-center align-items-center position-relative div-width flex-column">
+                <Link to = '/Search' className='no-deco'>
+                <h1 className='red'>Click here to search</h1>
+                </Link>
                 <Link to = '/Subcategories/2'>
                 <img
                   src="/bathroom.png"
@@ -92,6 +95,7 @@ export default function Browse() {
       ) : (
         <div className='browse-height-mobile'>
         <div className="d-flex flex-column overflow-container align-items-center text-white position-absolute w-100 height">
+        <h1 className='red'>Click here to search</h1>
           <div className="application-div m-3 d-flex justify-content-center align-items-center position-relative">
             <Link to = '/Subcategories/1'>
             <img
