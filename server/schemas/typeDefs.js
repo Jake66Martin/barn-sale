@@ -37,6 +37,7 @@ type Auth {
 type Query {
     me: User,
     itemsByCategory(subcategory_id: ID!, offset: Int!, limit: Int!): [Item],
+    allItemsByCategory(subcategory_id: ID!): [Item],
     itemById(_id:ID!): Item,
     userEmail(email: String!): Boolean
     subcategoryById(category_id:ID!): [Subcategory]

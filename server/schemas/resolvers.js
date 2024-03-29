@@ -76,6 +76,20 @@ const resolvers = {
         console.log(err);
       }
     },
+
+    allItemsByCategory: async (parent, { subcategory_id }, context) => {
+      try {
+        const subcategory = Item.findAll({ 
+          where: {
+            subcategory_id: subcategory_id
+          }
+         });
+        return subcategory;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
   },
   Mutation: {
     addUser: async (parent, { userName, email, password }, context) => {

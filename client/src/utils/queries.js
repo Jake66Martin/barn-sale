@@ -31,3 +31,13 @@ query Query($subcategoryId: ID!, $offset: Int!, $limit: Int!) {
 }
 `
 
+export const ITEMS = gql`
+query AllItemsByCategory($subcategoryId: ID!) {
+  allItemsByCategory(subcategory_id: $subcategoryId) {
+    _id
+  }
+}
+`
+
+
+
