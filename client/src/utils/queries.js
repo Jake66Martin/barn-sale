@@ -17,12 +17,13 @@ query SubcategoryById($categoryId: ID!) {
 `
 
 export const ITEMS_SUB = gql`
-query Query($subcategoryId: ID!) {
-  itemsByCategory(subcategory_id: $subcategoryId) {
-    _id
+query Query($subcategoryId: ID!, $offset: Int!, $limit: Int!) {
+  itemsByCategory(subcategory_id: $subcategoryId, offset: $offset, limit: $limit) {
     category_id
+    _id
     subcategory_id
     item
+    category
     description
     price
     image

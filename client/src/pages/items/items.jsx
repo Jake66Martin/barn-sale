@@ -1,13 +1,16 @@
 import { useQuery } from "@apollo/client";
+import { useState } from "react";
 import { ITEMS_SUB } from "../../utils/queries";
 import { useParams } from "react-router-dom";
 import "./items.css";
 
 export default function Items() {
   let { id } = useParams();
+  const [limit, setLimit] = useState(6);
+  const [offset, setOffset] = useState(0);
 
   const { loading, error, data } = useQuery(ITEMS_SUB, {
-    variables: { subcategoryId: id },
+    variables: { subcategoryId: id, limit, offset },
   });
 
   console.log(data?.itemsByCategory);
@@ -40,7 +43,7 @@ export default function Items() {
             ))}
         </div>
       </div>
-      <div className='d-flex justify-content-center'>
+      {/* <div className='d-flex justify-content-center'>
       <nav aria-label="Page navigation example">
         <ul class="pagination">
           <li className="page-item">
@@ -70,7 +73,7 @@ export default function Items() {
           </li>
         </ul>
       </nav>
-      </div>
+      </div> */}
     </div>
   );
 }

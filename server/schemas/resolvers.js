@@ -62,12 +62,14 @@ const resolvers = {
       }
     },
 
-    itemsByCategory: async (parent, { subcategory_id }, context) => {
+    itemsByCategory: async (parent, { subcategory_id, limit, offset }, context) => {
       try {
         const subcategory = Item.findAll({ 
           where: {
             subcategory_id: subcategory_id
-          }
+          },
+          limit,
+          offset
          });
         return subcategory;
       } catch (err) {
