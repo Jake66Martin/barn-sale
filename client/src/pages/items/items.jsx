@@ -10,20 +10,6 @@ export default function Items() {
   const [offset, setOffset] = useState(0);
   const [page, setPage] = useState(1);
 
-  function clickPlus() {
-    setOffset(offset + limit);
-    setPage(page + 1);
-  }
-
-  function clickNegative() {
-    if (page > 1) {
-      setPage(page - 1);
-      setOffset(offset - limit);
-    } else {
-      console.log("Page number cannot go below 1.");
-    }
-  }
-
   const {
     loading: paginationLoad,
     error: paginationError,
@@ -40,9 +26,35 @@ export default function Items() {
     variables: { subcategoryId: id },
   });
 
-  console.log(allItems?.allItemsByCategory);
+  const numberOfPages = ((allItems?.allItemsByCategory.length)/8)
+  const pagesRequired = Math.ceil(numberOfPages)
+
+  function clickPlus() {
+    if (page < pagesRequired) {
+    setOffset(offset + limit);
+    setPage(page + 1);
+    } else {
+      console.log('No data available.')
+    }
+  }
+
+  
+
+  function clickNegative() {
+    if (page > 1) {
+      setPage(page - 1);
+      setOffset(offset - limit);
+    } else {
+      console.log("Page number cannot go below 1.");
+    }
+  }
+
+  
+
+  console.log(allItems?.allItemsByCategory.length);
 
   console.log(paginationItems?.itemsByCategory);
+
 
   return (
     <div className="item-height">
