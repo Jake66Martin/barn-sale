@@ -5,3 +5,7 @@
 .cardbox-height {
     height: 618px;
 }
+
+.scroll-cnt {
+    overflow: scroll;
+}

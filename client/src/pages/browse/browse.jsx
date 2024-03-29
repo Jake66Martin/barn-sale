@@ -93,8 +93,8 @@ export default function Browse() {
         </div>
         </div>
       ) : (
-        <div className='browse-height-mobile'>
-        <div className="d-flex flex-column overflow-container align-items-center text-white position-absolute w-100 height">
+        <div className='browse-height-mobile overflow-container'>
+        <div className="d-flex flex-column align-items-center text-white position-absolute w-100 height overflow-container">
         <h1 className='red'>Click here to search</h1>
           <div className="application-div m-3 d-flex justify-content-center align-items-center position-relative">
             <Link to = '/Subcategories/1'>
