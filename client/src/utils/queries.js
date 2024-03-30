@@ -39,5 +39,20 @@ query AllItemsByCategory($subcategoryId: ID!) {
 }
 `
 
+export const SEARCH = gql`
+query Query($item: String!) {
+  searchByItem(item: $item) {
+    _id
+    category_id
+    subcategory_id
+    item
+    category
+    description
+    price
+    image
+  }
+}
+`
+
 
 
