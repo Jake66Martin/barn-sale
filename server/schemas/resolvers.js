@@ -1,5 +1,7 @@
 const { User, Item, Category, Subcategory } = require("../models/index");
 const { signToken, AuthenticationError } = require("../utils/auth");
+const { Op } = require('sequelize');
+
 
 const emailValidation = /^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/;
 const passwordValidation =
@@ -90,16 +92,19 @@ const resolvers = {
       }
     },
 
-    searchByItem: async (parent, {word}, context) => {
+    searchByItem: async (parent, {item}, context) => {
       try {
-      const allItems = await Item.findAll()
-      // console.log(allItems[0].dataValues.item)
+      const allItems = await Item.findAll({
+        where: {
+          item: {
+            [Op.like]: `%${item}%`
+          }
+        }
+      })
 
-      
+      console.log(allItems)
 
-      allItems.forEach(item => {
-        console.log(item.dataValues.item);
-      });
+      return allItems
 
       } catch (err) {
         console.log(err)
