@@ -13,7 +13,7 @@ const resolvers = {
           throw AuthenticationError;
         }
 
-        const user = User.findOne({ _id: context.user._id });
+        const user = await User.findOne({ _id: context.user._id });
         return user;
       } catch (err) {
         console.log(err);
@@ -22,7 +22,7 @@ const resolvers = {
 
     itemById: async (parent, { _id }, context) => {
       try {
-        const item = Item.findOne({ _id });
+        const item = await Item.findOne({ _id });
         return item;
       } catch (err) {
         console.log(err);
@@ -50,7 +50,7 @@ const resolvers = {
 
     subcategoryById: async (parent, { category_id }, context) => {
       try {
-        const subcategory = Subcategory.findAll({ 
+        const subcategory = await Subcategory.findAll({ 
           where: {
             category_id: category_id
           },
@@ -64,7 +64,7 @@ const resolvers = {
 
     itemsByCategory: async (parent, { subcategory_id, limit, offset }, context) => {
       try {
-        const subcategory = Item.findAll({ 
+        const subcategory = await Item.findAll({ 
           where: {
             subcategory_id: subcategory_id
           },
@@ -79,7 +79,7 @@ const resolvers = {
 
     allItemsByCategory: async (parent, { subcategory_id }, context) => {
       try {
-        const subcategory = Item.findAll({ 
+        const subcategory = await Item.findAll({ 
           where: {
             subcategory_id: subcategory_id
           }
@@ -89,6 +89,22 @@ const resolvers = {
         console.log(err);
       }
     },
+
+    searchByItem: async (parent, {word}, context) => {
+      try {
+      const allItems = await Item.findAll()
+      // console.log(allItems[0].dataValues.item)
+
+      
+
+      allItems.forEach(item => {
+        console.log(item.dataValues.item);
+      });
+
+      } catch (err) {
+        console.log(err)
+      }
+    }
 
   },
   Mutation: {
@@ -108,7 +124,7 @@ const resolvers = {
         }
 
         if (emailValidation.test(email) && passwordValidation.test(password)) {
-          const user = User.create({
+          const user = await User.create({
             userName,
             email,
             password,
