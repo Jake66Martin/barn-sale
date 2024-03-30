@@ -7,9 +7,13 @@
 }
 
 .bar {
-    height: 178px;
+    height: 100px;
 }
 
 .items-height {
     height: 500px;
+}
+
+.scroll-height {
+    height: 100px;
 }
