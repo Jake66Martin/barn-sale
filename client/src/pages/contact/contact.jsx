@@ -37,14 +37,6 @@ export default function Contact() {
           showConfirmButton: false,
           timer: 2500,
         });
-    } else if (!(emailValidation.test(email)) && !(numberValidation.test(phone))) {
-      Swal.fire({
-        position: "center-center",
-        icon: "error",
-        title: "Neither email or number are of a valid format.",
-        showConfirmButton: false,
-        timer: 2500,
-      });
     } else if (!emailValidation.test(email)) {
      Swal.fire({
           position: "center-center",
