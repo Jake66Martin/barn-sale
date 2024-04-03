@@ -40,8 +40,22 @@ query AllItemsByCategory($subcategoryId: ID!) {
 `
 
 export const SEARCH = gql`
-query Query($item: String!) {
-  searchByItem(item: $item) {
+query Query($item: String!, $offset: Int!, $limit: Int!) {
+  searchByItem(item: $item, offset: $offset, limit: $limit) {
+    _id
+    category_id
+    subcategory_id
+    item
+    category
+    description
+    price
+    image
+  }
+}
+`
+export const SEARCH_ITEM = gql`
+query SearchItem($item: String!) {
+  searchItem(item: $item) {
     _id
     category_id
     subcategory_id

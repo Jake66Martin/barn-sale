@@ -1,50 +1,69 @@
 import "./search.css";
 import { useQuery } from "@apollo/client";
 import { useState, useEffect } from "react";
-import { SEARCH } from "../../utils/queries";
+import { SEARCH, SEARCH_ITEM } from "../../utils/queries";
 
 export default function Search() {
   const [limit, setLimit] = useState(8);
   const [offset, setOffset] = useState(0);
   const [page, setPage] = useState(1);
   const [item, setItem] = useState("");
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     return name === "item" ? setItem(value) : console.log("Must input item.");
   };
 
-  const search = (event) => {
-    event.preventDefault();
-    const { loading, error, data } = useQuery(SEARCH, {
-      variables: { limit, offset },
-    });
+  const { loading: loadedItems, error: errorItems, data: renderedItems } = useQuery(SEARCH, {
+    variables: {item, limit, offset },
+  });
 
-    return search;
+  const { loading: queryLoad, error: queryError, data: queryData} = useQuery(SEARCH_ITEM, {
+    variables: {item},
+  });
+
+  useEffect (() =>{
+if (formSubmitted) {
+  console.log(data?.searchByItem)
+  setFormSubmitted(false)
+}
+  },[formSubmitted])
+
+  const formSubmit = (event) => {
+    event.preventDefault();
+    setFormSubmitted(true);
   };
 
-  // function clickPlus() {
-  //   if (page < pagesRequired) {
-  //   setOffset(offset + limit);
-  //   setPage(page + 1);
-  //   } else {
-  //     console.log('No data available.')
-  //   }
-  // }
+  const numberOfPages = ((queryData?.searchItem.length)/8)
+  const pagesRequired = Math.ceil(numberOfPages)
 
-  // function clickNegative() {
-  //   if (page > 1) {
-  //     setPage(page - 1);
-  //     setOffset(offset - limit);
-  //   } else {
-  //     console.log("Page number cannot go below 1.");
-  //   }
-  // }
+  console.log(pagesRequired)
+
+  
+
+  function clickPlus() {
+    if (page < pagesRequired) {
+    setOffset(offset + limit);
+    setPage(page + 1);
+    } else {
+      console.log('No data available.')
+    }
+  }
+
+  function clickNegative() {
+    if (page > 1) {
+      setPage(page - 1);
+      setOffset(offset - limit);
+    } else {
+      console.log("Page number cannot go below 1.");
+    }
+  }
 
   return (
     <div className="search-height">
       <div className="bar d-flex align-items-center justify-content-center">
-        <form className="d-flex f-width" onSubmit={search}>
+        <form className="d-flex f-width" onSubmit={formSubmit}>
           <input
             className="form-control me-2"
             type="search"
@@ -61,8 +80,8 @@ export default function Search() {
       <div className="items-height">
         <div className="cardbox-height">
           <div className="d-flex flex-wrap justify-content-center align-items-center">
-            {search?.searchByItem &&
-              search?.searchByItem.map((item) => (
+            {renderedItems?.searchByItem &&
+              renderedItems?.searchByItem.map((item) => (
                 <div
                   key={item._id}
                   className="card d-flex"

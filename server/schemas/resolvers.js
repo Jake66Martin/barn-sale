@@ -92,17 +92,37 @@ const resolvers = {
       }
     },
 
-    searchByItem: async (parent, {item}, context) => {
+    searchByItem: async (parent, {item, limit, offset}, context) => {
       try {
       const allItems = await Item.findAll({
         where: {
           item: {
             [Op.like]: `%${item}%`
           }
-        }
+        },
+        limit,
+        offset
       })
 
-      console.log(allItems)
+
+      return allItems
+
+      } catch (err) {
+        console.log(err)
+      }
+    },
+
+    searchItem: async (parent, {item}, context) => {
+      try {
+      const allItems = await Item.findAll({
+        where: {
+          item: {
+            [Op.like]: `%${item}%`
+          }
+        },
+        
+      })
+
 
       return allItems
 
@@ -112,6 +132,7 @@ const resolvers = {
     }
 
   },
+  
   Mutation: {
     addUser: async (parent, { userName, email, password }, context) => {
       try {
