@@ -37,13 +37,13 @@ export default function Registration() {
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
   useEffect(() => {
-    document.title = "Locate-O-Pet";
+    document.title = "Thrift-Barn-Furniture";
     if (pageName === "index.jsx") {
       document.title = "Register";
     }
 
     return () => {
-      document.title = "Locate-O-Pet";
+      document.title = "Thrift-Barn-Furniture";
     };
   }, [pageName]);
 

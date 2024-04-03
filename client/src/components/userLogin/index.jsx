@@ -12,13 +12,13 @@ export default function UserLogin() {
 
 
   useEffect(() => {
-    document.title = "Locate-O-Pet"; 
+    document.title = "Thrift-Barn-Furniture"; 
     if (pageName === "index.jsx") {
       document.title = "Login";}
 
 
     return () => {
-      document.title = "Locate-O-Pet";
+      document.title = "Thrift-Barn-Furniture";
     };
   }, [pageName]);
 

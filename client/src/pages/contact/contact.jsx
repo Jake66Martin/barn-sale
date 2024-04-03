@@ -10,11 +10,9 @@ import { useState } from "react";
 export default function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
 
   const emailValidation = /^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/;
-  const numberValidation = /^(\+\d{1,3}\s?)?(\()?\d{3}(\))?[-.\s]?\d{3}[-.\s]?\d{4}$/
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -23,10 +21,10 @@ export default function Contact() {
       ? setName(value)
       : name === "email"
       ? setEmail(value)
-      : name === "phone"
-      ? setPhone(value)
       : setMessage(value);
   };
+
+
 
   const handleClick = (event) => {
     event.preventDefault();
@@ -47,14 +45,6 @@ export default function Contact() {
         showConfirmButton: false,
         timer: 2500,
       });
-    } else if (!numberValidation.test(phone)) {
-     Swal.fire({
-          position: "center-center",
-          icon: "error",
-          title: "Please input a valid phone number.",
-          showConfirmButton: false,
-          timer: 2500,
-        });
     } else if (!emailValidation.test(email)) {
      Swal.fire({
           position: "center-center",
@@ -67,7 +57,6 @@ export default function Contact() {
     
       setName("");
       setEmail("");
-      setPhone("");
       setMessage("");
       Swal.fire({
         position: "center-center",
@@ -78,6 +67,8 @@ export default function Contact() {
       });
     }
   };
+
+  
 
   return (
     <section className="bg-light py-3 py-md-5">
@@ -108,8 +99,6 @@ export default function Contact() {
                       Email <span className="text-danger">*</span>
                     </label>
                     <div className="input-group">
-                      <span className="input-group-text">
-                      </span>
                       <input
                         value={email}
                         type="email"
@@ -121,7 +110,7 @@ export default function Contact() {
                       />
                     </div>
                   </div>
-                  <div className="col-12 col-md-6">
+                  {/* <div className="col-12 col-md-6">
                     <label htmlFor="phone" className="form-label">
                       Phone Number
                     </label>
@@ -138,7 +127,7 @@ export default function Contact() {
                         onChange={handleChange}
                       />
                     </div>
-                  </div>
+                  </div> */}
                   <div className="col-12">
                     <label htmlFor="message" className="form-label">
                       Message <span className="text-danger">*</span>

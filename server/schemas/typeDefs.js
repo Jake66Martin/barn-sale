@@ -54,6 +54,8 @@ type Mutation {
 
     addCategory(name: String!): Category
     addSubcategory(name: String!, category_id:ID!): Subcategory
+
+    submitContactForm(name: String!, email: String!, message: String!): Boolean
 }
 
 `;
