@@ -15,5 +15,15 @@
 }
 
 .scroll-height {
-    height: 100px;
+    height: 50px;
+}
+
+.scroll-cnt {
+    overflow: visible;
+}
+
+@media screen and (max-width: 1315px) {
+.scroll-cnt {
+    overflow: scroll;
+}
 }

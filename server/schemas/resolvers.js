@@ -94,7 +94,9 @@ const resolvers = {
 
     searchByItem: async (parent, {item, limit, offset}, context) => {
       try {
-      const allItems = await Item.findAll({
+        let allItems;
+        if (item) {
+        allItems = await Item.findAll({
         where: {
           item: {
             [Op.like]: `%${item}%`
@@ -104,6 +106,9 @@ const resolvers = {
         offset
       })
 
+    } else {
+      allItems=[]
+    }
 
       return allItems
 
@@ -114,19 +119,22 @@ const resolvers = {
 
     searchItem: async (parent, {item}, context) => {
       try {
+        
       const allItems = await Item.findAll({
         where: {
           item: {
             [Op.like]: `%${item}%`
           }
         },
+      });
+    
         
-      })
-
 
       return allItems
 
-      } catch (err) {
+      } 
+      
+      catch (err) {
         console.log(err)
       }
     }

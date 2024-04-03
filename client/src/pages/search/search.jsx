@@ -3,44 +3,35 @@ import { useQuery } from "@apollo/client";
 import { useState, useEffect } from "react";
 import { SEARCH, SEARCH_ITEM } from "../../utils/queries";
 
+
 export default function Search() {
   const [limit, setLimit] = useState(8);
   const [offset, setOffset] = useState(0);
   const [page, setPage] = useState(1);
-  const [item, setItem] = useState("");
+  const [item, setItem] = useState('');
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    return name === "item" ? setItem(value) : console.log("Must input item.");
+    const { value } = e.target;
+    setItem(value)
+    setPage(1)
   };
+
+  
 
   const { loading: loadedItems, error: errorItems, data: renderedItems } = useQuery(SEARCH, {
     variables: {item, limit, offset },
+    enabled: formSubmitted
   });
 
-  const { loading: queryLoad, error: queryError, data: queryData} = useQuery(SEARCH_ITEM, {
-    variables: {item},
+
+
+  const { loading: queryLoad, error: queryError, data: queryData} = useQuery(SEARCH_ITEM,{
+    variables: {item}
   });
-
-  useEffect (() =>{
-if (formSubmitted) {
-  console.log(data?.searchByItem)
-  setFormSubmitted(false)
-}
-  },[formSubmitted])
-
-  const formSubmit = (event) => {
-    event.preventDefault();
-    setFormSubmitted(true);
-  };
 
   const numberOfPages = ((queryData?.searchItem.length)/8)
   const pagesRequired = Math.ceil(numberOfPages)
-
-  console.log(pagesRequired)
-
-  
 
   function clickPlus() {
     if (page < pagesRequired) {
@@ -60,10 +51,11 @@ if (formSubmitted) {
     }
   }
 
+
   return (
     <div className="search-height">
       <div className="bar d-flex align-items-center justify-content-center">
-        <form className="d-flex f-width" onSubmit={formSubmit}>
+        <form className="d-flex f-width">
           <input
             className="form-control me-2"
             type="search"
@@ -72,29 +64,26 @@ if (formSubmitted) {
             name="item"
             onChange={handleInputChange}
           />
-          <button className="btn btn-outline-danger" type="submit">
-            Search
-          </button>
         </form>
       </div>
-      <div className="items-height">
+      <div className="items-height scroll-cnt">
         <div className="cardbox-height">
           <div className="d-flex flex-wrap justify-content-center align-items-center">
             {renderedItems?.searchByItem &&
-              renderedItems?.searchByItem.map((item) => (
+              renderedItems?.searchByItem.map((items) => (
                 <div
-                  key={item._id}
+                  key={items._id}
                   className="card d-flex"
                   style={{ width: "18rem", margin: "20px" }}
                 >
                   <img src="..." className="card-img-top" alt="..." />
                   <div className="card-body align-self-center">
-                    <h5 className="card-title">{item.item}</h5>
-                    <p className="card-text">{item.description}</p>
+                    <h5 className="card-title">{items.item}</h5>
+                    <p className="card-text">{items.description}</p>
                   </div>
                   <ul className="list-group list-group-flush">
                     <li className="list-group-item align-self-center">
-                      {item.price}$
+                      {items.price}$
                     </li>
                   </ul>
                   <div className="card-body align-self-center">
@@ -107,8 +96,8 @@ if (formSubmitted) {
           </div>
         </div>
       </div>
-      <div className='scroll-height'>
-      <div className="d-flex justify-content-center">
+      <div className='scroll-height d-flex justify-content-center align-items-center'>
+      <div className="d-flex justify-content-center align-items-center">
         <button
           className="btn btn-outline-danger"
           onClick={() => clickNegative()}
