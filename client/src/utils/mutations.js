@@ -56,4 +56,8 @@ mutation RemoveItem($id: ID!) {
   }
 }
 `
-
+export const SUBMIT_EMAIL = gql`
+mutation Mutation($name: String!, $email: String!, $message: String!) {
+  submitContactForm(name: $name, email: $email, message: $message)
+}
+`

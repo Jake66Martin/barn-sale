@@ -6,11 +6,20 @@ import GraphPhone from "../../components/Contact/phoneicon.jsx";
 import { Container, Row, Form } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import { SUBMIT_EMAIL} from '../../utils/mutations.js'
+import { useMutation } from "@apollo/client";
+
+
 
 export default function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [submitContactForm] = useMutation(SUBMIT_EMAIL);
+
+
+
+
 
   const emailValidation = /^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/;
 
@@ -26,41 +35,89 @@ export default function Contact() {
 
 
 
-  const handleClick = (event) => {
-    event.preventDefault();
-
-    if (name === "" || email === "" || message === "") {
-     Swal.fire({
-          position: "center-center",
-          icon: "error",
-          title: "Must fill in required fields.",
-          showConfirmButton: false,
-          timer: 2500,
-        });
-    } else if (!emailValidation.test(email)) {
-     Swal.fire({
-          position: "center-center",
-          icon: "error",
-          title: "Please enter a valid email.",
-          showConfirmButton: false,
-          timer: 2500,
-        });
-    } else {
+  // const handleClick = (event) => {
+  //   event.preventDefault();
+     
+  //   if (name === "" || email === "" || message === "") {
+  //    Swal.fire({
+  //         position: "center-center",
+  //         icon: "error",
+  //         title: "Must fill in required fields.",
+  //         showConfirmButton: false,
+  //         timer: 2500,
+  //       });
+  //   } else if (!emailValidation.test(email)) {
+  //    Swal.fire({
+  //         position: "center-center",
+  //         icon: "error",
+  //         title: "Please enter a valid email.",
+  //         showConfirmButton: false,
+  //         timer: 2500,
+  //       });
+  //   } else {
     
-      setName("");
-      setEmail("");
-      setMessage("");
-      Swal.fire({
-        position: "center-center",
-        icon: "success",
-        title: "Your message has been sent",
-        showConfirmButton: false,
-        timer: 2500,
-      });
+  //     setName("");
+  //     setEmail("");
+  //     setMessage("");
+  //     Swal.fire({
+  //       position: "center-center",
+  //       icon: "success",
+  //       title: "Your message has been sent",
+  //       showConfirmButton: false,
+  //       timer: 2500,
+  //     });
+
+  //   }
+  // };
+
+  const formSubmit = async (event) => {
+    event.preventDefault()
+    try {
+      if (name === "" || email === "" || message === "") {
+        Swal.fire({
+             position: "center-center",
+             icon: "error",
+             title: "Must fill in required fields.",
+             showConfirmButton: false,
+             timer: 2500,
+           });
+       } else if (!emailValidation.test(email)) {
+        Swal.fire({
+             position: "center-center",
+             icon: "error",
+             title: "Please enter a valid email.",
+             showConfirmButton: false,
+             timer: 2500,
+           });
+       } else {
+
+         setName("");
+         setEmail("");
+         setMessage("");
+         Swal.fire({
+           position: "center-center",
+           icon: "success",
+           title: "Your message has been sent",
+           showConfirmButton: false,
+           timer: 2500,
+         });
+        }
+
+        const sentEmail = await submitContactForm({
+          variables: {
+            name,
+            email,
+            message
+          }
+        });
+        console.log(sentEmail)
+
+        return sentEmail
+
+    } catch (err) {
+       console.log(err)
     }
   };
-
-  
 
   return (
     <section className="bg-light py-3 py-md-5">
@@ -70,7 +127,7 @@ export default function Contact() {
         <Row className="justify-content-lg-center">
           <div className="col-12 col-lg-9">
             <div className="bg-white border rounded shadow-sm overflow-hidden">
-              <Form action="#!">
+              <Form onSubmit={formSubmit}>
                 <Row className="gy-4 gy-xl-5 p-4 p-xl-5">
                   <div className="col-12">
                     <label htmlFor="fullname" className="form-label">
@@ -136,13 +193,12 @@ export default function Contact() {
                   </div>
                   <div className="col-12">
                     <div className="d-grid">
-                      <Link
-                        onClick={handleClick}
+                      <button
                         className="btn btn-danger btn-lg"
                         type="submit"
                       >
                         Submit
-                      </Link>
+                      </button>
                     </div>
                   </div>
                 </Row>

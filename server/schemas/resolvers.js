@@ -1,6 +1,10 @@
 const { User, Item, Category, Subcategory } = require("../models/index");
 const { signToken, AuthenticationError } = require("../utils/auth");
 const { Op } = require('sequelize');
+const nodemailer = require('nodemailer');
+require('dotenv').config();
+
+
 
 
 const emailValidation = /^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/;
@@ -243,9 +247,47 @@ const resolvers = {
       } catch (err) {
         console.log(err)
       }
+    },
+
+    submitContactForm: async (parent, {name, email, message}, context) => {
+      try {
+        const transporter = nodemailer.createTransport({
+          service: 'hotmail',
+          host: 'smtp-mail.outlook.com',
+          port: 587,
+          tls: {
+            ciphers: 'TLSv1.2',
+            minVersion: 'TLSv1.2'
+          },
+          auth: {
+            user: process.env.EMAIL,
+            pass: process.env.PASSWORD
+
+          },
+          
+        });
+
+
+        const mailOptions = {
+          from: 'alabamaslamma6@hotmail.com',
+          to: 'alabamaslamma6@hotmail.com',
+          subject: 'Thrift-Barn-Furniture inquiry',
+          text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
+        }
+
+        await transporter.sendMail(mailOptions);
+        console.log('Email successfully sent')
+        return true;
+
+      } catch (error) {
+        console.error('Error sending email:', error)
+        return false;
+      }
     }
   },
 };
+
+
 
 module.exports = resolvers;
 
