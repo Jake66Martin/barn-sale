@@ -35,40 +35,7 @@ export default function Contact() {
 
 
 
-  // const handleClick = (event) => {
-  //   event.preventDefault();
-     
-  //   if (name === "" || email === "" || message === "") {
-  //    Swal.fire({
-  //         position: "center-center",
-  //         icon: "error",
-  //         title: "Must fill in required fields.",
-  //         showConfirmButton: false,
-  //         timer: 2500,
-  //       });
-  //   } else if (!emailValidation.test(email)) {
-  //    Swal.fire({
-  //         position: "center-center",
-  //         icon: "error",
-  //         title: "Please enter a valid email.",
-  //         showConfirmButton: false,
-  //         timer: 2500,
-  //       });
-  //   } else {
-    
-  //     setName("");
-  //     setEmail("");
-  //     setMessage("");
-  //     Swal.fire({
-  //       position: "center-center",
-  //       icon: "success",
-  //       title: "Your message has been sent",
-  //       showConfirmButton: false,
-  //       timer: 2500,
-  //     });
-
-  //   }
-  // };
+  
 
   const formSubmit = async (event) => {
     event.preventDefault()
@@ -159,24 +126,6 @@ export default function Contact() {
                       />
                     </div>
                   </div>
-                  {/* <div className="col-12 col-md-6">
-                    <label htmlFor="phone" className="form-label">
-                      Phone Number
-                    </label>
-                    <div className="input-group">
-                      <span className="input-group-text">
-                        <GraphPhone />
-                      </span>
-                      <input
-                        value={phone}
-                        type="tel"
-                        className="form-control"
-                        id="phone"
-                        name="phone"
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div> */}
                   <div className="col-12">
                     <label htmlFor="message" className="form-label">
                       Message <span className="text-danger">*</span>

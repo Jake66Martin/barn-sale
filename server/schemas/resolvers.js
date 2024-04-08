@@ -201,12 +201,13 @@ const resolvers = {
       }
     },
 
-    addItem: async (parent, { item, description, price, image, category_id, subcategory_id }) => {
+    addItem: async (parent, { item, description, price, location, image, category_id, subcategory_id }) => {
       try {
         const itemAdded = await Item.create({
           item,
           description,
           price,
+          location,
           image,
           category_id,
           subcategory_id

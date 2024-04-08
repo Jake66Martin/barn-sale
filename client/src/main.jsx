@@ -13,6 +13,7 @@ import Register from './pages/register/register.jsx'
 import Subcategories from './pages/sub-categories/sub-categories.jsx'
 import Items from './pages/items/items.jsx'
 import Search from './pages/search/search.jsx'
+import Add from './pages/add/add.jsx'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
@@ -34,7 +35,8 @@ const router = createBrowserRouter ([
       {path: '/Register', element: <Register />},
       {path: '/Subcategories/:id', element: <Subcategories/>},
       {path: '/Items/:id', element: <Items/>},
-      {path: '/Search', element: <Search/>}
+      {path: '/Search', element: <Search/>},
+      {path: '/Add', element: <Add/>}
     ]
   }
 ]);
