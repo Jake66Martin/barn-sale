@@ -23,7 +23,6 @@ query Query($subcategoryId: ID!, $offset: Int!, $limit: Int!) {
     _id
     subcategory_id
     item
-    category
     description
     price
     image

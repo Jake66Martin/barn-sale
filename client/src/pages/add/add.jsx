@@ -9,10 +9,11 @@ export default function addRemove() {
   const [price, setPrice] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
+  const [image, setImage] = useState('')
   const [addItem] = useMutation(ADD_ITEM);
 
   const [categoryId, setCategoryId] = useState("");
-  const [subCategoryId, setSubCategoryId] = useState("");
+  const [subcategoryId, setSubCategoryId] = useState("");
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -20,15 +21,21 @@ export default function addRemove() {
     return name === "item"
       ? setItem(value)
       : name === "price"
-      ? setPrice(value)
+      ? setPrice(parseInt(value))
       : name === "location"
       ? setLocation(value)
+      : name === 'image'
+      ? setImage(value)
       : setDescription(value);
   };
 
   const handleFirstDrop = (event) => {
     setCategoryId(event.target.value);
+    // if (event.target.value === '3' || event.target.value === '5' || event.target.value === '6' || event.target.value === '7' || event.target.value === '8') {
+    // setSubCategoryId(null) }
+    // else {
     setSubCategoryId("");
+    // }
     console.log(event.target.value);
   };
 
@@ -58,6 +65,7 @@ export default function addRemove() {
           </>
         );
 
+
       case "4":
         return (
         <>
@@ -71,6 +79,12 @@ export default function addRemove() {
     }
   };
 
+  const disable = () => {
+    if (categoryId === '3' || categoryId === '5' || categoryId === '6' || categoryId === '7' || categoryId === '8') {
+      return true
+    }
+  }
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -81,8 +95,9 @@ export default function addRemove() {
           price,
           location,
           description,
+          image,
           categoryId,
-          subCategoryId,
+          subcategoryId,
         },
       });
 
@@ -131,8 +146,9 @@ export default function addRemove() {
                       className="form-control"
                       name="sub-category"
                       id="sub-category"
-                      value={subCategoryId}
-                      onChange={(event) => setSubCategoryId(event.target.value)}
+                      value={subcategoryId}
+                      disabled={disable()}
+                      onChange={(event) => {setSubCategoryId(event.target.value), console.log(event.target.value)}}
                     >
                       <option value="">Please select an option</option>
                       {getSecondDropOptions()}
@@ -176,6 +192,21 @@ export default function addRemove() {
                         className="form-control"
                         id="location"
                         name="location"
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="col-12 col-md-6">
+                    <label htmlFor="image" className="form-label">
+                      Image URL
+                    </label>
+                    <div className="input-group">
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="image"
+                        name="image"
                         onChange={handleChange}
                         required
                       />

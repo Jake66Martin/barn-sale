@@ -67,7 +67,7 @@ export default function Items() {
                 className="card d-flex"
                 style={{ width: "18rem", margin: "20px" }}
               >
-                <img src="..." className="card-img-top" alt="..." />
+                <img src={item.image} className="card-img-top" alt="item" />
                 <div className="card-body align-self-center">
                   <h5 className="card-title">{item.item}</h5>
                   <p className="card-text">{item.description}</p>

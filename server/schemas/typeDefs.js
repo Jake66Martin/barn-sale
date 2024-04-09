@@ -5,7 +5,7 @@ type Item {
     category_id: ID,
     subcategory_id: ID,
     item: String,
-    category: String,
+    location: String,
     description: String,
     price: Int,
     image: String

@@ -203,6 +203,19 @@ const resolvers = {
 
     addItem: async (parent, { item, description, price, location, image, category_id, subcategory_id }) => {
       try {
+        
+        if (subcategory_id === '') {
+        const itemAdded = await Item.create({
+          item,
+          description,
+          price,
+          location,
+          image,
+          category_id,
+          // subcategory_id
+        });
+        return itemAdded; 
+      } else {
         const itemAdded = await Item.create({
           item,
           description,
@@ -213,6 +226,8 @@ const resolvers = {
           subcategory_id
         });
         return itemAdded; 
+      }
+        
         
       } catch (err) {
         console.log(err);
