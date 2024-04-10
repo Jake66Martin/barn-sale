@@ -9,6 +9,8 @@ import { Outlet } from "react-router-dom";
 import Header from './components/header/header'
 import Footer from './components/footer/footer'
 import "./App.css";
+import { useLocation } from 'react-router-dom';
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -30,11 +32,17 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const location = useLocation();
+  const isContactPage = location.pathname === '/Contact';
+  const isAddPage = location.pathname === '/Add';
+
+
+  
   return (
     <ApolloProvider client={client}>
       <>
         <Header />
-        <main>
+        <main className={`main-height ${isContactPage ? 'contact-page' : isAddPage ?  'add-page' : ''}`}>
           <Outlet />
         </main>
         <Footer />

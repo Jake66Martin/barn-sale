@@ -45,7 +45,6 @@ query Query($item: String!, $offset: Int!, $limit: Int!) {
     category_id
     subcategory_id
     item
-    category
     description
     price
     image
@@ -59,7 +58,20 @@ query SearchItem($item: String!) {
     category_id
     subcategory_id
     item
-    category
+    description
+    price
+    image
+  }
+}
+`
+export const CATEGORIES = gql`
+query Query($categoryId: ID!, $offset: Int!, $limit: Int!) {
+  categories(category_id: $categoryId, offset: $offset, limit: $limit) {
+    _id
+    category_id
+    subcategory_id
+    item
+    location
     description
     price
     image
@@ -67,5 +79,19 @@ query SearchItem($item: String!) {
 }
 `
 
+export const CATEGORY = gql`
+query Category($categoryId: ID!) {
+  category(category_id: $categoryId) {
+    _id
+    category_id
+    subcategory_id
+    item
+    location
+    description
+    price
+    image
+  }
+}
+`
 
 

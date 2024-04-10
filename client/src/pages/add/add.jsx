@@ -109,7 +109,7 @@ export default function addRemove() {
   };
 
   return (
-    <section className="bg-light py-3 py-md-5">
+    <section className="bg-light py-3 py-md-5 height">
       <Container>
         <Row className="justify-content-lg-center">
           <div className="col-12 col-lg-9">

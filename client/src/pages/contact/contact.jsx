@@ -87,7 +87,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="bg-light py-3 py-md-5">
+    <section className="bg-light py-3 py-md-5 contact-height">
       <Container>
         <Header />
 

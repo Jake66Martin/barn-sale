@@ -76,7 +76,7 @@ export default function Search() {
                   className="card d-flex"
                   style={{ width: "18rem", margin: "20px" }}
                 >
-                  <img src="..." className="card-img-top" alt="..." />
+                  <img src={items.image} className="card-img-top" alt="..." />
                   <div className="card-body align-self-center">
                     <h5 className="card-title">{items.item}</h5>
                     <p className="card-text">{items.description}</p>

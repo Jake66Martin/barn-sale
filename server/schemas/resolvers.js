@@ -1,11 +1,8 @@
 const { User, Item, Category, Subcategory } = require("../models/index");
 const { signToken, AuthenticationError } = require("../utils/auth");
-const { Op } = require('sequelize');
-const nodemailer = require('nodemailer');
-require('dotenv').config();
-
-
-
+const { Op } = require("sequelize");
+const nodemailer = require("nodemailer");
+require("dotenv").config();
 
 const emailValidation = /^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/;
 const passwordValidation =
@@ -37,16 +34,14 @@ const resolvers = {
 
     userEmail: async (parent, { email }, context) => {
       try {
-
         if (emailValidation.test(email)) {
-
-        const user = await User.findOne({
-           where: {
-            email: email
-           } 
+          const user = await User.findOne({
+            where: {
+              email: email,
+            },
           });
 
-        return user !== null
+          return user !== null;
         }
       } catch (error) {
         console.error("Error while checking duplicate email:", error);
@@ -56,27 +51,59 @@ const resolvers = {
 
     subcategoryById: async (parent, { category_id }, context) => {
       try {
-        const subcategory = await Subcategory.findAll({ 
+        const subcategory = await Subcategory.findAll({
           where: {
-            category_id: category_id
+            category_id: category_id,
           },
-          attributes: ['_id', 'name', 'category_id']
-         });
+          attributes: ["_id", "name", "category_id"],
+        });
         return subcategory;
       } catch (err) {
         console.log(err);
       }
     },
 
-    itemsByCategory: async (parent, { subcategory_id, limit, offset }, context) => {
+    categories: async (parent, { category_id, limit, offset }, context) => {
       try {
-        const subcategory = await Item.findAll({ 
+        const itemsByCat = await Item.findAll({
           where: {
-            subcategory_id: subcategory_id
+            category_id: category_id,
           },
           limit,
-          offset
-         });
+          offset,
+        });
+        return itemsByCat;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
+    category: async (parent, { category_id }, context) => {
+      try {
+        const itemsByCat = await Item.findAll({
+          where: {
+            category_id: category_id,
+          },
+        });
+        return itemsByCat;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
+    itemsByCategory: async (
+      parent,
+      { subcategory_id, limit, offset },
+      context
+    ) => {
+      try {
+        const subcategory = await Item.findAll({
+          where: {
+            subcategory_id: subcategory_id,
+          },
+          limit,
+          offset,
+        });
         return subcategory;
       } catch (err) {
         console.log(err);
@@ -85,75 +112,65 @@ const resolvers = {
 
     allItemsByCategory: async (parent, { subcategory_id }, context) => {
       try {
-        const subcategory = await Item.findAll({ 
+        const subcategory = await Item.findAll({
           where: {
-            subcategory_id: subcategory_id
-          }
-         });
+            subcategory_id: subcategory_id,
+          },
+        });
         return subcategory;
       } catch (err) {
         console.log(err);
       }
     },
 
-    searchByItem: async (parent, {item, limit, offset}, context) => {
+    searchByItem: async (parent, { item, limit, offset }, context) => {
       try {
         let allItems;
         if (item) {
-        allItems = await Item.findAll({
-        where: {
-          item: {
-            [Op.like]: `%${item}%`
-          }
-        },
-        limit,
-        offset
-      })
+          allItems = await Item.findAll({
+            where: {
+              item: {
+                [Op.like]: `%${item}%`,
+              },
+            },
+            limit,
+            offset,
+          });
+        } else {
+          allItems = [];
+        }
 
-    } else {
-      allItems=[]
-    }
-
-      return allItems
-
+        return allItems;
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
     },
 
-    searchItem: async (parent, {item}, context) => {
+    searchItem: async (parent, { item }, context) => {
       try {
-        
-      const allItems = await Item.findAll({
-        where: {
-          item: {
-            [Op.like]: `%${item}%`
-          }
-        },
-      });
-    
-        
+        const allItems = await Item.findAll({
+          where: {
+            item: {
+              [Op.like]: `%${item}%`,
+            },
+          },
+        });
 
-      return allItems
-
-      } 
-      
-      catch (err) {
-        console.log(err)
+        return allItems;
+      } catch (err) {
+        console.log(err);
       }
-    }
-
+    },
   },
-  
+
   Mutation: {
     addUser: async (parent, { userName, email, password }, context) => {
       try {
-        const isDuplicateEmail = await User.findOne({ 
-          
+        const isDuplicateEmail = await User.findOne({
           where: {
-            email: email
-          }
-          });
+            email: email,
+          },
+        });
 
         if (isDuplicateEmail) {
           throw new Error(
@@ -201,34 +218,34 @@ const resolvers = {
       }
     },
 
-    addItem: async (parent, { item, description, price, location, image, category_id, subcategory_id }) => {
+    addItem: async (
+      parent,
+      { item, description, price, location, image, category_id, subcategory_id }
+    ) => {
       try {
-        
-        if (subcategory_id === '') {
-        const itemAdded = await Item.create({
-          item,
-          description,
-          price,
-          location,
-          image,
-          category_id,
-          // subcategory_id
-        });
-        return itemAdded; 
-      } else {
-        const itemAdded = await Item.create({
-          item,
-          description,
-          price,
-          location,
-          image,
-          category_id,
-          subcategory_id
-        });
-        return itemAdded; 
-      }
-        
-        
+        if (subcategory_id === "") {
+          const itemAdded = await Item.create({
+            item,
+            description,
+            price,
+            location,
+            image,
+            category_id,
+            // subcategory_id
+          });
+          return itemAdded;
+        } else {
+          const itemAdded = await Item.create({
+            item,
+            description,
+            price,
+            location,
+            image,
+            category_id,
+            subcategory_id,
+          });
+          return itemAdded;
+        }
       } catch (err) {
         console.log(err);
       }
@@ -238,72 +255,65 @@ const resolvers = {
       try {
         const itemDeleted = await Item.destroy({
           where: {
-            id: _id
-          }
+            id: _id,
+          },
         });
         return itemDeleted;
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
     },
 
-    addCategory: async (parent, {name}, context) => {
+    addCategory: async (parent, { name }, context) => {
       try {
-       const category = await Category.create({name})
-       return category
+        const category = await Category.create({ name });
+        return category;
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
     },
 
-    addSubcategory: async (parent, {name, category_id}, context) => {
+    addSubcategory: async (parent, { name, category_id }, context) => {
       try {
-      const subcategory = await Subcategory.create({name, category_id})
-      return subcategory
+        const subcategory = await Subcategory.create({ name, category_id });
+        return subcategory;
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
     },
 
-    submitContactForm: async (parent, {name, email, message}, context) => {
+    submitContactForm: async (parent, { name, email, message }, context) => {
       try {
         const transporter = nodemailer.createTransport({
-          service: 'hotmail',
-          host: 'smtp-mail.outlook.com',
+          service: "hotmail",
+          host: "smtp-mail.outlook.com",
           port: 587,
           tls: {
-            ciphers: 'TLSv1.2',
-            minVersion: 'TLSv1.2'
+            ciphers: "TLSv1.2",
+            minVersion: "TLSv1.2",
           },
           auth: {
             user: process.env.EMAIL,
-            pass: process.env.PASSWORD
-
+            pass: process.env.PASSWORD,
           },
-          
         });
 
-
         const mailOptions = {
-          from: 'alabamaslamma6@hotmail.com',
-          to: 'alabamaslamma6@hotmail.com',
-          subject: 'Thrift-Barn-Furniture inquiry',
-          text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
-        }
+          from: "alabamaslamma6@hotmail.com",
+          to: "alabamaslamma6@hotmail.com",
+          subject: "Thrift-Barn-Furniture inquiry",
+          text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+        };
 
         await transporter.sendMail(mailOptions);
-        console.log('Email successfully sent')
+        console.log("Email successfully sent");
         return true;
-
       } catch (error) {
-        console.error('Error sending email:', error)
+        console.error("Error sending email:", error);
         return false;
       }
-    }
+    },
   },
 };
 
-
-
 module.exports = resolvers;
-

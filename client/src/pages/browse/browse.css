@@ -5,7 +5,6 @@
 
 .overflow-container {
      overflow: scroll;
-    
   }
 
   .div-width {
@@ -15,11 +14,19 @@
  
 
 .browse-height {
-  min-height: 570px;
+  height: 100%;
+}
+
+.link-height {
+  height: 20%;
+}
+
+.image-height {
+  height: 80%;
 }
 
 .browse-height-mobile {
-  min-height: 500px;
+height: 100%;
 }
 
 .red {
