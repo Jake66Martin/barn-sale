@@ -17,6 +17,7 @@
   height: 100%;
 }
 
+
 .link-height {
   height: 20%;
 }
@@ -31,9 +32,28 @@ height: 100%;
 
 .red {
   color: red;
-  font-family: 'Brush Script MT', sans-serif;
+  font-family: 'Lucida console', monospace;
 }
 
 .no-deco {
   text-decoration: none;
+}
+
+.border-btn {
+  border: 2px solid red;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.btn-width {
+  width: 200px;
+  font-size: 15px;
+}
+
+.top {
+  top: 25%;
+}
+
+.left {
+  left: 38%;
 }

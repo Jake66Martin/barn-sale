@@ -1,3 +1,17 @@
 /* .sub-height {
     min-height: 678px;
 } */
+
+.no-deco {
+    text-decoration: none;
+    list-style: none;
+    color: red;
+    font-family: 'Lucida console', monospace;
+  }
+
+  .border-list {
+    border: 2px solid red;
+  border-radius: 10px;
+  background-color: white;
+  padding: 5px;
+  }

@@ -18,11 +18,11 @@ const Subcategories = () => {
   console.log(data?.subcategoryById)
 
   return (
-   <div className='sub-height'>
-    <ul>
+   <div className='sub-height background height'>
+    <ul className='height d-flex flex-column align-items-center justify-content-center no-deco'>
       {data?.subcategoryById && data?.subcategoryById.map((subcategory) => (
-        <li key={subcategory._id}>
-          <Link to = {`/Items/${subcategory._id}`}>
+        <li key={subcategory._id} className='my-2 border-list'>
+          <Link to = {`/Items/${subcategory._id}`} className='no-deco'>
           {subcategory.name}
           </Link>
           </li>
