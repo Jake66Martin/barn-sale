@@ -93,5 +93,17 @@ query Category($categoryId: ID!) {
   }
 }
 `
+export const ITEM_ID = gql`
+query Query($id: ID!) {
+  itemById(_id: $id) {
+    _id
+    item
+    location
+    description
+    price
+    image
+  }
+}
+`
 
 

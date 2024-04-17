@@ -168,61 +168,81 @@ export default function Browse() {
               Click here to search
             </h1>
           </Link>
-          <Link to="/Subcategories/1">
-            <img
-              src="/basement.jpg"
-              alt="basement category"
-              className="img-size rounded my-3"
-            />
+          <Link to="/Subcategories/1" className='d-flex flex-column align-items-center position-relative'>
+              <img
+                src="/basement.jpg"
+                alt="basement category"
+                className="img-size rounded my-3"
+              />
+              <p className="red border-btn p-1 position-absolute">Living Room</p>
           </Link>
-          <Link to="/Subcategories/2">
+          <Link to="/Subcategories/2" className='d-flex flex-column align-items-center position-relative'>
             <img
               src="/bathroom.png"
               alt="bathroom category"
               className="img-size rounded my-3"
             />
+            <p className="red border-btn p-1 position-absolute">Dining Room</p>
           </Link>
-          <Link to="/Categories/3">
+          <Link to="/Categories/3" className='d-flex flex-column align-items-center position-relative'>
             <img
               src="/bedroom.jpg"
               alt="bedroom category"
               className="img-size rounded my-3"
             />
+            <p className="position-absolute red border-btn p-1">
+                    Kitchen & Bath
+                  </p>
           </Link>
-          <Link to="/Subcategories/4">
+          <Link to="/Subcategories/4" className='d-flex flex-column align-items-center position-relative'>
             <img
               src="/dining-room.jpg"
               alt="dining room category"
               className="img-size rounded my-3"
             />
+            <p className="position-absolute red border-btn p-1">
+                    Bedroom
+                  </p>
           </Link>
-          <Link to="/Categories/5">
+          <Link to="/Categories/5" className='d-flex flex-column align-items-center position-relative'>
             <img
               src="/kitchen.jpg"
               alt="kitchen category"
               className="img-size rounded my-3"
             />
+            <p className="position-absolute red border-btn p-1">
+                    Child/Nursery
+                  </p>
           </Link>
-          <Link to="/Categories/6">
+          <Link to="/Categories/6" className='d-flex flex-column align-items-center position-relative'>
             <img
               src="/office.jpg"
               alt="office category"
               className="img-size rounded my-3"
             />
+            <p className="position-absolute red border-btn p-1">
+                    Office
+                  </p>
           </Link>
-          <Link to="/Categories/7">
+          <Link to="/Categories/7" className='d-flex flex-column align-items-center position-relative'>
             <img
               src="/dining-room.jpg"
               alt="dining room category"
               className="img-size rounded my-3"
             />
+            <p className="position-absolute red border-btn p-1">
+                    Garage/Exterior
+                  </p>
           </Link>
-          <Link to="/Categories/8">
+          <Link to="/Categories/8" className='d-flex flex-column align-items-center position-relative'>
             <img
               src="/dining-room.jpg"
               alt="dining room category"
               className="img-size rounded my-3"
             />
+            <p className="position-absolute red border-btn p-1">
+                    Home Decor
+                  </p>
           </Link>
         </div>
       )}

@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-// import './index.css'
 
 import App from './App.jsx'
 import Homepage from './pages/homepage/homepage.jsx'
@@ -15,6 +14,7 @@ import Items from './pages/items/items.jsx'
 import Search from './pages/search/search.jsx'
 import Add from './pages/add/add.jsx'
 import Categories from './pages/categories/categories.jsx'
+import ViewItem from './pages/viewitem/viewitem.jsx'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
@@ -38,7 +38,8 @@ const router = createBrowserRouter ([
       {path: '/Items/:id', element: <Items/>},
       {path: '/Search', element: <Search/>},
       {path: '/Add', element: <Add/>},
-      {path: '/Categories/:id', element: <Categories/>}
+      {path: '/Categories/:id', element: <Categories/>},
+      {path: '/ViewItem/:id', element: <ViewItem/>}
     ]
   }
 ]);

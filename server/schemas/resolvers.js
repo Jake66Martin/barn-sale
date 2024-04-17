@@ -25,7 +25,11 @@ const resolvers = {
 
     itemById: async (parent, { _id }, context) => {
       try {
-        const item = await Item.findOne({ _id });
+
+      console.log(_id)
+        const item = await Item.findOne({
+          where: { id: _id}
+         });
         return item;
       } catch (err) {
         console.log(err);
@@ -90,6 +94,7 @@ const resolvers = {
         console.log(err);
       }
     },
+
 
     itemsByCategory: async (
       parent,

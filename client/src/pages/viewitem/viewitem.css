@@ -1,0 +1,13 @@
+.border-c {
+    border: 0.5px outset grey;
+    border-radius: 5px;
+}
+
+.b-height{
+    height: 200px;
+    width: 200px;
+}
+
+.t-height{
+    height: 100%;
+}

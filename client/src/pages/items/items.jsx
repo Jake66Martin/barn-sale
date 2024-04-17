@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { useState } from "react";
 import { ITEMS_SUB, ITEMS } from "../../utils/queries";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import "./items.css";
 
 export default function Items() {
@@ -57,8 +57,8 @@ export default function Items() {
 
 
   return (
-    <div className="item-height">
-      <div className="cardbox-height scroll-cnt">
+    <div className="height overflow-cnt">
+      <div>
         <div className="d-flex flex-wrap justify-content-center align-items-center">
           {paginationItems?.itemsByCategory &&
             paginationItems?.itemsByCategory.map((item) => (
@@ -67,26 +67,20 @@ export default function Items() {
                 className="card d-flex"
                 style={{ width: "18rem", margin: "20px" }}
               >
-                <img src={item.image} className="card-img-top" alt="item" />
+                <img src={item.image} className="card-img-top img-height" alt="item" />
                 <div className="card-body align-self-center">
                   <h5 className="card-title">{item.item}</h5>
-                  <p className="card-text">{item.description}</p>
                 </div>
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item align-self-center">
-                    {item.price}$
-                  </li>
-                </ul>
                 <div className="card-body align-self-center">
-                  <a href="#" className="card-link">
-                    Card link
-                  </a>
+                  <Link to={`/ViewItem/${item._id}`} className="card-link">
+                    View item
+                  </Link>
                 </div>
               </div>
             ))}
         </div>
       </div>
-      <div className="d-flex justify-content-center">
+      <div className="d-flex justify-content-center my-3">
         <button
           className="btn btn-outline-danger"
           onClick={() => clickNegative()}

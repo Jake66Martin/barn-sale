@@ -59,8 +59,8 @@ const {
   console.log(paginationItems?.categories);
 
     return (
-        <div className="item-height">
-      <div className="cardbox-height scroll-cnt">
+        <div className="height overflow-cnt">
+      <div>
         <div className="d-flex flex-wrap justify-content-center align-items-center">
           {paginationItems?.categories &&
             paginationItems?.categories.map((item) => (
@@ -72,13 +72,7 @@ const {
                 <img src={item.image} className="card-img-top" alt="item" />
                 <div className="card-body align-self-center">
                   <h5 className="card-title">{item.item}</h5>
-                  <p className="card-text">{item.description}</p>
                 </div>
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item align-self-center">
-                    {item.price}$
-                  </li>
-                </ul>
                 <div className="card-body align-self-center">
                   <a href="#" className="card-link">
                     Card link
