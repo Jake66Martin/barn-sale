@@ -12,3 +12,7 @@
     height: 100%;
 }
 
+.t-wrap{
+overflow-wrap: break-word;    
+word-break: break-all;
+}

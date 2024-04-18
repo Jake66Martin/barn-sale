@@ -61,7 +61,7 @@ export default function Search() {
           <input
             className="form-control me-2"
             type="search"
-            placeholder="Search"
+            placeholder="Type here and watch the magic happen"
             aria-label="Search"
             name="item"
             onChange={handleInputChange}
