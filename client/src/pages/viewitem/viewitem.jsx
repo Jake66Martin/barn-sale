@@ -11,14 +11,28 @@ export default function ViewItem() {
   });
 
   return (
-    <div className="t-height">
-      <div className='d-flex flex-column align-items-center'>
-        <img src={data?.itemById.image} className='align-self-center my-3 img-height' />
-        <h1>{data?.itemById.item}</h1>
-        <p>{data?.itemById.description}</p>
-        <p>{data?.itemById.price}$</p>
-        <p>{data?.itemById.location}</p>
-      </div>
-    </div>
+    
+    <div className="d-flex flex-wrap justify-content-center align-items-center">
+            
+                <div
+                  className="card d-flex"
+                  style={{ width: "18rem", margin: "20px" }}
+                >
+                  <img src={data?.itemById.image} className="card-img-top img-height" alt="..." />
+                  <div className="card-body align-self-center">
+                    <h5 className="card-title">{data?.itemById.item}</h5>
+                  </div>
+                  <div className="card-body align-self-center">
+                   <p>{data?.itemById.price}$</p>
+                  </div>
+                  <div className="card-body align-self-center">
+                   <p>{data?.itemById.description}</p>
+                  </div>
+                  <div className="card-body align-self-center">
+                   <p>{data?.itemById.location}$</p>
+                  </div>
+                </div>
+              
+          </div>
   );
 }
