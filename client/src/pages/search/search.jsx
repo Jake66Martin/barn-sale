@@ -2,6 +2,7 @@ import "./search.css";
 import { useQuery } from "@apollo/client";
 import { useState, useEffect } from "react";
 import { SEARCH, SEARCH_ITEM } from "../../utils/queries";
+import { Link } from 'react-router-dom'
 
 
 export default function Search() {
@@ -53,7 +54,8 @@ export default function Search() {
 
 
   return (
-    <div className="search-height">
+    <div className="t-height overflow-cnt">
+      <div>
       <div className="bar d-flex align-items-center justify-content-center">
         <form className="d-flex f-width">
           <input
@@ -66,7 +68,7 @@ export default function Search() {
           />
         </form>
       </div>
-      <div className="items-height scroll-cnt">
+      <div className="items-height">
         <div className="cardbox-height">
           <div className="d-flex flex-wrap justify-content-center align-items-center">
             {renderedItems?.searchByItem &&
@@ -76,20 +78,14 @@ export default function Search() {
                   className="card d-flex"
                   style={{ width: "18rem", margin: "20px" }}
                 >
-                  <img src={items.image} className="card-img-top" alt="..." />
+                  <img src={items.image} className="card-img-top img-height" alt="..." />
                   <div className="card-body align-self-center">
                     <h5 className="card-title">{items.item}</h5>
-                    <p className="card-text">{items.description}</p>
                   </div>
-                  <ul className="list-group list-group-flush">
-                    <li className="list-group-item align-self-center">
-                      {items.price}$
-                    </li>
-                  </ul>
                   <div className="card-body align-self-center">
-                    <a href="#" className="card-link">
-                      Card link
-                    </a>
+                  <Link to={`/ViewItem/${items._id}`} className="card-link">
+                    View item
+                  </Link>
                   </div>
                 </div>
               ))}
@@ -113,6 +109,7 @@ export default function Search() {
         <button className="btn btn-outline-danger" onClick={() => clickPlus()}>
           Next
         </button>
+      </div>
       </div>
       </div>
     </div>

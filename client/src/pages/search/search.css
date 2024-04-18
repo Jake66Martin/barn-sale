@@ -1,6 +1,4 @@
-/* .search-height {
-    min-height: 678px;
-} */
+
 
 .f-width {
     width: 350px;
@@ -10,9 +8,9 @@
     height: 100px;
 }
 
-/* .items-height {
-    height: 500px;
-} */
+.t-height {
+    height: 100%;
+}
 
 .scroll-height {
     height: 50px;
@@ -22,8 +20,8 @@
     overflow: visible;
 }
 
-@media screen and (max-width: 1315px) {
+/* @media screen and (max-width: 1315px) {
 .scroll-cnt {
     overflow: scroll;
 }
-}
+} */
