@@ -63,3 +63,12 @@ mutation Mutation($name: String!, $email: String!, $message: String!) {
   submitContactForm(name: $name, email: $email, message: $message)
 }
 `
+
+export const UPLOAD_IMAGE = gql`
+mutation Mutation($file: Upload!) {
+  uploadImage(file: $file) {
+    url
+    filename
+  }
+}
+`

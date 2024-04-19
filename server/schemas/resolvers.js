@@ -4,6 +4,16 @@ const { Op } = require("sequelize");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 
+const { v4: uuidv4 } = require("uuid");
+const { Storage } = require("@google-cloud/storage");
+
+const storage = new Storage({
+  keyFilename: "soy-sound-399522-4b913f530ad1.json",
+});
+
+const bucketName = "thrifting613";
+const bucket = storage.bucket(bucketName);
+
 const emailValidation = /^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/;
 const passwordValidation =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -25,11 +35,10 @@ const resolvers = {
 
     itemById: async (parent, { _id }, context) => {
       try {
-
-      console.log(_id)
+        console.log(_id);
         const item = await Item.findOne({
-          where: { id: _id}
-         });
+          where: { id: _id },
+        });
         return item;
       } catch (err) {
         console.log(err);
@@ -94,7 +103,6 @@ const resolvers = {
         console.log(err);
       }
     },
-
 
     itemsByCategory: async (
       parent,
@@ -236,7 +244,6 @@ const resolvers = {
             location,
             image,
             category_id,
-            // subcategory_id
           });
           return itemAdded;
         } else {
@@ -316,6 +323,28 @@ const resolvers = {
       } catch (error) {
         console.error("Error sending email:", error);
         return false;
+      }
+    },
+
+    uploadImage: async (_, { file }) => {
+      try {
+        const filename = `${uuidv4()}_${file.originalname}`;
+
+
+        await bucket.upload(file, {
+          destination: filename,
+        });
+
+       
+
+        // Return information about the uploaded file
+        return {
+          url: `https://storage.googleapis.com/${bucketName}/${filename}`,
+          filename: filename,
+        };
+      } catch (error) {
+        console.error("Error uploading image:", error);
+        throw new Error("Failed to upload image");
       }
     },
   },

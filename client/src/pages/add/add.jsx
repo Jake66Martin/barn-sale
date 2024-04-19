@@ -3,6 +3,7 @@ import { Container, Row, Form } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { ADD_ITEM } from "../../utils/mutations";
 import { useState } from "react";
+import UploadWidget from '../../components/Uploadwidget/uploadwidget.jsx'
 
 export default function addRemove() {
   const [item, setItem] = useState("");
@@ -211,7 +212,10 @@ export default function addRemove() {
                         required
                       />
                     </div>
+                    <UploadWidget></UploadWidget>
+
                   </div>
+
                   <div className="col-12">
                     <label htmlFor="description" className="form-label">
                       Description

@@ -1,4 +1,19 @@
+
+
 const typeDefs = `
+
+directive @auth(requires: String = "ADMIN") on OBJECT | FIELD_DEFINITION
+
+scalar Upload
+
+type File {
+    url: String!
+    filename: String!
+  }
+
+  input UploadFileInput {
+    file: Upload!
+  }
 
 type Item {
     _id: ID,
@@ -58,6 +73,8 @@ type Mutation {
     addSubcategory(name: String!, category_id:ID!): Subcategory
 
     submitContactForm(name: String!, email: String!, message: String!): Boolean
+
+    uploadImage(file: Upload!): File! @auth
 }
 
 `;
