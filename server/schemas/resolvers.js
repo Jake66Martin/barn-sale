@@ -2,16 +2,18 @@ const { User, Item, Category, Subcategory } = require("../models/index");
 const { signToken, AuthenticationError } = require("../utils/auth.js");
 const { Op } = require("sequelize");
 const nodemailer = require("nodemailer");
+const { GraphQLUpload } = require('graphql-upload');
+
 require("dotenv").config();
 
 const { Storage } = require("@google-cloud/storage");
 
 const storage = new Storage({
-  keyFilename: "../../soy-sound-399522-4b913f530ad1.json",
+  keyFilename: "../soy-sound-399522-4b913f530ad1.json",
 });
 
-const bucketName = "thrifting613";
-const bucket = storage.bucket(bucketName);
+// const bucketName = "thrifting613";
+// const bucket = storage.bucket(bucketName);
 
 const emailValidation = /^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/;
 const passwordValidation =
@@ -174,7 +176,7 @@ const resolvers = {
       }
     },
   },
-
+  Upload: GraphQLUpload,
   Mutation: {
     addUser: async (parent, { userName, email, password }, context) => {
       try {
@@ -352,37 +354,51 @@ const resolvers = {
     //     throw new Error("Failed to upload image");
     //   }
     // },
-
     uploadImage: async (_, { file }) => {
       try {
-        const { createReadStream, filename, mimetype } = file;
+        const { createReadStream, filename, mimetype } = await file;
 
         // Generate a unique filename
         const newFilename = `${Date.now()}_${filename}`;
+        const filePath = `item-images/${newFilename}`
 
-        // Upload the file to Google Cloud Storage
-        const fileUploadPromise = new Promise((resolve, reject) => {
+        const bucket = storage.bucket(process.env.GOOGLE_CLOUD_BUCKET_NAME);
+        const fileStream = bucket.file(filePath).createWriteStream();
+
+        return new Promise((resolve, reject) => {
           createReadStream()
-            .pipe(
-              bucket.file(newFilename).createWriteStream({
-                resumable: false,
-                gzip: true,
-                contentType: mimetype,
-              })
-            )
-            .on('error', (error) => {
-              reject(error);
-            })
+            .pipe(fileStream)
+            .on('error', (error) => reject(error))
             .on('finish', () => {
-              resolve();
+              // Once the file has been uploaded, resolve with the public URL
+              const publicUrl = `https://storage.googleapis.com/your-bucket-name/${filePath}`;
+              resolve(publicUrl);
             });
         });
 
-        await fileUploadPromise;
+        // // Upload the file to Google Cloud Storage
+        // const fileUploadPromise = new Promise((resolve, reject) => {
+        //   createReadStream()
+        //     .pipe(
+        //       bucket.file(newFilename).createWriteStream({
+        //         resumable: false,
+        //         gzip: true,
+        //         contentType: mimetype,
+        //       })
+        //     )
+        //     .on('error', (error) => {
+        //       reject(error);
+        //     })
+        //     .on('finish', () => {
+        //       resolve();
+        //     });
+        // });
 
-        // Return the URL of the uploaded file
-        // console.log(url)
-        return { url: `https://storage.googleapis.com/${bucketName}/${newFilename}` };
+        // await fileUploadPromise;
+
+        // // Return the URL of the uploaded file
+        // // console.log(url)
+        // return { url: `https://storage.googleapis.com/${bucketName}/${newFilename}` };
       } catch (error) {
         console.error('Error uploading file:', error);
         throw new Error('Failed to upload file');

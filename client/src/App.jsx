@@ -19,6 +19,9 @@ import createUploadLink from "apollo-upload-client/createUploadLink.mjs";
 
 const uploadLink = createUploadLink({
   uri: '/graphql',
+  headers: {
+    'Apollo-Require-Preflight': 'true'
+  }
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -27,7 +30,6 @@ const authLink = setContext((_, { headers }) => {
     headers: {
       ...headers,
       authorization: token ? `Bearer ${token}` : "",
-      'Apollo-Require-Preflight': 'true'
     },
   };
 });

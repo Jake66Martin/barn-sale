@@ -3,8 +3,7 @@ const {expressMiddleware} = require('@apollo/server/express4');
 const path = require('path');
 const {ApolloServer} = require('@apollo/server');
 const {authMiddleware} = require('./utils/auth.js');
-// const multer = require('multer')
-
+const {graphqlUploadExpress} = require('graphql-upload')
 
 
 require('dotenv').config();
@@ -18,7 +17,6 @@ const app = express();
 const server = new ApolloServer({
     typeDefs,
     resolvers,
-    
 });
 
 const startApolloServer = async () => {
@@ -27,8 +25,10 @@ const startApolloServer = async () => {
     app.use(express.urlencoded({extended: false}));
     app.use(express.json());
 
+    app.use(graphqlUploadExpress());
+
     app.use('/graphql', expressMiddleware(server, {
-        context: authMiddleware
+        context: authMiddleware,
     }));
 
     if (process.env.NODE_ENV === 'production') {

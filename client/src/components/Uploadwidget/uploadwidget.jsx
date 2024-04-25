@@ -36,10 +36,20 @@ export default function UploadWidget() {
     } catch (error) {
       console.error("Error uploading file:", error);
     }
+
+    // try {
+    //   const { data } = await uploadImage({
+    //     variables: { file },
+    //   });
+    //   console.log('File uploaded:', data);
+    // } catch (error) {
+    //   console.error('Error uploading file:', error);
+    // }
   };
 
   return (
     <>
+
       <input
         type="file"
         id="file-input"
@@ -76,7 +86,7 @@ export default function UploadWidget() {
       >
         Upload
       </button>
-      <div id="preview" style={{ marginTop: "20px" }}></div>
+
     </>
   );
 }
