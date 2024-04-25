@@ -9,10 +9,15 @@ import { Outlet } from "react-router-dom";
 import Header from './components/header/header'
 import Footer from './components/footer/footer'
 import "./App.css";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom'
+import { concat } from '@apollo/client/link/core';
+import createUploadLink from "apollo-upload-client/createUploadLink.mjs";
 
+// const httpLink = createHttpLink({
+//   uri: '/graphql',
+// });
 
-const httpLink = createHttpLink({
+const uploadLink = createUploadLink({
   uri: '/graphql',
 });
 
@@ -22,14 +27,22 @@ const authLink = setContext((_, { headers }) => {
     headers: {
       ...headers,
       authorization: token ? `Bearer ${token}` : "",
+      'Apollo-Require-Preflight': 'true'
     },
   };
 });
 
+const link = concat(authLink, uploadLink);
+
 const client = new ApolloClient({
-  link: authLink.concat(httpLink),
+  link: link,
   cache: new InMemoryCache(),
 });
+
+// const client = new ApolloClient({
+//   link: authLink.concat(httpLink),
+//   cache: new InMemoryCache(),
+// });
 
 function App() {
   const location = useLocation();

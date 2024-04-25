@@ -2,18 +2,16 @@
 
 const typeDefs = `
 
-directive @auth(requires: String = "ADMIN") on OBJECT | FIELD_DEFINITION
-
 scalar Upload
 
 type File {
     url: String!
-    filename: String!
   }
 
-  input UploadFileInput {
-    file: Upload!
+  type Mutation {
+    uploadImage(file: Upload!): File!
   }
+
 
 type Item {
     _id: ID,
@@ -74,9 +72,9 @@ type Mutation {
 
     submitContactForm(name: String!, email: String!, message: String!): Boolean
 
-    uploadImage(file: Upload!): File! @auth
+    uploadImage(file: Upload!): File
 }
 
 `;
 
-module.exports = typeDefs;
+module.exports = typeDefs

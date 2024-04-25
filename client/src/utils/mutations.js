@@ -68,7 +68,6 @@ export const UPLOAD_IMAGE = gql`
 mutation Mutation($file: Upload!) {
   uploadImage(file: $file) {
     url
-    filename
   }
 }
 `

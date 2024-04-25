@@ -28,3 +28,4 @@ Category.hasMany(Subcategory, {
 });
 
 module.exports = {Item, User, Category, Subcategory}
+

@@ -33,3 +33,5 @@ Subcategory.init(
 )
 
 module.exports = Subcategory;
+
+
