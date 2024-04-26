@@ -72,7 +72,6 @@ type Mutation {
 
     submitContactForm(name: String!, email: String!, message: String!): Boolean
 
-    uploadImage(file: Upload!): File
 }
 
 `;

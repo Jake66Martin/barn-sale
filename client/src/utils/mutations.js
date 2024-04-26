@@ -67,7 +67,7 @@ mutation Mutation($name: String!, $email: String!, $message: String!) {
 export const UPLOAD_IMAGE = gql`
 mutation Mutation($file: Upload!) {
   uploadImage(file: $file) {
-    url
+  url
   }
 }
 `

@@ -16,6 +16,8 @@ export default function addRemove() {
   const [categoryId, setCategoryId] = useState("");
   const [subcategoryId, setSubCategoryId] = useState("");
 
+  
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -26,7 +28,7 @@ export default function addRemove() {
       : name === "location"
       ? setLocation(value)
       : name === 'image'
-      ? setImage(value)
+      ? setImage(urlData)
       : setDescription(value);
   };
 
@@ -101,7 +103,7 @@ export default function addRemove() {
           subcategoryId,
         },
       });
-
+      
       console.log(itemAdded);
       return itemAdded;
     } catch (err) {

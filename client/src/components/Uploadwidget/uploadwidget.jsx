@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import { UPLOAD_IMAGE } from "../../utils/mutations";
 
-export default function UploadWidget() {
+export default function UploadWidget({sendUrlData}) {
   const [file, setFile] = useState(null);
   const [uploadImage] = useMutation(UPLOAD_IMAGE);
 
@@ -25,11 +25,13 @@ export default function UploadWidget() {
     event.preventDefault();
 
     try {
-      await uploadImage({ 
+      const {data} = await uploadImage({ 
         variables: { 
           file 
         } 
       });
+      const imageUrl = data.uploadImage.url;
+      console.log(imageUrl)
 
 
       console.log("File uploaded successfully");
@@ -37,14 +39,7 @@ export default function UploadWidget() {
       console.error("Error uploading file:", error);
     }
 
-    // try {
-    //   const { data } = await uploadImage({
-    //     variables: { file },
-    //   });
-    //   console.log('File uploaded:', data);
-    // } catch (error) {
-    //   console.error('Error uploading file:', error);
-    // }
+    
   };
 
   return (
