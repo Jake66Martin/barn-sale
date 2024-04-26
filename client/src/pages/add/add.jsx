@@ -6,6 +6,7 @@ import { useState } from "react";
 import UploadWidget from '../../components/Uploadwidget/uploadwidget.jsx'
 
 export default function addRemove() {
+  const [dataReceived, setDataReceived] = useState('')
   const [item, setItem] = useState("");
   const [price, setPrice] = useState("");
   const [location, setLocation] = useState("");
@@ -16,7 +17,10 @@ export default function addRemove() {
   const [categoryId, setCategoryId] = useState("");
   const [subcategoryId, setSubCategoryId] = useState("");
 
-  
+  const receiveUrlData = (data) => {
+    setDataReceived(data)
+    setImage(data)
+  }
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -27,8 +31,8 @@ export default function addRemove() {
       ? setPrice(parseInt(value))
       : name === "location"
       ? setLocation(value)
-      : name === 'image'
-      ? setImage(urlData)
+      // : name === 'image'
+      // ? setImage(value)
       : setDescription(value);
   };
 
@@ -90,6 +94,7 @@ export default function addRemove() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+
 
     try {
       const itemAdded = await addItem({
@@ -201,10 +206,10 @@ export default function addRemove() {
                     </div>
                   </div>
                   <div className="col-12 col-md-6">
-                    <label htmlFor="image" className="form-label">
+                    <label htmlFor="image" className="form-label mx-3">
                       Image URL
                     </label>
-                    <div className="input-group">
+                    {/* <div className="input-group">
                       <input
                         type="text"
                         className="form-control"
@@ -213,8 +218,8 @@ export default function addRemove() {
                         onChange={handleChange}
                         required
                       />
-                    </div>
-                    <UploadWidget></UploadWidget>
+                    </div> */}
+                    <UploadWidget sendData={receiveUrlData}></UploadWidget>
 
                   </div>
 

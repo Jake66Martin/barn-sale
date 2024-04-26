@@ -3,9 +3,12 @@ import { useState, useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import { UPLOAD_IMAGE } from "../../utils/mutations";
 
-export default function UploadWidget({sendUrlData}) {
+export default function UploadWidget({sendData}) {
   const [file, setFile] = useState(null);
   const [uploadImage] = useMutation(UPLOAD_IMAGE);
+  const [urlData, setUrlData] = useState('')
+
+  
 
   const handleFileSelect = (event) => {
     const selectedFile = event.target.files[0];
@@ -19,7 +22,9 @@ export default function UploadWidget({sendUrlData}) {
     }
   }, [file]);
 
-  
+  useEffect(() => {
+    console.log("URL Data:", urlData);
+  }, [urlData]);
 
   const handleUpload = async (event) => {
     event.preventDefault();
@@ -31,7 +36,9 @@ export default function UploadWidget({sendUrlData}) {
         } 
       });
       const imageUrl = data.uploadImage.url;
-      console.log(imageUrl)
+      setUrlData(imageUrl)
+      sendData(imageUrl)
+
 
 
       console.log("File uploaded successfully");
