@@ -45,7 +45,11 @@ Item.init(
     image: {
       type: DataTypes.ARRAY(DataTypes.STRING),
       // type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      get() {
+        const value = this.getDataValue('image');
+        return value ? JSON.parse(value) : null;
+      },
     },
   },
   {

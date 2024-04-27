@@ -10,11 +10,13 @@ export default function ViewItem() {
     variables: { id: id },
   });
 
+  console.log(data?.itemById)
+
   return (
     <div className="d-flex flex-wrap justify-content-center align-items-center overflow-cnt">
       <div className="card d-flex" style={{ width: "18rem", margin: "20px" }}>
         <img
-          src={data?.itemById.image[0]}
+          src={data?.itemById.image}
           className="card-img-top img-height"
           alt="..."
         />
