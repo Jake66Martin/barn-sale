@@ -11,7 +11,7 @@ export default function addRemove() {
   const [price, setPrice] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState('')
+  const [image, setImage] = useState([])
   const [addItem] = useMutation(ADD_ITEM);
 
   const [categoryId, setCategoryId] = useState("");

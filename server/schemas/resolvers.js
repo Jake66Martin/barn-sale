@@ -237,13 +237,15 @@ const resolvers = {
       { item, description, price, location, image, category_id, subcategory_id }
     ) => {
       try {
+        const imageData = Array.isArray(image) ? image : [image]; 
+
         if (subcategory_id === "") {
           const itemAdded = await Item.create({
             item,
             description,
             price,
             location,
-            image,
+            image: imageData,
             category_id,
           });
           return itemAdded;
@@ -253,7 +255,7 @@ const resolvers = {
             description,
             price,
             location,
-            image,
+            image: imageData,
             category_id,
             subcategory_id,
           });

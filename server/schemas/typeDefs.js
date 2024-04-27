@@ -21,7 +21,7 @@ type Item {
     location: String,
     description: String,
     price: Int,
-    image: String
+    image: [String]
 }
 
 type Category {
