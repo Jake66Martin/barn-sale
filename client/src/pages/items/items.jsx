@@ -54,6 +54,8 @@ export default function Items() {
   console.log(allItems?.allItemsByCategory.length);
 
   console.log(paginationItems?.itemsByCategory);
+  console.log(paginationItems?.itemsByCategory);
+
 
 
   return (
@@ -67,7 +69,7 @@ export default function Items() {
                 className="card d-flex"
                 style={{ width: "18rem", margin: "20px" }}
               >
-                <img src={item.image} className="card-img-top img-height" alt="item" />
+                <img src={item.image[0]} className="card-img-top img-height" alt="item" />
                 <div className="card-body align-self-center">
                   <h5 className="card-title">{item.item}</h5>
                 </div>

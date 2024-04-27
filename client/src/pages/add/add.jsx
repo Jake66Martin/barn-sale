@@ -19,7 +19,7 @@ export default function addRemove() {
 
   const receiveUrlData = (data) => {
     setDataReceived(data)
-    setImage(data)
+    setImage([...image, data])
   }
 
   const handleChange = (event) => {
@@ -209,16 +209,7 @@ export default function addRemove() {
                     <label htmlFor="image" className="form-label mx-3">
                       Image URL
                     </label>
-                    {/* <div className="input-group">
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="image"
-                        name="image"
-                        onChange={handleChange}
-                        required
-                      />
-                    </div> */}
+                    
                     <UploadWidget sendData={receiveUrlData}></UploadWidget>
 
                   </div>
