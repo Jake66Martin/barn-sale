@@ -40,7 +40,13 @@ const resolvers = {
         const item = await Item.findOne({
           where: { id: _id },
         });
-        return item;
+
+        const itemWithArrayImages = {
+          ...item.toJSON(),
+          image: Array.isArray(item.image) ? item.image : [item.image],
+        };
+
+        return itemWithArrayImages;
       } catch (err) {
         console.log(err);
       }
@@ -118,7 +124,13 @@ const resolvers = {
           limit,
           offset,
         });
-        return subcategory;
+
+        const itemsWithArrayImages = subcategory.map(item => ({
+          ...item.toJSON(),
+          image: Array.isArray(item.image) ? item.image : [item.image],
+        }));
+
+        return itemsWithArrayImages;
       } catch (err) {
         console.log(err);
       }
@@ -131,7 +143,13 @@ const resolvers = {
             subcategory_id: subcategory_id,
           },
         });
-        return subcategory;
+
+        const itemsWithArrayImages = subcategory.map(item => ({
+          ...item.toJSON(),
+          image: Array.isArray(item.image) ? item.image : [item.image],
+        }));
+
+        return itemsWithArrayImages;
       } catch (err) {
         console.log(err);
       }

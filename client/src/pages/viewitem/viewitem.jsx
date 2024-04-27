@@ -14,7 +14,7 @@ export default function ViewItem() {
     <div className="d-flex flex-wrap justify-content-center align-items-center overflow-cnt">
       <div className="card d-flex" style={{ width: "18rem", margin: "20px" }}>
         <img
-          src={data?.itemById.image}
+          src={data?.itemById.image[0]}
           className="card-img-top img-height"
           alt="..."
         />
