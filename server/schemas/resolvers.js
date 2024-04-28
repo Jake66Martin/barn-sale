@@ -41,13 +41,6 @@ const resolvers = {
           where: { id: _id },
         });
 
-        // const itemWithArrayImages = {
-        //   ...item,
-        //   image: Array.isArray(item.image) ? item.image : [item.image],
-        // };
-
-        
-        // return itemWithArrayImages;
         return item;
       } catch (err) {
         console.log(err);
@@ -127,12 +120,6 @@ const resolvers = {
           offset,
         });
 
-        // const itemsWithArrayImages = subcategory.map(item => ({
-        //   ...item,
-        //   image: Array.isArray(item.image) ? item.image : [item.image],
-        // }));
-
-        // return itemsWithArrayImages;
         return subcategory;
       } catch (err) {
         console.log(err);
@@ -146,15 +133,6 @@ const resolvers = {
             subcategory_id: subcategory_id,
           },
         });
-
-      //   const itemsWithArrayImages = subcategory.map(item => ({
-      //     ...item,
-      //     image: Array.isArray(item.image) ? item.image : [item.image],
-      //   }));
-
-      //  console.log(itemsWithArrayImages)
-
-      //   return itemsWithArrayImages;
         return subcategory;
       } catch (err) {
         console.log(err);
