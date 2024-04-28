@@ -20,6 +20,43 @@ export default function Swiping() {
 
   console.log(data?.itemById.image);
 
+  
+
+
+  let yes = data?.itemById.image || []
+
+  console.log(yes)
+
+//  const itemData = [];
+
+// yes?.forEach((item)=>{
+ 
+// // const newData = JSON.parse(item.image)
+// // itemData.push(newData)
+
+
+
+
+// })
+
+const itemData = yes.map(jsonString => {
+  try {
+    return JSON.parse(jsonString);
+  } catch (error) {
+    console.error('Error parsing JSON:', error);
+    // Optionally handle the error or skip the item
+    return null; // Return null for failed parsing
+  }
+}).filter(item => item !== null); // Filter out items that failed parsing
+
+console.log(itemData);
+
+
+
+
+
+
+
   return (
     <>
       <Swiper
@@ -34,10 +71,9 @@ export default function Swiping() {
         className="mySwiper"
       >
         
-        {data?.itemById.image &&
-          data.itemById.image.map((imageUrl, index) => (
+        {itemData && itemData.map((itemData, index) => (
             <SwiperSlide key={index}>
-              <img src={imageUrl} alt={`Slide ${index + 1}`} className='image-h'/>
+              <img src={itemData} alt={`Slide ${index + 1}`} className='image-h'/>
             </SwiperSlide>
           ))}
         
