@@ -9,6 +9,7 @@ export default function Items() {
   const [limit, setLimit] = useState(8);
   const [offset, setOffset] = useState(0);
   const [page, setPage] = useState(1);
+  const [properData, setProperData] = useState('')
 
   const {
     loading: paginationLoad,
@@ -26,25 +27,88 @@ export default function Items() {
     variables: { subcategoryId: id },
   });
 
-  const numberOfPages = ((allItems?.allItemsByCategory.length)/8)
-  const pagesRequired = Math.ceil(numberOfPages)
+  
+  let yes = paginationItems?.itemsByCategory || []
 
-  useEffect(() => {
-    console.log(allItems?.allItemsByCategory.length);
-    console.log(paginationItems?.itemsByCategory);
-    console.log(paginationItems?.itemsByCategory);
-  }, [allItems, paginationItems]);
+  console.log(yes)
+
+ const itemData = [];
+
+
+
+// Iterate over query results
+yes?.forEach(item => {
+  // Clone the object to avoid modifying the original
+  const newItem = { ...item };
+  
+
+
+  console.log('Image value before parsing:', item.image);
+
+  
+//   try {
+//     // Remove double quotes from the image strings and then parse as JSON
+//     newItem.image = item.image.map(url => JSON.parse(url.replace(/^"(.*)"$/, '$1')));
+
+//     itemData.push(newItem);
+//   } catch (error) {
+//     console.error('Error handling item:', error);
+//     // Optionally handle the error or skip the item
+//   }
+// });
+
+try {
+  // Parse the 'image' property of each item as JSON
+  newItem.image = item.image.map(url => url.slice(1, -1));
+
+  itemData.push(newItem);
+} catch (error) {
+  console.error('Error handling item:', error);
+  // Optionally handle the error or skip the item
+}
+});
+
+// Now itemData contains the modified data with JavaScript arrays for the image property
+console.log(itemData);
+
+
+
+
+//   // Function to convert JSON arrays to JavaScript arrays within each element
+// function convertImageArrays(itemData) {
+//   // Iterate over each element of the array
+//   for (let i = 0; i < itemData?.length; i++) {
+//       // Parse the JSON string to convert it into a JavaScript array
+//       let imagesArray = JSON.parse(itemData[i].image);
+//       // Replace the JSON string with the JavaScript array within the element
+//       itemData[i].image = imagesArray;
+//   }
+//   return itemData;
+// }
+
+// // Call the function to convert the JSON arrays to JavaScript arrays
+// let convertedArray = convertImageArrays(itemData);
+
+// // Now the original array contains JavaScript arrays for images
+// console.log(convertedArray);
+  
+  
+  
+ 
+
+  const numberOfPages = allItems?.allItemsByCategory.length / 8;
+  const pagesRequired = Math.ceil(numberOfPages);
+
+  // console.log(paginationItems?.itemsByCategory);
 
   function clickPlus() {
     if (page < pagesRequired) {
-    setOffset(offset + limit);
-    setPage(page + 1);
+      setOffset(offset + limit);
+      setPage(page + 1);
     } else {
-      console.log('No data available.')
+      console.log("No data available.");
     }
   }
-
-  
 
   function clickNegative() {
     if (page > 1) {
@@ -54,12 +118,6 @@ export default function Items() {
       console.log("Page number cannot go below 1.");
     }
   }
-
-  
-
-
-
-
 
   return (
     <div className="height overflow-cnt">
@@ -72,7 +130,11 @@ export default function Items() {
                 className="card d-flex"
                 style={{ width: "18rem", margin: "20px" }}
               >
-                <img src={item.image[0]} className="card-img-top img-height" alt="item" />
+                <img
+                  src={item.image[0]}
+                  className="card-img-top img-height"
+                  alt="item"
+                />
                 <div className="card-body align-self-center">
                   <h5 className="card-title">{item.item}</h5>
                 </div>

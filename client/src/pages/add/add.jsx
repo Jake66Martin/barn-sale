@@ -19,8 +19,12 @@ export default function addRemove() {
 
   const receiveUrlData = (data) => {
     setDataReceived(data)
-    setImage(JSON.stringify([...image, data]))
+    // setImage(JSON.stringify(data))
+    // setImage(prevImage => JSON.stringify([prevImage, data]));
+    setImage([...image, data])
+
   }
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;

@@ -37,7 +37,7 @@ export default function UploadWidget({sendData}) {
       });
       const imageUrl = data.uploadImage.url;
       setUrlData(imageUrl)
-      sendData(imageUrl)
+      sendData(JSON.stringify(imageUrl))
 
 
 
