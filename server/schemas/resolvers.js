@@ -41,12 +41,14 @@ const resolvers = {
           where: { id: _id },
         });
 
-        const itemWithArrayImages = {
-          ...item.toJSON(),
-          image: Array.isArray(item.image) ? item.image : [item.image],
-        };
+        // const itemWithArrayImages = {
+        //   ...item,
+        //   image: Array.isArray(item.image) ? item.image : [item.image],
+        // };
 
-        return itemWithArrayImages;
+        
+        // return itemWithArrayImages;
+        return item;
       } catch (err) {
         console.log(err);
       }
@@ -125,12 +127,13 @@ const resolvers = {
           offset,
         });
 
-        const itemsWithArrayImages = subcategory.map(item => ({
-          ...item.toJSON(),
-          image: Array.isArray(item.image) ? item.image : [item.image],
-        }));
+        // const itemsWithArrayImages = subcategory.map(item => ({
+        //   ...item,
+        //   image: Array.isArray(item.image) ? item.image : [item.image],
+        // }));
 
-        return itemsWithArrayImages;
+        // return itemsWithArrayImages;
+        return subcategory;
       } catch (err) {
         console.log(err);
       }
@@ -144,12 +147,15 @@ const resolvers = {
           },
         });
 
-        const itemsWithArrayImages = subcategory.map(item => ({
-          ...item.toJSON(),
-          image: Array.isArray(item.image) ? item.image : [item.image],
-        }));
+      //   const itemsWithArrayImages = subcategory.map(item => ({
+      //     ...item,
+      //     image: Array.isArray(item.image) ? item.image : [item.image],
+      //   }));
 
-        return itemsWithArrayImages;
+      //  console.log(itemsWithArrayImages)
+
+      //   return itemsWithArrayImages;
+        return subcategory;
       } catch (err) {
         console.log(err);
       }

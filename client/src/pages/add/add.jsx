@@ -11,7 +11,7 @@ export default function addRemove() {
   const [price, setPrice] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState([])
+  const [image, setImage] = useState('')
   const [addItem] = useMutation(ADD_ITEM);
 
   const [categoryId, setCategoryId] = useState("");
@@ -19,7 +19,7 @@ export default function addRemove() {
 
   const receiveUrlData = (data) => {
     setDataReceived(data)
-    setImage([...image, data])
+    setImage(JSON.stringify([...image, data]))
   }
 
   const handleChange = (event) => {
@@ -31,18 +31,15 @@ export default function addRemove() {
       ? setPrice(parseInt(value))
       : name === "location"
       ? setLocation(value)
-      // : name === 'image'
-      // ? setImage(value)
+      
       : setDescription(value);
   };
 
   const handleFirstDrop = (event) => {
     setCategoryId(event.target.value);
-    // if (event.target.value === '3' || event.target.value === '5' || event.target.value === '6' || event.target.value === '7' || event.target.value === '8') {
-    // setSubCategoryId(null) }
-    // else {
+    
     setSubCategoryId("");
-    // }
+    
     console.log(event.target.value);
   };
 
@@ -97,6 +94,8 @@ export default function addRemove() {
 
 
     try {
+
+      
       const itemAdded = await addItem({
         variables: {
           item,

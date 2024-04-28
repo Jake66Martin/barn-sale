@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ITEMS_SUB, ITEMS } from "../../utils/queries";
 import { useParams, Link } from "react-router-dom";
 import "./items.css";
@@ -29,6 +29,12 @@ export default function Items() {
   const numberOfPages = ((allItems?.allItemsByCategory.length)/8)
   const pagesRequired = Math.ceil(numberOfPages)
 
+  useEffect(() => {
+    console.log(allItems?.allItemsByCategory.length);
+    console.log(paginationItems?.itemsByCategory);
+    console.log(paginationItems?.itemsByCategory);
+  }, [allItems, paginationItems]);
+
   function clickPlus() {
     if (page < pagesRequired) {
     setOffset(offset + limit);
@@ -51,10 +57,7 @@ export default function Items() {
 
   
 
-  console.log(allItems?.allItemsByCategory.length);
 
-  console.log(paginationItems?.itemsByCategory);
-  console.log(paginationItems?.itemsByCategory);
 
 
 

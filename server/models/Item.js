@@ -43,13 +43,8 @@ Item.init(
       allowNull: false
     },
     image: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      // type: DataTypes.STRING,
+      type: DataTypes.JSON,
       allowNull: false,
-      get() {
-        const value = this.getDataValue('image');
-        return value ? JSON.parse(value) : null;
-      },
     },
   },
   {
