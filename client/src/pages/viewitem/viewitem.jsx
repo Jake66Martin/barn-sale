@@ -2,6 +2,7 @@ import "./viewitem.css";
 import { useQuery } from "@apollo/client";
 import { ITEM_ID } from "../../utils/queries";
 import { useParams } from "react-router-dom";
+import Swiping from '../../components/swiper/swiper'
 
 export default function ViewItem() {
   let { id } = useParams();
@@ -15,11 +16,12 @@ export default function ViewItem() {
   return (
     <div className="d-flex flex-wrap justify-content-center align-items-center overflow-cnt">
       <div className="card d-flex" style={{ width: "18rem", margin: "20px" }}>
-        <img
+        {/* <img
           src={data?.itemById.image}
           className="card-img-top img-height"
           alt="..."
-        />
+        /> */}
+        <Swiping></Swiping>
         <div className="card-body align-self-center">
           <h5 className="card-title">{data?.itemById.item}</h5>
         </div>
