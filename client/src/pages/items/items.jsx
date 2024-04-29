@@ -30,7 +30,6 @@ export default function Items() {
   
   let yes = paginationItems?.itemsByCategory || []
 
-  console.log(yes)
 
  const itemData = [];
 
@@ -47,16 +46,7 @@ try {
 }
 });
 
-console.log(itemData);
 
-
-
-
-
-  
-  
-  
- 
 
   const numberOfPages = allItems?.allItemsByCategory.length / 8;
   const pagesRequired = Math.ceil(numberOfPages);

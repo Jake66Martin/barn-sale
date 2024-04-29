@@ -51,7 +51,6 @@ mutation RemoveItem($id: ID!) {
     category_id
     subcategory_id
     item
-    category
     description
     price
     image

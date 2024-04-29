@@ -16,3 +16,7 @@
 overflow-wrap: break-word;    
 word-break: break-all;
 }
+
+.d-height{
+    height:50%;
+}

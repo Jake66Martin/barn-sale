@@ -3,6 +3,7 @@ import { Container, Row, Form } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { ADD_ITEM } from "../../utils/mutations";
 import { useState } from "react";
+import Swal from 'sweetalert2';
 import UploadWidget from '../../components/Uploadwidget/uploadwidget.jsx'
 
 export default function addRemove() {
@@ -111,6 +112,14 @@ export default function addRemove() {
           subcategoryId,
         },
       });
+
+      Swal.fire({
+        position: "center-center",
+        icon: "success",
+        title: "Item has been successfully added.",
+        showConfirmButton: false,
+        timer: 2000,
+    });
       
       console.log(itemAdded);
       return itemAdded;

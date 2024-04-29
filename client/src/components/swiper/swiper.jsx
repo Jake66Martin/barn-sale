@@ -18,26 +18,11 @@ export default function Swiping() {
     variables: { id: id },
   });
 
-  console.log(data?.itemById.image);
-
-  
 
 
   let yes = data?.itemById.image || []
 
-  console.log(yes)
 
-//  const itemData = [];
-
-// yes?.forEach((item)=>{
- 
-// // const newData = JSON.parse(item.image)
-// // itemData.push(newData)
-
-
-
-
-// })
 
 const itemData = yes.map(jsonString => {
   try {
@@ -49,7 +34,6 @@ const itemData = yes.map(jsonString => {
   }
 }).filter(item => item !== null); // Filter out items that failed parsing
 
-console.log(itemData);
 
 
 

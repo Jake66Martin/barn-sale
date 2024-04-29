@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import { UPLOAD_IMAGE } from "../../utils/mutations";
+import Swal from 'sweetalert2';
+
 
 export default function UploadWidget({sendData}) {
   const [file, setFile] = useState(null);
@@ -35,6 +37,15 @@ export default function UploadWidget({sendData}) {
           file 
         } 
       });
+
+      Swal.fire({
+        position: "center-center",
+        icon: "success",
+        title: "Image successfully uploaded.",
+        showConfirmButton: false,
+        timer: 2000,
+    });
+
       const imageUrl = data.uploadImage.url;
       setUrlData(imageUrl)
       sendData(JSON.stringify(imageUrl))

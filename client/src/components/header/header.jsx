@@ -1,9 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
 import './header.css'
 import Auth from "../../utils/auth";
+import {useQuery} from '@apollo/client'
 
 export default function Header() {
   const cp = useLocation().pathname;
+
+  // const [loading, error, data] = useQuery()
 
   /**
    * This function will build the options for when user is logged in and for when they are not. All options are
