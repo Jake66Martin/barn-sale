@@ -1,5 +1,15 @@
 import { gql } from '@apollo/client'
 
+export const ME = gql`
+query Query {
+  me {
+    email
+    _id
+    password
+  }
+}
+`
+
 export const USER_EMAIL = gql`
   query UserEmail($email: String!) {
     userEmail(email: $email) 

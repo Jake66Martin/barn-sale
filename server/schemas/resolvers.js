@@ -180,7 +180,7 @@ const resolvers = {
   },
   Upload: GraphQLUpload,
   Mutation: {
-    addUser: async (parent, { userName, email, password }, context) => {
+    addUser: async (parent, { email, password }, context) => {
       try {
         const isDuplicateEmail = await User.findOne({
           where: {
@@ -196,7 +196,6 @@ const resolvers = {
 
         if (emailValidation.test(email) && passwordValidation.test(password)) {
           const user = await User.create({
-            userName,
             email,
             password,
           });

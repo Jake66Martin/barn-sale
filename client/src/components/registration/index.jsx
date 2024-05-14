@@ -1,6 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import Modal from "react-modal";
-import { Link } from 'react-router-dom';
 import { useMutation, useQuery } from "@apollo/client";
 import Auth from "../../utils/auth";
 import { ADD_USER } from "../../utils/mutations";
@@ -12,7 +10,6 @@ export default function Registration() {
   const [formState, setFormState] = useState({
     email: "",
     password: "",
-    userName: "",
   });
   const [addUser] = useMutation(ADD_USER);
 
@@ -22,15 +19,8 @@ export default function Registration() {
   const [isClicked, setIsClicked] = useState(false);
   const triggerRef = useRef(null);
   const [pageName, setPageName] = useState("index.jsx");
-  const [modalState, setModalState] = useState(false);
 
-  const openModal = () => {
-    setModalState(true);
-  };
 
-  const closeModal = () => {
-    setModalState(false);
-  };
 
   const emailValidation = /^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/;
   const passwordValidation =
@@ -67,16 +57,7 @@ export default function Registration() {
 
   const handleEmpty = (event) => {
     const { name, value } = event.target;
-    if (name === "userName" && value === "") {
-      Swal.fire({
-        position: "center-center",
-        icon: "error",
-        title: "Must fill name field.",
-        text: event.message,
-        showConfirmButton: false,
-        timer: 2500,
-      });
-    } else if (name === "email" && value === "") {
+    if (name === "email" && value === "") {
       Swal.fire({
         position: "center-center",
         icon: "error",
@@ -161,7 +142,6 @@ export default function Registration() {
       const mutationResponse = await addUser(
         {
         variables: {
-          userName: formState.userName,
           email: formState.email,
           password: formState.password,
         },
@@ -188,26 +168,7 @@ export default function Registration() {
   return (
     <Form onSubmit={handleFormSubmit}>
       <div className="row gy-3 overflow-hidden">
-        <div className="flex-row space-between my-2">
-          <div className="col-12">
-            <div className="form-floating mb-3">
-              <input
-                type="text"
-                className="form-control"
-                name="userName"
-                id="userName"
-                value={formState.userName}
-                placeholder="First Name"
-                onChange={handleChange}
-                onBlur={handleEmpty}
-                required
-              />
-              <label htmlFor="userName" className="form-label">
-                Name
-              </label>
-            </div>
-          </div>
-        </div>
+        
         <div className="flex-row space-between my-2">
           <div className="col-12">
             <div className="form-floating mb-3">

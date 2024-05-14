@@ -20,6 +20,10 @@
     overflow: visible;
 }
 
+.s-height {
+    height: 400px;
+}
+
 /* @media screen and (max-width: 1315px) {
 .scroll-cnt {
     overflow: scroll;

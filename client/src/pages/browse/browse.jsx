@@ -1,10 +1,16 @@
 import "./browse.css";
 import { Link } from "react-router-dom";
+import {useQuery} from '@apollo/client'
+import { ME } from '../../utils/queries'
+
+
 
 import { useEffect, useState } from "react";
 
 export default function Browse() {
   const [isMobile, setIsMobile] = useState(false);
+  const {loading, error, data} = useQuery(ME)
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -24,9 +30,11 @@ export default function Browse() {
       {!isMobile ? (
         <div className="browse-height background">
           <div className="link-height d-flex flex-column justify-content-center align-items-center">
-            <Link to="/Add" className="no-deco">
+           {data?.me && data?.me.email === "jake66martin@hotmail.com" &&
+                ( <Link to="/Add" className="no-deco">
               <p className="red border-btn p-1">Add items</p>
-            </Link>
+            </Link>)
+                } 
             <Link to="/Search" className="no-deco">
               <p className="red border-btn p-1">Click here to search</p>
             </Link>

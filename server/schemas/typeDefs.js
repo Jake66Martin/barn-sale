@@ -39,7 +39,6 @@ type Subcategory {
 
 type User {
     _id: ID,
-    userName: String,
     email: String,
     password: String
 }
@@ -63,7 +62,7 @@ type Query {
 }
 
 type Mutation {
-    addUser(userName: String!, email: String!, password: String!): Auth
+    addUser(email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
 
     addItem(item: String!, description: String!, price: Int!, location: String!, image:[JSON]!, category_id:ID!, subcategory_id:ID!): Item,

@@ -3,29 +3,27 @@ import { Container, Row, Form } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { ADD_ITEM } from "../../utils/mutations";
 import { useState } from "react";
-import Swal from 'sweetalert2';
-import UploadWidget from '../../components/Uploadwidget/uploadwidget.jsx'
+import Swal from "sweetalert2";
+import UploadWidget from "../../components/Uploadwidget/uploadwidget.jsx";
 
 export default function addRemove() {
-  const [dataReceived, setDataReceived] = useState('')
+  const [dataReceived, setDataReceived] = useState("");
   const [item, setItem] = useState("");
   const [price, setPrice] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState('')
+  const [image, setImage] = useState("");
   const [addItem] = useMutation(ADD_ITEM);
 
   const [categoryId, setCategoryId] = useState("");
   const [subcategoryId, setSubCategoryId] = useState("");
 
   const receiveUrlData = (data) => {
-    setDataReceived(data)
+    setDataReceived(data);
     // setImage(JSON.stringify(data))
     // setImage(prevImage => JSON.stringify([prevImage, data]));
-    setImage([...image, data])
-
-  }
-
+    setImage([...image, data]);
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -36,15 +34,14 @@ export default function addRemove() {
       ? setPrice(parseInt(value))
       : name === "location"
       ? setLocation(value)
-      
       : setDescription(value);
   };
 
   const handleFirstDrop = (event) => {
     setCategoryId(event.target.value);
-    
+
     setSubCategoryId("");
-    
+
     console.log(event.target.value);
   };
 
@@ -74,14 +71,13 @@ export default function addRemove() {
           </>
         );
 
-
       case "4":
         return (
-        <>
+          <>
             <option value="13">Dressers</option>
             <option value="14">Beds/Mattresses</option>
             <option value="15">Night Stands</option>
-        </>
+          </>
         );
       default:
         return null;
@@ -89,18 +85,21 @@ export default function addRemove() {
   };
 
   const disable = () => {
-    if (categoryId === '3' || categoryId === '5' || categoryId === '6' || categoryId === '7' || categoryId === '8') {
-      return true
+    if (
+      categoryId === "3" ||
+      categoryId === "5" ||
+      categoryId === "6" ||
+      categoryId === "7" ||
+      categoryId === "8"
+    ) {
+      return true;
     }
-  }
+  };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-
     try {
-
-      
       const itemAdded = await addItem({
         variables: {
           item,
@@ -119,8 +118,8 @@ export default function addRemove() {
         title: "Item has been successfully added.",
         showConfirmButton: false,
         timer: 2000,
-    });
-      
+      });
+
       console.log(itemAdded);
       return itemAdded;
     } catch (err) {
@@ -168,7 +167,10 @@ export default function addRemove() {
                       id="sub-category"
                       value={subcategoryId}
                       disabled={disable()}
-                      onChange={(event) => {setSubCategoryId(event.target.value), console.log(event.target.value)}}
+                      onChange={(event) => {
+                        setSubCategoryId(event.target.value),
+                          console.log(event.target.value);
+                      }}
                     >
                       <option value="">Please select an option</option>
                       {getSecondDropOptions()}
@@ -206,24 +208,31 @@ export default function addRemove() {
                     <label htmlFor="location" className="form-label">
                       Location
                     </label>
-                    <div className="input-group">
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="location"
-                        name="location"
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
+                    <select
+                      className="form-control"
+                      name="location"
+                      id="location"
+                      value={location}
+                      onChange={(event) => setLocation(event.target.value)}
+                    >
+                      <option value="">Please select an option</option>
+                      <option value="East - Hawkesbury, ON">
+                        East - Hawkesbury, ON
+                      </option>
+                      <option value="GQ - Orleans (Ottawa), ON">
+                        GQ - Orleans (Ottawa), ON
+                      </option>
+                      <option value="West - Dunrobin, ON">
+                        West - Dunrobin, ON
+                      </option>
+                    </select>
                   </div>
-                  <div className="col-12 col-md-6">
+                  <div className="col-12">
                     <label htmlFor="image" className="form-label mx-3">
                       Image URL
                     </label>
-                    
-                    <UploadWidget sendData={receiveUrlData}></UploadWidget>
 
+                    <UploadWidget sendData={receiveUrlData}></UploadWidget>
                   </div>
 
                   <div className="col-12">

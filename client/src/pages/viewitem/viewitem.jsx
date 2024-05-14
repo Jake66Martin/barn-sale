@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import Swiping from "../../components/swiper/swiper";
 import { REMOVE_ITEM } from "../../utils/mutations";
 import Swal from 'sweetalert2';
+import { ME } from '../../utils/queries'
+
 
 
 export default function ViewItem() {
@@ -15,6 +17,9 @@ export default function ViewItem() {
   const { loading, error, data } = useQuery(ITEM_ID, {
     variables: { id: id },
   });
+
+  const {loading: meLoad, error: meError, data: meData} = useQuery(ME)
+
 
   return (
     <div className='d-flex flex-column'>
@@ -44,7 +49,8 @@ export default function ViewItem() {
           
         </div>
       </div>
-      <button className="btn btn-primary btn-lg align-self-center" 
+     {meData?.me && meData?.me.email === "jake66martin@hotmail.com" && (
+      <button className="btn btn-danger btn-lg align-self-center" 
                                             onClick={() => {
                                                             removeItem({
                                                               variables: {
@@ -60,7 +66,8 @@ export default function ViewItem() {
                                                             });
                                                     }}>
                                         Delete Item
-                                    </button>
+                                    </button>)
+           }
     </div>
   );
 }

@@ -2,11 +2,13 @@ import { Link, useLocation } from "react-router-dom";
 import './header.css'
 import Auth from "../../utils/auth";
 import {useQuery} from '@apollo/client'
+import { ME } from '../../utils/queries'
 
 export default function Header() {
   const cp = useLocation().pathname;
 
-  // const [loading, error, data] = useQuery()
+  const {loading, error, data} = useQuery(ME)
+
 
   /**
    * This function will build the options for when user is logged in and for when they are not. All options are
@@ -95,14 +97,14 @@ export default function Header() {
               Contact
             </Link>
           </li>
-          <li key={5} className="nav-item">
+          {/* <li key={5} className="nav-item">
             <Link
               className={`nav-link fs-3 ${cp === "/Login" ? "active" : ""}`}
               to="/Login"
             >
               Login
             </Link>
-          </li>
+          </li> */}
         </ul>
       );
     }

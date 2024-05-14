@@ -9,7 +9,7 @@ export default function Items() {
   const [limit, setLimit] = useState(8);
   const [offset, setOffset] = useState(0);
   const [page, setPage] = useState(1);
-  const [properData, setProperData] = useState('')
+  const [properData, setProperData] = useState("");
 
   const {
     loading: paginationLoad,
@@ -27,30 +27,24 @@ export default function Items() {
     variables: { subcategoryId: id },
   });
 
-  
-  let yes = paginationItems?.itemsByCategory || []
+  let yes = paginationItems?.itemsByCategory || [];
 
+  const itemData = [];
 
- const itemData = [];
+  yes?.forEach((item) => {
+    const newItem = { ...item };
 
-yes?.forEach(item => {
-  const newItem = { ...item };
-  
+    try {
+      newItem.image = item.image.map((url) => url.slice(1, -1));
 
-try {
-  newItem.image = item.image.map(url => url.slice(1, -1));
-
-  itemData.push(newItem);
-} catch (error) {
-  console.error('Error handling item:', error);
-}
-});
-
-
+      itemData.push(newItem);
+    } catch (error) {
+      console.error("Error handling item:", error);
+    }
+  });
 
   const numberOfPages = allItems?.allItemsByCategory.length / 8;
   const pagesRequired = Math.ceil(numberOfPages);
-
 
   function clickPlus() {
     if (page < pagesRequired) {
@@ -72,31 +66,41 @@ try {
 
   return (
     <div className="height overflow-cnt">
-      <div>
-        <div className="d-flex flex-wrap justify-content-center align-items-center">
-          {itemData && itemData.map((item) => (
-              <div
-                key={item._id}
-                className="card d-flex"
-                style={{ width: "18rem", margin: "20px" }}
-              >
-                <img
-                  src={item.image[0]}
-                  className="card-img-top img-height"
-                  alt="item"
-                />
-                <div className="card-body align-self-center">
-                  <h5 className="card-title">{item.item}</h5>
+      {itemData.length > 0 ? (
+        <div>
+          <div className="d-flex flex-wrap justify-content-center align-items-center">
+            {itemData &&
+              itemData.map((item) => (
+                <div
+                  key={item._id}
+                  className="card d-flex"
+                  style={{ width: "18rem", margin: "20px" }}
+                >
+                  <img
+                    src={item.image[0]}
+                    className="card-img-top img-height"
+                    alt="item"
+                  />
+                  <div className="card-body align-self-center">
+                    <h5 className="card-title">{item.item}</h5>
+                  </div>
+                  <div className="card-body align-self-center">
+                    <Link to={`/ViewItem/${item._id}`} className="card-link">
+                      View item
+                    </Link>
+                  </div>
                 </div>
-                <div className="card-body align-self-center">
-                  <Link to={`/ViewItem/${item._id}`} className="card-link">
-                    View item
-                  </Link>
-                </div>
-              </div>
-            ))}
+              ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className='i-height d-flex justify-content-center'>
+          <div className="d-flex flex-wrap justify-content-center align-items-center">
+            <h2>No items available</h2>
+          </div>
+        </div>
+      )}
+
       <div className="d-flex justify-content-center my-3">
         <button
           className="btn btn-outline-danger"
