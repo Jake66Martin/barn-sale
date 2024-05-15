@@ -70,10 +70,11 @@ export default function ViewItem() {
                                                                 timer: 2000,
                                                             });
 
-                                                            
+                                                            localStorage.setItem("itemAdded", "true");
+
 
                                                             // window.location.reload();
-                                                            // window.history.back();
+                                                            window.history.back();
                                                             
 
                                                     }}>
