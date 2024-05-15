@@ -214,7 +214,11 @@ const resolvers = {
 
     login: async (parent, { email, password }) => {
       try {
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ 
+          where: {
+            email: email,
+          },
+         });
 
         if (!user) {
           throw AuthenticationError;

@@ -7,7 +7,7 @@ import { ME } from '../../utils/queries'
 export default function Header() {
   const cp = useLocation().pathname;
 
-  const {loading, error, data} = useQuery(ME)
+  // const {loading, error, data} = useQuery(ME)
 
 
   /**
