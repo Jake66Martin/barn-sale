@@ -1,6 +1,7 @@
 import "./viewitem.css";
 import { useQuery, useMutation } from "@apollo/client";
 import { ITEM_ID } from "../../utils/queries";
+import {useState} from 'react'
 import { useParams } from "react-router-dom";
 import Swiping from "../../components/swiper/swiper";
 import { REMOVE_ITEM } from "../../utils/mutations";
@@ -15,6 +16,7 @@ export default function ViewItem() {
   const isAuthenticated = Auth.loggedIn();
 
   const [removeItem] = useMutation(REMOVE_ITEM)
+
 
   const { loading, error, data } = useQuery(ITEM_ID, {
     variables: { id: id },
@@ -59,6 +61,7 @@ export default function ViewItem() {
                                                                 id: id
                                                               }
                                                             })
+
                                                             Swal.fire({
                                                                 position: "center-center",
                                                                 icon: "success",
@@ -66,6 +69,13 @@ export default function ViewItem() {
                                                                 showConfirmButton: false,
                                                                 timer: 2000,
                                                             });
+
+                                                            
+
+                                                            // window.location.reload();
+                                                            // window.history.back();
+                                                            
+
                                                     }}>
                                         Delete Item
                                     </button>)
