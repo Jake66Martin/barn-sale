@@ -6,11 +6,13 @@ import Swiping from "../../components/swiper/swiper";
 import { REMOVE_ITEM } from "../../utils/mutations";
 import Swal from 'sweetalert2';
 import { ME } from '../../utils/queries'
+import Auth from '../../utils/auth'
 
 
 
 export default function ViewItem() {
   let { id } = useParams();
+  const isAuthenticated = Auth.loggedIn();
 
   const [removeItem] = useMutation(REMOVE_ITEM)
 
@@ -18,7 +20,7 @@ export default function ViewItem() {
     variables: { id: id },
   });
 
-  const {loading: meLoad, error: meError, data: meData} = useQuery(ME)
+  const {loading: meLoad, error: meError, data: meData} = isAuthenticated ? useQuery(ME) : { loading: false, error: null, data: null };
 
 
   return (

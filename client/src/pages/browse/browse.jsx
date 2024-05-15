@@ -4,10 +4,14 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { ME } from "../../utils/queries";
 import { useEffect, useState } from "react";
+import Auth from '../../utils/auth'
 
 export default function Browse() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 906);
-  const { loading, error, data } = useQuery(ME);
+  const isAuthenticated = Auth.loggedIn();
+  const { loading, error, data } = isAuthenticated ? useQuery(ME) : { loading: false, error: null, data: null };
+
+  
 
   useEffect(() => {
     const handleResize = () => {
