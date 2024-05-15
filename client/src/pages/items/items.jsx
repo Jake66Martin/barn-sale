@@ -9,12 +9,12 @@ export default function Items() {
   const [limit, setLimit] = useState(8);
   const [offset, setOffset] = useState(0);
   const [page, setPage] = useState(1);
-  const [properData, setProperData] = useState("");
 
   const {
     loading: paginationLoad,
     error: paginationError,
     data: paginationItems,
+    refetch: refetchPaginationItems
   } = useQuery(ITEMS_SUB, {
     variables: { subcategoryId: id, limit, offset },
   });
@@ -23,9 +23,24 @@ export default function Items() {
     loading: itemsLoad,
     error: itemsError,
     data: allItems,
+    refetch: refetchAllItems
   } = useQuery(ITEMS, {
     variables: { subcategoryId: id },
   });
+
+ 
+  useEffect(() => {
+    const itemAdded = localStorage.getItem("itemAdded");
+    if (itemAdded === "true") {
+      // Clear the flag in localStorage
+      localStorage.removeItem("itemAdded");
+      
+      // Refetch the ITEMS query to update the list of items
+      refetchAllItems();
+      refetchPaginationItems();
+    }
+  }, [refetchAllItems, refetchPaginationItems]);
+  
 
   let yes = paginationItems?.itemsByCategory || [];
 
@@ -94,7 +109,7 @@ export default function Items() {
           </div>
         </div>
       ) : (
-        <div className='i-height d-flex justify-content-center'>
+        <div className="i-height d-flex justify-content-center">
           <div className="d-flex flex-wrap justify-content-center align-items-center">
             <h2>No items available</h2>
           </div>

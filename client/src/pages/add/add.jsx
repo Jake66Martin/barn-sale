@@ -1,6 +1,7 @@
 
 import "./add.css";
 import { Container, Row, Form } from "react-bootstrap";
+// import { useHistory } from 'react-router-dom'
 import { useMutation } from "@apollo/client";
 import { ADD_ITEM } from "../../utils/mutations";
 import { useState, useRef } from "react";
@@ -8,6 +9,7 @@ import Swal from "sweetalert2";
 import UploadWidget from "../../components/Uploadwidget/uploadwidget.jsx";
 
 export default function addRemove() {
+
   const [dataReceived, setDataReceived] = useState("");
   const [item, setItem] = useState("");
   const [price, setPrice] = useState("");
@@ -18,6 +20,7 @@ export default function addRemove() {
   const [subcategoryId, setSubCategoryId] = useState("");
 
   const [addItem] = useMutation(ADD_ITEM);
+  // const history = useHistory();
 
   const itemRef = useRef(null);
   const priceRef = useRef(null);
@@ -143,7 +146,8 @@ export default function addRemove() {
         },
       });
 
-      
+      localStorage.setItem("itemAdded", "true");
+
 
       Swal.fire({
         position: "center-center",
@@ -154,7 +158,6 @@ export default function addRemove() {
       });
 
       clearForm();
-      window.location.reload()
       console.log(itemAdded);
     } catch (err) {
       console.log(err);

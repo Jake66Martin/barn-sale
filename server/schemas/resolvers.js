@@ -27,7 +27,11 @@ const resolvers = {
           throw AuthenticationError;
         }
 
-        const user = await User.findOne({ _id: context.user._id });
+        const user = await User.findOne({ 
+          where: {
+          _id: context.user._id 
+          }
+        });
         return user;
       } catch (err) {
         console.log(err);
