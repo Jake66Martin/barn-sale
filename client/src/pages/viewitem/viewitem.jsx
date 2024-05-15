@@ -62,7 +62,7 @@ export default function ViewItem() {
                                                             Swal.fire({
                                                                 position: "center-center",
                                                                 icon: "success",
-                                                                title: "Post has been deleted.",
+                                                                title: "Item has been deleted.",
                                                                 showConfirmButton: false,
                                                                 timer: 2000,
                                                             });

@@ -364,9 +364,8 @@ export default function addRemove() {
     setLocation("");
     setDescription("");
     setImage([]);
-    setCategoryId(""); // Reset category to default value
-    setSubCategoryId(""); // Reset subcategory to default value
-    itemRef.current.value = "";
+    setCategoryId("");
+    setSubCategoryId(""); 
     priceRef.current.value = "";
     locationRef.current.value = "";
     descriptionRef.current.value = "";
@@ -419,6 +418,19 @@ export default function addRemove() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
+      
+      if (!image) {
+        Swal.fire({
+          position: "center-center",
+          icon: "error",
+          title: "Please add an image.",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+
+        return
+      }
+      
       const itemAdded = await addItem({
         variables: {
           item,
@@ -430,6 +442,8 @@ export default function addRemove() {
           subcategoryId,
         },
       });
+
+      
 
       Swal.fire({
         position: "center-center",
@@ -465,6 +479,7 @@ export default function addRemove() {
                       value={categoryId}
                       ref={catRef}
                       onChange={handleFirstDrop}
+                      required
                     >
                       <option value="">Please select an option</option>
                       <option value="1">Living Room</option>
@@ -538,6 +553,7 @@ export default function addRemove() {
                       value={location}
                       ref={locationRef}
                       onChange={(event) => setLocation(event.target.value)}
+                      required
                     >
                       <option value="">Please select an option</option>
                       <option value="East - Hawkesbury, ON">
@@ -563,8 +579,8 @@ export default function addRemove() {
                     </label>
                     <textarea
                       className="form-control"
-                      id="message"
-                      name="message"
+                      id="description"
+                      name="description"
                       rows="3"
                       onChange={handleChange}
                       ref={descriptionRef}
