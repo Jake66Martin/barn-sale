@@ -10,6 +10,7 @@ const sequelize = process.env.JAWSDB_URL
       dialect: 'mysql',
       dialectOptions: {
         decimalNumbers: true,
+        socketPath: `/cloudsql/${process.env.DB_HOST}`,
       },
     });
 
