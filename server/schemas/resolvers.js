@@ -8,12 +8,13 @@ require("dotenv").config();
 
 const { Storage } = require("@google-cloud/storage");
 
+const newInfo = JSON.parse(process.env.IMAGE_KEY)
+
 const storage = new Storage({
-  keyFilename: "../soy-sound-399522-4b913f530ad1.json",
+  keyFilename: newInfo || "../soy-sound-399522-4b913f530ad1.json",
 });
 
-// const bucketName = "thrifting613";
-// const bucket = storage.bucket(bucketName);
+
 
 const emailValidation = /^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/;
 const passwordValidation =
