@@ -54,7 +54,7 @@ export default function ViewItem() {
         </div>
       </div>
      {meData?.me && meData?.me.email === "jake66martin@hotmail.com" && (
-      <button className="btn btn-danger btn-lg align-self-center" 
+      <button className="btn btn-danger btn-lg align-self-center m-3" 
                                             onClick={() => {
                                                             removeItem({
                                                               variables: {
