@@ -12,3 +12,6 @@
     height: 800px;
 }
 
+.big-height {
+    height: 800px !important;
+} 

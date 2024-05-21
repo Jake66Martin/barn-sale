@@ -125,7 +125,7 @@ export default function UserLogin() {
         <div className="col-12">
           <div className="d-grid">
             <button className="btn btn-danger btn-lg" type="submit">
-              Login In
+              Login
             </button>
           </div>
         </div>

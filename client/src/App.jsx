@@ -62,7 +62,9 @@ function App() {
     <ApolloProvider client={client}>
       <>
         <Header />
-        <main className={`main-height ${isContactPage ? 'contact-page' : isAddPage ?  'add-page' : isItemsPage ? 'items-page' : isSearchPage ? 'search-page' : isViewItemsPage ? 'view-item': isAboutPage ? 'about-page' : ''}`}>
+        {/* <main className={`main-height ${isContactPage ? 'contact-page' : isAddPage ?  'add-page' : isItemsPage ? 'items-page' : isSearchPage ? 'search-page' : isViewItemsPage ? 'view-item': isAboutPage ? 'about-page' : ''}`}> */}
+        <main className={`main-height ${isContactPage ? 'contact-page' : isAddPage ?  'add-page' : isItemsPage ? 'items-page' : isViewItemsPage ? 'view-item': isAboutPage ? 'about-page' : ''}`}>
+
           <Outlet />
         </main>
         <Footer />

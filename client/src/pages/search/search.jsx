@@ -1,6 +1,7 @@
+
 import "./search.css";
 import { useQuery } from "@apollo/client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { SEARCH, SEARCH_ITEM } from "../../utils/queries";
 import { Link } from "react-router-dom";
 
@@ -34,6 +35,24 @@ export default function Search() {
     variables: { item },
   });
 
+  let yes = renderedItems?.searchByItem || [];
+
+  const itemData = [];
+
+  yes?.forEach((item) => {
+    const newItem = { ...item };
+
+    try {
+      newItem.image = item.image.map((url) => url.slice(1, -1));
+
+      itemData.push(newItem);
+    } catch (error) {
+      console.error("Error handling item:", error);
+    }
+  });
+
+  console.log(itemData)
+
   const numberOfPages = queryData?.searchItem.length / 8;
   const pagesRequired = Math.ceil(numberOfPages);
 
@@ -55,8 +74,12 @@ export default function Search() {
     }
   }
 
+  if (errorItems || queryError) {
+    return <div>Error loading data</div>;
+  }
+
   return (
-    <div className="t-height overflow-cnt">
+    <div className="overflow-cnt d-flex flex-column justify-content-between">
       <div>
         <div className="bar d-flex align-items-center justify-content-center">
           <form className="d-flex f-width">
@@ -70,65 +93,78 @@ export default function Search() {
             />
           </form>
         </div>
-        {item.trim() === '' ? (
-          <div className='s-height d-flex justify-content-center align-items-center'>
-          <h2>No items searched yet</h2>
-         </div>
+        {item.trim() === "" ? (
+          <div className="s-height d-flex justify-content-center align-items-center">
+            <h2>No items searched yet</h2>
+          </div>
         ) : (
           <div className="items-height">
             <div className="cardbox-height">
               <div className="d-flex flex-wrap justify-content-center align-items-center">
-                {renderedItems?.searchByItem &&
-                  renderedItems?.searchByItem.map((items) => (
-                    <div
-                      key={items._id}
-                      className="card d-flex"
-                      style={{ width: "18rem", margin: "20px" }}
-                    >
-                      <img
-                        src={items.image[0]}
-                        className="card-img-top img-height"
-                        alt="..."
-                      />
-                      <div className="card-body align-self-center">
-                        <h5 className="card-title">{items.item}</h5>
+                
+                  {itemData.map((items) => {
+                    const imageUrl = items.image[0];
+                    console.log("Image URL:", imageUrl);
+                    return (
+                      <div
+                        key={items._id}
+                        className="card d-flex"
+                        style={{ width: "18rem", margin: "20px" }}
+                      >
+                        {imageUrl ? (
+                          <img
+                            src={imageUrl}
+                            className="card-img-top img-height"
+                            alt="item image"
+                          />
+                        ) : (
+                          <div className="card-img-top img-height placeholder-image">
+                            Image not available
+                          </div>
+                        )}
+                        <div className="card-body align-self-center">
+                          <h5 className="card-title">{items.item}</h5>
+                        </div>
+                        <div className="card-body align-self-center">
+                          <Link
+                            to={`/ViewItem/${items._id}`}
+                            className="card-link"
+                          >
+                            View item
+                          </Link>
+                        </div>
                       </div>
-                      <div className="card-body align-self-center">
-                        <Link
-                          to={`/ViewItem/${items._id}`}
-                          className="card-link"
-                        >
-                          View item
-                        </Link>
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
               </div>
             </div>
           </div>
         )}
 
-        <div className="scroll-height d-flex justify-content-center align-items-center">
-          <div className="d-flex justify-content-center align-items-center">
-            <button
-              className="btn btn-outline-danger"
-              onClick={() => clickNegative()}
-            >
-              Previous
-            </button>
-            <div
-              style={{ width: "30px" }}
-              className="d-flex justify-content-center"
-            >
-              <p>{page}</p>
-            </div>
-            <button
-              className="btn btn-outline-danger"
-              onClick={() => clickPlus()}
-            >
-              Next
-            </button>
+        <div className="d-flex justify-content-evenly">
+          <button
+            className="btn btn-outline-danger"
+            onClick={() => clickNegative()}
+          >
+            Previous
+          </button>
+          <div
+            style={{
+              width: "30px",
+              height: "30px",
+              backgroundColor: "red",
+              borderRadius: "50%",
+            }}
+            className="d-flex justify-content-center"
+          >
+            <p style={{ color: "white" }}>{page}</p>
           </div>
+          <button
+            className="btn btn-outline-danger"
+            onClick={() => clickPlus()}
+          >
+            Next
+          </button>
         </div>
       </div>
     </div>

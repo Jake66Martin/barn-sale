@@ -80,7 +80,7 @@ export default function Items() {
   }
 
   return (
-    <div className="height overflow-cnt">
+    <div className="overflow-cnt">
       {itemData.length > 0 ? (
         <div>
           <div className="d-flex flex-wrap justify-content-center align-items-center">
@@ -116,7 +116,7 @@ export default function Items() {
         </div>
       )}
 
-      {/* <div className="d-flex justify-content-center my-3">
+      <div className="d-flex justify-content-evenly m-3">
         <button
           className="btn btn-outline-danger"
           onClick={() => clickNegative()}
@@ -124,28 +124,16 @@ export default function Items() {
           Previous
         </button>
         <div
-          style={{ width: "30px" }}
+          style={{ width: "30px", height: "30px", backgroundColor: "red", borderRadius: "50%" }}
           className="d-flex justify-content-center"
         >
-          <p>{page}</p>
+          <p style ={{color: 'white'}}>{page}</p>
         </div>
         <button className="btn btn-outline-danger" onClick={() => clickPlus()}>
           Next
         </button>
-      </div> */}
-      <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
+      </div>
+      
     </div>
   );
 }
