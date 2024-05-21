@@ -1,6 +1,6 @@
 
 .search-height {
-    height: 75vh;
+    min-height: 75vh;
 }
 
 .t-align {
