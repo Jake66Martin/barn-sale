@@ -1,4 +1,11 @@
 
+.search-height {
+    height: 75vh;
+}
+
+.t-align {
+    text-align: center;
+}
 
 .f-width {
     width: 350px;

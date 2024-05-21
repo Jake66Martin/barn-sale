@@ -1,6 +1,4 @@
-/* .main-height {
-    height: 75%;
-} */
+
 
 .contact-page {
     height:800px;
@@ -10,17 +8,7 @@
     height: 1100px;
 }
 
-.items-page{
-    height: 900px;
-}
 
-.search-page{
-    height: 950px;
-}
-
-.view-item{
-    height: 750px;
-}
 
 @media (max-width: 1000px) {
     .about-page {

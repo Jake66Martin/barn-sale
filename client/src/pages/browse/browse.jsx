@@ -87,7 +87,7 @@ export default function Browse() {
           </div>
         </div>
       ) : (
-        <div className="browse-height-mobile overflow-container d-flex flex-column align-items-center background">
+        <div className="browse-height-mobile overflow d-flex flex-column align-items-center background">
           {renderLinks()}
           {categories.map((category, index) => (
             <Link

@@ -79,7 +79,7 @@ export default function Search() {
   }
 
   return (
-    <div className="overflow-cnt d-flex flex-column justify-content-between">
+    <div className="overflow-cnt d-flex flex-column justify-content-between search-height">
       <div>
         <div className="bar d-flex align-items-center justify-content-center">
           <form className="d-flex f-width">
@@ -95,7 +95,7 @@ export default function Search() {
         </div>
         {item.trim() === "" ? (
           <div className="s-height d-flex justify-content-center align-items-center">
-            <h2>No items searched yet</h2>
+            <h2 className='t-align'>No items searched yet</h2>
           </div>
         ) : (
           <div className="items-height">
