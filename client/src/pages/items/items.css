@@ -1,17 +1,19 @@
 
 
-.scroll-cnt {
+/* .scroll-cnt {
     overflow: scroll;
-}
+} */
 
 .img-height {
     height: 223px;
 }
 
 .i-height {
-    height: 800px;
+    min-height: 75vh;
 }
 
-.big-height {
-    height: 800px !important;
-} 
+.t-align{
+    text-align: center;
+}
+
+

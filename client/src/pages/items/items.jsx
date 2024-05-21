@@ -14,7 +14,7 @@ export default function Items() {
     loading: paginationLoad,
     error: paginationError,
     data: paginationItems,
-    refetch: refetchPaginationItems
+    refetch: refetchPaginationItems,
   } = useQuery(ITEMS_SUB, {
     variables: { subcategoryId: id, limit, offset },
   });
@@ -23,24 +23,22 @@ export default function Items() {
     loading: itemsLoad,
     error: itemsError,
     data: allItems,
-    refetch: refetchAllItems
+    refetch: refetchAllItems,
   } = useQuery(ITEMS, {
     variables: { subcategoryId: id },
   });
 
- 
   useEffect(() => {
     const itemAdded = localStorage.getItem("itemAdded");
     if (itemAdded === "true") {
       // Clear the flag in localStorage
       localStorage.removeItem("itemAdded");
-      
+
       // Refetch the ITEMS query to update the list of items
       refetchAllItems();
       refetchPaginationItems();
     }
   }, [refetchAllItems, refetchPaginationItems]);
-  
 
   let yes = paginationItems?.itemsByCategory || [];
 
@@ -80,7 +78,7 @@ export default function Items() {
   }
 
   return (
-    <div className="overflow-cnt">
+    <div className="i-height">
       {itemData.length > 0 ? (
         <div>
           <div className="d-flex flex-wrap justify-content-center align-items-center">
@@ -111,7 +109,7 @@ export default function Items() {
       ) : (
         <div className="i-height d-flex justify-content-center">
           <div className="d-flex flex-wrap justify-content-center align-items-center">
-            <h2>No items available</h2>
+            <h2 className='t-align'>No items available</h2>
           </div>
         </div>
       )}
@@ -124,16 +122,20 @@ export default function Items() {
           Previous
         </button>
         <div
-          style={{ width: "30px", height: "30px", backgroundColor: "red", borderRadius: "50%" }}
+          style={{
+            width: "30px",
+            height: "30px",
+            backgroundColor: "red",
+            borderRadius: "50%",
+          }}
           className="d-flex justify-content-center"
         >
-          <p style ={{color: 'white'}}>{page}</p>
+          <p style={{ color: "white" }}>{page}</p>
         </div>
         <button className="btn btn-outline-danger" onClick={() => clickPlus()}>
           Next
         </button>
       </div>
-      
     </div>
   );
 }
