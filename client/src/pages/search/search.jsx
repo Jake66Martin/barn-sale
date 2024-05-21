@@ -314,7 +314,7 @@ export default function Search() {
           </div>
         )}
 
-        <div className="d-flex justify-content-evenly">
+        <div className="d-flex justify-content-evenly m-3">
           <button
             className="btn btn-outline-danger"
             onClick={() => clickNegative()}
