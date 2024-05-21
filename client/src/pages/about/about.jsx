@@ -4,7 +4,7 @@ import "./about.css";
 
 export default function About() {
   return (
-    <div className="about-height">
+    <div className="">
       <section className="py-3 py-md-5 py-xl-8">
         <Container>
           <div className="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">

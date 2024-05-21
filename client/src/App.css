@@ -21,3 +21,9 @@
 .view-item{
     height: 750px;
 }
+
+@media (max-width: 1000px) {
+    .about-page {
+        height: 950px;
+    }
+}

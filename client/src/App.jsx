@@ -53,6 +53,7 @@ function App() {
   const isSearchPage = location.pathname === '/Search';
   const isItemsPage = location.pathname.startsWith('/Items/');
   const isViewItemsPage = location.pathname.startsWith('/ViewItem/');
+  const isAboutPage = location.pathname === '/About';
 
 
 
@@ -61,7 +62,7 @@ function App() {
     <ApolloProvider client={client}>
       <>
         <Header />
-        <main className={`main-height ${isContactPage ? 'contact-page' : isAddPage ?  'add-page' : isItemsPage ? 'items-page' : isSearchPage ? 'search-page' : isViewItemsPage ? 'view-item': ''}`}>
+        <main className={`main-height ${isContactPage ? 'contact-page' : isAddPage ?  'add-page' : isItemsPage ? 'items-page' : isSearchPage ? 'search-page' : isViewItemsPage ? 'view-item': isAboutPage ? 'about-page' : ''}`}>
           <Outlet />
         </main>
         <Footer />
