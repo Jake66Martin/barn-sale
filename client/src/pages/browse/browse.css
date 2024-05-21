@@ -57,3 +57,7 @@ height: 100%;
 .left {
   left: 38%;
 }
+
+.browse-height {
+  height: 75vh;
+}

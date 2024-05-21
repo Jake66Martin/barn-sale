@@ -18,7 +18,7 @@ const Subcategories = () => {
   console.log(data?.subcategoryById)
 
   return (
-   <div className='sub-height background height'>
+   <div className='sub-height background'>
     <ul className='height d-flex flex-column align-items-center justify-content-center no-deco'>
       {data?.subcategoryById && data?.subcategoryById.map((subcategory) => (
         <li key={subcategory._id} className='my-2 border-list'>

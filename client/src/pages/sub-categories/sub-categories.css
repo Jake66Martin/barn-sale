@@ -1,6 +1,6 @@
-/* .sub-height {
-    min-height: 678px;
-} */
+.sub-height {
+    height: 75vh;
+}
 
 .no-deco {
     text-decoration: none;
