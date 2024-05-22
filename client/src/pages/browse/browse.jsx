@@ -60,14 +60,14 @@ export default function Browse() {
     ));
 
   const categories = [
-    { link: "/Subcategories/1", image: "/basement.jpg", alt: "basement category", label: "Living Room" },
-    { link: "/Subcategories/2", image: "/bathroom.png", alt: "bathroom category", label: "Dining Room" },
-    { link: "/Categories/3", image: "/bedroom.jpg", alt: "bedroom category", label: "Kitchen & Bath" },
-    { link: "/Subcategories/4", image: "/dining-room.jpg", alt: "dining room category", label: "Bedroom" },
-    { link: "/Categories/5", image: "/dining-room.jpg", alt: "dining room category", label: "Child/Nursery" },
-    { link: "/Categories/6", image: "/dining-room.jpg", alt: "dining room category", label: "Office" },
-    { link: "/Categories/7", image: "/kitchen.jpg", alt: "kitchen category", label: "Garage/Exterior" },
-    { link: "/Categories/8", image: "/dining-room.jpg", alt: "dining room category", label: "Home Decor" },
+    { link: "/Subcategories/1", image: "/living-room.jpg", alt: "living category", label: "Living Room" },
+    { link: "/Subcategories/2", image: "/dining-room.jpg", alt: "dining room category", label: "Dining Room" },
+    { link: "/Categories/3", image: "/kitchen.jpg", alt: "kitchen & bath category", label: "Kitchen & Bath" },
+    { link: "/Subcategories/4", image: "/bedroom.jpg", alt: "bedroom category", label: "Bedroom" },
+    { link: "/Categories/5", image: "/nursery.jpg", alt: "nursery category", label: "Child/Nursery" },
+    { link: "/Categories/6", image: "/office.jpg", alt: "office category", label: "Office" },
+    { link: "/Categories/7", image: "/garage.jpg", alt: "garage/exterior category", label: "Garage/Exterior" },
+    { link: "/Categories/8", image: "/decor.jpg", alt: "home decor category", label: "Home Decor" },
   ];
 
   return (

@@ -24,8 +24,8 @@ const credentials = {
 }
 
 const storage = new Storage({
-    keyFilename: "../soy-sound-399522-4b913f530ad1.json",
-    // credentials
+    // keyFilename: "../soy-sound-399522-4b913f530ad1.json",
+    credentials
 
 });
 
