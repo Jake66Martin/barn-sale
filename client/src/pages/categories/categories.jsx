@@ -30,7 +30,6 @@ export default function Categories() {
   const numberOfPages = allItems?.category.length / 8;
   const pagesRequired = Math.ceil(numberOfPages);
 
-  console.log(numberOfPages);
 
   let yes = paginationItems?.categories || [];
 
@@ -66,59 +65,11 @@ export default function Categories() {
     }
   }
 
-  console.log(allItems?.category.length);
 
-  console.log(paginationItems?.categories);
 
-  console.log(itemData)
 
   return (
-    // <div className="c-height">
-    //   <div className=''>
-    //     <div className="d-flex flex-wrap justify-content-center align-items-center">
-    //       {paginationItems?.categories &&
-    //         paginationItems?.categories.map((item) => (
-    //           <div
-    //             key={item._id}
-    //             className="card d-flex"
-    //             style={{ width: "18rem", margin: "20px" }}
-    //           >
-    //             <img src={item.image} className="card-img-top" alt="item" />
-    //             <div className="card-body align-self-center">
-    //               <h5 className="card-title">{item.item}</h5>
-    //             </div>
-    //             <div className="card-body align-self-center">
-    //               <a href="#" className="card-link">
-    //                 Card link
-    //               </a>
-    //             </div>
-    //           </div>
-    //         ))}
-    //     </div>
-    //   </div>
-    //   <div className="d-flex justify-content-evenly m-3">
-    //     <button
-    //       className="btn btn-outline-danger"
-    //       onClick={() => clickNegative()}
-    //     >
-    //       Previous
-    //     </button>
-    //     <div
-    //       style={{
-    //         width: "30px",
-    //         height: "30px",
-    //         backgroundColor: "red",
-    //         borderRadius: "50%",
-    //       }}
-    //       className="d-flex justify-content-center"
-    //     >
-    //       <p style={{ color: "white" }}>{page}</p>
-    //     </div>
-    //     <button className="btn btn-outline-danger" onClick={() => clickPlus()}>
-    //       Next
-    //     </button>
-    //   </div>
-    // </div>
+    
 
     <div className="i-height">
       {itemData.length > 0 ? (

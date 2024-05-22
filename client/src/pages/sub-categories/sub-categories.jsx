@@ -15,7 +15,6 @@ const Subcategories = () => {
     variables: { categoryId: id },
   });
 
-  console.log(data?.subcategoryById)
 
   return (
    <div className='sub-height background'>
@@ -29,7 +28,6 @@ const Subcategories = () => {
       ))}
     </ul>
    </div>
-  // <></>
   );
 };
 

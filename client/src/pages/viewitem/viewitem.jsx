@@ -28,7 +28,6 @@ export default function ViewItem() {
   return (
     <div className='d-flex flex-column'>
       <div className='d-height'>
-      {/* <Swiping></Swiping> */}
       </div>
       <div className='d-height'>
         <div className="d-flex flex-wrap justify-content-center align-items-center overflow-cnt">
@@ -73,7 +72,6 @@ export default function ViewItem() {
                                                             localStorage.setItem("itemAdded", "true");
 
 
-                                                            // window.location.reload();
                                                             window.history.back();
                                                             
 
