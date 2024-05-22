@@ -1,10 +1,4 @@
-.overflow-cnt {
-    overflow: visible;
-}
-
-@media screen and (max-width: 1315px) {
-.overflow-cnt {
-    overflow: scroll;
-}
+.c-height {
+    height: 75vh;
 }
 
