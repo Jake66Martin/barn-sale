@@ -1,37 +1,35 @@
-const { Model, DataTypes } = require('sequelize')
+const { Model, DataTypes } = require("sequelize");
 
-const sequelize = require('../config/connection.js')
+const sequelize = require("../config/connection.js");
 
-class Subcategory extends Model { }
+class Subcategory extends Model {}
 
 Subcategory.init(
-    {
-      _id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
+  {
+    _id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    category_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "category",
+        key: "id",
       },
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      category_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'category',
-          key:'id'
-        }
-      },
-},
-{
-  sequelize,
-  timestamps: false,
-  freezeTableName: true,
-  underscored: true,
-  modelName: 'subcategory',
-}
-)
+    },
+  },
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "subcategory",
+  }
+);
 
 module.exports = Subcategory;
-
-

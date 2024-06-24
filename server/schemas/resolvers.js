@@ -8,25 +8,10 @@ require("dotenv").config();
 
 const { Storage } = require("@google-cloud/storage");
 
-const credentials = {
-  type: 'service_account',
-  project_id: process.env.GOOGLE_CLOUD_PROJECT_ID,
-  private_key_id: process.env.GOOGLE_CLOUD_PRIVATE_KEY_ID,
-  private_key: "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEmrnV7pK+GM7H\nC5yhppyCGOJANGL/v3kfIOTd2G8nuzgTYTyuxxfmbtYPI0CWohb/Q5tFdT3XqGDQ\nMjyoWIcizBoZ5vZW2FcrfTgoCie9ukz4YVX6r4PHl84Wt22rTYHOTxsGJmIWfutc\nNs+FwzXvYwPYOmk+h100xNmbwnZvyJomVlUTpjcCFLHe+do5p7x1+soanZTh6ltG\nlYuJT96XEZ/JFIjHN4mIojbk4cmyAA0WD+1/K6QFxouWqC5YzMwEXuhrxE3hZ8ot\nnZtknnyP0UKZ+QIgl7phf7Df0NVofV356NcysHZ68ss2dBG76FxjRB5+zy6znTtU\nS39yeyu5AgMBAAECggEALALB9oq3RUA667JlAAfS0cm9vicsATnM5KPBsAq/CUsf\nCLGT+sEdT8uAdjeLQh0rXj21YMVX0HLEJ18TlpDowWiksCc0fmjkDJt1qnrpfg6a\nI+DwNRO8wX2xWAL8VSRe2j75mvUVMJl9WPF5H6W9KWdGKU2cGTAGtKUbXIOZ7Tg7\niVBHx0bWYFsQLQbtoiwXzLTgNK1EsPxw91asiJ5aOSpsMhTPx2OTzRewxRhvbJUT\nibiqICWtq3BKEkoDutRSOKfLBPqVXvMQG1tBNuE4/IfB4cRQ+RAHkxS/08R8NJPt\nu9WBqc2BOLgVJBSZ/7JATRXfVXvSE3GPZWPGhlelnQKBgQDpm0v7uM/4bQ8f0LxW\n/lGA71O3QXXNphj6lTT+NIzvIMd88N9l9VkxMWbCjDHRmY63g7VTK0E4EiglX7WD\nuAeXHpMStjZwzdGk5hBQTBX38bXQVbUI2Msqk/yg/WFIi37FZEt5c8pQP6c0rMgJ\nXJyEf8cujm/fzesb6dNvg956TQKBgQDXc2Uab0Obko7cGPGgIHBFthzbLs7Ak5eD\n77WYaTFTK1T4bbz4n3nx6rZ5Ci6Yx9aWnVSiI8r7BQMvI0AFSUW5Anc/rkadYVWx\nuGkChS40hOWaPlREf9xKTHqdF2lym+5XL+jNHgcFD2rF6A630J+NypfQx9sVB4u6\nPBkKnLsVHQKBgQCllOsdyJi5GOxwe68T5n306y6mpWKP2ty3uUzvpmYDFXPxDnb6\nuRZ4dPDGk0K4s6RiVZwQEIfQ66XDH/z0GVxf9E8BI2ChQnIH9P65O8USkyRxQF7q\nn2gajPyzTAZJun6oAXgx5S4RBZ1KC/JaGGfkzwFq8ZFAzJ+KkInK8GigvQKBgCAU\nQHOFKY3abob6988dxVm72eQQvhwSXbb5VBKTZxK5Gve6by6doCyTBARVrcZ1ys+2\nMUnLBogFoQm9t+SRml4HrfW/XyhDu9ywVoJXjh+nwgALU8S3PPebF46YU80KxpwY\nuBMCa40nVICPItHfsEIObjhZ6Zbh/r4GALyBxaFJAoGAZJ1Whx3N2kuprRXbEMbw\ndSSXN0cpVkWkxnXr7cPa5BJuEZSYWch0jQCBKhhdyZ3k8I/FAnUrkdArwt1pU3Q1\n0cwwGxObU74imotho9iUyzSvn2XFv396mL7U/AVc0V5L3X4nqknXCaa3QXpDteQo\nqciyar2kUbped9iI5d8BVvk=\n-----END PRIVATE KEY-----\n",
-  client_email: process.env.GOOGLE_CLOUD_CLIENT_EMAIL,
-  client_id: process.env.GOOGLE_CLOUD_CLIENT_ID,
-  auth_uri: process.env.GOOGLE_CLOUD_AUTH_URI,
-  token_uri: process.env.GOOGLE_CLOUD_TOKEN_URI,
-  auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
-  client_x509_cert_url: "https://www.googleapis.com/robot/v1/metadata/x509/image-storage%40soy-sound-399522.iam.gserviceaccount.com",
-  universe_domain: "googleapis.com"
 
-}
 
 const storage = new Storage({
-    // keyFilename: "../soy-sound-399522-4b913f530ad1.json",
-    credentials
-
+    keyFilename: "../thrift-barn-furniture-5764a35c660f.json"
 });
 
 
