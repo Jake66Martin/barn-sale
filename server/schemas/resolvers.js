@@ -10,9 +10,13 @@ const { Storage } = require("@google-cloud/storage");
 
 
 
-const storage = new Storage({
-    keyFilename: "../thrift-barn-furniture-5764a35c660f.json"
-});
+// const storage = new Storage({
+//     keyFilename: "../thrift-barn-furniture-5764a35c660f.json"
+// });
+
+const storage = new Storage ({
+  keyFilename: "/etc/secrets/thrift-barn-furniture-5764a35c660f.json"
+})
 
 
 
