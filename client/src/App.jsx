@@ -7,6 +7,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { Outlet } from "react-router-dom";
 import Header from './components/header/header'
+import Header2 from './components/header/header2'
 import Footer from './components/footer/footer'
 import "./App.css";
 import { useLocation } from 'react-router-dom'
@@ -61,7 +62,8 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <>
-        <Header />
+        {/* <Header /> */}
+        <Header2 />
         {/* <main className={`main-height ${isContactPage ? 'contact-page' : isAddPage ?  'add-page' : isItemsPage ? 'items-page' : isSearchPage ? 'search-page' : isViewItemsPage ? 'view-item': isAboutPage ? 'about-page' : ''}`}> */}
         {/* <main className={`${isContactPage ? 'contact-page' : isAddPage ?  'add-page' : isItemsPage ? 'items-page' : isSearchPage ? 'search-page' : isViewItemsPage ? 'view-item': isAboutPage ? 'about-page' : ''}`}> */}
         <main className={`${isContactPage ? 'contact-page' : isAddPage ?  'add-page' : isAboutPage ? 'about-page' : ''}`}>
