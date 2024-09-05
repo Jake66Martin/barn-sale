@@ -27,26 +27,48 @@ export default function Homepage2() {
           }}
           className={styles.item5}
         >
-          <h2 style={{ textAlign: 'center'}}>Discover treasures in every corner.</h2>
-         <p style={{textAlign: 'center'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dapibus mollis nisl <br/>
-            in mollis. Vivamus malesuada augue ut tincidunt dapibus. Donec posuere elementum <br/>
-            velit, eu dignissim dui viverra non. Sed ac sagittis ex. Duis dignissim ullamcorper<br/>
-             nibh, quis rhoncus neque lacinia id. Aliquam laoreet fermentum libero.</p>
+          <h2 style={{ textAlign: "center" }}>
+            Discover treasures in every corner.
+          </h2>
+          <p style={{ textAlign: "center" }}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dapibus
+            mollis nisl <br />
+            in mollis. Vivamus malesuada augue ut tincidunt dapibus. Donec
+            posuere elementum <br />
+            velit, eu dignissim dui viverra non. Sed ac sagittis ex. Duis
+            dignissim ullamcorper
+            <br />
+            nibh, quis rhoncus neque lacinia id. Aliquam laoreet fermentum
+            libero.
+          </p>
         </div>
-        <div>
-         <div></div>
-         <div></div>
-         <div></div>
-         <div></div>
+        <div style={{
+            display: "grid",
+            justifyContent: "center",
+            alignItems: 'center'
+          }}>
+          <h3>Living Room</h3>
         </div>
-        <div>
-
+        <div style={{
+            display: "grid",
+            justifyContent: "center",
+            alignItems: 'center'
+          }}>
+          <h3>Dining Room</h3>
         </div>
-        <div>
-
+        <div style={{
+            display: "grid",
+            justifyContent: "center",
+            alignItems: 'center'
+          }}>
+          <h3>Kitchen & Bath</h3>
         </div>
-        <div>
-
+        <div style={{
+            display: "grid",
+            justifyContent: "center",
+            alignItems: 'center'
+          }}>
+          <h3>Bedroom</h3>
         </div>
       </div>
     </>
