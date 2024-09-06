@@ -1,8 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.textstyle{
+    font-family: 'Permanent Marker', sans-serif;
+}
+
+.textstyle2{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.textsize{
+    font-size: 70px;
+}
+
+.textsize2{
+    font-size: 45px;
+}
+
+
 /* upper page */
 
 .background {
   height: 600px;
-  background-image: url("../../../barn.jpg");
+  background-image: url("../../../hero.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -10,6 +31,11 @@
   grid-template-rows: 50% 25% 25%;
   grid-template-columns: 1fr 1fr;
   place-items: center;
+  background-blend-mode: multiply; /* Blends image with color */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark color */
+
+
+
 }
 
 .logosize {
@@ -30,20 +56,43 @@
 .item3 {
   grid-row: 3;
   grid-column: 1;
+  justify-self: end;
+  margin: 0 10px;
 }
 
 .item4 {
   grid-row: 3;
   grid-column: 2;
+  justify-self: start;
+  margin: 0 10px;
+
+}
+
+.border{
+    border: 10px solid #da0404;
+    background-color: #da0404;
+    border-radius: 20px;
 }
 
 /* beginning of new section */
 
 .info {
-  height: 1500px;
+  height: 1800px;
   display: grid;
-  grid-template-rows: 25% 25% 25% 25%;
+  grid-template-rows: 350px 500px 300px 25%;
   grid-template-columns: 25% 25% 25% 25%;
+}
+
+.leaflogo{
+    align-self: center;
+}
+
+.imgsize{
+    height: 250px;
+}
+
+.labelweight{
+    font-weight: 700;
 }
 
 .item5 {

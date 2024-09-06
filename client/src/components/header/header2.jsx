@@ -45,13 +45,22 @@ export default function Header2() {
         //   </li>
         // </ul>
         <>
-          <Link style={{ color: "#da0404", textDecoration: "none" }} to="/Browse">
+          <Link style={{ color: "#da0404", textDecoration: "none" }} 
+          to="/Browse"
+          className={styles.textstyle}
+          >
             Browse our furniture
           </Link>
-          <Link style={{ color: "#da0404", textDecoration: "none" }} to="/About">
+          <Link style={{ color: "#da0404", textDecoration: "none" }} 
+          to="/About"
+          className={styles.textstyle}
+          >
             About us
           </Link>
-          <Link style={{ color: "#da0404", textDecoration: "none" }} to="/Contact">
+          <Link style={{ color: "#da0404", textDecoration: "none" }} 
+          to="/Contact"
+          className={styles.textstyle}
+          >
             Contact
           </Link>
         </>
@@ -59,13 +68,23 @@ export default function Header2() {
     } else {
       return (
         <>
-          <Link style={{ color: "#da0404", textDecoration: "none" }} to="/Browse">
+          <Link style={{ color: "#da0404", textDecoration: "none" }} 
+          to="/Browse"
+          className={styles.textstyle}
+          >
             Browse our furniture
           </Link>
-          <Link style={{ color: "#da0404", textDecoration: "none" }} to="/About">
+          <Link style={{ color: "#da0404", textDecoration: "none" }} 
+          to="/About"
+          className={styles.textstyle}
+          >
             About us
           </Link>
-          <Link style={{ color: "#da0404", textDecoration: "none" }} to="/Contact">
+          <Link style={{ color: "#da0404", textDecoration: "none" }} 
+          to="/Contact"
+          className={styles.textstyle}
+          >
+      
             Contact
           </Link>
         </>
@@ -103,14 +122,16 @@ export default function Header2() {
   return (
     <div className={`${styles.height} ${styles.grid}`}>
       <div className={styles.toprow}>
-        <h3 style={{ color: "white", textAlign: "center" }}>
+        <h3 style={{ color: "white", textAlign: "center" }}
+        className={styles.textstyle}
+        >
           Announcements can go up here
         </h3>
       </div>
       <div className={`${styles.bottomrow} ${styles.grid2}`}>
         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
           <img
-            src="/scottlogo.jpg"
+            src="/headerlogo.png"
             alt="thrift barn logo"
             className={styles.logosize}
           />
