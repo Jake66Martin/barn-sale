@@ -72,7 +72,7 @@ export default function Homepage2() {
               }}
               className={styles.textstyle}
             >
-              Discover treasures in every corner.
+              Discover Treasures In Every Corner.
             </h2>
             <p style={{ textAlign: "center" }} className={styles.textstyle2}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
@@ -96,7 +96,14 @@ export default function Homepage2() {
         >
           <div>
             <img src="/livingroom2.png" className={styles.imgsize} />
-            <h3 style={{ textAlign: "center", color: '#720909', margin:'20px 0' }} className={`${styles.textstyle2} ${styles.labelweight}`}>
+            <h3
+              style={{
+                textAlign: "center",
+                color: "#720909",
+                margin: "20px 0",
+              }}
+              className={`${styles.textstyle2} ${styles.labelweight}`}
+            >
               Living Room
             </h3>
           </div>
@@ -110,7 +117,14 @@ export default function Homepage2() {
         >
           <div>
             <img src="/dining2.png" className={styles.imgsize} />
-            <h3 style={{ textAlign: "center", color: '#720909', margin:'20px 0' }} className={`${styles.textstyle2} ${styles.labelweight}`}>
+            <h3
+              style={{
+                textAlign: "center",
+                color: "#720909",
+                margin: "20px 0",
+              }}
+              className={`${styles.textstyle2} ${styles.labelweight}`}
+            >
               Dining Room
             </h3>
           </div>
@@ -124,7 +138,14 @@ export default function Homepage2() {
         >
           <div>
             <img src="/kitchen2.png" className={styles.imgsize} />
-            <h3 style={{ textAlign: "center", color: '#720909', margin:'20px 0'  }} className={`${styles.textstyle2} ${styles.labelweight}`}>
+            <h3
+              style={{
+                textAlign: "center",
+                color: "#720909",
+                margin: "20px 0",
+              }}
+              className={`${styles.textstyle2} ${styles.labelweight}`}
+            >
               Kitchen & Bath
             </h3>
           </div>
@@ -138,7 +159,14 @@ export default function Homepage2() {
         >
           <div>
             <img src="/bedroom2.png" className={styles.imgsize} />
-            <h3 style={{ textAlign: "center", color: '#720909', margin:'20px 0'  }} className={`${styles.textstyle2} ${styles.labelweight}`}>
+            <h3
+              style={{
+                textAlign: "center",
+                color: "#720909",
+                margin: "20px 0",
+              }}
+              className={`${styles.textstyle2} ${styles.labelweight}`}
+            >
               Bedroom
             </h3>
           </div>
@@ -152,7 +180,14 @@ export default function Homepage2() {
         >
           <div>
             <img src="/nursery2.png" className={styles.imgsize} />
-            <h3 style={{ textAlign: "center", color: '#720909', margin:'20px 0'  }} className={`${styles.textstyle2} ${styles.labelweight}`}>
+            <h3
+              style={{
+                textAlign: "center",
+                color: "#720909",
+                margin: "20px 0",
+              }}
+              className={`${styles.textstyle2} ${styles.labelweight}`}
+            >
               Child/Nursery
             </h3>
           </div>
@@ -166,7 +201,14 @@ export default function Homepage2() {
         >
           <div>
             <img src="/office2.png" className={styles.imgsize} />
-            <h3 style={{ textAlign: "center", color: '#720909', margin:'20px 0'  }} className={`${styles.textstyle2} ${styles.labelweight}`}>
+            <h3
+              style={{
+                textAlign: "center",
+                color: "#720909",
+                margin: "20px 0",
+              }}
+              className={`${styles.textstyle2} ${styles.labelweight}`}
+            >
               Office
             </h3>
           </div>
@@ -180,7 +222,14 @@ export default function Homepage2() {
         >
           <div>
             <img src="/garage2.png" className={styles.imgsize} />
-            <h3 style={{ textAlign: "center", color: '#720909', margin:'20px 0'  }} className={`${styles.textstyle2} ${styles.labelweight}`}>
+            <h3
+              style={{
+                textAlign: "center",
+                color: "#720909",
+                margin: "20px 0",
+              }}
+              className={`${styles.textstyle2} ${styles.labelweight}`}
+            >
               Garage/Exterior
             </h3>
           </div>
@@ -194,10 +243,64 @@ export default function Homepage2() {
         >
           <div>
             <img src="/decor2.png" className={styles.imgsize} />
-            <h3 style={{ textAlign: "center", color: '#720909', margin:'20px 0'  }} className={`${styles.textstyle2} ${styles.labelweight}`}>
+            <h3
+              style={{
+                textAlign: "center",
+                color: "#720909",
+                margin: "20px 0",
+              }}
+              className={`${styles.textstyle2} ${styles.labelweight}`}
+            >
               Home Decor
             </h3>
           </div>
+        </div>
+      </section>
+      <section className={styles.infosection}>
+        <div style={{display: 'grid'}}>
+          <div className={styles.visit}>
+            <h3 className={styles.textstyle}
+            style={{color: '#720909',
+                fontSize: '35px'
+            }}
+            >Visit The Barn</h3>
+            <p className={styles.textstyle2}
+            style={{fontSize: '14px'}}
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              <br />
+              Nam dapibus mollis nisl in mollis. Vivamus malesuada <br />
+              augue ut tincidunt dapibus. Donec posuere elementum <br />
+              velit, eu dignissim dui viverra non. Sed ac sagittis ex.
+              <br />
+              Duis dignissim ullamcorper nibh, quis rhoncus neque <br /> lacinia
+              id. Aliquam laoreet fermentum libero.
+            </p>
+          </div>
+        </div>
+        <div style={{display: 'grid'}}>
+          <p style={{alignSelf: 'center', justifySelf: 'start'}}
+          className={styles.textstyle2}
+          >
+           <span style={{color: '#da0404', fontWeight: '600'}}> Address:</span>
+            <br />
+            123 Street Name
+            <br />
+            City Name, Province
+            <br />
+            ABC 123
+          </p>
+        </div>
+        <div style={{display: 'grid'}}>
+          <p style={{alignSelf: 'center', justifySelf: 'start'}}
+          className={styles.textstyle2}
+          >
+            <span style={{color: '#da0404', fontWeight: '600'}}>Hours:</span>
+            <br />
+            Weekdays: AM - PM
+            <br />
+            Weekends: AM - PM
+          </p>
         </div>
       </section>
     </>

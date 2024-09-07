@@ -1,23 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
-
-.textstyle{
-    font-family: 'Permanent Marker', sans-serif;
+.textstyle {
+  font-family: "Permanent Marker", sans-serif;
 }
 
-.textstyle2{
-    font-family: 'Montserrat', sans-serif;
+.textstyle2 {
+  font-family: "Montserrat", sans-serif;
 }
 
-.textsize{
-    font-size: 70px;
+.textsize {
+  font-size: 70px;
 }
 
-.textsize2{
-    font-size: 45px;
+.textsize2 {
+  font-size: 45px;
 }
-
 
 /* upper page */
 
@@ -33,9 +31,6 @@
   place-items: center;
   background-blend-mode: multiply; /* Blends image with color */
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark color */
-
-
-
 }
 
 .logosize {
@@ -65,41 +60,50 @@
   grid-column: 2;
   justify-self: start;
   margin: 0 10px;
-
 }
 
-.border{
-    border: 10px solid #da0404;
-    background-color: #da0404;
-    border-radius: 20px;
+.border {
+  border: 10px solid #da0404;
+  background-color: #da0404;
+  border-radius: 20px;
 }
 
 /* beginning of new section */
 
 .info {
-  height: 1800px;
+  position: relative;
+  height: 1300px;
   display: grid;
-  grid-template-rows: 350px 500px 300px 25%;
+  grid-template-rows: 350px 500px 300px 150px;
   grid-template-columns: 25% 25% 25% 25%;
 }
 
-.leaflogo{
-    align-self: center;
+.info::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%; 
+  border-bottom: 1px solid #da0404;
 }
 
-.imgsize{
-    height: 250px;
+.leaflogo {
+  align-self: center;
+  margin: 30px 0;
 }
 
-.labelweight{
-    font-weight: 700;
+.imgsize {
+  height: 250px;
+}
+
+.labelweight {
+  font-weight: 700;
 }
 
 .item5 {
   grid-row: 1;
   grid-column: 1 / span 4;
 }
-
 
 .item6 {
   grid-row: 2;
@@ -119,4 +123,19 @@
 .item9 {
   grid-row: 2;
   grid-column: 4;
+}
+
+/* info section */
+
+.infosection {
+  height: 350px;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 50% 25% 25%;
+}
+
+.visit{
+    width: 400px;
+    align-self: center;
+    justify-self: center;
 }
