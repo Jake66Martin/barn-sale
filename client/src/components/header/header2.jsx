@@ -120,7 +120,7 @@ export default function Header2() {
   }
 
   return (
-    <div className={`${styles.height} ${styles.grid}`}>
+    <header className={`${styles.height} ${styles.grid}`}>
       <div className={styles.toprow}>
         <h3 style={{ color: "white", textAlign: "center" }}
         className={styles.textstyle}
@@ -157,6 +157,6 @@ export default function Header2() {
           </form>
         </div>
       </div>
-    </div>
+    </header>
   );
 }

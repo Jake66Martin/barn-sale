@@ -22,7 +22,7 @@
 }
 
 .toprow{
-    background-color: black;
+    background-color: #363434;
 }
 
 .bottomrow{
@@ -48,5 +48,5 @@ form.nosubmit {
   }
 
   .test{
-    color: #720909;
+    color: #252323;
   }

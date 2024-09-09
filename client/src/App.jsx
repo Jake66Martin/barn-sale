@@ -9,6 +9,7 @@ import { Outlet } from "react-router-dom";
 import Header from './components/header/header'
 import Header2 from './components/header/header2'
 import Footer from './components/footer/footer'
+import Footer2 from './components/footer/footer2'
 import "./App.css";
 import { useLocation } from 'react-router-dom'
 import { concat } from '@apollo/client/link/core';
@@ -70,7 +71,8 @@ function App() {
 
           <Outlet />
         </main>
-        <Footer />
+        <Footer2/>
+        {/* <Footer /> */}
       </>
     </ApolloProvider>
   );

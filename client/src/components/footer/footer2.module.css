@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
+.textstyle{
+font-family: 'Permanent Marker', sans-serif;
+}
+
+.textstyle2{
+font-family: 'Montserrat', sans-serif;
+}
+
+.footer{
+    height: 270px;
+    background-color: #363434;
+    display: grid;
+    grid-template-rows: 1;
+    grid-template-columns: 25% 75%;
+}
+
+.footerlogo{
+    height: 90px;
+    align-self: center;
+    justify-self: center;
+}
+
+/* .linkgrid{
+    display: grid;
+    grid-template-rows: 25% 75%;
+    grid-template-columns: 33% 33% 33%;
+} */
+
+.linkcell{
+    width: 800px;
+    height: 200px;
+    display: grid;
+    grid-template-rows: 25% 75%;
+    grid-template-columns: 25% 50% 25%;
+    position: relative;
+}
+
+.linkcell::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(25% - 1px);
+    height: 1px;
+    background-color: white;
+}
+
+.ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  .categorygrid{
+    display: grid;
+    grid-template-rows: 1;
+    grid-template-columns: 50% 50%;
+  }
