@@ -9,6 +9,10 @@ font-family: 'Permanent Marker', sans-serif;
 font-family: 'Montserrat', sans-serif;
 }
 
+.fontcolor{
+    color: white;
+}
+
 .footer{
     height: 270px;
     background-color: #363434;
@@ -56,5 +60,9 @@ font-family: 'Montserrat', sans-serif;
   .categorygrid{
     display: grid;
     grid-template-rows: 1;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 35% 65%;
+  }
+
+  ul li:hover{
+    color: black;
   }

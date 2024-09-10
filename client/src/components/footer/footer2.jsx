@@ -30,28 +30,105 @@ export default function Footer2() {
           className={styles.linkcell}
           style={{ alignSelf: "center", justifySelf: "center" }}
         >
-          <h4 style={{color: 'white'}}
-          className={styles.textstyle}
-          >Links</h4>
-          <h4 style={{color: 'white'}}
-          className={styles.textstyle}
-          >Furniture Categories</h4>
-          <h4 style={{color: 'white'}}
-          className={styles.textstyle}
-          >Follow Us</h4>
-          <ul style={{listStyleType: 'none', display: 'grid'}}
-          className={`${styles.ul} ${styles.textstyle2}`}
+          <h4 className={`${styles.textstyle} ${styles.fontcolor}`}>
+            Links
+          </h4>
+          <h4 className={`${styles.textstyle} ${styles.fontcolor}`}>
+            Furniture Categories
+          </h4>
+          <h4 className={`${styles.textstyle} ${styles.fontcolor}`}>
+            Follow Us
+          </h4>
+          <ul
+            style={{ listStyleType: "none", display: "grid", margin: '10px 0' }}
+            className={`${styles.ul} ${styles.textstyle2}`}
           >
-            <li><Link style={{textDecoration: 'none', color: 'white'}}>Home</Link></li>
-            <li><Link style={{textDecoration: 'none', color: 'white'}}>Furniture</Link></li>
-            <li><Link style={{textDecoration: 'none', color: 'white'}}>About Us</Link></li>
-            <li><Link style={{textDecoration: 'none', color: 'white'}}>Contact</Link></li>
+            <li>
+              <Link style={{ textDecoration: "none"}} className={styles.fontcolor} to='/'>
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link style={{ textDecoration: "none" }}  className={styles.fontcolor} to='/Browse'>
+                Furniture
+              </Link>
+            </li>
+            <li>
+              <Link style={{ textDecoration: "none" }} className={styles.fontcolor} to='/About'>
+                About Us
+              </Link>
+            </li>
+            <li>
+              <Link style={{ textDecoration: "none" }} className={styles.fontcolor} to='/Contact'>
+                Contact
+              </Link>
+            </li>
           </ul>
           <div className={styles.categorygrid}>
-            <div></div>
-            <div></div>
+            <div style={{ display: "grid" }}>
+              <ul
+                style={{ listStyleType: "none", display: "grid", margin: '10px 0' }}
+                className={`${styles.ul} ${styles.textstyle2}`}
+              >
+                <li>
+                  <Link style={{ textDecoration: "none" }}  className={styles.fontcolor}>
+                    Living Room
+                  </Link>
+                </li>
+                <li>
+                  <Link style={{ textDecoration: "none" }}  className={styles.fontcolor}>
+                    Dining Room
+                  </Link>
+                </li>
+                <li>
+                  <Link style={{ textDecoration: "none" }}  className={styles.fontcolor}>
+                    Kitchen & Bath
+                  </Link>
+                </li>
+                <li>
+                  <Link style={{ textDecoration: "none" }}  className={styles.fontcolor}>
+                    Bedroom
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div style={{ display: "grid", justifyItems: 'start' }}>
+              <ul
+                style={{ listStyleType: "none", display: "grid", margin: '10px 0' }}
+                className={`${styles.ul} ${styles.textstyle2}`}
+              >
+                <li>
+                  <Link style={{ textDecoration: "none" }}  className={styles.fontcolor}>
+                    Child/Nursery
+                  </Link>
+                </li>
+                <li>
+                  <Link style={{ textDecoration: "none" }}  className={styles.fontcolor}>
+                    Office
+                  </Link>
+                </li>
+                <li>
+                  <Link style={{ textDecoration: "none" }}  className={styles.fontcolor}>
+                    Garage/Exterior
+                  </Link>
+                </li>
+                <li>
+                  <Link style={{ textDecoration: "none" }}  className={styles.fontcolor}>
+                    Home Decor
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div></div>
+          <div  style={{ display: "grid", justifyItems: 'start' }}>
+            <ul style={{ listStyleType: "none", display: "grid", margin: '10px 0' }}
+                className={`${styles.ul} ${styles.textstyle2}`}>
+                <li style={{ textDecoration: "none" }}  className={styles.fontcolor}>Find us on Facebook</li>
+                <li></li>
+                <li style={{ textDecoration: "none" }}  className={styles.fontcolor}>Privacy Policy</li>
+                <li style={{ textDecoration: "none" }}  className={styles.fontcolor}>Terms + Conditions</li>
+            </ul>
+          </div>
         </div>
       </div>
     </footer>
