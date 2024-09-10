@@ -44,22 +44,22 @@ export default function Footer2() {
             className={`${styles.ul} ${styles.textstyle2}`}
           >
             <li>
-              <Link style={{ textDecoration: "none"}} className={styles.fontcolor} to='/'>
+              <Link style={{ textDecoration: "none"}} className={`${styles.fontcolor} ${styles.links}`} to='/'>
                 Home
               </Link>
             </li>
             <li>
-              <Link style={{ textDecoration: "none" }}  className={styles.fontcolor} to='/Browse'>
+              <Link style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`} to='/Browse'>
                 Furniture
               </Link>
             </li>
             <li>
-              <Link style={{ textDecoration: "none" }} className={styles.fontcolor} to='/About'>
+              <Link style={{ textDecoration: "none" }} className={`${styles.fontcolor} ${styles.links}`} to='/About'>
                 About Us
               </Link>
             </li>
             <li>
-              <Link style={{ textDecoration: "none" }} className={styles.fontcolor} to='/Contact'>
+              <Link style={{ textDecoration: "none" }} className={`${styles.fontcolor} ${styles.links}`} to='/Contact'>
                 Contact
               </Link>
             </li>
@@ -71,22 +71,22 @@ export default function Footer2() {
                 className={`${styles.ul} ${styles.textstyle2}`}
               >
                 <li>
-                  <Link style={{ textDecoration: "none" }}  className={styles.fontcolor}>
+                  <Link style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
                     Living Room
                   </Link>
                 </li>
                 <li>
-                  <Link style={{ textDecoration: "none" }}  className={styles.fontcolor}>
+                  <Link style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
                     Dining Room
                   </Link>
                 </li>
                 <li>
-                  <Link style={{ textDecoration: "none" }}  className={styles.fontcolor}>
+                  <Link style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
                     Kitchen & Bath
                   </Link>
                 </li>
                 <li>
-                  <Link style={{ textDecoration: "none" }}  className={styles.fontcolor}>
+                  <Link style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
                     Bedroom
                   </Link>
                 </li>
@@ -98,22 +98,22 @@ export default function Footer2() {
                 className={`${styles.ul} ${styles.textstyle2}`}
               >
                 <li>
-                  <Link style={{ textDecoration: "none" }}  className={styles.fontcolor}>
+                  <Link style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
                     Child/Nursery
                   </Link>
                 </li>
                 <li>
-                  <Link style={{ textDecoration: "none" }}  className={styles.fontcolor}>
+                  <Link style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
                     Office
                   </Link>
                 </li>
                 <li>
-                  <Link style={{ textDecoration: "none" }}  className={styles.fontcolor}>
+                  <Link style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
                     Garage/Exterior
                   </Link>
                 </li>
                 <li>
-                  <Link style={{ textDecoration: "none" }}  className={styles.fontcolor}>
+                  <Link style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
                     Home Decor
                   </Link>
                 </li>
@@ -123,10 +123,10 @@ export default function Footer2() {
           <div  style={{ display: "grid", justifyItems: 'start' }}>
             <ul style={{ listStyleType: "none", display: "grid", margin: '10px 0' }}
                 className={`${styles.ul} ${styles.textstyle2}`}>
-                <li style={{ textDecoration: "none" }}  className={styles.fontcolor}>Find us on Facebook</li>
+                <li style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>Find us on Facebook</li>
                 <li></li>
-                <li style={{ textDecoration: "none" }}  className={styles.fontcolor}>Privacy Policy</li>
-                <li style={{ textDecoration: "none" }}  className={styles.fontcolor}>Terms + Conditions</li>
+                <li style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>Privacy Policy</li>
+                <li style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>Terms + Conditions</li>
             </ul>
           </div>
         </div>
