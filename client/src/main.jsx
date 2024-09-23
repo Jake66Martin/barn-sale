@@ -6,6 +6,7 @@ import App from './App.jsx'
 import Homepage from './pages/homepage/homepage.jsx'
 import Homepage2 from './pages/homepage/homepage2.jsx'
 import About from './pages/about/about.jsx'
+import About2 from './pages/about/about2.jsx'
 import Browse from './pages/browse/browse.jsx'
 import Login from './pages/login/login.jsx'
 import Contact from './pages/contact/contact.jsx'
@@ -30,7 +31,7 @@ const router = createBrowserRouter ([
         index: true,
         element: <Homepage2 />
       },
-      {path: '/About', element: <About />},
+      {path: '/About2', element: <About2 />},
       {path: '/Browse', element: <Browse />},
       {path: '/Login', element: <Login />},
       {path: '/Contact', element: <Contact />},

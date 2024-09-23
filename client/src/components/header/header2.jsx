@@ -52,7 +52,7 @@ export default function Header2() {
             Browse our furniture
           </Link>
           <Link style={{ color: "#da0404", textDecoration: "none" }} 
-          to="/About"
+          to="/About2"
           className={styles.textstyle}
           >
             About us
@@ -75,7 +75,7 @@ export default function Header2() {
             Browse our furniture
           </Link>
           <Link style={{ color: "#da0404", textDecoration: "none" }} 
-          to="/About"
+          to="/About2"
           className={styles.textstyle}
           >
             About us

@@ -54,7 +54,7 @@ export default function Footer2() {
               </Link>
             </li>
             <li>
-              <Link style={{ textDecoration: "none" }} className={`${styles.fontcolor} ${styles.links}`} to='/About'>
+              <Link style={{ textDecoration: "none" }} className={`${styles.fontcolor} ${styles.links}`} to='/About2'>
                 About Us
               </Link>
             </li>
