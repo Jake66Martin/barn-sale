@@ -1,8 +1,5 @@
 
 
-.contact-page {
-    height:800px;
-}
 
 .add-page {
     height: 1100px;
@@ -10,8 +7,3 @@
 
 
 
-@media (max-width: 1000px) {
-    .about-page {
-        height: 950px;
-    }
-}

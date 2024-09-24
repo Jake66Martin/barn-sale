@@ -10,6 +10,7 @@ import About2 from './pages/about/about2.jsx'
 import Browse from './pages/browse/browse.jsx'
 import Login from './pages/login/login.jsx'
 import Contact from './pages/contact/contact.jsx'
+import Contact2 from './pages/contact/contact2.jsx'
 import Register from './pages/register/register.jsx'
 import Subcategories from './pages/sub-categories/sub-categories.jsx'
 import Items from './pages/items/items.jsx'
@@ -31,10 +32,10 @@ const router = createBrowserRouter ([
         index: true,
         element: <Homepage2 />
       },
-      {path: '/About2', element: <About2 />},
+      {path: '/About', element: <About2 />},
       {path: '/Browse', element: <Browse />},
       {path: '/Login', element: <Login />},
-      {path: '/Contact', element: <Contact />},
+      {path: '/Contact', element: <Contact2 />},
       {path: '/Register', element: <Register />},
       {path: '/Subcategories/:id', element: <Subcategories/>},
       {path: '/Items/:id', element: <Items/>},
