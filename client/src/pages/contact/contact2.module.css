@@ -18,7 +18,7 @@
 }
 
 .mheight {
-  height: 1200px;
+  height: 1500px;
   display: grid;
   grid-template-rows: 30% 45% 25%;
   grid-template-columns: 25% 25% 25% 25%;
@@ -27,36 +27,56 @@
 .cell1 {
   grid-row: 1;
   grid-column: 1;
+  display: grid;
+  grid-template-rows: 50% 50%;
 }
 
 .cell2 {
   grid-row: 1;
   grid-column: 2;
+  display: grid;
+  grid-template-rows: 50% 50%;
 }
 
 .cell3 {
   grid-row: 1;
   grid-column: 3;
+  display: grid;
+  grid-template-rows: 50% 50%;
+  
 }
 
 .cell4 {
   grid-row: 1;
   grid-column: 4;
+  display: grid;
+  grid-template-rows: 50% 50%;
+ 
 }
 
 .cell5 {
   grid-row: 2;
   grid-column: 1 / span 2;
+  background-color: rgb(247, 244, 244);
+  display: grid;
 }
 
 .cell6 {
   grid-row: 2;
   grid-column: 3 / span 2;
+  background-color: rgb(247, 244, 244);
+  display: grid;
 }
 
 .cell7 {
   grid-row: 3;
   grid-column: 1 / span 4;
+  background-image: url("../../../hero.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: multiply; /* Blends image with color */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark color */
 }
 
 .decimg{
