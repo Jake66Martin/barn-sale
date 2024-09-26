@@ -22,6 +22,13 @@ Subcategory.init(
         key: "id",
       },
     },
+    category_name: {
+      type: DataTypes.STRING,
+      references: {
+        model: "category",
+        key: "name"
+      }
+    }
   },
   {
     sequelize,

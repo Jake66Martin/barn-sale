@@ -7,12 +7,13 @@ import Homepage from './pages/homepage/homepage.jsx'
 import Homepage2 from './pages/homepage/homepage2.jsx'
 import About from './pages/about/about.jsx'
 import About2 from './pages/about/about2.jsx'
-import Browse from './pages/browse/browse.jsx'
+import Browse2 from './pages/browse/browse2.jsx'
 import Login from './pages/login/login.jsx'
 import Contact from './pages/contact/contact.jsx'
 import Contact2 from './pages/contact/contact2.jsx'
 import Register from './pages/register/register.jsx'
 import Subcategories from './pages/sub-categories/sub-categories.jsx'
+import Subcategories2 from './pages/sub-categories/sub-categories2.jsx'
 import Items from './pages/items/items.jsx'
 import Search from './pages/search/search.jsx'
 import Add from './pages/add/add.jsx'
@@ -33,11 +34,11 @@ const router = createBrowserRouter ([
         element: <Homepage2 />
       },
       {path: '/About', element: <About2 />},
-      {path: '/Browse', element: <Browse />},
+      {path: '/Browse', element: <Browse2 />},
       {path: '/Login', element: <Login />},
       {path: '/Contact', element: <Contact2 />},
       {path: '/Register', element: <Register />},
-      {path: '/Subcategories/:id', element: <Subcategories/>},
+      {path: '/Subcategories/:name', element: <Subcategories2/>},
       {path: '/Items/:id', element: <Items/>},
       {path: '/Search', element: <Search/>},
       {path: '/Add', element: <Add/>},

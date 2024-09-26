@@ -89,6 +89,20 @@ const resolvers = {
       }
     },
 
+    subcategoryByName: async (parent, { name }, context) => {
+      try {
+        const subcategory = await Subcategory.findAll({
+          where: {
+            category_name: name,
+          },
+          attributes: ["_id", "name", "category_id", "category_name"],
+        });
+        return subcategory;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
     categories: async (parent, { category_id, limit, offset }, context) => {
       try {
         const itemsByCat = await Item.findAll({
@@ -304,9 +318,9 @@ const resolvers = {
       }
     },
 
-    addSubcategory: async (parent, { name, category_id }, context) => {
+    addSubcategory: async (parent, { name, category_id, category_name }, context) => {
       try {
-        const subcategory = await Subcategory.create({ name, category_id });
+        const subcategory = await Subcategory.create({ name, category_id, category_name });
         return subcategory;
       } catch (err) {
         console.log(err);

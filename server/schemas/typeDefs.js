@@ -34,7 +34,8 @@ type Category {
 type Subcategory {
    _id: ID,
    name: String,
-   category_id: ID
+   category_id: ID,
+   category_name: String
 }
 
 type User {
@@ -57,6 +58,7 @@ type Query {
     itemById(_id:ID!): Item,
     userEmail(email: String!): Boolean
     subcategoryById(category_id:ID!): [Subcategory]
+    subcategoryByName(name:String!): [Subcategory]
     searchByItem(item: String!, offset: Int!, limit: Int!): [Item]
     searchItem(item: String!): [Item]
 }
@@ -69,7 +71,7 @@ type Mutation {
     removeItem(_id: ID!): Item
 
     addCategory(name: String!): Category
-    addSubcategory(name: String!, category_id:ID!): Subcategory
+    addSubcategory(name: String!, category_id:ID!, category_name:String!): Subcategory
 
     submitContactForm(name: String!, email: String!, message: String!): Boolean
 

@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+.textstyle {
+  font-family: "Permanent Marker", sans-serif;
+}
+
+.textstyle2 {
+  font-family: "Monserrat", sans-serif;
+}
+
+.banner {
+    background-color: #da0404;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.mainsection{
+    height: 800px;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 50% 50%;
+}
+
+.imgsize {
+    height: 250px;
+  }
+
+  .labelweight {
+    font-weight: 700;
+  }
