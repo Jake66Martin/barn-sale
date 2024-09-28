@@ -19,6 +19,8 @@ type Item {
     _id: ID,
     category_id: ID,
     subcategory_id: ID,
+    item_category: String,
+    item_subcategory: String,
     item: String,
     location: String,
     description: String,
@@ -67,7 +69,7 @@ type Mutation {
     addUser(email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
 
-    addItem(item: String!, description: String!, price: Int!, location: String!, image:[JSON]!, category_id:ID!, subcategory_id:ID!): Item,
+    addItem(item: String!, description: String!, price: Int!, location: String!, image:[JSON]!, category_id:ID!, subcategory_id:ID, item_category:String!, item_subcategory:String): Item,
     removeItem(_id: ID!): Item
 
     addCategory(name: String!): Category

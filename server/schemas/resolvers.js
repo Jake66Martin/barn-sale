@@ -264,7 +264,7 @@ const resolvers = {
 
     addItem: async (
       parent,
-      { item, description, price, location, image, category_id, subcategory_id }
+      { item, description, price, location, image, category_id, subcategory_id, item_subcategory, item_category }
     ) => {
       try {
         const imageData = Array.isArray(image) ? image : [image]; 
@@ -277,6 +277,7 @@ const resolvers = {
             location,
             image: imageData,
             category_id,
+            item_category
           });
           return itemAdded;
         } else {
@@ -288,6 +289,8 @@ const resolvers = {
             image: imageData,
             category_id,
             subcategory_id,
+            item_category,
+            item_subcategory
           });
           return itemAdded;
         }

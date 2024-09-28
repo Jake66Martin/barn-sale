@@ -27,11 +27,13 @@ mutation Login($email: String!, $password: String!) {
 `
 
 export const ADD_ITEM = gql`
-mutation Mutation($item: String!, $description: String!, $price: Int!, $location: String!, $image: [JSON]!, $categoryId: ID!, $subcategoryId: ID!) {
-  addItem(item: $item, description: $description, price: $price, location: $location, image: $image, category_id: $categoryId, subcategory_id: $subcategoryId) {
+mutation AddItem($item: String!, $description: String!, $price: Int!, $location: String!, $image: [JSON]!, $categoryId: ID!, $itemCategory: String!, $subcategoryId: ID, $itemSubcategory: String) {
+  addItem(item: $item, description: $description, price: $price, location: $location, image: $image, category_id: $categoryId, item_category: $itemCategory, subcategory_id: $subcategoryId, item_subcategory: $itemSubcategory) {
     _id
     category_id
     subcategory_id
+    item_category
+    item_subcategory
     item
     location
     description

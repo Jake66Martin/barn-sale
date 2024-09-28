@@ -19,16 +19,23 @@ Item.init(
     category_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'category',
-        key:'id'
-      }
+        model: "category",
+        key: "id",
+      },
     },
     subcategory_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'subcategory',
-        key: 'id'
-      }
+        model: "subcategory",
+        key: "id",
+      },
+    },
+    item_category: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    item_subcategory: {
+      type: DataTypes.STRING,
     },
     description: {
       type: DataTypes.STRING,
@@ -36,11 +43,11 @@ Item.init(
     },
     price: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
     },
-    location:{
+    location: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     image: {
       type: DataTypes.JSON,
@@ -57,5 +64,3 @@ Item.init(
 );
 
 module.exports = Item;
-
-

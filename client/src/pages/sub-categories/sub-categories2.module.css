@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+.textstyle {
+  font-family: "Permanent Marker", sans-serif;
+}
+
+.textstyle2 {
+  font-family: "Monserrat", sans-serif;
+}
+
+.banner {
+  background-color: #da0404;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainsection {
+  min-height: 250px;
+  display: grid;
+  /* grid-template-rows: 250px 250px; */
+  grid-auto-rows: minmax(250px, auto);
+  grid-template-columns: 12.5% 15% 15% 15% 15% 15% 12.5%;
+}
+
+.filtergrid {
+  display: grid;
+  grid-template-rows: 125px 125px;
+  grid-template-columns: 12.5% 15% 15% 15% 15% 15% 12.5%;
+}
+
+.filtercell1 {
+  grid-row: 1;
+  grid-column: 2 / span 5;
+  align-self: center;
+  display: flex;
+  justify-content: space-between; /* Space out content inside the item */
+  align-items: center; /* Center the contents vertically */
+}
+
+.filtercell2 {
+  grid-row: 2;
+  grid-column: 2 / span 5;
+}
+
+.itemcell1 {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.itemcell2 {
+  grid-row: 1;
+  grid-column: 3;
+}
+
+.itemcell3 {
+  grid-row: 1;
+  grid-column: 4;
+}
+
+.itemcell4 {
+  grid-row: 1;
+  grid-column: 5;
+}
+
+.itemcell5 {
+  grid-row: 1;
+  grid-column: 6;
+}

@@ -67,7 +67,7 @@ export default function Browse2() {
             }}
           >
             <div>
-              <Link to='/Categories/Kitchen&Bath'><img src="/kitchen2.png" className={styles.imgsize} /></Link>
+              <Link to='/Subcategories/Kitchen&Bath'><img src="/kitchen2.png" className={styles.imgsize} /></Link>
               <h3
                 style={{
                   textAlign: "center",
@@ -113,7 +113,7 @@ export default function Browse2() {
             }}
           >
             <div>
-              <Link to='/Categories/Child&Nursery'><img src="/nursery2.png" className={styles.imgsize} /></Link>
+              <Link to='/Subcategories/Child&Nursery'><img src="/nursery2.png" className={styles.imgsize} /></Link>
               <h3
                 style={{
                   textAlign: "center",
@@ -136,7 +136,7 @@ export default function Browse2() {
             }}
           >
             <div>
-              <Link to='/Categories/Office'><img src="/office2.png" className={styles.imgsize} /></Link>
+              <Link to='/Subcategories/Office'><img src="/office2.png" className={styles.imgsize} /></Link>
               <h3
                 style={{
                   textAlign: "center",
@@ -159,7 +159,7 @@ export default function Browse2() {
             }}
           >
             <div>
-              <Link to='/Categories/Garage&Exterior'><img src="/garage2.png" className={styles.imgsize} /></Link>
+              <Link to='/Subcategories/Garage&Exterior'><img src="/garage2.png" className={styles.imgsize} /></Link>
               <h3
                 style={{
                   textAlign: "center",
@@ -182,7 +182,7 @@ export default function Browse2() {
             }}
           >
             <div>
-              <Link to='/Categories/HomeDecor'><img src="/decor2.png" className={styles.imgsize} /></Link>
+              <Link to='/Subcategories/HomeDecor'><img src="/decor2.png" className={styles.imgsize} /></Link>
               <h3
                 style={{
                   textAlign: "center",
