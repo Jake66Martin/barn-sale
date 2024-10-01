@@ -19,16 +19,23 @@
 
 .mainsection {
   min-height: 250px;
-  /* display: grid;
-  grid-auto-rows: minmax(250px, auto);
-  grid-template-columns: 12.5% 15% 15% 15% 15% 15% 12.5%; */
-
 }
+
+
 
 .filtergrid {
   display: grid;
   grid-template-rows: 125px 125px;
   grid-template-columns: 12.5% 15% 15% 15% 15% 15% 12.5%;
+}
+
+.filtergrid::after {
+  content: "";
+  position: absolute;
+  top: 430px;
+  left: 12.5%;
+  width: 73.5%; 
+  border-bottom: 1px solid #c0bcbc;
 }
 
 .filtercell1 {

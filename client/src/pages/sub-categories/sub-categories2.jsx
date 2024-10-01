@@ -25,37 +25,37 @@ export default function Subcategories2() {
     if (spacedName === "Living Room") {
       return (
         <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <p style={{ display: "inline" }}>FILTERS:</p>
-          <p style={{ display: "inline" }}>See All</p>
-          <p style={{ display: "inline" }}>Couches/Sofa/Loveseat</p>
-          <p style={{ display: "inline" }}>TV/Media Stand</p>
-          <p style={{ display: "inline" }}>Chairs</p>
-          <p style={{ display: "inline" }}>Side Tables</p>
-          <p style={{ display: "inline" }}>Coffee Tables</p>
-          <p style={{ display: "inline" }}>Book Shelf/Storage Solutions</p>
-          <p style={{ display: "inline" }}>Lamps</p>
-          <p style={{ display: "inline" }}>Mirrors</p>
+          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>FILTERS:</p>
+          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>See All</p>
+          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Couches/Sofa/Loveseat</p>
+          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>TV/Media Stand</p>
+          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Chairs</p>
+          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Side Tables</p>
+          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Coffee Tables</p>
+          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Book Shelf/Storage Solutions</p>
+          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Lamps</p>
+          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Mirrors</p>
         </div>
       );
     } else if (spacedName === "Dining Room") {
       return (
         <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-          <p style={{ display: "inline" }}>FILTERS:</p>
-          <p style={{ display: "inline" }}>See All</p>
-          <p style={{ display: "inline" }}>Dining Sets</p>
-          <p style={{ display: "inline" }}>Dining Tables</p>
-          <p style={{ display: "inline" }}>Dining Chairs</p>
-          <p style={{ display: "inline" }}>Hutches/Sideboards</p>
+          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>FILTERS:</p>
+          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>See All</p>
+          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Dining Sets</p>
+          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Dining Tables</p>
+          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Dining Chairs</p>
+          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Hutches/Sideboards</p>
         </div>
       );
     } else if (spacedName === "Bedroom") {
       return (
         <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-          <p style={{ display: "inline" }}>FILTERS:</p>
-          <p style={{ display: "inline" }}>See All</p>
-          <p style={{ display: "inline" }}>Dressers</p>
-          <p style={{ display: "inline" }}>Beds/Mattresses</p>
-          <p style={{ display: "inline" }}>Night Stands</p>
+          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>FILTERS:</p>
+          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>See All</p>
+          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Dressers</p>
+          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Beds/Mattresses</p>
+          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Night Stands</p>
         </div>
       );
     }
@@ -70,14 +70,14 @@ export default function Subcategories2() {
       </div>
       <div className={`${styles.filtergrid}`}>
         <div className={`${styles.filtercell1}`}>
-          <p style={{ display: "inline" }}>
+          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>
             Home {">"} All furniture {`>`} {spacedName}
           </p>
           <div>
-            <p style={{ display: "inline" }}>SORT by:</p>
+            <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>SORT by:</p>
             <select style={{ margin: "0 20px" }}>
-              <option>Newest to Oldest</option>
-              <option>Oldest to Newest</option>
+              <option className={`${styles.textstyle2}`}>Newest to Oldest</option>
+              <option className={`${styles.textstyle2}`}>Oldest to Newest</option>
             </select>
           </div>
         </div>
