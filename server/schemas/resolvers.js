@@ -164,6 +164,19 @@ const resolvers = {
       }
     },
 
+    ItemsByCategory2: async (parent, { item_category }, context) => {
+      try {
+        const category = await Item.findAll({
+          where: {
+            item_category: item_category,
+          },
+        });
+        return category;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
     searchByItem: async (parent, { item, limit, offset }, context) => {
       try {
         let allItems;

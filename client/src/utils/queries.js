@@ -126,4 +126,21 @@ query Query($id: ID!) {
 }
 `
 
+export const ITEM_CAT = gql`
+query Query($itemCategory: String!) {
+  ItemsByCategory2(item_category: $itemCategory) {
+    _id
+    category_id
+    subcategory_id
+    item_category
+    item_subcategory
+    item
+    location
+    description
+    price
+    image
+  }
+}
+`
+
 

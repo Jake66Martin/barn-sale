@@ -19,10 +19,10 @@
 
 .mainsection {
   min-height: 250px;
-  display: grid;
-  /* grid-template-rows: 250px 250px; */
+  /* display: grid;
   grid-auto-rows: minmax(250px, auto);
-  grid-template-columns: 12.5% 15% 15% 15% 15% 15% 12.5%;
+  grid-template-columns: 12.5% 15% 15% 15% 15% 15% 12.5%; */
+
 }
 
 .filtergrid {
@@ -45,27 +45,20 @@
   grid-column: 2 / span 5;
 }
 
-.itemcell1 {
-  grid-row: 1;
-  grid-column: 2;
+.gridContainer {
+  display: grid;
+  grid-template-columns: 12.5% 15% 15% 15% 15% 15% 12.5%;
 }
 
-.itemcell2 {
-  grid-row: 1;
-  grid-column: 3;
+.itemCell {
+  width: 100%;
+  height: 300px;
 }
 
-.itemcell3 {
-  grid-row: 1;
-  grid-column: 4;
+.emptyDiv{
+  grid-column: span 1;
 }
 
-.itemcell4 {
-  grid-row: 1;
-  grid-column: 5;
-}
-
-.itemcell5 {
-  grid-row: 1;
-  grid-column: 6;
+.imgsize{
+  width: 90%;
 }

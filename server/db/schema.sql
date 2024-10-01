@@ -25,7 +25,7 @@ CREATE TABLE Item (
     category_id INT,
     subcategory_id INT,
     item_category VARCHAR(100) NOT NULL,
-    item_subcategory VARCHAR(100) NOT NULL,
+    item_subcategory VARCHAR(100),
     description VARCHAR(100) NOT NULL,
     price INT NOT NULL,
     location VARCHAR(100) NOT NULL,
@@ -50,22 +50,22 @@ INSERT INTO Category (name)
     ("Child&Nursery"),
     ("Office"),
     ("Garage&Exterior"),
-    ("HomeDecor")
+    ("HomeDecor");
 
 INSERT INTO Subcategory (name, category_id, category_name)
 VALUES 
-("Couches & Sofas & Loveseats", "1", "LivingRoom"),
-("TV & Media Stand", "1", "LivingRoom"),
+("Couches&Sofas&Loveseats", "1", "LivingRoom"),
+("TV&MediaStand", "1", "LivingRoom"),
 ("Chairs", "1", "LivingRoom"),
-("Side Tables", "1", "LivingRoom"),
-("Coffee Tables", "1", "LivingRoom"),
-("Bookselfs & Storage Solutions", "1", "LivingRoom"),
+("SideTables", "1", "LivingRoom"),
+("CoffeeTables", "1", "LivingRoom"),
+("Bookselfs&StorageSolutions", "1", "LivingRoom"),
 ("Lamps", "1", "LivingRoom"),
 ("Mirrors", "1", "LivingRoom"),
-("Dining Sets", "2", "DiningRoom"),
-("Dining Tables", "2", "DiningRoom"),
-("Dining Chairs", "2", "DiningRoom"),
-("Hutches & Side Boards", "2", "DiningRoom"),
+("DiningSets", "2", "DiningRoom"),
+("DiningTables", "2", "DiningRoom"),
+("DiningChairs", "2", "DiningRoom"),
+("Hutches&Side Boards", "2", "DiningRoom"),
 ("Dressers", "4", "Bedroom"),
-("Beds & Mattresses", "4", "Bedroom"),
-("Night Stands", "4", "Bedroom");
+("Beds&Mattresses", "4", "Bedroom"),
+("NightStands", "4", "Bedroom");
