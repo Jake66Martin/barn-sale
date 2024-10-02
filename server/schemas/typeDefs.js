@@ -63,7 +63,7 @@ type Query {
     subcategoryByName(name:String!): [Subcategory]
     searchByItem(item: String!, offset: Int!, limit: Int!): [Item]
     searchItem(item: String!): [Item],
-    ItemsByCategory2(item_category: String!): [Item]
+    ItemsByCategory2(item_category: String!, filters: [String!]): [Item]
 }
 
 type Mutation {

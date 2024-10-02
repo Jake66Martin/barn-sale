@@ -164,19 +164,30 @@ const resolvers = {
       }
     },
 
-    ItemsByCategory2: async (parent, { item_category }, context) => {
-      try {
-        const category = await Item.findAll({
-          where: {
-            item_category: item_category,
-          },
-        });
-        return category;
-      } catch (err) {
-        console.log(err);
+    // ItemsByCategory2: async (parent, { item_category }, context) => {
+    //   try {
+    //     const category = await Item.findAll({
+    //       where: {
+    //         item_category: item_category,
+    //       },
+    //     });
+    //     return category;
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // },
+
+    ItemsByCategory2: async (parent, { item_category, filters }, context) => {
+      let whereConditions = { item_category };
+      
+      if (filters.length > 0) {
+        whereConditions.item_subcategory = { [Op.in]: filters };
       }
+    
+      return await Item.findAll({ where: whereConditions });
     },
 
+   
     searchByItem: async (parent, { item, limit, offset }, context) => {
       try {
         let allItems;

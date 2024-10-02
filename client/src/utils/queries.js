@@ -127,8 +127,8 @@ query Query($id: ID!) {
 `
 
 export const ITEM_CAT = gql`
-query Query($itemCategory: String!) {
-  ItemsByCategory2(item_category: $itemCategory) {
+query Query($itemCategory: String!, $filters: [String!]) {
+  ItemsByCategory2(item_category: $itemCategory, filters: $filters) {
     _id
     category_id
     subcategory_id

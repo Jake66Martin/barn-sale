@@ -3,63 +3,65 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { SUB_CATEGORY2, CATEGORIES, ITEM_CAT } from "../../utils/queries";
 import { Link } from "react-router-dom";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 
 export default function Subcategories2() {
   let { name } = useParams();
 
   let spacedName = name
-  .replace(/([a-z])([A-Z])/g, "$1 $2")
-  .replace(/([a-zA-Z])&/g, '$1 &')
-  .replace(/&([a-zA-Z])/g, '& $1');  
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .replace(/([a-zA-Z])&/g, "$1 &")
+    .replace(/&([a-zA-Z])/g, "& $1");
+
+  // const { loading, error, data } = useQuery(ITEM_CAT, {
+  //   variables: { itemCategory: name },
+  // });
+  const [selectedFilters, setSelectedFilters] = useState([]);
 
   const { loading, error, data } = useQuery(ITEM_CAT, {
-    variables: { itemCategory: name },
+    variables: { itemCategory: name, filters: selectedFilters },
   });
+
+  
+
+  const handleFilterToggle = (filter) => {
+    setSelectedFilters((prev) =>
+      prev.includes(filter)
+        ? prev.filter((f) => f !== filter)
+        : [...prev, filter]
+    );
+  };
 
   let items = data?.ItemsByCategory2 || [];
 
-  console.log(items);
+ 
 
-  function filters() {
+  const getFilters = () => {
     if (spacedName === "Living Room") {
-      return (
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>FILTERS:</p>
-          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>See All</p>
-          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Couches/Sofa/Loveseat</p>
-          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>TV/Media Stand</p>
-          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Chairs</p>
-          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Side Tables</p>
-          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Coffee Tables</p>
-          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Book Shelf/Storage Solutions</p>
-          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Lamps</p>
-          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Mirrors</p>
-        </div>
-      );
+      return [
+        "Couches & Sofas & Loveseats",
+        "TV & Media Stand",
+        "Chairs",
+        "Side Tables",
+        "Coffee Tables",
+        "Book Shelf & Storage Solutions",
+        "Lamps",
+        "Mirrors",
+      ];
     } else if (spacedName === "Dining Room") {
-      return (
-        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>FILTERS:</p>
-          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>See All</p>
-          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Dining Sets</p>
-          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Dining Tables</p>
-          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Dining Chairs</p>
-          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Hutches/Sideboards</p>
-        </div>
-      );
+      return [
+        "Dining Sets",
+        "Dining Tables",
+        "Dining Chairs",
+        "Hutches & Sideboards",
+      ];
     } else if (spacedName === "Bedroom") {
-      return (
-        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>FILTERS:</p>
-          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>See All</p>
-          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Dressers</p>
-          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Beds/Mattresses</p>
-          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>Night Stands</p>
-        </div>
-      );
+      return ["Dressers", "Beds & Mattresses", "Night Stands"];
     }
-  }
+    return [];
+  };
+
+  const filters = getFilters();
 
   return (
     <>
@@ -74,14 +76,65 @@ export default function Subcategories2() {
             Home {">"} All furniture {`>`} {spacedName}
           </p>
           <div>
-            <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>SORT by:</p>
+            <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>
+              SORT by:
+            </p>
             <select style={{ margin: "0 20px" }}>
-              <option className={`${styles.textstyle2}`}>Newest to Oldest</option>
-              <option className={`${styles.textstyle2}`}>Oldest to Newest</option>
+              <option className={`${styles.textstyle2}`}>
+                Newest to Oldest
+              </option>
+              <option className={`${styles.textstyle2}`}>
+                Oldest to Newest
+              </option>
             </select>
           </div>
         </div>
-        <div className={`${styles.filtercell2}`}>{filters()}</div>
+        <div className={`${styles.filtercell2}`}>
+          {/* {getFilters()} */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-evenly",
+              marginBottom: "10px",
+            }}
+          >
+            {(spacedName === "Living Room" ||
+              spacedName === "Dining Room" ||
+              spacedName === "Bedroom") && (
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <p style={{ display: "inline" }}>FILTERS:</p>
+                <p
+                  onClick={() => setSelectedFilters([])}
+                  style={{
+                    display: "inline",
+                    cursor: "pointer",
+                    fontWeight:
+                      selectedFilters.length === 0 ? "bold" : "normal",
+                      marginLeft: "100px", // Add margin to create space
+
+                  }}
+                >
+                  See All
+                </p>
+              </div>
+            )}
+            {filters.map((filter) => (
+              <p
+                key={filter}
+                onClick={() => handleFilterToggle(filter)}
+                style={{
+                  display: "inline",
+                  cursor: "pointer",
+                  fontWeight: selectedFilters.includes(filter)
+                    ? "bold"
+                    : "normal",
+                }}
+              >
+                {filter}
+              </p>
+            ))}
+          </div>
+        </div>
       </div>
       <section className={`${styles.mainsection}`}>
         {items.length > 0 ? (
@@ -93,10 +146,22 @@ export default function Subcategories2() {
                     <div className={`${styles.emptyDiv}`}></div>
                   )}
 
-                  <div className={`${styles.itemCell}`} style={{display: 'flex', flexDirection: 'column'}}>
-                    <img src="/office.jpg" alt="item" className={`${styles.imgsize}`} style={{justifySelf: 'center'}}/>
-                    <p style={{height: '1px', margin: '10px 0'}}>{item.item}</p>
-                    <p style={{height: '1px', margin: '10px 0'}}>${item.price}.00</p>
+                  <div
+                    className={`${styles.itemCell}`}
+                    style={{ display: "flex", flexDirection: "column" }}
+                  >
+                    <img
+                      src="/office.jpg"
+                      alt="item"
+                      className={`${styles.imgsize}`}
+                      style={{ justifySelf: "center" }}
+                    />
+                    <p style={{ height: "1px", margin: "10px 0" }}>
+                      {item.item}
+                    </p>
+                    <p style={{ height: "1px", margin: "10px 0" }}>
+                      ${item.price}.00
+                    </p>
                   </div>
 
                   {index % 5 === 4 && (
