@@ -44,22 +44,22 @@ export default function Footer2() {
             className={`${styles.ul} ${styles.textstyle2}`}
           >
             <li>
-              <Link style={{ textDecoration: "none"}} className={`${styles.fontcolor} ${styles.links}`} to='/'>
+              <Link onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ textDecoration: "none"}} className={`${styles.fontcolor} ${styles.links}`} to='/'>
                 Home
               </Link>
             </li>
             <li>
-              <Link style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`} to='/Browse'>
+              <Link onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`} to='/Browse'>
                 Furniture
               </Link>
             </li>
             <li>
-              <Link style={{ textDecoration: "none" }} className={`${styles.fontcolor} ${styles.links}`} to='/About'>
+              <Link onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ textDecoration: "none" }} className={`${styles.fontcolor} ${styles.links}`} to='/About'>
                 About Us
               </Link>
             </li>
             <li>
-              <Link style={{ textDecoration: "none" }} className={`${styles.fontcolor} ${styles.links}`} to='/Contact'>
+              <Link onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ textDecoration: "none" }} className={`${styles.fontcolor} ${styles.links}`} to='/Contact'>
                 Contact
               </Link>
             </li>
@@ -71,22 +71,22 @@ export default function Footer2() {
                 className={`${styles.ul} ${styles.textstyle2}`}
               >
                 <li>
-                  <Link style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
+                  <Link onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} to='/Subcategories/LivingRoom' style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
                     Living Room
                   </Link>
                 </li>
                 <li>
-                  <Link style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
+                  <Link onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} to='/Subcategories/DiningRoom' style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
                     Dining Room
                   </Link>
                 </li>
                 <li>
-                  <Link style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
+                  <Link onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} to='/Subcategories/Kitchen&Bath' style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
                     Kitchen & Bath
                   </Link>
                 </li>
                 <li>
-                  <Link style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
+                  <Link onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} to='/Subcategories/Bedroom' style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
                     Bedroom
                   </Link>
                 </li>
@@ -98,22 +98,22 @@ export default function Footer2() {
                 className={`${styles.ul} ${styles.textstyle2}`}
               >
                 <li>
-                  <Link style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
+                  <Link onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} to='/Subcategories/Child&Nursery' style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
                     Child/Nursery
                   </Link>
                 </li>
                 <li>
-                  <Link style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
+                  <Link onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} to='/Subcategories/Office' style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
                     Office
                   </Link>
                 </li>
                 <li>
-                  <Link style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
+                  <Link onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} to='/Subcategories/Garage&Exterior' style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
                     Garage/Exterior
                   </Link>
                 </li>
                 <li>
-                  <Link style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
+                  <Link onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} to='/Subcategories/HomeDecor' style={{ textDecoration: "none" }}  className={`${styles.fontcolor} ${styles.links}`}>
                     Home Decor
                   </Link>
                 </li>

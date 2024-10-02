@@ -1,56 +1,35 @@
 import styles from "./header2.module.css";
 import Auth from "../../utils/auth";
 import { Link, useLocation } from "react-router-dom";
+import { useState } from 'react'
 
 export default function Header2() {
   const cp = useLocation().pathname;
 
+  
+    // State to track whether the div is visible or not
+    const [isVisible, setIsVisible] = useState(false);
+  
+    // Toggle function to change the visibility
+    const toggleVisibility = () => {
+      setIsVisible(!isVisible); // Switch between true and false
+    }
+
+
+
   function showOptions() {
     if (Auth.loggedIn()) {
       return (
-        // <ul className="navbar-nav" id="navScrollspy">
-
-        //   <li key={2} className="nav-item">
-        //     <Link
-        //       className={`nav-link fs-3 ${cp === "/About" ? "active" : ""}`}
-        //       to="/About"
-        //     >
-        //       About Us
-        //     </Link>
-        //   </li>
-        //   <li key={3} className="nav-item">
-        //     <Link
-        //       className={`nav-link fs-3 ${cp === "/Browse" ? "active" : ""}`}
-        //       to="/Browse"
-        //     >
-        //       Browse
-        //     </Link>
-        //   </li>
-        //   <li key={4} className="nav-item">
-        //     <Link
-        //       className={`nav-link fs-3 ${cp === "/Contact" ? "active" : ""}`}
-        //       to="/Contact"
-        //     >
-        //       Contact
-        //     </Link>
-        //   </li>
-        //   <li key={5} className="nav-item">
-        //     <a
-        //       className={`nav-link fs-3 ${cp === "/Logout" ? "active" : ""}`}
-        //       href="/"
-        //       onClick={() => Auth.logout()}
-        //     >
-        //       Logout
-        //     </a>
-        //   </li>
-        // </ul>
+        
         <>
-          <Link style={{ color: "#da0404", textDecoration: "none" }} 
-          to="/Browse"
+          <p style={{ color: "#da0404", textDecoration: "none" }} 
+         to='#'
+         onClick={toggleVisibility}
           className={styles.textstyle}
           >
+            {isVisible ? 'Hide' : 'Show'}
             Browse our furniture
-          </Link>
+          </p>
           <Link style={{ color: "#da0404", textDecoration: "none" }} 
           to="/About"
           className={styles.textstyle}
@@ -69,7 +48,9 @@ export default function Header2() {
       return (
         <>
           <Link style={{ color: "#da0404", textDecoration: "none" }} 
-          to="/Browse"
+         to='#'
+          onClick={toggleVisibility}
+
           className={styles.textstyle}
           >
             Browse our furniture
@@ -88,39 +69,16 @@ export default function Header2() {
             Contact
           </Link>
         </>
-        // <ul className="navbar-nav" id="navScrollspy">
-
-        //   <li key={2} className="nav-item">
-        //     <Link
-        //       className={`nav-link fs-3 ${cp === "/About" ? "active" : ""}`}
-        //       to="/About"
-        //     >
-        //       About Us
-        //     </Link>
-        //   </li>
-        //   <li key={3} className="nav-item">
-        //     <Link
-        //       className={`nav-link fs-3 ${cp === "/Browse" ? "active" : ""}`}
-        //       to="/Browse"
-        //     >
-        //       Browse
-        //     </Link>
-        //   </li>
-        //   <li key={4} className="nav-item">
-        //     <Link
-        //       className={`nav-link fs-3 ${cp === "/Contact" ? "active" : ""}`}
-        //       to="/Contact"
-        //     >
-        //       Contact
-        //     </Link>
-        //   </li>
-        // </ul>
+        
       );
     }
   }
 
+
+
   return (
-    <header className={`${styles.height} ${styles.grid}`}>
+    <>
+    <header className={`${styles.height} ${styles.grid}`} style={{position: 'relative'}}>
       <div className={styles.toprow}>
         <h3 style={{ color: "white", textAlign: "center" }}
         className={styles.textstyle}
@@ -157,6 +115,9 @@ export default function Header2() {
           </form>
         </div>
       </div>
+      <div className={`${styles.ddmenu}`} style={{ display: isVisible ? 'block' : 'none'}}><p>hello</p></div>
     </header>
+    
+    </>
   );
 }

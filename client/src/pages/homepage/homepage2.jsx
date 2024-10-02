@@ -5,7 +5,7 @@ import styles from "./homepage2.module.css";
 export default function Homepage2() {
   return (
     <>
-      <hero className={styles.background}>
+      <section className={styles.background}>
         <img
           src="/crestlogo.png"
           alt="thrift barn logo"
@@ -50,7 +50,7 @@ export default function Homepage2() {
         >
           Contact Us!
         </Link>
-      </hero>
+      </section>
       <section className={styles.info}>
         <div
           style={{
