@@ -18,7 +18,7 @@ export default function Header2() {
     if (Auth.loggedIn()) {
       return (
         <>
-          <p
+          <div
             style={{ color: "#da0404", textDecoration: "none" }}
             to="#"
             onClick={toggleVisibility}
@@ -26,7 +26,110 @@ export default function Header2() {
           >
             {isVisible ? "Hide" : "Show"}
             Browse our furniture
-          </p>
+            <div
+              className={`${styles.ddmenu}`}
+              style={{ display: isVisible ? "block" : "none" }}
+            >
+              <ul
+                style={{
+                  margin: "0 0",
+                  padding: "0 0",
+                  height: "100%",
+                  width: "100%",
+                }}
+                className={`${styles.ulmen}`}
+              >
+                <Link
+                  to="/Subcategories/LivingRoom"
+                  style={{ textDecoration: "none" }}
+                >
+                  <li
+                    style={{ listStyleType: "none", color: "#da0404" }}
+                    className={`${styles.textstyle}`}
+                  >
+                    Living Room
+                  </li>
+                </Link>
+                <Link
+                  to="/Subcategories/DiningRoom"
+                  style={{ textDecoration: "none" }}
+                >
+                  <li
+                    style={{ listStyleType: "none", color: "#da0404" }}
+                    className={`${styles.textstyle}`}
+                  >
+                    Dining Room
+                  </li>
+                </Link>
+                <Link
+                  to="/Subcategories/Kitchen&Bath"
+                  style={{ textDecoration: "none" }}
+                >
+                  <li
+                    style={{ listStyleType: "none", color: "#da0404" }}
+                    className={`${styles.textstyle}`}
+                  >
+                    Kitchen & Bath
+                  </li>
+                </Link>
+                <Link
+                  to="/Subcategories/Bedroom"
+                  style={{ textDecoration: "none" }}
+                >
+                  <li
+                    style={{ listStyleType: "none", color: "#da0404" }}
+                    className={`${styles.textstyle}`}
+                  >
+                    Bedroom
+                  </li>
+                </Link>
+                <Link
+                  to="/Subcategories/Child&Nursery"
+                  style={{ textDecoration: "none" }}
+                >
+                  <li
+                    style={{ listStyleType: "none", color: "#da0404" }}
+                    className={`${styles.textstyle}`}
+                  >
+                    Child & Nursery
+                  </li>
+                </Link>
+                <Link
+                  to="/Subcategories/Office"
+                  style={{ textDecoration: "none" }}
+                >
+                  <li
+                    style={{ listStyleType: "none", color: "#da0404" }}
+                    className={`${styles.textstyle}`}
+                  >
+                    Office
+                  </li>
+                </Link>
+                <Link
+                  to="/Subcategories/Garage&Exterior"
+                  style={{ textDecoration: "none" }}
+                >
+                  <li
+                    style={{ listStyleType: "none", color: "#da0404" }}
+                    className={`${styles.textstyle}`}
+                  >
+                    Garage & Exterior
+                  </li>
+                </Link>
+                <Link
+                  to="/Subcategories/HomeDecor"
+                  style={{ textDecoration: "none" }}
+                >
+                  <li
+                    style={{ listStyleType: "none", color: "#da0404" }}
+                    className={`${styles.textstyle}`}
+                  >
+                    Home Decor
+                  </li>
+                </Link>
+              </ul>
+            </div>
+          </div>
           <Link
             style={{ color: "#da0404", textDecoration: "none" }}
             to="/About"
@@ -46,7 +149,7 @@ export default function Header2() {
     } else {
       return (
         <>
-          <Link
+          <div
             style={{
               color: "#da0404",
               textDecoration: "none",
@@ -160,7 +263,7 @@ export default function Header2() {
                 </Link>
               </ul>
             </div>
-          </Link>
+          </div>
           <Link
             style={{ color: "#da0404", textDecoration: "none" }}
             to="/About"
@@ -230,6 +333,18 @@ export default function Header2() {
                 aria-label="Search"
                 className={styles.nosubmit}
               />
+              <button className={`${styles.searchbutton}`}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  class="bi bi-search"
+                  fill="#da0404"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+                </svg>
+              </button>
             </form>
           </div>
         </div>
