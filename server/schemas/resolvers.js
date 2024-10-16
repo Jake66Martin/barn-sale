@@ -187,6 +187,21 @@ const resolvers = {
       return await Item.findAll({ where: whereConditions });
     },
 
+    AllItemsByCategory2: async (parent, { item_category, filters, limit, offset }, context) => {
+      let whereConditions = { item_category };
+      
+      if (filters.length > 0) {
+        whereConditions.item_subcategory = { [Op.in]: filters };
+      }
+    
+      return await Item.findAll({ 
+        where: whereConditions,
+        limit,
+        offset
+       });
+    },
+
+
    
     searchByItem: async (parent, { item, limit, offset }, context) => {
       try {

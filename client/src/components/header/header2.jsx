@@ -1,17 +1,22 @@
 import styles from "./header2.module.css";
 import Auth from "../../utils/auth";
-import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useState, useRef } from "react";
 
 export default function Header2() {
   const cp = useLocation().pathname;
 
-  // State to track whether the div is visible or not
   const [isVisible, setIsVisible] = useState(false);
+  const inputRef = useRef(null);
+  const navigate = useNavigate();
 
-  // Toggle function to change the visibility
+  const handleClick = () => {
+    navigate('/Search')
+  };
+
+
   const toggleVisibility = () => {
-    setIsVisible(!isVisible); // Switch between true and false
+    setIsVisible(!isVisible);
   };
 
   function showOptions() {
@@ -22,12 +27,12 @@ export default function Header2() {
             style={{ color: "#da0404", textDecoration: "none" }}
             to="#"
             onClick={toggleVisibility}
-            className={styles.textstyle}
+            className={`${styles.textstyle} ${styles.yo}`}
           >
             {isVisible ? "Hide" : "Show"}
-            Browse our furniture
+           Browse our furniture 
             <div
-              className={`${styles.ddmenu}`}
+              className={`${styles.ddmenu} ${styles.yo}`}
               style={{ display: isVisible ? "block" : "none" }}
             >
               <ul
@@ -157,7 +162,7 @@ export default function Header2() {
             }}
             to="#"
             onClick={toggleVisibility}
-            className={styles.textstyle}
+            className={`${styles.textstyle} ${styles.yo}`}
           >
             Browse our furniture
             <div
@@ -331,14 +336,18 @@ export default function Header2() {
               <input
                 type="search"
                 aria-label="Search"
+                ref={inputRef}
                 className={styles.nosubmit}
               />
-              <button className={`${styles.searchbutton}`}>
+              <button 
+              className={`${styles.searchbutton}`}
+              onClick={handleClick}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
                   height="16"
-                  class="bi bi-search"
+                  className="bi bi-search"
                   fill="#da0404"
                   viewBox="0 0 16 16"
                 >

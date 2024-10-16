@@ -5,6 +5,10 @@
     font-weight: 600;
 }
 
+.yo:hover{
+    cursor: pointer;
+}
+
 
 .height{
     height: 17vh;

@@ -64,6 +64,8 @@ type Query {
     searchByItem(item: String!, offset: Int!, limit: Int!): [Item]
     searchItem(item: String!): [Item],
     ItemsByCategory2(item_category: String!, filters: [String!]): [Item]
+    AllItemsByCategory2(item_category: String!, filters: [String!], offset: Int!, limit: Int!): [Item]
+
 }
 
 type Mutation {

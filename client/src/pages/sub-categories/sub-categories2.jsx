@@ -1,28 +1,84 @@
 import styles from "./sub-categories2.module.css";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { SUB_CATEGORY2, CATEGORIES, ITEM_CAT } from "../../utils/queries";
+import { ITEM_CAT, ITEM_CAT2 } from "../../utils/queries";
 import { Link } from "react-router-dom";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 
 export default function Subcategories2() {
   let { name } = useParams();
+
+  const [limit, setLimit] = useState(25);
+  // const [offset, setOffset] = useState(0);
+  const [currentOffset, setCurrentOffset] = useState(0);
+
+  const [page, setPage] = useState(1);
+  const [activePage, setActivePage] = useState(1);
+
+  function clickPlus() {
+    if (activePage < pagesRequired) {
+      setCurrentOffset(currentOffset + limit);
+      setActivePage(activePage + 1);
+    } else {
+      console.log("No data available.");
+    }
+  }
+
+  function clickNegative() {
+    if (activePage > 1) {
+      setActivePage(activePage - 1);
+      setCurrentOffset(currentOffset - limit);
+    } else {
+      console.log("Page number cannot go below 1.");
+    }
+  }
+
+  useEffect(() => {
+    // Calculate the new offset based on the active page
+    setCurrentOffset((activePage - 1) * limit);
+}, [activePage, limit]);
 
   let spacedName = name
     .replace(/([a-z])([A-Z])/g, "$1 $2")
     .replace(/([a-zA-Z])&/g, "$1 &")
     .replace(/&([a-zA-Z])/g, "& $1");
 
-  // const { loading, error, data } = useQuery(ITEM_CAT, {
-  //   variables: { itemCategory: name },
-  // });
   const [selectedFilters, setSelectedFilters] = useState([]);
 
-  const { loading, error, data } = useQuery(ITEM_CAT, {
+  const {
+    loading,
+    error,
+    data: paginationItems,
+  } = useQuery(ITEM_CAT, {
     variables: { itemCategory: name, filters: selectedFilters },
   });
 
-  
+  const {
+    loading: paginationLoad,
+    error: paginationError,
+    data: allItems,
+  } = useQuery(ITEM_CAT2, {
+    variables: { itemCategory: name, filters: selectedFilters, limit, offset: currentOffset },
+  });
+
+  const numberOfPages = paginationItems?.ItemsByCategory2.length / 25;
+  const pagesRequired = Math.ceil(numberOfPages);
+
+  if (paginationItems) {
+    console.log(paginationItems);
+  }
+
+  if (allItems) {
+    console.log(allItems);
+  }
+
+  if (numberOfPages) {
+    console.log(numberOfPages);
+  }
+
+  if (pagesRequired) {
+    console.log(pagesRequired);
+  }
 
   const handleFilterToggle = (filter) => {
     setSelectedFilters((prev) =>
@@ -32,9 +88,7 @@ export default function Subcategories2() {
     );
   };
 
-  let items = data?.ItemsByCategory2 || [];
-
- 
+  let items = allItems?.AllItemsByCategory2 || [];
 
   const getFilters = () => {
     if (spacedName === "Living Room") {
@@ -110,8 +164,7 @@ export default function Subcategories2() {
                     cursor: "pointer",
                     fontWeight:
                       selectedFilters.length === 0 ? "bold" : "normal",
-                      marginLeft: "100px", // Add margin to create space
-
+                    marginLeft: "100px", // Add margin to create space
                   }}
                 >
                   See All
@@ -173,6 +226,46 @@ export default function Subcategories2() {
         ) : (
           <div>No Items Available</div>
         )}
+        <div className={`${styles.pagination}`}>
+          <a
+            style={{ margin: "0 10px", textDecoration: "none", color: "black" }}
+            href="#"
+            onClick={clickNegative}
+          >
+            Prev
+          </a>
+
+          {Number.isInteger(pagesRequired) &&
+            pagesRequired > 0 &&
+            [...Array(pagesRequired)].map((_, index) => 
+            {
+              let pageNumber = index + 1
+              return (
+              <a
+                key={index}
+                style={{
+                  margin: "0 10px",
+                  textDecoration: "none",
+                  color: "black",
+                }}
+                href="#"
+                onClick={() => 
+                  
+                setActivePage(pageNumber)}
+                className={activePage === pageNumber ? styles.active : ''}
+              >
+                {pageNumber}
+              </a>
+              
+                )})}
+          <a
+            style={{ margin: "0 10px", textDecoration: "none", color: "black" }}
+            href="#"
+            onClick={clickPlus}
+          >
+            Next
+          </a>
+        </div>
       </section>
     </>
   );

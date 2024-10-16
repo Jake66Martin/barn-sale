@@ -43,8 +43,8 @@
   grid-column: 2 / span 5;
   align-self: center;
   display: flex;
-  justify-content: space-between; /* Space out content inside the item */
-  align-items: center; /* Center the contents vertically */
+  justify-content: space-between; 
+  align-items: center; 
 }
 
 .filtercell2 {
@@ -68,4 +68,20 @@
 
 .imgsize{
   width: 90%;
+}
+
+.pagination{
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.yo:hover{
+  cursor: pointer;
+}
+
+.active{
+  color: #da0404 !important;
+  font-size: 20px;
 }

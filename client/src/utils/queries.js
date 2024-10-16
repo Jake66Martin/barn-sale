@@ -143,4 +143,19 @@ query Query($itemCategory: String!, $filters: [String!]) {
 }
 `
 
-
+export const ITEM_CAT2 = gql`
+query Query($itemCategory: String!, $offset: Int!, $limit: Int!, $filters: [String!]) {
+  AllItemsByCategory2(item_category: $itemCategory, offset: $offset, limit: $limit, filters: $filters) {
+    _id
+    category_id
+    subcategory_id
+    item_category
+    item_subcategory
+    item
+    location
+    description
+    price
+    image
+  }
+}
+`
