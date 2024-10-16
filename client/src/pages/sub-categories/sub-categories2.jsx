@@ -9,10 +9,10 @@ export default function Subcategories2() {
   let { name } = useParams();
 
   const [limit, setLimit] = useState(25);
-  // const [offset, setOffset] = useState(0);
   const [currentOffset, setCurrentOffset] = useState(0);
+  const [sortOrder, setSortOrder] = useState('newest');
 
-  const [page, setPage] = useState(1);
+
   const [activePage, setActivePage] = useState(1);
 
   function clickPlus() {
@@ -34,7 +34,6 @@ export default function Subcategories2() {
   }
 
   useEffect(() => {
-    // Calculate the new offset based on the active page
     setCurrentOffset((activePage - 1) * limit);
 }, [activePage, limit]);
 
@@ -58,7 +57,7 @@ export default function Subcategories2() {
     error: paginationError,
     data: allItems,
   } = useQuery(ITEM_CAT2, {
-    variables: { itemCategory: name, filters: selectedFilters, limit, offset: currentOffset },
+    variables: { itemCategory: name, filters: selectedFilters, limit, offset: currentOffset, sortOrder },
   });
 
   const numberOfPages = paginationItems?.ItemsByCategory2.length / 25;
@@ -79,6 +78,12 @@ export default function Subcategories2() {
   if (pagesRequired) {
     console.log(pagesRequired);
   }
+
+  const handleSortChange = (e) => {
+    setSortOrder(e.target.value);
+    setActivePage(1);
+};
+
 
   const handleFilterToggle = (filter) => {
     setSelectedFilters((prev) =>
@@ -133,11 +138,11 @@ export default function Subcategories2() {
             <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>
               SORT by:
             </p>
-            <select style={{ margin: "0 20px" }}>
-              <option className={`${styles.textstyle2}`}>
+            <select style={{ margin: "0 20px" }} onChange={handleSortChange} value={sortOrder}>
+              <option className={`${styles.textstyle2}`} value='newest'>
                 Newest to Oldest
               </option>
-              <option className={`${styles.textstyle2}`}>
+              <option className={`${styles.textstyle2}`} value='oldest'>
                 Oldest to Newest
               </option>
             </select>
@@ -224,7 +229,7 @@ export default function Subcategories2() {
               ))}
           </div>
         ) : (
-          <div>No Items Available</div>
+          <div style={{display: 'flex', justifyContent: 'center', height: '150px'}} className={styles.textstyle}><p style={{color: 'red', fontSize: '30px'}}>No Items Available</p></div>
         )}
         <div className={`${styles.pagination}`}>
           <a

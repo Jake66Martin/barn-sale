@@ -53,6 +53,10 @@ Item.init(
       type: DataTypes.JSON,
       allowNull: false,
     },
+    created_at: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
+    }
   },
   {
     sequelize,

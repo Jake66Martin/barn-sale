@@ -139,13 +139,14 @@ query Query($itemCategory: String!, $filters: [String!]) {
     description
     price
     image
+    
   }
 }
 `
 
 export const ITEM_CAT2 = gql`
-query Query($itemCategory: String!, $offset: Int!, $limit: Int!, $filters: [String!]) {
-  AllItemsByCategory2(item_category: $itemCategory, offset: $offset, limit: $limit, filters: $filters) {
+query Query($itemCategory: String!, $offset: Int!, $limit: Int!, $sortOrder: String!, $filters: [String!]) {
+  AllItemsByCategory2(item_category: $itemCategory, offset: $offset, limit: $limit, sort_order: $sortOrder, filters: $filters) {
     _id
     category_id
     subcategory_id
@@ -156,6 +157,7 @@ query Query($itemCategory: String!, $offset: Int!, $limit: Int!, $filters: [Stri
     description
     price
     image
+    
   }
 }
 `

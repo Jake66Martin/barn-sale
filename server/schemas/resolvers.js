@@ -164,18 +164,7 @@ const resolvers = {
       }
     },
 
-    // ItemsByCategory2: async (parent, { item_category }, context) => {
-    //   try {
-    //     const category = await Item.findAll({
-    //       where: {
-    //         item_category: item_category,
-    //       },
-    //     });
-    //     return category;
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // },
+    
 
     ItemsByCategory2: async (parent, { item_category, filters }, context) => {
       let whereConditions = { item_category };
@@ -187,17 +176,21 @@ const resolvers = {
       return await Item.findAll({ where: whereConditions });
     },
 
-    AllItemsByCategory2: async (parent, { item_category, filters, limit, offset }, context) => {
+    AllItemsByCategory2: async (parent, { item_category, filters, limit, offset, sort_order }, context) => {
       let whereConditions = { item_category };
       
-      if (filters.length > 0) {
+      if (filters && filters.length > 0) {
         whereConditions.item_subcategory = { [Op.in]: filters };
       }
+
+      const order = sort_order === 'oldest' ? [['created_at', 'ASC']] : [['created_at', 'DESC']];
+
     
       return await Item.findAll({ 
         where: whereConditions,
         limit,
-        offset
+        offset,
+        order
        });
     },
 
@@ -316,7 +309,8 @@ const resolvers = {
             location,
             image: imageData,
             category_id,
-            item_category
+            item_category,
+            created_at: new Date()
           });
           return itemAdded;
         } else {
@@ -329,7 +323,8 @@ const resolvers = {
             category_id,
             subcategory_id,
             item_category,
-            item_subcategory
+            item_subcategory,
+            created_at: new Date()
           });
           return itemAdded;
         }

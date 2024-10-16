@@ -25,7 +25,8 @@ type Item {
     location: String,
     description: String,
     price: Int,
-    image: JSON
+    image: JSON,
+    created_at: String
 }
 
 type Category {
@@ -64,7 +65,7 @@ type Query {
     searchByItem(item: String!, offset: Int!, limit: Int!): [Item]
     searchItem(item: String!): [Item],
     ItemsByCategory2(item_category: String!, filters: [String!]): [Item]
-    AllItemsByCategory2(item_category: String!, filters: [String!], offset: Int!, limit: Int!): [Item]
+    AllItemsByCategory2(item_category: String!, filters: [String!], offset: Int!, limit: Int!, sort_order: String!): [Item]
 
 }
 

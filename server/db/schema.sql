@@ -30,6 +30,7 @@ CREATE TABLE Item (
     price INT NOT NULL,
     location VARCHAR(100) NOT NULL,
     image VARCHAR(100) NOT NULL,
+    created_at DATETIME DEFAULT NOW(),
 
     FOREIGN KEY (category_id) REFERENCES category(id),
     FOREIGN KEY (subcategory_id) REFERENCES subcategory(id)
