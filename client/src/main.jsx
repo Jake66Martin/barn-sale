@@ -17,6 +17,7 @@ import Subcategories2 from './pages/sub-categories/sub-categories2.jsx'
 import Items from './pages/items/items.jsx'
 import Search from './pages/search/search.jsx'
 import Search2 from './pages/search/search2.jsx'
+import Dummy from './pages/search/dummy.jsx'
 import Add from './pages/add/add.jsx'
 import Categories from './pages/categories/categories.jsx'
 import ViewItem from './pages/viewitem/viewitem.jsx'
@@ -42,6 +43,7 @@ const router = createBrowserRouter ([
       {path: '/Subcategories/:name', element: <Subcategories2/>},
       {path: '/Items/:id', element: <Items/>},
       {path: '/Search', element: <Search2/>},
+      {path: "/dummy", element: <Dummy/>},
       {path: '/Add', element: <Add/>},
       {path: '/Categories/:id', element: <Categories/>},
       {path: '/ViewItem/:id', element: <ViewItem/>}

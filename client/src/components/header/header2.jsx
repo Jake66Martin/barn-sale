@@ -1,21 +1,42 @@
 import styles from "./header2.module.css";
 import Auth from "../../utils/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function Header2() {
-  const cp = useLocation().pathname;
 
   const [isVisible, setIsVisible] = useState(false);
   const inputRef = useRef(null);
   const navigate = useNavigate();
+  const location = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
 
 
-  const handleSearch = (event) => {
+  const handleSearch = (event, query) => {
     event.preventDefault()
-    navigate('/Search', {state: {query: searchTerm}});
-    console.log(searchTerm)
+
+    // navigate('/Search', { replace: true, state: null });
+
+    // setTimeout(() => {
+    //   navigate('/Search', {state: {query: searchTerm}});
+    //    console.log(searchTerm)
+
+    // }, 0);
+
+     // Clear the current state and redirect
+  if (location.pathname === '/Search') {
+    // If already on the search page, force a page reload by updating the state
+    navigate('/dummy', { replace: true }); // Redirect to a dummy route temporarily
+    setTimeout(() => {
+      navigate('/Search', { state: { query: searchTerm } }); // Push the search route after a brief delay
+    }, 0);
+  } else {
+    navigate('/Search', { state: { query: searchTerm } });
+  }
+
+  console.log(searchTerm); // Optional: For debugging purposes
+    
+    
   };
 
 
@@ -37,7 +58,7 @@ export default function Header2() {
            Browse our furniture 
             <div
               className={`${styles.ddmenu} ${styles.yo}`}
-              style={{ display: isVisible ? "block" : "none" }}
+              style={{ display: isVisible ? "block" : "none", zIndex: '1'}}
             >
               <ul
                 style={{
@@ -171,7 +192,7 @@ export default function Header2() {
             Browse our furniture
             <div
               className={`${styles.ddmenu}`}
-              style={{ display: isVisible ? "block" : "none" }}
+              style={{ display: isVisible ? "block" : "none", zIndex: '1'}}
             >
               <ul
                 style={{

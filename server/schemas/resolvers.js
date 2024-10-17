@@ -196,10 +196,12 @@ const resolvers = {
 
 
    
-    searchByItem: async (parent, { item, limit, offset }, context) => {
+    searchByItem: async (parent, { item, limit, offset, sort_order }, context) => {
       try {
         let allItems;
         if (item) {
+          const order = sort_order === 'oldest' ? [['created_at', 'ASC']] : [['created_at', 'DESC']];
+
           allItems = await Item.findAll({
             where: {
               item: {
@@ -208,6 +210,7 @@ const resolvers = {
             },
             limit,
             offset,
+            order
           });
         } else {
           allItems = [];

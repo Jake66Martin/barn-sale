@@ -62,7 +62,7 @@ type Query {
     userEmail(email: String!): Boolean
     subcategoryById(category_id:ID!): [Subcategory]
     subcategoryByName(name:String!): [Subcategory]
-    searchByItem(item: String!, offset: Int!, limit: Int!): [Item]
+    searchByItem(item: String!, offset: Int!, limit: Int!, sort_order: String!): [Item]
     searchItem(item: String!): [Item],
     ItemsByCategory2(item_category: String!, filters: [String!]): [Item]
     AllItemsByCategory2(item_category: String!, filters: [String!], offset: Int!, limit: Int!, sort_order: String!): [Item]

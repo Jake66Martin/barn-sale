@@ -59,8 +59,8 @@ query AllItemsByCategory($subcategoryId: ID!) {
 `
 
 export const SEARCH = gql`
-query Query($item: String!, $offset: Int!, $limit: Int!) {
-  searchByItem(item: $item, offset: $offset, limit: $limit) {
+query Query($item: String!, $offset: Int!, $limit: Int!, $sortOrder: String!) {
+  searchByItem(item: $item, offset: $offset, limit: $limit, sort_order: $sortOrder ) {
     _id
     category_id
     item_category

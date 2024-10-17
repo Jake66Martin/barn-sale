@@ -7,12 +7,23 @@ import styles from "./search2.module.css";
 
 export default function Search2() {
   const location = useLocation();
-  const initialQuery = location.state?.query;
 
-  const [limit, setLimit] = useState(25);
-  const [currentOffset, setCurrentOffset] = useState(0);
-  const [activePage, setActivePage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState(initialQuery);
+
+  const initialSearchQuery = location.state?.query || localStorage.getItem('searchQuery') || '';
+  const initialLimit = localStorage.getItem('limit') ? parseInt(localStorage.getItem('limit')) : 25;
+  const initialOffset = localStorage.getItem('offset') ? parseInt(localStorage.getItem('offset')) : 0;
+  const initialActivePage = localStorage.getItem('activePage') ? parseInt(localStorage.getItem('activePage')) : 1;
+
+//   const [limit, setLimit] = useState(25);
+//   const [currentOffset, setCurrentOffset] = useState(0);
+//   const [activePage, setActivePage] = useState(1);
+//   const [searchQuery, setSearchQuery] = useState(initialQuery);
+//   const [sortOrder, setSortOrder] = useState('newest');
+
+  const [limit, setLimit] = useState(initialLimit);
+  const [currentOffset, setCurrentOffset] = useState(initialOffset);
+  const [activePage, setActivePage] = useState(initialActivePage);
+  const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
   const [sortOrder, setSortOrder] = useState('newest');
 
 
@@ -29,7 +40,7 @@ export default function Search2() {
     error: paginationError,
     data: paginationItem,
   } = useQuery(SEARCH, {
-    variables: { item: searchQuery, limit, offset: currentOffset },
+    variables: { item: searchQuery, limit, offset: currentOffset, sortOrder },
   });
 
   if (itemData) {
@@ -38,6 +49,15 @@ export default function Search2() {
   if (paginationItem) {
     console.log(paginationItem);
   }
+
+ 
+
+  useEffect(() => {
+    localStorage.setItem('searchQuery', searchQuery);
+    localStorage.setItem('limit', limit);
+    localStorage.setItem('offset', currentOffset);
+    localStorage.setItem('activePage', activePage);
+  }, [searchQuery, limit, currentOffset, activePage]);
 
   function clickPlus() {
     if (activePage < pagesRequired) {
@@ -82,11 +102,11 @@ export default function Search2() {
   return (
     <section className={`${styles.mainsection}`}>
       <div style={{ height: "100px", display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>
+        <p className={`${styles.textstyle2}`} style={{position: 'relative', top: '7px', zIndex: '0'}}>
           SORT by:
         </p>
         <select
-          style={{ margin: "0 20px" }}
+          style={{ margin: "0 20px"}}
           onChange={handleSortChange}
           value={sortOrder}
         >
