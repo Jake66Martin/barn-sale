@@ -9,9 +9,13 @@ export default function Header2() {
   const [isVisible, setIsVisible] = useState(false);
   const inputRef = useRef(null);
   const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const handleClick = () => {
-    navigate('/Search')
+
+  const handleSearch = (event) => {
+    event.preventDefault()
+    navigate('/Search', {state: {query: searchTerm}});
+    console.log(searchTerm)
   };
 
 
@@ -332,16 +336,18 @@ export default function Header2() {
               alignItems: "center",
             }}
           >
-            <form className={styles.nosubmit}>
+            <form className={styles.nosubmit} onSubmit={handleSearch}>
               <input
                 type="search"
                 aria-label="Search"
-                ref={inputRef}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
                 className={styles.nosubmit}
+                style={{backgroundColor: 'white'}}
               />
               <button 
+              type='submit'
               className={`${styles.searchbutton}`}
-              onClick={handleClick}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

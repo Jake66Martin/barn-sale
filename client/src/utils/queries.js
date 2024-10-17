@@ -63,7 +63,9 @@ query Query($item: String!, $offset: Int!, $limit: Int!) {
   searchByItem(item: $item, offset: $offset, limit: $limit) {
     _id
     category_id
+    item_category
     subcategory_id
+    item_subcategory
     item
     description
     price
@@ -76,7 +78,9 @@ query SearchItem($item: String!) {
   searchItem(item: $item) {
     _id
     category_id
+    item_category
     subcategory_id
+    item_subcategory
     item
     description
     price
