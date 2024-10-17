@@ -1,89 +1,127 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
-.textstyle{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
+.textstyle {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
 }
 
-.yo:hover{
-    cursor: pointer;
+.yo:hover {
+  cursor: pointer;
 }
 
-
-.height{
-    height: 17vh;
+.height {
+  height: 17vh;
 }
 
-.grid{
-    display: grid;
-    grid-template-rows: 33% 67%;
-    
+.grid {
+  display: grid;
+  grid-template-rows: 33% 67%;
 }
 
-.grid2{
-    display: grid;
-    grid-template-columns: 25% 50% 25%;
+.grid2 {
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
 }
 
-.toprow{
-    background-color: #363434;
+.toprow {
+  background-color: #363434;
 }
 
-.bottomrow{
-    background-color: rgb(247, 244, 244);
+.bottomrow {
+  background-color: rgb(247, 244, 244);
 }
 
-.logosize{
-    height: 70px;
-    /* border-radius: 50%; */
+.logosize {
+  height: 70px;
 }
 
 form.nosubmit {
-    border: none;
-    padding: 0;
-    position: relative;
-   display: flex;
-   align-items: center;
-  }
-  
-  input.nosubmit {
-    width: 260px;
-    border: 1px solid #8c8888;
-    display: block;
-    padding: 9px 4px 9px 40px;
-    /* background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' fill='%23da0404' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center; */
-    background: transparent;
+  border: none;
+  padding: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
-  .searchbutton {
-    background: none;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    right: 230px; /* Adjust as needed */
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 5px;
-  }
+.searchContainer {
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Center items vertically */
+  position: relative; /* Set position for the button */
+}
 
-  .test{
-    color: #252323;
-  }
+input.nosubmit {
+  width: 260px; /* Initial width */
+  border: 1px solid #8c8888;
+  padding: 9px 40px 9px 40px; /* Space for padding on the left for text */
+  background: transparent;
+}
 
-  .ddmenu{
-width: 200px;
-height: 300px;
-background-color: white;
-position: absolute;
-/* left: 580px; */
-display: none;
-border: 2px solid transparent;
-box-shadow: 0 0 10px black;
+@media (max-width: 1145px) {
+  input.nosubmit {
+    width: 200px; /* Adjust width for smaller screens */
+  }
+}
+
+.searchbutton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute; /* Absolute positioning inside container */
+  left: 10px; /* Adjust this value to control the button's position */
+  top: 50%; /* Center the button vertically */
+  transform: translateY(-50%); /* Center it properly */
+  padding: 5px; /* Add some padding around the button */
+  display: flex; /* Align icon in the center */
+  align-items: center; /* Center vertically */
+}
+
+.test {
+  color: #252323;
+}
+
+.ddmenu {
+  width: 200px;
+  height: 300px;
+  background-color: white;
+  position: absolute;
+  /* left: 580px; */
+  display: none;
+  border: 2px solid transparent;
+  box-shadow: 0 0 10px black;
 }
 
 .ulmen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
+
+@media (max-width: 841px) {
+  .logosize {
+    height: 50px;
+  }
+}
+
+.container {
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+  
+  .change .bar1 {
+    transform: translate(0, 11px) rotate(-45deg);
+  }
+  
+  .change .bar2 {opacity: 0;}
+  
+  .change .bar3 {
+    transform: translate(0, -11px) rotate(45deg);
+  }

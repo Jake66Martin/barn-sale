@@ -95,6 +95,12 @@
   height: 250px;
 }
 
+@media (max-width: 1067px) {
+  .imgsize{
+    height: 200px;
+  }
+}
+
 .labelweight {
   font-weight: 700;
 }

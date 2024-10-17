@@ -30,13 +30,13 @@ export default function Footer2() {
           className={styles.linkcell}
           style={{ alignSelf: "center", justifySelf: "center" }}
         >
-          <h4 className={`${styles.textstyle} ${styles.fontcolor}`}>
+          <h4 className={`${styles.textstyle} ${styles.fontcolor} ${styles.hsize}`}>
             Links
           </h4>
-          <h4 className={`${styles.textstyle} ${styles.fontcolor}`}>
+          <h4 className={`${styles.textstyle} ${styles.fontcolor} ${styles.hsize}`}>
             Furniture Categories
           </h4>
-          <h4 className={`${styles.textstyle} ${styles.fontcolor}`}>
+          <h4 className={`${styles.textstyle} ${styles.fontcolor} ${styles.hsize}`}>
             Follow Us
           </h4>
           <ul
