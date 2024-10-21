@@ -5,7 +5,6 @@ import { useState, useRef, useEffect } from "react";
 
 export default function Header2() {
   const [isVisible, setIsVisible] = useState(false);
-  const inputRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
   const [searchTerm, setSearchTerm] = useState("");

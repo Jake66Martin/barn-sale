@@ -101,6 +101,10 @@ input.nosubmit {
   .logosize {
     height: 50px;
   }
+
+  input.nosubmit {
+    width: 150px; /* Adjust width for smaller screens */
+  }
 }
 
 .container {
