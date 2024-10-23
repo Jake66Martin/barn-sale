@@ -209,10 +209,11 @@ export default function Header2() {
         className={`${styles.height} ${styles.grid}`}
         style={{ position: "relative" }}
       >
-        <div className={styles.toprow}>
+        <div className={styles.toprow}
+        style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
           <h3
             style={{ color: "white", textAlign: "center" }}
-            className={styles.textstyle}
+            className={`${styles.textstyle} ${styles.annoucement}`}
           >
             Announcements can go up here
           </h3>

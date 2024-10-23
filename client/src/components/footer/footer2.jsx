@@ -335,8 +335,27 @@ export default function Footer2() {
               Home Decor
             </Link>
           </div>
-          <div></div>
-          <div></div>
+            <div style={{ alignSelf: "center", justifySelf: "center" }}
+            className={`${styles.logoitem}`}
+            >
+              <img
+                src="/footerlogo.png"
+                alt="footer logo for thrift barn furniture"
+                className={styles.footerlogo}
+              />
+              <p
+                style={{
+                  alignSelf: "center",
+                  justifySelf: "center",
+                  color: "white",
+                  fontSize: "12px",
+                  margin: "35px 0",
+                }}
+                className={styles.textstyle2}
+              >
+                © Thrift Barn Furniture, 2024
+              </p>
+            </div>
         </footer>
       </>
     );

@@ -129,3 +129,28 @@ input.nosubmit {
   .change .bar3 {
     transform: translate(0, -11px) rotate(45deg);
   }
+
+
+  @media (max-width: 667px) {
+    .grid2 {
+      display: grid;
+      grid-template-columns: 33.3% 33.3% 33.3%;
+    }
+  }
+
+  @media (max-width: 477px) {
+    .grid2 {
+      display: grid;
+      grid-template-columns: 40% 20% 40%;
+    }
+
+    input.nosubmit {
+      width: 130px; /* Adjust width for smaller screens */
+    }
+  }
+
+  @media (max-width: 403px) {
+    .annoucement{
+      font-size: 15px;;
+    }
+  }

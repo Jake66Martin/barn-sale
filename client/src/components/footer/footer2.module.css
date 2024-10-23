@@ -124,6 +124,11 @@
     grid-column: 4;
 }
 
+.logoitem{
+  grid-row: 9;
+  grid-column: 1 /span 4;
+}
+
 .footerlogo {
   height: 90px;
   align-self: center;
@@ -208,3 +213,5 @@
     font-size: 12px;
   }
 }
+
+
