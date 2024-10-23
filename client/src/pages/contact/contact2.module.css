@@ -24,6 +24,8 @@
   grid-template-columns: 25% 25% 25% 25%;
 }
 
+
+
 .cell1 {
   grid-row: 1;
   grid-column: 1;
@@ -82,4 +84,109 @@
 .decimg{
     width: 500px;
     height: 250px;
+}
+
+@media(max-width: 1537px) {
+  .inputwidth{ 
+    width: 500px !important;
+  }
+
+  .subtit{
+    font-size: 30px !important;
+  }
+
+  .subp{
+    font-size: 15px !important;
+  }
+}
+
+@media (max-width: 1421px) {
+  .subtit{
+    font-size: 25px !important;
+  }
+
+  .subp{
+    font-size: 12px !important;
+  }
+}
+
+@media(max-width: 1067px) {
+  .mheight {
+    height: 1600px;
+    display: grid;
+    grid-template-rows: 350px 475px 475px 300px;
+    grid-template-columns: 25% 25% 25% 25%;
+  }
+
+  .smallcell5{
+    grid-row: 2;
+    grid-column: 1 / span 4;
+    background-color: rgb(247, 244, 244) !important;
+    display: grid;
+  }
+
+  .smallcell6{
+    grid-row: 3;
+    grid-column: 1 / span 4;
+    background-color: rgb(247, 244, 244) !important;
+    display: grid;
+  }
+
+  .cell7 {
+    grid-row: 4;
+    grid-column: 1 / span 4;
+    background-image: url("../../../hero.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply; /* Blends image with color */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark color */
+  }
+
+  .inputheight{
+    height: 200px !important;
+  }
+
+  .icon{
+    height: 50px;
+  }
+
+  .infop{
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 700px){
+
+  .mheight {
+    height: 1450px;
+    display: grid;
+    grid-template-rows: 200px 475px 475px 300px;
+    grid-template-columns: 25% 25% 25% 25%;
+  }
+
+  .lino{
+    line-height: 1 !important;
+  }
+
+}
+
+@media(max-width: 574px) {
+  .decimg{
+    width: 300px;
+    height: 150px;
+    position: relative;
+    left: 15px;
+  }
+
+  .inputwidth{
+    width: 300px !important;
+  }
+
+  .mheight {
+    height: 1500px;
+    display: grid;
+    grid-template-rows: 350px 475px 475px 200px;
+    grid-template-columns: 25% 25% 25% 25%;
+  }
 }
