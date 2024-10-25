@@ -31,3 +31,25 @@
   .labelweight {
     font-weight: 700;
   }
+
+  @media(max-width: 1078px) {
+    .mainsection{
+      height: 1600px;
+      display: grid;
+      grid-template-columns: 50% 50%;
+      grid-template-rows: 25% 25% 25% 25%;
+  }
+  }
+
+  @media(max-width: 539px) {
+    .imgsize{
+      height: 150px;
+    }
+
+    .mainsection{
+      height: 1000px;
+      display: grid;
+      grid-template-columns: 50% 50%;
+      grid-template-rows: 25% 25% 25% 25%;
+  }
+  }

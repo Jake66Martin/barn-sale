@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import React, { Fragment, useState, useEffect } from "react";
 
 export default function Subcategories2() {
+  
+  
+  
   let { name } = useParams();
 
   const [limit, setLimit] = useState(25);
@@ -85,13 +88,20 @@ export default function Subcategories2() {
 };
 
 
+ 
+
   const handleFilterToggle = (filter) => {
-    setSelectedFilters((prev) =>
-      prev.includes(filter)
+    setSelectedFilters((prev) => {
+      const updatedFilters = prev.includes(filter)
         ? prev.filter((f) => f !== filter)
-        : [...prev, filter]
-    );
+        : [...prev, filter];
+
+      setActivePage(1);
+      return updatedFilters;
+    });
   };
+
+
 
   let items = allItems?.AllItemsByCategory2 || [];
 
@@ -122,20 +132,33 @@ export default function Subcategories2() {
 
   const filters = getFilters();
 
-  return (
-    <>
-      <div className={`${styles.banner}`}>
-        <h1 className={`${styles.textstyle}`} style={{ color: "white" }}>
-          {spacedName}
-        </h1>
-      </div>
-      <div className={`${styles.filtergrid}`}>
-        <div className={`${styles.filtercell1}`}>
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  
+  useEffect(() => {
+
+   const handleResize = () => setWindowWidth(window.innerWidth);
+
+   window.addEventListener("resize", handleResize);
+
+   return () => window.removeEventListener;
+
+
+  }, [])
+
+  function smallFilter() {
+    if (windowWidth < 740) {
+      return (
+        <>
+        <div className={`${styles.filtergrid}`}>
+        <div className={`${styles.filtercell1}`} style={{position: 'relative'}}>
           <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>
-            Home {">"} All furniture {`>`} {spacedName}
+           <Link style={{textDecoration: 'none', color: 'black'}} to='/'> Home </Link> {">"} <Link style={{textDecoration: 'none', color: 'black'}} to='/Browse'> All furniture </Link>{`>`} {spacedName}
           </p>
-          <div>
-            <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>
+          </div>
+          <div className={`${styles.filtercell2}`}>
+          <div style={{position: 'relative', bottom: '10px'}}>
+            <p style={{ display: "inline", position: 'relative', left: '10px' }} className={`${styles.textstyle2}`}>
               SORT by:
             </p>
             <select style={{ margin: "0 20px" }} onChange={handleSortChange} value={sortOrder}>
@@ -148,19 +171,19 @@ export default function Subcategories2() {
             </select>
           </div>
         </div>
-        <div className={`${styles.filtercell2}`}>
-          {/* {getFilters()} */}
+        <div className={`${styles.filtercell3}`}>
           <div
             style={{
               display: "flex",
               justifyContent: "space-evenly",
+              flexWrap: 'wrap',
               marginBottom: "10px",
             }}
           >
             {(spacedName === "Living Room" ||
               spacedName === "Dining Room" ||
               spacedName === "Bedroom") && (
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <div style={{ display: "flex"}}>
                 <p style={{ display: "inline" }}>FILTERS:</p>
                 <p
                   onClick={() => setSelectedFilters([])}
@@ -183,6 +206,7 @@ export default function Subcategories2() {
                 style={{
                   display: "inline",
                   cursor: "pointer",
+                  margin: '0 15px 10px',
                   fontWeight: selectedFilters.includes(filter)
                     ? "bold"
                     : "normal",
@@ -194,7 +218,174 @@ export default function Subcategories2() {
           </div>
         </div>
       </div>
-      <section className={`${styles.mainsection}`}>
+        </>
+      )
+    } else {
+      return (
+        <>
+         <div className={`${styles.filtergrid}`}>
+        <div className={`${styles.filtercell1}`} style={{position: 'relative'}}>
+          <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>
+            Home {">"} All furniture {`>`} {spacedName}
+          </p>
+          <div style={{position: 'relative', bottom: '10px'}}>
+            <p style={{ display: "inline" }} className={`${styles.textstyle2}`}>
+              SORT by:
+            </p>
+            <select style={{ margin: "0 20px" }} onChange={handleSortChange} value={sortOrder}>
+              <option className={`${styles.textstyle2}`} value='newest'>
+                Newest to Oldest
+              </option>
+              <option className={`${styles.textstyle2}`} value='oldest'>
+                Oldest to Newest
+              </option>
+            </select>
+          </div>
+        </div>
+        <div className={`${styles.filtercell2}`}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-evenly",
+              flexWrap: 'wrap',
+              marginBottom: "10px",
+            }}
+          >
+            {(spacedName === "Living Room" ||
+              spacedName === "Dining Room" ||
+              spacedName === "Bedroom") && (
+              <div style={{ display: "flex"}}>
+                <p style={{ display: "inline" }}>FILTERS:</p>
+                <p
+                  onClick={() => setSelectedFilters([])}
+                  style={{
+                    display: "inline",
+                    cursor: "pointer",
+                    fontWeight:
+                      selectedFilters.length === 0 ? "bold" : "normal",
+                    marginLeft: "50px", // Add margin to create space
+                  }}
+                >
+                  See All
+                </p>
+              </div>
+            )}
+            {filters.map((filter) => (
+              <p
+                key={filter}
+                onClick={() => handleFilterToggle(filter)}
+                style={{
+                  display: "inline",
+                  cursor: "pointer",
+                  margin: '0 15px 10px',
+                  fontWeight: selectedFilters.includes(filter)
+                    ? "bold"
+                    : "normal",
+                }}
+              >
+                {filter}
+              </p>
+            ))}
+          </div>
+        </div>
+      </div> 
+        </>
+      )
+    }
+  }
+
+  function smallItems() {
+    if (windowWidth < 1188) {
+      return (
+        <>
+        {items.length > 0 ? (
+          <div className={`${styles.gridContainer}`}>
+            {items &&
+              items.map((item, index) => (
+                <React.Fragment key={item._id}>
+                  {index % 2 === 0 && (
+                    <div className={`${styles.emptyDiv}`}></div>
+                  )}
+
+                  <div
+                    className={`${styles.itemCell}`}
+                    style={{ display: "flex", flexDirection: "column" }}
+                  >
+                    <img
+                      src="/office.jpg"
+                      alt="item"
+                      className={`${styles.imgsize}`}
+                      style={{ justifySelf: "center" }}
+                    />
+                    <p style={{ height: "1px", margin: "10px 0" }}
+                    className={`${styles.text}`}
+                    >
+                      {item.item}
+                    </p>
+                    <p style={{ height: "1px", margin: "10px 0" }}
+                    className={`${styles.text}`}
+                    >
+                      ${item.price}.00
+                    </p>
+                  </div>
+
+                  {index % 2 === 1 && (
+                    <div className={`${styles.emptyDiv}`}></div>
+                  )}
+                </React.Fragment>
+              ))}
+          </div>
+        ) : (
+          <div style={{display: 'flex', justifyContent: 'center', height: '150px'}} className={styles.textstyle}><p style={{color: 'red', fontSize: '30px'}}>No Items Available</p></div>
+        )}
+        </>
+      )
+    }
+    
+    else if (windowWidth > 1188 && windowWidth < 1550) {
+      return (
+      <>
+      {items.length > 0 ? (
+          <div className={`${styles.gridContainer}`}>
+            {items &&
+              items.map((item, index) => (
+                <React.Fragment key={item._id}>
+                  {index % 3 === 0 && (
+                    <div className={`${styles.emptyDiv}`}></div>
+                  )}
+
+                  <div
+                    className={`${styles.itemCell}`}
+                    style={{ display: "flex", flexDirection: "column" }}
+                  >
+                    <img
+                      src="/office.jpg"
+                      alt="item"
+                      className={`${styles.imgsize}`}
+                      style={{ justifySelf: "center" }}
+                    />
+                    <p style={{ height: "1px", margin: "10px 0" }}>
+                      {item.item}
+                    </p>
+                    <p style={{ height: "1px", margin: "10px 0" }}>
+                      ${item.price}.00
+                    </p>
+                  </div>
+
+                  {index % 3 === 2 && (
+                    <div className={`${styles.emptyDiv}`}></div>
+                  )}
+                </React.Fragment>
+              ))}
+          </div>
+        ) : (
+          <div style={{display: 'flex', justifyContent: 'center', height: '150px'}} className={styles.textstyle}><p style={{color: 'red', fontSize: '30px'}}>No Items Available</p></div>
+        )}
+      </>
+      )
+    } else {
+      return (
+        <>
         {items.length > 0 ? (
           <div className={`${styles.gridContainer}`}>
             {items &&
@@ -231,6 +422,24 @@ export default function Subcategories2() {
         ) : (
           <div style={{display: 'flex', justifyContent: 'center', height: '150px'}} className={styles.textstyle}><p style={{color: 'red', fontSize: '30px'}}>No Items Available</p></div>
         )}
+        </>
+      )
+    }
+  }
+
+
+  return (
+    <>
+      <div className={`${styles.banner}`}>
+        <h1 className={`${styles.textstyle}`} style={{ color: "white" }}>
+          {spacedName}
+        </h1>
+      </div>
+      
+      {smallFilter()}
+      <section className={`${styles.mainsection}`}>
+        
+        {smallItems()}
         <div className={`${styles.pagination}`}>
           <a
             style={{ margin: "0 10px", textDecoration: "none", color: "black" }}

@@ -456,30 +456,7 @@ export default function Contact2() {
         </h1>
       </div>
       <div className={`${styles.mheight}`}>
-        {/* <div className={`${styles.cell1}`}>
-            <img className={`${styles.icon}`} src="phoneicon.png" alt="phone icon" style={{alignSelf: 'center', justifySelf: 'center'}}/>
-            <p style={{textAlign: 'center', fontWeight: '400', lineHeight: '2'}} className={`${styles.textstyle2} ${styles.infop}`}><span style={{color: '#da0404', textAlign: 'center', fontWeight: '600'}} className={`${styles.textstyle2}`}>Text or call 24/7 -365:</span><br/>
-            613-666-6666</p>
-        </div>
-        <div className={`${styles.cell2}`}>
-            <img className={`${styles.icon}`} src="barnicon.png" alt="barn icon" style={{alignSelf: 'center', justifySelf: 'center'}}/>
-            <p style={{textAlign: 'center', fontWeight: '400', lineHeight: '2'}} className={`${styles.textstyle2} ${styles.infop}`}><span  style={{color: '#da0404', fontWeight: '600'}}>Address:</span> <br/>
-             123 Street Name <br/>
-            City Name, Province <br/>
-            123 ABC
-            </p>
-        </div>
-        <div className={`${styles.cell3}`}>
-            <img className={`${styles.icon}`} src="hoursicon.png" alt="clock icon" style={{alignSelf: 'center', justifySelf: 'center'}}/>
-            <p style={{textAlign: 'center', fontWeight: '400', lineHeight: '2'}} className={`${styles.textstyle2} ${styles.infop}`}><span style={{color: '#da0404', textAlign: 'center', fontWeight: '600'}} className={`${styles.textstyle2}`}>In-Store Hours:</span><br/>
-            Weekdays: AM - Pm <br/>
-            Weekends: AM - PM</p>
-        </div>
-        <div className={`${styles.cell4}`}>
-            <img className={`${styles.icon}`} src="mailicon.png" alt="email icon" style={{alignSelf: 'center', justifySelf: 'center'}}/>
-            <p style={{textAlign: 'center', fontWeight: '400', lineHeight: '2'}} className={`${styles.textstyle2} ${styles.infop}`}><span style={{color: '#da0404', textAlign: 'center', fontWeight: '600'}} className={`${styles.textstyle2}`}>Email:</span><br/>
-            Thriftbarnfurniture@gmail.com</p>
-        </div> */}
+       
         {smallIcons()}
         {smallContact()}
         <div className={`${styles.cell7}`}></div>

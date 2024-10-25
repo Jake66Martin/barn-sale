@@ -9,7 +9,7 @@ export default function Header2() {
   const location = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
   const [isToggled, setIsToggled] = useState(false);
-
+  const [isSmallVisible, setIsSmallVisible] = useState(false);
 
   const handleSearch = (event, query) => {
     event.preventDefault();
@@ -32,6 +32,10 @@ export default function Header2() {
     setIsVisible(!isVisible);
   };
 
+  const toggleSmallVisibility = () => {
+    setIsSmallVisible(!isSmallVisible);
+  };
+
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -43,11 +47,6 @@ export default function Header2() {
     // Clean up the event listener on component unmount
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-
-
- 
-
 
   const toggleClass = () => {
     setIsToggled((prev) => !prev); // Toggle the state
@@ -186,19 +185,19 @@ export default function Header2() {
       );
     } else {
       return (
-        // <div className={styles.container}>
-        //   <div className={styles.bar1}></div>
-        //   <div className={styles.bar2}></div>
-        //   <div className={styles.bar3}></div>
-        // </div>
-        <div
-      className={`${styles.container} ${isToggled ? styles.change : ''}`}
-      onClick={toggleClass}
-    >
-      <div className={styles.bar1}></div>
-      <div className={styles.bar2}></div>
-      <div className={styles.bar3}></div>
-    </div>
+        <>
+          <div
+            className={`${styles.container} ${isToggled ? styles.change : ""}`}
+            onClick={() => {
+              toggleClass();
+              toggleSmallVisibility();
+            }}
+          >
+            <div className={styles.bar1}></div>
+            <div className={styles.bar2}></div>
+            <div className={styles.bar3}></div>
+          </div>
+        </>
       );
     }
   }
@@ -209,8 +208,14 @@ export default function Header2() {
         className={`${styles.height} ${styles.grid}`}
         style={{ position: "relative" }}
       >
-        <div className={styles.toprow}
-        style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <div
+          className={styles.toprow}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <h3
             style={{ color: "white", textAlign: "center" }}
             className={`${styles.textstyle} ${styles.annoucement}`}
@@ -276,6 +281,27 @@ export default function Header2() {
           </div>
         </div>
       </header>
+      <div
+        className={`${styles.dropdown}  ${isSmallVisible ? styles.open : ""}`}
+        // style={{ display: isSmallVisible ? "block" : "none", zIndex: "1" }}
+        style={{ zIndex: "1", position: "absolute", left: "16.5%" }}
+      >
+        <div className={`${styles.ddcell1} ${styles.textstyle2}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+          <Link style={{textDecoration: 'none', color: "#da0404"}}>About us</Link>
+        </div>
+        <div className={`${styles.ddcell2} ${styles.textstyle2}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+          <Link style={{textDecoration: 'none', color: "#da0404"}}>Contact</Link>
+        </div>
+        <div className={`${styles.ddcell3}  ${styles.textstyle2}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', color: "#da0404"}}>Furniture Categories</div>
+        <div className={`${styles.ddcell4}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`}>Living Room</Link></div>
+        <div className={`${styles.ddcell5}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`}>Dining Room</Link></div>
+        <div className={`${styles.ddcell6}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`}>Kitchen & Bath</Link></div>
+        <div className={`${styles.ddcell7}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`}>Bedroom</Link></div>
+        <div className={`${styles.ddcell8}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`}>Child/Nursery</Link></div>
+        <div className={`${styles.ddcell9}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`}>Office</Link></div>
+        <div className={`${styles.ddcell10}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`}>Garage/Exterior</Link></div>
+        <div className={`${styles.ddcell11}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`}>Home Decor</Link></div>
+      </div>
     </>
   );
 }
