@@ -158,7 +158,7 @@ export default function Homepage2() {
                 Dining Room
               </h3>
           </div>
-          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', justifyContent: 'center', alignItems: 'center'}}>
+          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
           <img src="/kitchen2.png" className={styles.imgsize} />
               <h3
                 style={{
@@ -171,7 +171,7 @@ export default function Homepage2() {
                 Kitchen & Bath
               </h3>
           </div>
-          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', justifyContent: 'center', alignItems: 'center'}}>
+          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
           <img src="/bedroom2.png" className={styles.imgsize} />
               <h3
                 style={{
@@ -184,7 +184,7 @@ export default function Homepage2() {
                 Bedroom
               </h3>
           </div>
-          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', justifyContent: 'center', alignItems: 'center'}}>
+          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
           <img src="/nursery2.png" className={styles.imgsize} />
               <h3
                 style={{
@@ -197,7 +197,7 @@ export default function Homepage2() {
                 Child/Nursery
               </h3>
           </div>
-          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', justifyContent: 'center', alignItems: 'center'}}>
+          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
           <img src="/office2.png" className={styles.imgsize} />
               <h3
                 style={{
@@ -210,7 +210,7 @@ export default function Homepage2() {
                 Office
               </h3>
           </div>
-          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', justifyContent: 'center', alignItems: 'center'}}>
+          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
           <img src="/garage2.png" className={styles.imgsize} />
               <h3
                 style={{
@@ -223,7 +223,7 @@ export default function Homepage2() {
                 Garage/Exterior
               </h3>
           </div>
-          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', justifyContent: 'center', alignItems: 'center'}}>
+          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
           <img src="/decor2.png" className={styles.imgsize} />
               <h3
                 style={{

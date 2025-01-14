@@ -311,12 +311,14 @@ export default function Subcategories2() {
                     className={`${styles.itemCell}`}
                     style={{ display: "flex", flexDirection: "column" }}
                   >
+                    <Link to={`/Viewitem2/${item._id}`}>
                     <img
                       src="/office.jpg"
                       alt="item"
                       className={`${styles.imgsize}`}
                       style={{ justifySelf: "center" }}
                     />
+                    </Link>
                     <p style={{ height: "1px", margin: "10px 0" }}
                     className={`${styles.text}`}
                     >
@@ -358,12 +360,14 @@ export default function Subcategories2() {
                     className={`${styles.itemCell}`}
                     style={{ display: "flex", flexDirection: "column" }}
                   >
+                    <Link to={`/Viewitem2/${item._id}`}>
                     <img
                       src="/office.jpg"
                       alt="item"
                       className={`${styles.imgsize}`}
                       style={{ justifySelf: "center" }}
                     />
+                    </Link>
                     <p style={{ height: "1px", margin: "10px 0" }}>
                       {item.item}
                     </p>
@@ -399,12 +403,14 @@ export default function Subcategories2() {
                     className={`${styles.itemCell}`}
                     style={{ display: "flex", flexDirection: "column" }}
                   >
+                    <Link to={`/Viewitem2/${item._id}`}>
                     <img
                       src="/office.jpg"
                       alt="item"
                       className={`${styles.imgsize}`}
                       style={{ justifySelf: "center" }}
                     />
+                    </Link>
                     <p style={{ height: "1px", margin: "10px 0" }}>
                       {item.item}
                     </p>

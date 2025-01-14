@@ -20,7 +20,9 @@ import Search2 from './pages/search/search2.jsx'
 import Dummy from './pages/search/dummy.jsx'
 import Add from './pages/add/add.jsx'
 import Categories from './pages/categories/categories.jsx'
-import ViewItem from './pages/viewitem/viewitem.jsx'
+// import ViewItem from './pages/viewitem/viewitem.jsx'
+import Checkout from './pages/checkout/checkout.jsx'
+import Viewitem2 from './pages/viewitem2/viewitem2.jsx'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
@@ -46,7 +48,8 @@ const router = createBrowserRouter ([
       {path: "/dummy", element: <Dummy/>},
       {path: '/Add', element: <Add/>},
       {path: '/Categories/:id', element: <Categories/>},
-      {path: '/ViewItem/:id', element: <ViewItem/>}
+      // {path: '/ViewItem/:id', element: <ViewItem/>},
+      {path: '/Viewitem2/:id', element: <Viewitem2/>}
     ]
   }
 ]);
