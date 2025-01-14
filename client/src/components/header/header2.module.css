@@ -39,7 +39,7 @@ font-size: 13px
 }
 
 .bottomrow {
-  background-color: rgb(247, 244, 244);
+  background-color: rgb(231, 228, 228);
 }
 
 .logosize {
@@ -62,7 +62,7 @@ form.nosubmit {
 
 input.nosubmit {
   width: 260px; /* Initial width */
-  border: 1px solid #8c8888;
+  border: 1px solid #8a8686;
   padding: 9px 40px 9px 40px; /* Space for padding on the left for text */
   background: transparent;
 }

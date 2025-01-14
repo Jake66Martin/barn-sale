@@ -49,7 +49,8 @@ const router = createBrowserRouter ([
       {path: '/Add', element: <Add/>},
       {path: '/Categories/:id', element: <Categories/>},
       // {path: '/ViewItem/:id', element: <ViewItem/>},
-      {path: '/Viewitem2/:id', element: <Viewitem2/>}
+      {path: '/Viewitem2/:id', element: <Viewitem2/>},
+      {path: '/Checkout', element: <Checkout/>}
     ]
   }
 ]);

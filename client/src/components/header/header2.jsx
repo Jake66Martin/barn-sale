@@ -181,6 +181,11 @@ export default function Header2() {
           >
             Contact
           </Link>
+          <Link
+          style={{ color: "#da0404", textDecoration: "none" }}
+          to="/Checkout"
+          className={styles.textstyle}
+          >Checkout</Link>
         </>
       );
     } else {
