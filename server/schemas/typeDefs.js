@@ -54,6 +54,7 @@ type Auth {
 
 type Query {
     me: User,
+    allItemsById(_ids:[ID!]!): [Item]
     categories(category_id: ID!, offset: Int!, limit: Int!): [Item],
     category(category_id: ID!): [Item],
     itemsByCategory(subcategory_id: ID!, offset: Int!, limit: Int!): [Item],

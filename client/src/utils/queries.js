@@ -130,6 +130,17 @@ query Query($id: ID!) {
 }
 `
 
+export const ALL_ITEMS_ID = gql`
+query AllItemsById($ids: [ID!]!) {
+  allItemsById(_ids: $ids) {
+    item
+    image
+    price
+    _id
+  }
+}
+`
+
 export const ITEM_CAT = gql`
 query Query($itemCategory: String!, $filters: [String!]) {
   ItemsByCategory2(item_category: $itemCategory, filters: $filters) {

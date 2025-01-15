@@ -16,6 +16,22 @@ export default function Viewitem2() {
 
     console.log(data?.itemById)
 
+    function addToCart(item) {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // Check if the item's ID is already in the cart
+        const itemExists = cart.includes(item._id);
+    
+        // Add the item's ID if it doesn't already exist in the cart
+        if (!itemExists) {
+            cart.push(item._id);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            console.log("Item added to cart:", item._id);
+        } else {
+            console.log("Item is already in the cart:", item._id);
+        }
+    }
+
     return (
         <section className={`${styles.maingrid}`}>
             <div className={`${styles.cell1}`}>
@@ -42,7 +58,7 @@ export default function Viewitem2() {
                     <p>{data?.itemById?.price}.00$</p>
                 </div>
                 <div className={`${styles.buttoncell}`}>
-                    <button>Add To Cart</button>
+                    <button onClick={() => addToCart(data?.itemById)}>Add To Cart</button>
                 </div>
                 <div className={`${styles.descriptioncell}`}>
                     <p>{data?.itemById?.description}</p>

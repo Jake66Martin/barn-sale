@@ -75,6 +75,22 @@ const resolvers = {
       }
     },
 
+    allItemsById: async (parent, {_ids}, context) => {
+
+      try {
+        const items = await Item.findAll({
+            where: {
+                id: _ids,  // Handles an array of IDs
+            },
+        });
+
+        return items;
+    } catch (error) {
+        console.error(error);
+        throw new Error("Error fetching items by IDs");
+    }
+    },
+
     subcategoryById: async (parent, { category_id }, context) => {
       try {
         const subcategory = await Subcategory.findAll({
