@@ -1,7 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
+
+
+
+.textstyle {
+    font-family: "Montserrat", sans-serif;
+  }
+
+
+  .textstyle2{
+    font-family: "Permanent Marker", sans-serif;
+    color: #da0404;
+    font-size: 50px;
+}
+
 .maingrid{
     display: grid;
     grid-template-columns: 70% 30%;
-    height: 700px;
+    height: 900px;
 }
 
 .cart{
@@ -13,16 +30,32 @@ grid-template-columns: 5% 80% 15%;
 .check1{
 grid-row: 1;
 grid-column: 2;
+position: relative;
+display: flex;
+justify-content: space-between;;
+}
+
+.check1::after{
+    content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 70%;
+  height: 1px;
+  background-color: rgb(171, 168, 168);
 }
 
 .check2{
 grid-row: 2;
 grid-column: 2;
+overflow: hidden;
+height: 490px;
 }
 
 .check3{
 grid-row: 3;
 grid-column: 2;
+display: flex;
 }
 
 .summary{
@@ -33,5 +66,35 @@ grid-column: 2;
 
 .mainsummary{
     display: grid;
-    grid-template-rows: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%;
+    grid-template-rows: 16.66% 10% 16.66% 16.66% 23.4% 16.66%;
+}
+
+.itemcard{
+    display: grid;
+    grid-template-columns: 35% 50% 15%;
+    height: 250px;
+}
+
+.ordersum{
+    display: flex;
+}
+
+.ordersum::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 63%;
+    height: 1px;
+    background-color: rgb(171, 168, 168);
+}
+
+.ship::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 80px;
+    height: 1px;
+    background-color: rgb(171, 168, 168);
 }
