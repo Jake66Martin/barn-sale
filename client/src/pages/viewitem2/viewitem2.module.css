@@ -159,6 +159,14 @@ grid-column: 1;
     .smallcenter {
         left: 0 !important;
     }
+
+    .smallercenter{
+     top: 0 !important;
+    }
+
+    .desc{
+        bottom: 30px;
+    }
   }
 
   @media (max-width: 734px) {

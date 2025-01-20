@@ -89,14 +89,15 @@ export default function Viewitem2() {
       </div>
       <div className={`${styles.cell2}`}>
         <div className={`${styles.namecell} ${styles.flexcell}`} style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-          <p className={`${styles.textstyle} ${styles.itemname} ${styles.smallcenter}`} style={{position: 'relative', top: '35px', fontWeight: '800', fontSize: '25px', left: '100px'}}>{data?.itemById?.item}</p>
-          <p className={`${styles.textstyle} ${styles.smallcenter}`} style={{position: 'relative', top: '35px', fontSize: '20px', left: '100px'}}>${data?.itemById?.price}</p>
+          <p className={`${styles.textstyle} ${styles.itemname} ${styles.smallcenter} ${styles.smallercenter}`} style={{position: 'relative', top: '35px', fontWeight: '800', fontSize: '25px', left: '100px'}}>{data?.itemById?.item}</p>
+          <p className={`${styles.textstyle} ${styles.smallcenter} ${styles.smallercenter}`} style={{position: 'relative', top: '35px', fontSize: '20px', left: '100px'}}>${data?.itemById?.price}</p>
         </div>
         <div className={`${styles.buttoncell} ${styles.flexcell}`}>
           <button onClick={() => addToCart(data?.itemById)} className={`${styles.textstyle} ${styles.border} ${styles.smallcenter}`} style={{color: 'white', width: '500px', position: 'relative', left:'100px'}}>Add To Cart</button>
         </div>
         <div className={`${styles.descriptioncell} ${styles.flexcell}`}>
-          <p className={`${styles.textstyle} ${styles.smallcenter}`} style={{position: 'relative', left: '100px', padding: '0 15px'}}>{data?.itemById?.description}
+          <p className={`${styles.textstyle} ${styles.smallcenter} ${styles.desc}`} style={{position: 'relative', left: '100px', padding: '0 15px'}}>{data?.itemById?.description}
+          
           </p>
         </div>
       </div>
