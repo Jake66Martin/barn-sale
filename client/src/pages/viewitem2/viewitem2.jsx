@@ -59,7 +59,9 @@ export default function Viewitem2() {
   return (
     <section className={`${styles.maingrid}`}>
       <div className={`${styles.cell1}`}>
-        <div className={`${styles.pagecell}`}></div>
+        <div className={`${styles.pagecell}`} style={{display: 'flex', alignItems: 'center'}}>
+            <p className={`${styles.textstyle} ${styles.itemlink}`}>{`Home >  All Furniture > ${data?.itemById.item_category} > ${data?.itemById.item}`} </p>
+        </div>
         <div className={`${styles.imgcell}`}>
         <img src={mainImage} className={`${styles.mainimage}`} alt="Main Image" />
         </div>
@@ -86,15 +88,16 @@ export default function Viewitem2() {
         </div>
       </div>
       <div className={`${styles.cell2}`}>
-        <div className={`${styles.namecell}`}>
-          <p>{data?.itemById?.item}</p>
-          <p>{data?.itemById?.price}.00$</p>
+        <div className={`${styles.namecell} ${styles.flexcell}`} style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+          <p className={`${styles.textstyle} ${styles.itemname} ${styles.smallcenter}`} style={{position: 'relative', top: '35px', fontWeight: '800', fontSize: '25px', left: '100px'}}>{data?.itemById?.item}</p>
+          <p className={`${styles.textstyle} ${styles.smallcenter}`} style={{position: 'relative', top: '35px', fontSize: '20px', left: '100px'}}>${data?.itemById?.price}</p>
         </div>
-        <div className={`${styles.buttoncell}`}>
-          <button onClick={() => addToCart(data?.itemById)}>Add To Cart</button>
+        <div className={`${styles.buttoncell} ${styles.flexcell}`}>
+          <button onClick={() => addToCart(data?.itemById)} className={`${styles.textstyle} ${styles.border} ${styles.smallcenter}`} style={{color: 'white', width: '500px', position: 'relative', left:'100px'}}>Add To Cart</button>
         </div>
-        <div className={`${styles.descriptioncell}`}>
-          <p>{data?.itemById?.description}</p>
+        <div className={`${styles.descriptioncell} ${styles.flexcell}`}>
+          <p className={`${styles.textstyle} ${styles.smallcenter}`} style={{position: 'relative', left: '100px', padding: '0 15px'}}>{data?.itemById?.description}
+          </p>
         </div>
       </div>
     </section>

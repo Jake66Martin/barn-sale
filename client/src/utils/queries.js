@@ -126,6 +126,7 @@ query Query($id: ID!) {
     description
     price
     image
+    item_category
   }
 }
 `
