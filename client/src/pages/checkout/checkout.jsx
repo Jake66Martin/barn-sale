@@ -2,33 +2,73 @@ import styles from "./checkout.module.css";
 import { useQuery } from "@apollo/client";
 import { ALL_ITEMS_ID } from "../../utils/queries";
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 export default function Checkout() {
   const [method, setMethod] = useState("Pickup");
-  const [tax, setTax] = useState('0.00');
-  const [total, setTotal] = useState('$0.00')
+  const [tax, setTax] = useState(0.00);
+  const [total, setTotal] = useState(0.00)
+  const [basePrice, setBasePrice] = useState(0.00)
 
-  const handleChange = (e) => {
+  const navigate = useNavigate();
+
+
+
+
+
+
+
+const handleChange = (e) => {
     const newMethod = e.target.value;
-        setMethod(newMethod);  // Update method state
-        calculateTax(basePrice, newMethod);  // Update tax state
+    setMethod(newMethod);  // Update method state
+    calculateTax(basePrice, newMethod);  // Update tax state
+    calculateTotal(basePrice, newMethod, tax);  // Update total state
   };
+
+
+
 
   const cartIds = JSON.parse(localStorage.getItem("cart")) || [];
 
   console.log("Cart IDs:", cartIds);
 
+
+
+
+
+
+
+
   const { loading, error, data } = useQuery(ALL_ITEMS_ID, {
     variables: { ids: cartIds },
   });
 
+
+
+
   console.log(data?.allItemsById);
 
-  let basePrice = 0;
 
-  for (let i = 0; i < data?.allItemsById?.length; i++) {
-    basePrice += data?.allItemsById[i]?.price || 0; // Safely add the price
-  }
+
+
+
+useEffect(() => {
+    if (data?.allItemsById?.length > 0) {
+      
+      let newBasePrice = 0;
+      for (let i = 0; i < data?.allItemsById?.length; i++) {
+        newBasePrice += data?.allItemsById[i]?.price || 0.00; 
+      }
+      setBasePrice(newBasePrice);
+      
+      
+      calculateTax(newBasePrice, method);  // Update tax
+      calculateTotal(newBasePrice, method, tax);  // Update total
+    }
+  }, [data, method]);  // Re-run when data or method changes
+
+
+
 
   console.log("Base Price:", basePrice);
 
@@ -63,8 +103,41 @@ export default function Checkout() {
   }
 
   useEffect(() => {
-    calculateTotal(basePrice, method, tax);  // Update total whenever tax or method changes
-}, [tax, method]); // Depend on method and tax to trigger recalculation of total
+    calculateTotal(basePrice, method, tax);
+}, [tax, method]);
+
+
+
+function removeItem(itemId) {
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+cart = cart.filter(id => id !== itemId);
+
+localStorage.setItem('cart', JSON.stringify(cart));
+
+window.location.reload()
+}
+
+function continueShopping() {
+   
+        navigate('/Browse');
+      
+}
+
+
+useEffect(() => {
+    if (data?.allItemsById?.length > 0) {
+      // Calculate base price first
+      let newBasePrice = 0;
+      data.allItemsById.forEach(item => {
+        newBasePrice += item.price || 0; // Safely add the price
+      });
+  
+      // Recalculate total after base price is updated
+      calculateTax(newBasePrice, method);  // Update tax based on new base price
+      calculateTotal(newBasePrice, method, tax);  // Update total based on new base price and tax
+    }
+  }, [data, method, tax]); // Re-run when data, method, or tax changes
 
   return (
     <>
@@ -91,11 +164,11 @@ export default function Checkout() {
               }}
               className={`${styles.textstyle}`}
             >
-              {data?.allItemsById?.length} Items
+              {data?.allItemsById.length} Items
             </p>
           </div>
           <div style={{ overflow: "auto" }} className={`${styles.check2}`}>
-            {data?.allItemsById?.length === 0 ? (
+            {data?.allItemsById.length === 0 ? (
               <div
                 style={{
                   height: "100%",
@@ -108,7 +181,7 @@ export default function Checkout() {
                 <p className={`${styles.textstyle2}`}>Your cart is empty.</p>
               </div>
             ) : (
-              data?.allItemsById?.map((item) => (
+              data?.allItemsById.map((item) => (
                 <div className={`${styles.itemcard}`} key={item._id}>
                   <img
                     style={{ height: "200px", width: "200px" }}
@@ -133,6 +206,7 @@ export default function Checkout() {
                         cursor: "pointer",
                       }}
                       className={`${styles.textstyle}`}
+                      onClick={() => removeItem(item._id)}
                     >
                       Remove
                     </p>
@@ -148,7 +222,7 @@ export default function Checkout() {
                       }}
                       className={`${styles.textstyle}`}
                     >
-                      ${item?.price}.00
+                      ${item?.price}
                     </p>
                   </div>
                 </div>
@@ -161,8 +235,10 @@ export default function Checkout() {
                 alignSelf: "center",
                 color: "#da0404",
                 fontSize: "17px",
+                cursor: 'pointer'
               }}
               className={`${styles.textstyle}`}
+              onClick={continueShopping}
             >
               Continue Shopping
             </p>
@@ -197,7 +273,7 @@ export default function Checkout() {
                 style={{ fontWeight: "500", fontSize: "20px" }}
                 className={`${styles.textstyle}`}
               >
-                ${basePrice}.00
+                ${basePrice}
               </p>
             </div>
             <div>
@@ -207,7 +283,7 @@ export default function Checkout() {
               >
                 DELIVERY/PICKUP
               </p>
-              <select value={method} onChange={handleChange}>
+              <select value={method} onChange={handleChange}  disabled={cartIds.length === 0}>
                 <option
                   className={`${styles.textstyle}`}
                   value="Front Door Delivery"
@@ -288,7 +364,7 @@ export default function Checkout() {
                 }}
               >
                 <p>Items</p>
-                <p>${basePrice}.00</p>
+                <p>${basePrice}</p>
               </div>
               <div
                 style={{
