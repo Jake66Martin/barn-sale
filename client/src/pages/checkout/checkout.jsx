@@ -318,6 +318,7 @@ useEffect(() => {
               {method === "Hands Free Delivery" && (
                 <p
                   style={{ fontSize: "13px", position: "relative", top: "5px" }}
+                  className={`${styles.asterisk}`}
                 >
                   *Delivery within 100km radius of Ottawa or Hawkesbury*
                 </p>
@@ -325,6 +326,7 @@ useEffect(() => {
               {method === "Hands Free Delivery" && (
                 <p
                   style={{ fontSize: "13px", position: "relative", top: "5px" }}
+                  className={`${styles.asterisk}`}
                 >
                   *Hands Free Delivery is delivered inside to your place of
                   choosing*
@@ -340,7 +342,7 @@ useEffect(() => {
             </div>
             <div style={{ position: "relative" }} className={`${styles.ship}`}>
               <p
-                className={`${styles.textstyle}`}
+                className={`${styles.textstyle} ${styles.deliv}`}
                 style={{
                   position: "relative",
                   top: "50px",
@@ -427,8 +429,8 @@ useEffect(() => {
             </div>
             <div className={`${styles.centerbuttondiv}`}>
               <button
-                className={`${styles.textstyle} ${styles.centerbutton}`}
-                style={{ position: "relative", top: "70px" }}
+                className={`${styles.textstyle} ${styles.centerbutton} ${styles.border}`}
+                style={{ position: "relative", top: "70px", color: 'white' }}
               >
                 Checkout
               </button>
