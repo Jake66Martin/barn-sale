@@ -292,20 +292,23 @@ export default function Header2() {
         style={{ zIndex: "1", position: "absolute", left: "16.5%" }}
       >
         <div className={`${styles.ddcell1} ${styles.textstyle2}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-          <Link style={{textDecoration: 'none', color: "#da0404"}}>About us</Link>
+          <Link to='/About' style={{textDecoration: 'none', color: "#da0404"}}>About us</Link>
         </div>
         <div className={`${styles.ddcell2} ${styles.textstyle2}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-          <Link style={{textDecoration: 'none', color: "#da0404"}}>Contact</Link>
+          <Link to='/Contact' style={{textDecoration: 'none', color: "#da0404"}}>Contact</Link>
+        </div>
+        <div className={`${styles.ddcell113} ${styles.textstyle2}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+          <Link to='/Checkout' style={{textDecoration: 'none', color: "#da0404"}}>Checkout</Link>
         </div>
         <div className={`${styles.ddcell3}  ${styles.textstyle2}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', color: "#da0404"}}>Furniture Categories</div>
-        <div className={`${styles.ddcell4}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`}>Living Room</Link></div>
-        <div className={`${styles.ddcell5}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`}>Dining Room</Link></div>
-        <div className={`${styles.ddcell6}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`}>Kitchen & Bath</Link></div>
-        <div className={`${styles.ddcell7}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`}>Bedroom</Link></div>
-        <div className={`${styles.ddcell8}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`}>Child/Nursery</Link></div>
-        <div className={`${styles.ddcell9}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`}>Office</Link></div>
-        <div className={`${styles.ddcell10}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`}>Garage/Exterior</Link></div>
-        <div className={`${styles.ddcell11}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`}>Home Decor</Link></div>
+        <div className={`${styles.ddcell4}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`} to='/Subcategories/LivingRoom'>Living Room</Link></div>
+        <div className={`${styles.ddcell5}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`} to='/Subcategories/DiningRoom'>Dining Room</Link></div>
+        <div className={`${styles.ddcell6}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`} to='/Subcategories/Kitchen&Bath'>Kitchen & Bath</Link></div>
+        <div className={`${styles.ddcell7}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`} to='/Subcategories/Bedroom'>Bedroom</Link></div>
+        <div className={`${styles.ddcell8}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`} to='/Subcategories/Child&Nursery'>Child/Nursery</Link></div>
+        <div className={`${styles.ddcell9}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`} to='/Subcategories/Office'>Office</Link></div>
+        <div className={`${styles.ddcell10}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`} to='/Subcategories/Garage&Exterior'>Garage/Exterior</Link></div>
+        <div className={`${styles.ddcell11}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`} to='/Subcategories/HomeDecor'>Home Decor</Link></div>
       </div>
     </>
   );

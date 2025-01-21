@@ -176,7 +176,12 @@ input.nosubmit {
 
   .ddcell2{
     grid-row: 1;
-    grid-column: 3 / span 4;
+    grid-column: 2 / span 2;
+  }
+
+  .ddcel113{
+    grid-row: 1;
+    grid-column: 3 / span 2;
   }
   
   .ddcell3{
