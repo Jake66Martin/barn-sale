@@ -9,13 +9,21 @@ export default function Checkout() {
   const [tax, setTax] = useState(0.00);
   const [total, setTotal] = useState(0.00)
   const [basePrice, setBasePrice] = useState(0.00)
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
   const navigate = useNavigate();
 
 
 
 
+ useEffect(() => {
+  const handleResize = () => setWindowWidth(window.innerWidth);
 
+  window.addEventListener("resize", handleResize);
+
+  return () => window.removeEventListener("resize", handleResize);
+
+ }, [])
 
 
 const handleChange = (e) => {
@@ -178,24 +186,25 @@ useEffect(() => {
                   alignItems: "center",
                 }}
               >
-                <p className={`${styles.textstyle2}`}>Your cart is empty.</p>
+                <p className={`${styles.textstyle2} ${styles.emptycart}`}>Your cart is empty.</p>
               </div>
             ) : (
               data?.allItemsById.map((item) => (
                 <div className={`${styles.itemcard}`} key={item._id}>
                   <img
                     style={{ height: "200px", width: "200px" }}
+                    className={`${styles.smallerimg}`}
                     src={JSON.parse(item?.image)}
                     alt="item image"
                   />
-                  <div style={{ display: "grid" }}>
+                  <div style={{display: 'grid'}}>
                     <p
                       style={{
                         alignSelf: "end",
                         fontWeight: "800",
                         fontSize: "20px",
                       }}
-                      className={`${styles.textstyle}`}
+                      className={`${styles.textstyle} ${styles.smallername}`}
                     >
                       {item?.item}
                     </p>
@@ -204,9 +213,13 @@ useEffect(() => {
                         alignSelf: "center",
                         color: "grey",
                         cursor: "pointer",
+                        display: 'inline',
+                        width: 'max-content'
                       }}
-                      className={`${styles.textstyle}`}
-                      onClick={() => removeItem(item._id)}
+                      className={`${styles.textstyle} ${styles.smallerremove}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        removeItem(item._id)}}
                     >
                       Remove
                     </p>
@@ -220,7 +233,7 @@ useEffect(() => {
                         bottom: "19px",
                         right: "10px",
                       }}
-                      className={`${styles.textstyle}`}
+                      className={`${styles.textstyle} ${styles.smallerprice}`}
                     >
                       ${item?.price}
                     </p>
@@ -235,9 +248,11 @@ useEffect(() => {
                 alignSelf: "center",
                 color: "#da0404",
                 fontSize: "17px",
-                cursor: 'pointer'
+                cursor: 'pointer',
+                width: 'max-content',
+                height: "max-content"
               }}
-              className={`${styles.textstyle}`}
+              className={`${styles.textstyle} ${styles.shopping}`}
               onClick={continueShopping}
             >
               Continue Shopping
@@ -410,9 +425,9 @@ useEffect(() => {
                 </p>
               </div>
             </div>
-            <div>
+            <div className={`${styles.centerbuttondiv}`}>
               <button
-                className={`${styles.textstyle}`}
+                className={`${styles.textstyle} ${styles.centerbutton}`}
                 style={{ position: "relative", top: "70px" }}
               >
                 Checkout
