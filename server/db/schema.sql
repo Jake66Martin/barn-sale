@@ -4,22 +4,22 @@ CREATE DATABASE thriftbarnfurniture_db;
 
 USE thriftbarnfurniture_db;
 
-CREATE TABLE Category (
+CREATE TABLE category (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL UNIQUE
 );
 
-CREATE TABLE Subcategory (
+CREATE TABLE subcategory (
      id INT AUTO_INCREMENT PRIMARY KEY,
      name VARCHAR(100) NOT NULL,
      category_id INT,
      category_name VARCHAR(100),
 
-     FOREIGN KEY (category_id) REFERENCES Category(id),
-     FOREIGN KEY (category_name) REFERENCES Category(name) ON DELETE CASCADE
+     FOREIGN KEY (category_id) REFERENCES category(id),
+     FOREIGN KEY (category_name) REFERENCES category(name) ON DELETE CASCADE
 );
 
-CREATE TABLE Item (
+CREATE TABLE item (
     id INT AUTO_INCREMENT PRIMARY KEY,
     item VARCHAR(100) NOT NULL,
     category_id INT,
@@ -32,17 +32,17 @@ CREATE TABLE Item (
     image VARCHAR(100) NOT NULL,
     created_at DATETIME DEFAULT NOW(),
 
-    FOREIGN KEY (category_id) REFERENCES Category(id),
-    FOREIGN KEY (subcategory_id) REFERENCES Subcategory(id)
+    FOREIGN KEY (category_id) REFERENCES category(id),
+    FOREIGN KEY (subcategory_id) REFERENCES subcategory(id)
 );
 
-CREATE TABLE User (
+CREATE TABLE user (
    id INT AUTO_INCREMENT PRIMARY KEY,
    email VARCHAR(100) NOT NULL UNIQUE,
    password VARCHAR(100) NOT NULL
 );
 
-INSERT INTO Category (name)
+INSERT INTO category (name)
     VALUES 
     ("LivingRoom"),
     ("DiningRoom"),
@@ -53,7 +53,7 @@ INSERT INTO Category (name)
     ("Garage&Exterior"),
     ("HomeDecor");
 
-INSERT INTO Subcategory (name, category_id, category_name)
+INSERT INTO subcategory (name, category_id, category_name)
 VALUES 
 ("Couches&Sofas&Loveseats", 1, "LivingRoom"),
 ("TV&MediaStand", 1, "LivingRoom"),
