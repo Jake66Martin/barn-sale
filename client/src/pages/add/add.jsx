@@ -81,13 +81,7 @@ export default function addRemove() {
     setSubcategoryId(""); 
     setItemCategory("");
     setItemSubcategory("");
-    // itemRef.current.value = "";
-    // priceRef.current.value = "";
-    // locationRef.current.value = "";
-    // descriptionRef.current.value = "";
-    // imageRef.current.value = "";
-    // catRef.current.value = "";
-    // subcatRef.current.value = "";
+    
   };
 
   const getSecondDropOptions = () => {
@@ -196,7 +190,6 @@ export default function addRemove() {
                       name="category"
                       id="category"
                       value={categoryId}
-                      ref={catRef}
                       onChange={
                         handleFirstDrop
                       }
@@ -223,7 +216,6 @@ export default function addRemove() {
                       id="sub-category"
                       value={subcategoryId}
                       disabled={disable()}
-                      ref={subcatRef}
                       onChange={(event) => {
                         // setSubcategoryId(event.target.value);
                         console.log(event.target.value);
@@ -243,8 +235,8 @@ export default function addRemove() {
                       className="form-control"
                       id="item"
                       name="item"
+                      value={item}
                       onChange={handleChange}
-                      ref={itemRef}
                       required
                     />
                   </div>
@@ -259,8 +251,8 @@ export default function addRemove() {
                         id="price"
                         name="price"
                         onChange={handleChange}
-                        ref={priceRef}
                         required
+                        value={price}
                       />
                     </div>
                   </div>
@@ -273,7 +265,6 @@ export default function addRemove() {
                       name="location"
                       id="location"
                       value={location}
-                      ref={locationRef}
                       onChange={(event) => setLocation(event.target.value)}
                       required
                     >
@@ -305,7 +296,6 @@ export default function addRemove() {
                       name="description"
                       rows="3"
                       onChange={handleChange}
-                      ref={descriptionRef}
                       required
                     ></textarea>
                   </div>
