@@ -10,6 +10,7 @@ export default function Header2() {
   const [searchTerm, setSearchTerm] = useState("");
   const [isToggled, setIsToggled] = useState(false);
   const [isSmallVisible, setIsSmallVisible] = useState(false);
+  const dropdownRef = useRef(null);
 
   const handleSearch = (event, query) => {
     event.preventDefault();
@@ -28,8 +29,18 @@ export default function Header2() {
     console.log(searchTerm); // Optional: For debugging purposes
   };
 
+
+
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
+  };
+
+  
+
+
+  const toggleClass = () => {
+    setIsToggled((prev) => !prev);
+    setIsVisible((prev) => !prev); // Sync visibility state with toggle
   };
 
   const toggleSmallVisibility = () => {
@@ -48,9 +59,36 @@ export default function Header2() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const toggleClass = () => {
-    setIsToggled((prev) => !prev); // Toggle the state
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+  
+      // Close the dropdown menu if the window width exceeds 841px
+      if (window.innerWidth > 841) {
+        setIsVisible(false);
+        setIsSmallVisible(false);
+        setIsToggled(false); // Reset the toggle state to show the hamburger icon
+      }
+    };
+  
+    // Add event listener to track window resizing
+    window.addEventListener("resize", handleResize);
+  
+    // Clean up the event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+
+
+
+  const closeDropdown = () => {
+    setIsVisible(false);
+    setIsSmallVisible(false);
+    setIsToggled(false);
   };
+
+  
 
   function showOptions() {
     if (window.innerWidth > 841) {
@@ -61,9 +99,11 @@ export default function Header2() {
             to="#"
             onClick={toggleVisibility}
             className={`${styles.textstyle} ${styles.yo}`}
+            
           >
             Browse our furniture
             <div
+            ref={dropdownRef}
               className={`${styles.ddmenu} ${styles.yo}`}
               style={{ display: isVisible ? "block" : "none", zIndex: "1" }}
             >
@@ -182,10 +222,12 @@ export default function Header2() {
             Contact
           </Link>
           <Link
-          style={{ color: "#da0404", textDecoration: "none" }}
-          to="/Checkout"
-          className={styles.textstyle}
-          >Checkout</Link>
+            style={{ color: "#da0404", textDecoration: "none" }}
+            to="/Checkout"
+            className={styles.textstyle}
+          >
+            Checkout
+          </Link>
         </>
       );
     } else {
@@ -286,29 +328,60 @@ export default function Header2() {
           </div>
         </div>
       </header>
+      
       <div
-        className={`${styles.dropdown}  ${isSmallVisible ? styles.open : ""}`}
-        // style={{ display: isSmallVisible ? "block" : "none", zIndex: "1" }}
-        style={{ zIndex: "1", position: "absolute", left: "16.5%" }}
+        className={`${styles.optionbar}  ${
+          isSmallVisible ? styles.open : styles.close
+        }`}
+        ref={dropdownRef}
       >
-        <div className={`${styles.ddcell1} ${styles.textstyle2}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-          <Link to='/About' style={{textDecoration: 'none', color: "#da0404"}}>About us</Link>
+        
+        <div></div>
+        <div className={`${styles.linkgrid}`}>
+          <div className={`${styles.links}`}>
+            <div className={`${styles.center} ${styles.textstyle}`}>
+              <Link
+                style={{ color: "white", textDecoration: "none" }}
+                to="/About"
+                onClick={closeDropdown}
+              >
+                About us
+              </Link>
+            </div>
+
+            <div className={`${styles.center} ${styles.textstyle}`}>
+              <Link
+                style={{ color: "white", textDecoration: "none" }}
+                to="/Contact"
+                onClick={closeDropdown}
+              >
+                Contact
+              </Link>
+            </div>
+
+            <div className={`${styles.center} ${styles.textstyle}`}>
+              <Link
+                style={{ color: "white", textDecoration: "none" }}
+                to="/Checkout"
+                onClick={closeDropdown}
+              >
+                Checkout
+              </Link>
+            </div>
+          </div>
+          <div className={`${styles.furnigrid}`}>
+            <div className={`${styles.furnicat} ${styles.textstyle2} ${styles.center}`}><p style={{color: 'white'}}>Furniture Categories</p></div>
+            <div className={`${styles.center} ${styles.textstyle} ${styles.smaller}`}><Link onClick={closeDropdown} style={{color: 'white', position: 'relative', right: '19px', textDecoration: 'none'}} to='/Subcategories/LivingRoom'>Living Room</Link></div>
+            <div className={`${styles.center} ${styles.textstyle} ${styles.smaller}`}><Link onClick={closeDropdown} style={{color: 'white', position: 'relative', left: '19px', textDecoration: 'none'}} className={`${styles.dining}`} to='/Subcategories/DiningRoom'>Dining Room</Link></div>
+            <div className={`${styles.center} ${styles.textstyle} ${styles.smaller}`}><Link onClick={closeDropdown} style={{color: 'white', position: 'relative', right: '9px', textDecoration: 'none'}} className={`${styles.kitchen}`} to='/Subcategories/Kitchen&Bath'>Kitchen & Bath</Link></div>
+            <div className={`${styles.center} ${styles.textstyle} ${styles.smaller}`}><Link onClick={closeDropdown} style={{color: 'white', position: 'relative', left: '3px', textDecoration: 'none'}} className={`${styles.bedroom}`} to='/Subcategories/Bedroom'>Bedroom</Link></div>
+            <div className={`${styles.center} ${styles.textstyle} ${styles.smaller}`}><Link onClick={closeDropdown} style={{color: 'white', position: 'relative', right: '8px', textDecoration: 'none'}} className={`${styles.child}`} to='/Subcategories/Child&Nursery'>Child & Nursery</Link></div>
+            <div className={`${styles.center} ${styles.textstyle} ${styles.smaller}`}><Link onClick={closeDropdown} style={{color: 'white', position: 'relative', left: '-12px', textDecoration: 'none'}} className={`${styles.office}`} to='/Subcategories/Office'>Office</Link></div>
+            <div className={`${styles.center} ${styles.textstyle} ${styles.smaller}`}><Link onClick={closeDropdown} style={{color: 'white', position: 'relative', right: '1px', textDecoration: 'none'}} className={`${styles.garage}`} to='/Subcategories/Garage&Exterior'>Garage & Exterior</Link></div>
+            <div className={`${styles.center} ${styles.textstyle} ${styles.smaller}`}><Link onClick={closeDropdown} style={{color: 'white', position: 'relative', left: '15px', textDecoration: 'none'}} className={`${styles.home}`} to='/Subcategories/HomeDecor'>Home Decor</Link></div>
+          </div>
         </div>
-        <div className={`${styles.ddcell2} ${styles.textstyle2}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-          <Link to='/Contact' style={{textDecoration: 'none', color: "#da0404"}}>Contact</Link>
-        </div>
-        <div className={`${styles.ddcell113} ${styles.textstyle2}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-          <Link to='/Checkout' style={{textDecoration: 'none', color: "#da0404"}}>Checkout</Link>
-        </div>
-        <div className={`${styles.ddcell3}  ${styles.textstyle2}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', color: "#da0404"}}>Furniture Categories</div>
-        <div className={`${styles.ddcell4}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`} to='/Subcategories/LivingRoom'>Living Room</Link></div>
-        <div className={`${styles.ddcell5}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`} to='/Subcategories/DiningRoom'>Dining Room</Link></div>
-        <div className={`${styles.ddcell6}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`} to='/Subcategories/Kitchen&Bath'>Kitchen & Bath</Link></div>
-        <div className={`${styles.ddcell7}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`} to='/Subcategories/Bedroom'>Bedroom</Link></div>
-        <div className={`${styles.ddcell8}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`} to='/Subcategories/Child&Nursery'>Child/Nursery</Link></div>
-        <div className={`${styles.ddcell9}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`} to='/Subcategories/Office'>Office</Link></div>
-        <div className={`${styles.ddcell10}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`} to='/Subcategories/Garage&Exterior'>Garage/Exterior</Link></div>
-        <div className={`${styles.ddcell11}`} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><Link style={{textDecoration: 'none', color: "#da0404"}} className={`${styles.textstyle3}`} to='/Subcategories/HomeDecor'>Home Decor</Link></div>
+        <div></div>
       </div>
     </>
   );
