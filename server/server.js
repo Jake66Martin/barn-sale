@@ -50,20 +50,20 @@ const startApolloServer = async () => {
         });
     });
 
-    // if (process.env.NODE_ENV !== 'production') {
-    //     db.sync({force: false}).then(() => {
-    //         app.listen(PORT, '0.0.0.0', () => {
-    //             console.log(`API servers running on port ${PORT}`);
-    //             console.log(`Use GraphQL at http://localhost:${PORT}/graphql`)
-    //         });
-    //     });
-    // } else {
-    //     // Just start the app without syncing in production
-    //     app.listen(PORT, '0.0.0.0', () => {
-    //         console.log(`API servers running on port ${PORT}`);
-    //         console.log(`Use GraphQL at http://localhost:${PORT}/graphql`)
-    //     });
-    // }
+    if (process.env.NODE_ENV !== 'production') {
+        db.sync({force: false}).then(() => {
+            app.listen(PORT, '0.0.0.0', () => {
+                console.log(`API servers running on port ${PORT}`);
+                console.log(`Use GraphQL at http://localhost:${PORT}/graphql`)
+            });
+        });
+    } else {
+        // Just start the app without syncing in production
+        app.listen(PORT, '0.0.0.0', () => {
+            console.log(`API servers running on port ${PORT}`);
+            console.log(`Use GraphQL at http://localhost:${PORT}/graphql`)
+        });
+    }
 };
 
 startApolloServer();
