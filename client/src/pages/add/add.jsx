@@ -78,14 +78,16 @@ export default function addRemove() {
     setDescription("");
     setImage([]);
     setCategoryId("");
-    setSubCategoryId(""); 
-    itemRef.current.value = "";
-    priceRef.current.value = "";
-    locationRef.current.value = "";
-    descriptionRef.current.value = "";
-    imageRef.current.value = "";
-    catRef.current.value = "";
-    subcatRef.current.value = "";
+    setSubcategoryId(""); 
+    setItemCategory("");
+    setItemSubcategory("");
+    // itemRef.current.value = "";
+    // priceRef.current.value = "";
+    // locationRef.current.value = "";
+    // descriptionRef.current.value = "";
+    // imageRef.current.value = "";
+    // catRef.current.value = "";
+    // subcatRef.current.value = "";
   };
 
   const getSecondDropOptions = () => {
