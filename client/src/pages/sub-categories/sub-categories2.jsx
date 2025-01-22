@@ -309,7 +309,7 @@ export default function Subcategories2() {
 
                   <div
                     className={`${styles.itemCell}`}
-                    style={{ display: "flex", flexDirection: "column" }}
+                    style={{ display: "flex", flexDirection: "column"}}
                   >
                     <Link to={`/Viewitem2/${item._id}`}>
                     <img
@@ -319,13 +319,13 @@ export default function Subcategories2() {
                       style={{ justifySelf: "center" }}
                     />
                     </Link>
-                    <p style={{ height: "1px", margin: "10px 0" }}
+                    <p style={{ height: "1px", margin: "10px 0", position: 'relative', bottom: '40px' }}
                     className={`${styles.text}`}
                     >
                       {item.item}
                     </p>
-                    <p style={{ height: "1px", margin: "10px 0" }}
-                    className={`${styles.text}`}
+                    <p style={{ height: "1px", margin: "10px 0", position: 'relative', bottom: '40px' }}
+                    className={`${styles.text} ${styles.price}`}
                     >
                       ${item.price}.00
                     </p>
@@ -368,10 +368,12 @@ export default function Subcategories2() {
                       style={{ justifySelf: "center" }}
                     />
                     </Link>
-                    <p style={{ height: "1px", margin: "10px 0" }}>
+                    <p style={{ height: "1px", margin: "10px 0", position: 'relative', bottom: '40px' }}>
                       {item.item}
                     </p>
-                    <p style={{ height: "1px", margin: "10px 0" }}>
+                    <p style={{ height: "1px", margin: "10px 0", position: 'relative', bottom: '40px' }}
+                    className={`${styles.price}`}
+                    >
                       ${item.price}.00
                     </p>
                   </div>
@@ -414,7 +416,9 @@ export default function Subcategories2() {
                     <p style={{ height: "1px", margin: "10px 0" }}>
                       {item.item}
                     </p>
-                    <p style={{ height: "1px", margin: "10px 0" }}>
+                    <p style={{ height: "1px", margin: "10px 0" }}
+                    className={`${styles.price}`}
+                    >
                       ${item.price}.00
                     </p>
                   </div>
