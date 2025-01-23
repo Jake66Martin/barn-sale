@@ -132,7 +132,7 @@ export default function Search2() {
                   style={{ display: "flex", flexDirection: "column" }}
                 >
                   <img
-                    src="/office.jpg"
+                    src={item.image[0]}
                     alt="item"
                     className={`${styles.imgsize}`}
                     style={{ justifySelf: "center" }}
