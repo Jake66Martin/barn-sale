@@ -16,8 +16,8 @@ export default function addRemove() {
   const [image, setImage] = useState([]);
   const [categoryId, setCategoryId] = useState("");
   const [subcategoryId, setSubcategoryId] = useState("");
-  const [itemCategory, setItemCategory] = useState('');
-  const [itemSubcategory, setItemSubcategory] = useState('');
+  const [itemCategory, setItemCategory] = useState("");
+  const [itemSubcategory, setItemSubcategory] = useState("");
 
   const [addItem] = useMutation(ADD_ITEM);
 
@@ -120,23 +120,58 @@ export default function addRemove() {
     return ["3", "5", "6", "7", "8"].includes(categoryId);
   };
 
+  // const handleFormSubmit = async (event) => {
+  //   event.preventDefault();
+  //   try {
+      
+  //     if (!image) {
+  //       Swal.fire({
+  //         position: "center-center",
+  //         icon: "error",
+  //         title: "Please add an image.",
+  //         showConfirmButton: false,
+  //         timer: 2000,
+  //       });
+
+  //       return
+  //     }
+      
+  //     const itemAdded = await addItem({
+  //       variables: {
+  //         item,
+  //         price,
+  //         location,
+  //         description,
+  //         image,
+  //         categoryId,
+  //         subcategoryId,
+  //         itemCategory,
+  //         itemSubcategory
+  //       },
+  //     });
+
+  //     localStorage.setItem("itemAdded", "true");
+
+
+  //     Swal.fire({
+  //       position: "center-center",
+  //       icon: "success",
+  //       title: "Item has been successfully added.",
+  //       showConfirmButton: false,
+  //       timer: 2000,
+  //     });
+
+  //     clearForm();
+  //     console.log(itemAdded);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      
-      if (!image) {
-        Swal.fire({
-          position: "center-center",
-          icon: "error",
-          title: "Please add an image.",
-          showConfirmButton: false,
-          timer: 2000,
-        });
-
-        return
-      }
-      
-      const itemAdded = await addItem({
+      const { data, errors } = await addItem({
         variables: {
           item,
           price,
@@ -147,24 +182,38 @@ export default function addRemove() {
           subcategoryId,
           itemCategory,
           itemSubcategory
-        },
+        }
       });
-
-      localStorage.setItem("itemAdded", "true");
-
-
-      Swal.fire({
-        position: "center-center",
-        icon: "success",
-        title: "Item has been successfully added.",
-        showConfirmButton: false,
-        timer: 2000,
-      });
+  
+      if (errors) {
+        console.error("GraphQL Errors:", errors);  // Log the errors in the console
+        Swal.fire({
+          position: "center-center",
+          icon: "error",
+          title: "Error adding item",
+          showConfirmButton: true,
+        });
+      } else {
+        console.log("Item added successfully:", data);
+        Swal.fire({
+          position: "center-center",
+          icon: "success",
+          title: "Item has been successfully added.",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      }
 
       clearForm();
-      console.log(itemAdded);
+      console.log(errors)
     } catch (err) {
-      console.log(err);
+      console.error("Error occurred during mutation:", err);
+      Swal.fire({
+        position: "center-center",
+        icon: "error",
+        title: "Unexpected error occurred.",
+        showConfirmButton: true,
+      });
     }
   };
 
