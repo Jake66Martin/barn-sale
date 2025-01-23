@@ -9,11 +9,11 @@ import UploadWidget from "../../components/Uploadwidget/uploadwidget.jsx";
 export default function addRemove() {
 
   // const [dataReceived, setDataReceived] = useState("");
-  const [item, setItem] = useState([]);
+  const [item, setItem] = useState("");
   const [price, setPrice] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState([]);
   const [categoryId, setCategoryId] = useState("");
   const [subcategoryId, setSubcategoryId] = useState("");
   const [itemCategory, setItemCategory] = useState('');
