@@ -27,12 +27,13 @@
   display: grid;
   grid-template-rows: 62.5px 62.5px 125px;
   grid-template-columns: 12.5% 15% 15% 15% 15% 15% 12.5%;
+  position: relative;
 }
 
 .filtergrid::after {
   content: "";
   position: absolute;
-  top: 410px;
+  top: 150px;
   left: 12.5%;
   width: 73.5%; 
   border-bottom: 1px solid #c0bcbc;
@@ -86,12 +87,13 @@
   font-size: 20px;
 }
 
-@media(max-width: 740px) {
+/* @media(max-width: 740px) {
   
   .filtergrid {
     display: grid;
     grid-template-rows: 62.5px 62.5px 125px 110px;
     grid-template-columns: 12.5% 15% 15% 15% 15% 15% 12.5%;
+    position: relative;
   }
   
   .filtergrid::after {
@@ -123,7 +125,7 @@
     grid-row: 3;
     grid-column: 2 / span 5;
   }
-}
+} */
 
 
 @media(max-width: 1550px) {
@@ -178,6 +180,15 @@
     width: 100%;
     height: 250px;
   }
+
+  .filtergrid::after{
+    content: "";
+    position: absolute;
+    top: 200px;
+    left: 12.5%;
+    width: 73.5%; 
+    border-bottom: 1px solid #c0bcbc;
+  }
 }
 
 @media(max-width:800px){
@@ -194,6 +205,47 @@
     
 }
 
+@media(max-width: 740px) {
+  
+  .filtergrid {
+    display: grid;
+    grid-template-rows: 62.5px 62.5px 125px 110px;
+    grid-template-columns: 12.5% 15% 15% 15% 15% 15% 12.5%;
+    position: relative;
+  }
+  
+  .filtergrid::after {
+    content: "";
+    position: absolute;
+    top: 300px;
+    left: 12.5%;
+    width: 73.5%; 
+    border-bottom: 1px solid #c0bcbc;
+  }
+
+  .filtercell1 {
+    grid-row: 1;
+    grid-column: 2 / span 5;
+    align-self: center;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+  }
+  
+  .filtercell2 {
+    grid-row: 2;
+    grid-column: 2 / span 5;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .filtercell3{
+    grid-row: 3;
+    grid-column: 2 / span 5;
+  }
+}
+
+
 @media(max-width: 562px) {
 .imgsize{
       width: 90%;
@@ -205,6 +257,19 @@
       height: 200px;
     }
 }
+
+@media (max-width: 515px) {
+  .filtergrid::after {
+    content: "";
+    position: absolute;
+    top: 340px;
+    left: 12.5%;
+    width: 73.5%; 
+    border-bottom: 1px solid #c0bcbc;
+  }
+
+}
+
 
 @media (max-width: 439px) {
   .price{

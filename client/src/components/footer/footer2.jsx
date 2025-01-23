@@ -16,325 +16,32 @@ export default function Footer2() {
   }, []);
 
   function phoneScreen() {
-    // if (window.innerWidth < 713 ) {
-    //   return (
-    //     <></>
-    //   )
-    // }
+    
     return (
       <>
         <footer className={`${styles.smallfooter}`}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-            className={`${styles.smallitem1}`}
-          >
-            <h4 className={`${styles.textstyle} ${styles.fontcolor}`}>Links</h4>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-            className={`${styles.smallitem2}`}
-          >
-            <h4 className={`${styles.textstyle} ${styles.fontcolor}`}>
-              Follow Us
-            </h4>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-            className={`${styles.smallitem3}`}
-          >
-            <Link
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              style={{ textDecoration: "none" }}
-              className={`${styles.fontcolor} ${styles.links}`}
-              to="/"
-            >
-              Home
-            </Link>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-evenly",
-              alignItems: "center",
-            }}
-            className={`${styles.smallitem4}`}
-          >
-            <Link
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              style={{ textDecoration: "none" }}
-              className={`${styles.fontcolor} ${styles.links}`}
-              to="/Browse"
-            >
-              Furniture
-            </Link>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-evenly",
-              alignItems: "center",
-            }}
-            className={`${styles.smallitem5}`}
-          >
-            <Link
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              style={{ textDecoration: "none" }}
-              className={`${styles.fontcolor} ${styles.links}`}
-              to="/About"
-            >
-              About Us
-            </Link>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-evenly",
-              alignItems: "center",
-            }}
-            className={`${styles.smallitem6}`}
-          >
-            <Link
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              style={{
-                textDecoration: "none",
-              }}
-              className={`${styles.fontcolor} ${styles.links}`}
-              to="/Contact"
-            >
-              Contact
-            </Link>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-evenly",
-              alignItems: "center",
-            }}
-            className={`${styles.smallitem7}`}
-          >
-            <Link
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              style={{
-                textDecoration: "none",
-                position: "relative",
-                left: "12px",
-              }}
-              className={`${styles.fontcolor} ${styles.links}`}
-              to="/Contact"
-            >
-              Privacy Policy
-            </Link>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-evenly",
-              alignItems: "center",
-            }}
-            className={`${styles.smallitem8}`}
-          >
-            <Link
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              style={{
-                textDecoration: "none",
-              }}
-              className={`${styles.fontcolor} ${styles.links}`}
-              to="/Contact"
-            >
-              T + C
-            </Link>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-evenly",
-              alignItems: "center",
-            }}
-            className={`${styles.smallitem9}`}
-          >
-            <Link
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              style={{
-                textDecoration: "none",
-              }}
-              className={`${styles.fontcolor} ${styles.links}`}
-              to="/Contact"
-            >
-              Find Us On Facebook
-            </Link>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-            className={`${styles.smallitem10}`}
-          >
-            <h4 className={`${styles.textstyle} ${styles.fontcolor}`}>
-              Furniture Categories
-            </h4>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-evenly",
-              alignItems: "center",
-            }}
-            className={`${styles.smallitem11}`}
-          >
-            <Link
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              to="/Subcategories/LivingRoom"
-              style={{ textDecoration: "none" }}
-              className={`${styles.fontcolor} ${styles.links}`}
-            >
-              Living Room
-            </Link>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-evenly",
-              alignItems: "center",
-            }}
-            className={`${styles.smallitem12}`}
-          >
-            <Link
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              to="/Subcategories/DiningRoom"
-              style={{ textDecoration: "none" }}
-              className={`${styles.fontcolor} ${styles.links}`}
-            >
-              Dining Room
-            </Link>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-evenly",
-              alignItems: "center",
-            }}
-            className={`${styles.smallitem13}`}
-          >
-            <Link
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              to="/Subcategories/Kitchen&Bath"
-              style={{ textDecoration: "none" }}
-              className={`${styles.fontcolor} ${styles.links}`}
-            >
-              Kitchen & Bath
-            </Link>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-evenly",
-              alignItems: "center",
-            }}
-            className={`${styles.smallitem14}`}
+          
+            <div className={`${styles.linkdiv}`} style={{display: 'flex', justifyContent: 'center', position: 'relative', top: '0'}}><p style={{color: 'white', fontSize: '30px'}} className={`${styles.textstyle}`}>Links</p></div>
+            <div className={`${styles.link1}`}><Link to='/' onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{textDecoration: 'none', color: 'white', position: 'relative', top: '5px'}} className={`${styles.textstyle2}`}>Home</Link></div>
+            <div className={`${styles.link2}`}><Link to='/Browse' onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{textDecoration: 'none', color: 'white', position: 'relative', top: '5px'}} className={`${styles.textstyle2}`}>Browse</Link></div>
+            <div className={`${styles.link3}`}><Link to="/Contact" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{textDecoration: 'none', color: 'white', position: 'relative', top: '5px'}} className={`${styles.textstyle2}`}>Contact</Link></div>
+            <div className={`${styles.link4}`}><Link to='/About' onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{textDecoration: 'none', color: 'white', position: 'relative', top: '5px'}} className={`${styles.textstyle2}`}>About Us</Link></div>
+            
+            <div className={`${styles.furnicat}`}><p style={{color: 'white', display: 'flex', justifyContent: 'center', fontSize: '30px', position: 'relative', top: '20px'}} className={`${styles.textstyle}`}>Furniture Categories</p></div>
+            
+            <div className={`${styles.cat1}`}><Link onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} to='/Subcategories/LivingRoom' style={{textDecoration: 'none', color: 'white', position: 'relative', left: '25px'}} className={`${styles.textstyle2}`}>Living Room</Link></div>
+            <div className={`${styles.cat2}`}><Link onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{textDecoration: 'none', color: 'white', position: 'relative', left: '47px'}} className={`${styles.textstyle2}`} to='/Subcategories/DiningRoom'>Dining Room</Link></div>
+            <div className={`${styles.cat3}`}><Link onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{textDecoration: 'none', color: 'white', position: 'relative', left: '25px'}} className={`${styles.textstyle2}`} to='/Subcategories/Kitchen&Bath'>Kitchen & Bath</Link></div>
+            <div className={`${styles.cat4}`}><Link onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{textDecoration: 'none', color: 'white', position: 'relative', left: '50px'}} className={`${styles.textstyle2}`} to='/Subcategories/HomeDecor'>Home Decor</Link></div>
+            <div className={`${styles.cat5}`}><Link onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{textDecoration: 'none', color: 'white', position: 'relative', left: '25px'}} className={`${styles.textstyle2}`} to='/Subcategories/Child&Nursery'>Child & Nursery</Link></div>
+            <div className={`${styles.cat6}`}><Link onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{textDecoration: 'none', color: 'white', position: 'relative', left: '75px'}} className={`${styles.textstyle2}`} to='/Subcategories/Bedroom'>Bedroom</Link></div>
+            <div className={`${styles.cat7}`}><Link onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{textDecoration: 'none', color: 'white', position: 'relative', left: '25px'}} className={`${styles.textstyle2}`} to='/Subcategories/Garage&Exterior'>Garage & Exterior</Link></div>
+            <div className={`${styles.cat8}`}><Link onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{textDecoration: 'none', color: 'white', position: 'relative', left: '100px'}} className={`${styles.textstyle2}`}>Office</Link></div>
 
-          >
-            <Link
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              to="/Subcategories/Bedroom"
-              style={{
-                textDecoration: "none",
-                position: "relative",
-                right: "7px",
-              }}
-              className={`${styles.fontcolor} ${styles.links}`}
-            >
-              Bedroom
-            </Link>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-            className={`${styles.smallitem15}`}
-          >
-            <Link
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              to="/Subcategories/Child&Nursery"
-              style={{
-                textDecoration: "none",
-                
-              }}
-              className={`${styles.fontcolor} ${styles.links}`}
-            >
-              Child/Nursery
-            </Link>
-            </div>
-            <div
-            style={{
-              display: "flex",
-              justifyContent: "space-evenly",
-              alignItems: "center",
-            }}
-            className={`${styles.smallitem16}`}
-          >
-            <Link
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              to="/Subcategories/Office"
-              style={{ textDecoration: "none" }}
-              className={`${styles.fontcolor} ${styles.links}`}
-            >
-              Office
-            </Link>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-evenly",
-              alignItems: "center",
-            }}
-            className={`${styles.smallitem17}`}
+            <div className={`${styles.follow}`} style={{position: 'relative'}}><p style={{color: 'white', fontSize: '30px', display: 'flex', justifyContent: 'center'}} className={`${styles.textstyle}`}>Follow Us</p></div>
+            <div className={`${styles.followus}`}><a style={{textDecoration: 'none', color: 'white', display: 'flex', justifyContent: 'center', width: '100%',  height: '100%' }} className={`${styles.textstyle2}`} href='https://www.facebook.com/groups/961935455087635'>Follow us on facebook</a></div>
 
-          >
-            <Link
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              to="/Subcategories/Garage&Exterior"
-              style={{
-                textDecoration: "none",
-                
-              }}
-              className={`${styles.fontcolor} ${styles.links}`}
-            >
-              Garage/Exterior
-            </Link>
-            </div>
-            <div
-            style={{
-              display: "flex",
-              justifyContent: "space-evenly",
-              alignItems: "center",
-            }}
-            className={`${styles.smallitem18}`}
-          >
-            <Link
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              to="/Subcategories/HomeDecor"
-              style={{ textDecoration: "none" }}
-              className={`${styles.fontcolor} ${styles.links}`}
-            >
-              Home Decor
-            </Link>
-          </div>
+
             <div style={{ alignSelf: "center", justifySelf: "center" }}
             className={`${styles.logoitem}`}
             >
@@ -342,6 +49,7 @@ export default function Footer2() {
                 src="/footerlogo.png"
                 alt="footer logo for thrift barn furniture"
                 className={styles.footerlogo}
+                style={{position: 'relative', top: '50px'}}
               />
               <p
                 style={{
@@ -350,6 +58,8 @@ export default function Footer2() {
                   color: "white",
                   fontSize: "12px",
                   margin: "35px 0",
+                  position: 'relative',
+                  top: '30px'
                 }}
                 className={styles.textstyle2}
               >
@@ -598,21 +308,9 @@ export default function Footer2() {
                     style={{ textDecoration: "none" }}
                     className={`${styles.fontcolor} ${styles.links}`}
                   >
-                    Find us on Facebook
+                    <a style={{textDecoration: 'none'}} className={`${styles.fontcolor} ${styles.links}`} href='https://www.facebook.com/groups/961935455087635'>Find us on Facebook</a>
                   </li>
-                  <li></li>
-                  <li
-                    style={{ textDecoration: "none" }}
-                    className={`${styles.fontcolor} ${styles.links}`}
-                  >
-                    Privacy Policy
-                  </li>
-                  <li
-                    style={{ textDecoration: "none" }}
-                    className={`${styles.fontcolor} ${styles.links}`}
-                  >
-                    Terms + Conditions
-                  </li>
+                  
                 </ul>
               </div>
             </div>
