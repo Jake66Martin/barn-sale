@@ -182,15 +182,67 @@ const resolvers = {
 
     
 
+    // ItemsByCategory2: async (parent, { item_category, filters }, context) => {
+    //   let whereConditions = { item_category };
+      
+    //   if (filters.length > 0) {
+    //     whereConditions.item_subcategory = { [Op.in]: filters };
+    //   }
+    
+    //   return await Item.findAll({ where: whereConditions });
+    // },
+
     ItemsByCategory2: async (parent, { item_category, filters }, context) => {
       let whereConditions = { item_category };
-      
+    
       if (filters.length > 0) {
         whereConditions.item_subcategory = { [Op.in]: filters };
       }
     
-      return await Item.findAll({ where: whereConditions });
+      // Fetch all items
+      const items = await Item.findAll({ where: whereConditions });
+    
+      // Parse the 'image' field to convert the stringified JSON into an array
+      const parsedItems = items.map(item => {
+        // Parse image field if it exists and is a stringified array
+        if (item.image && typeof item.image === 'string') {
+          try {
+            // Attempt to parse the stringified JSON array into an actual array
+            item.image = JSON.parse(item.image);
+          } catch (error) {
+            console.error("Error parsing image field:", error);
+            // If parsing fails, leave the image field as is or handle it accordingly
+          }
+        }
+        return item;
+      });
+    
+      // Return the modified items with parsed image field
+      return parsedItems;
     },
+
+    // AllItemsByCategory2: async (parent, { item_category, filters, limit, offset, sort_order }, context) => {
+    //   let whereConditions = { item_category };
+      
+    //   if (filters && filters.length > 0) {
+    //     whereConditions.item_subcategory = { [Op.in]: filters };
+    //   }
+
+    //   const order = sort_order === 'oldest' ? [['created_at', 'ASC']] : [['created_at', 'DESC']];
+
+
+    
+    //   const items =  await Item.findAll({ 
+    //     where: whereConditions,
+    //     limit,
+    //     offset,
+    //     order
+    //    });
+
+    //    console.log("Data being sent to frontend:", items);
+
+    //    return items; // Return the fetched items
+    // },
 
     AllItemsByCategory2: async (parent, { item_category, filters, limit, offset, sort_order }, context) => {
       let whereConditions = { item_category };
@@ -198,21 +250,29 @@ const resolvers = {
       if (filters && filters.length > 0) {
         whereConditions.item_subcategory = { [Op.in]: filters };
       }
-
-      const order = sort_order === 'oldest' ? [['created_at', 'ASC']] : [['created_at', 'DESC']];
-
-
     
-      const items =  await Item.findAll({ 
+      const order = sort_order === 'oldest' ? [['created_at', 'ASC']] : [['created_at', 'DESC']];
+    
+      // Fetch the items
+      const items = await Item.findAll({ 
         where: whereConditions,
         limit,
         offset,
         order
-       });
-
-       console.log("Data being sent to frontend:", items);
-
-       return items; // Return the fetched items
+      });
+    
+      // Parse the image field for each item to ensure it's an array
+      const parsedItems = items.map(item => {
+        return {
+          ...item.dataValues,
+          image: JSON.parse(item.dataValues.image) // Convert the stringified array to a real array
+        };
+      });
+    
+      // Log the data being sent to the frontend
+      console.log("Parsed Data being sent to frontend:", parsedItems);
+    
+      return parsedItems; // Return the parsed items
     },
 
 
