@@ -190,3 +190,13 @@
     grid-template-columns: 25% 25% 25% 25%;
   }
 }
+
+@media (max-width: 436px) {
+  .downnum{
+    top: 30px !important;
+  }
+
+  .downdo{
+    bottom: 8px;
+  }
+}

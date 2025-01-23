@@ -71,7 +71,7 @@ export default function Contact2() {
                 right: '12px',
                 top: '10px'
               }}
-              className={`${styles.textstyle2} ${styles.infop} ${styles.lino}`}
+              className={`${styles.textstyle2} ${styles.infop} ${styles.lino} ${styles.downnum}`}
             >
               <span style={{ color: "#da0404", fontWeight: "600" }}>
                 Address:
@@ -113,7 +113,7 @@ export default function Contact2() {
                 position: 'relative',
                 right: '12px'
               }}
-              className={`${styles.textstyle2} ${styles.infop} ${styles.lino}`}
+              className={`${styles.textstyle2} ${styles.infop} ${styles.lino} ${styles.downdo}`}
             >
               <span
                 style={{

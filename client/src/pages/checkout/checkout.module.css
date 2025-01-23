@@ -245,21 +245,21 @@
     .smallername{
         font-size: 12px !important;
         top: 50px;
-        left: 10px;
+        left: 20px;
     }
 
     .smallerremove{
         font-size: 9px;
         position: relative;
        top: 55px;
-       left: 10px;
+       left: 20px;
        
     }
 
     .smallerprice {
         font-size: 12px;
         position: relative;
-        left: 200px;
+        left: 190px;
         top: 13px;
     }
 

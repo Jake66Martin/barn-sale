@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { ITEM_ID } from "../../utils/queries";
 import { useState, useEffect } from "react";
+import {Link} from 'react-router-dom';
 
 export default function Viewitem2() {
 const [mainImage, setMainImage] = useState(null);
@@ -69,7 +70,7 @@ const [altImages, setAltImages] = useState([]);
     <section className={`${styles.maingrid}`}>
       <div className={`${styles.cell1}`}>
         <div className={`${styles.pagecell}`} style={{display: 'flex', alignItems: 'center'}}>
-            <p className={`${styles.textstyle} ${styles.itemlink}`}>{`Home >  All Furniture > ${data?.itemById.item_category} > ${data?.itemById.item}`} </p>
+            <p className={`${styles.textstyle} ${styles.itemlink}`}><Link to='/' style={{textDecoration: 'none', color: 'black'}}>Home</Link> {'>'} <Link to='/Browse' style={{textDecoration: 'none', color: 'black'}}>All Furniture</Link> {'>'} <Link to={`/Subcategories/${data?.itemById.item_category}`} style={{textDecoration: 'none', color: 'black'}}>{data?.itemById.item_category}</Link> {'>'} {data?.itemById.item} </p>
         </div>
         <div className={`${styles.imgcell}`}>
         <img src={mainImage} className={`${styles.mainimage}`} alt="Main Image" />

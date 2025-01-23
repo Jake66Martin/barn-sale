@@ -3,6 +3,8 @@ import { useQuery } from "@apollo/client";
 import { ALL_ITEMS_ID } from "../../utils/queries";
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
+
 
 export default function Checkout() {
   const [method, setMethod] = useState("Pickup");
@@ -191,12 +193,14 @@ useEffect(() => {
             ) : (
               data?.allItemsById.map((item) => (
                 <div className={`${styles.itemcard}`} key={item._id}>
+                  <Link to={`/Viewitem2/${item._id}`}>
                   <img
                     style={{ height: "200px", width: "200px" }}
                     className={`${styles.smallerimg}`}
                     src={item.image[0]}
                     alt="item image"
                   />
+                  </Link>
                   <div style={{display: 'grid'}}>
                     <p
                       style={{
