@@ -2,17 +2,13 @@ import styles from "./viewitem2.module.css";
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { ITEM_ID } from "../../utils/queries";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Viewitem2() {
+const [mainImage, setMainImage] = useState(null);
+const [altImages, setAltImages] = useState([]);
 
-
-    const [mainImage, setMainImage] = useState('/garage.jpg');
-    const [altImages, setAltImages] = useState([
-      '/living-room.jpg',
-      '/kitchen.jpg',
-      '/office.jpg',
-    ]);
+    
   
   
 
@@ -37,6 +33,19 @@ export default function Viewitem2() {
   const { loading, error, data } = useQuery(ITEM_ID, {
     variables: { id: id },
   });
+
+  useEffect(() => {
+    if (data?.itemById?.image) {
+      setMainImage(data.itemById.image[0]);
+      setAltImages([
+        data.itemById.image[1],
+        data.itemById.image[2],
+        data.itemById.image[3],
+      ]);
+    }
+  }, [data]);
+
+  
 
   console.log(data?.itemById);
 

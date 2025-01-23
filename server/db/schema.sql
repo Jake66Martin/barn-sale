@@ -29,7 +29,7 @@ CREATE TABLE item (
     description VARCHAR(255) NOT NULL,
     price INT NOT NULL,
     location VARCHAR(100) NOT NULL,
-    image LONGTEXT NOT NULL,
+    image JSON NOT NULL,
     created_at DATETIME DEFAULT NOW(),
 
     FOREIGN KEY (category_id) REFERENCES category(id),

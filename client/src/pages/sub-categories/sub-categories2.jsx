@@ -66,6 +66,8 @@ export default function Subcategories2() {
   const numberOfPages = paginationItems?.ItemsByCategory2.length / 25;
   const pagesRequired = Math.ceil(numberOfPages);
 
+  console.log(numberOfPages)
+
   if (paginationItems) {
     console.log(paginationItems);
   }
@@ -313,7 +315,7 @@ export default function Subcategories2() {
                   >
                     <Link to={`/Viewitem2/${item._id}`}>
                     <img
-                      src="/office.jpg"
+                      src={item.image[0]}
                       alt="item"
                       className={`${styles.imgsize}`}
                       style={{ justifySelf: "center" }}
@@ -362,7 +364,7 @@ export default function Subcategories2() {
                   >
                     <Link to={`/Viewitem2/${item._id}`}>
                     <img
-                      src="/office.jpg"
+                      src={item.image[0]}
                       alt="item"
                       className={`${styles.imgsize}`}
                       style={{ justifySelf: "center" }}
@@ -407,7 +409,7 @@ export default function Subcategories2() {
                   >
                     <Link to={`/Viewitem2/${item._id}`}>
                     <img
-                      src="/office.jpg"
+                      src={item.image[0]}
                       alt="item"
                       className={`${styles.imgsize}`}
                       style={{ justifySelf: "center" }}
