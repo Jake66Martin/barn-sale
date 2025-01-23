@@ -194,7 +194,7 @@ useEffect(() => {
                   <img
                     style={{ height: "200px", width: "200px" }}
                     className={`${styles.smallerimg}`}
-                    src={JSON.parse(item?.image)}
+                    src={item.image[0]}
                     alt="item image"
                   />
                   <div style={{display: 'grid'}}>
