@@ -25,7 +25,7 @@ type Item {
     location: String,
     description: String,
     price: Int,
-    image: JSON,
+    image: [JSON],
     created_at: String
 }
 
