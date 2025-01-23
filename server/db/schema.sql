@@ -26,10 +26,10 @@ CREATE TABLE item (
     subcategory_id INT,
     item_category VARCHAR(100) NOT NULL,
     item_subcategory VARCHAR(100),
-    description VARCHAR(100) NOT NULL,
+    description VARCHAR(255) NOT NULL,
     price INT NOT NULL,
     location VARCHAR(100) NOT NULL,
-    image VARCHAR(100) NOT NULL,
+    image LONGTEXT NOT NULL,
     created_at DATETIME DEFAULT NOW(),
 
     FOREIGN KEY (category_id) REFERENCES category(id),
