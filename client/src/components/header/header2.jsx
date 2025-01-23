@@ -47,6 +47,23 @@ export default function Header2() {
     setIsSmallVisible(!isSmallVisible);
   };
 
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsVisible(false); // Close the dropdown
+      }
+    };
+
+    // Attach event listener
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Cleanup event listener
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -98,12 +115,13 @@ export default function Header2() {
             style={{ color: "#da0404", textDecoration: "none" }}
             to="#"
             onClick={toggleVisibility}
-            className={`${styles.textstyle} ${styles.yo}`}
-            
+            className={`${styles.textstyle} ${styles.yo}`}            
           >
             Browse our furniture
+            
+            {isVisible && (
             <div
-            ref={dropdownRef}
+              ref={dropdownRef}
               className={`${styles.ddmenu} ${styles.yo}`}
               style={{ display: isVisible ? "block" : "none", zIndex: "1" }}
             >
@@ -206,6 +224,7 @@ export default function Header2() {
                 </Link>
               </ul>
             </div>
+            )}
           </div>
           <Link
             style={{ color: "#da0404", textDecoration: "none" }}
