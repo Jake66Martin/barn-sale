@@ -21,13 +21,13 @@ export default function addRemove() {
 
   const [addItem] = useMutation(ADD_ITEM);
 
-  const itemRef = useRef(null);
-  const priceRef = useRef(null);
-  const locationRef = useRef(null);
-  const descriptionRef = useRef(null);
-  const imageRef = useRef(null);
-  const catRef = useRef(null);
-  const subcatRef = useRef(null);
+  // const itemRef = useRef(null);
+  // const priceRef = useRef(null);
+  // const locationRef = useRef(null);
+  // const descriptionRef = useRef(null);
+  // const imageRef = useRef(null);
+  // const catRef = useRef(null);
+  // const subcatRef = useRef(null);
 
   const receiveUrlData = (data) => {
     setDataReceived(data);
@@ -295,6 +295,7 @@ export default function addRemove() {
                       id="description"
                       name="description"
                       rows="3"
+                      value={description}
                       onChange={handleChange}
                       required
                     ></textarea>
