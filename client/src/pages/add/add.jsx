@@ -8,8 +8,8 @@ import UploadWidget from "../../components/Uploadwidget/uploadwidget.jsx";
 
 export default function addRemove() {
 
-  const [dataReceived, setDataReceived] = useState("");
-  const [item, setItem] = useState("");
+  // const [dataReceived, setDataReceived] = useState("");
+  const [item, setItem] = useState([]);
   const [price, setPrice] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
@@ -21,16 +21,10 @@ export default function addRemove() {
 
   const [addItem] = useMutation(ADD_ITEM);
 
-  // const itemRef = useRef(null);
-  // const priceRef = useRef(null);
-  // const locationRef = useRef(null);
-  // const descriptionRef = useRef(null);
-  // const imageRef = useRef(null);
-  // const catRef = useRef(null);
-  // const subcatRef = useRef(null);
+  
 
   const receiveUrlData = (data) => {
-    setDataReceived(data);
+    // setDataReceived(data);
     // setImage([...image, data]);
     setImage((prevImages) => [...prevImages, data]);
   };
