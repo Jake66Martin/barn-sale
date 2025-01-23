@@ -329,59 +329,58 @@ const resolvers = {
       return parsedItems;
     },
 
-    // AllItemsByCategory2: async (parent, { item_category, filters, limit, offset, sort_order }, context) => {
-    //   let whereConditions = { item_category };
-      
-    //   if (filters && filters.length > 0) {
-    //     whereConditions.item_subcategory = { [Op.in]: filters };
-    //   }
-
-    //   const order = sort_order === 'oldest' ? [['created_at', 'ASC']] : [['created_at', 'DESC']];
-
-
-    
-    //   const items =  await Item.findAll({ 
-    //     where: whereConditions,
-    //     limit,
-    //     offset,
-    //     order
-    //    });
-
-    //    console.log("Data being sent to frontend:", items);
-
-    //    return items; // Return the fetched items
-    // },
-
     AllItemsByCategory2: async (parent, { item_category, filters, limit, offset, sort_order }, context) => {
       let whereConditions = { item_category };
       
       if (filters && filters.length > 0) {
         whereConditions.item_subcategory = { [Op.in]: filters };
       }
-    
+
       const order = sort_order === 'oldest' ? [['created_at', 'ASC']] : [['created_at', 'DESC']];
+
+
     
-      // Fetch the items
-      const items = await Item.findAll({ 
+      const items =  await Item.findAll({ 
         where: whereConditions,
         limit,
         offset,
         order
-      });
-    
-      // Parse the image field for each item to ensure it's an array
-      const parsedItems = items.map(item => {
-        return {
-          ...item.dataValues,
-          image: JSON.parse(item.dataValues.image) // Convert the stringified array to a real array
-        };
-      });
-    
-      // Log the data being sent to the frontend
-      console.log("Parsed Data being sent to frontend:", parsedItems);
-    
-      return parsedItems; // Return the parsed items
+       });
+
+       console.log("Data being sent to frontend:", items);
+
+       return items; // Return the fetched items
     },
+
+    // AllItemsByCategory2: async (parent, { item_category, filters, limit, offset, sort_order }, context) => {
+    //   let whereConditions = { item_category };
+      
+    //   if (filters && filters.length > 0) {
+    //     whereConditions.item_subcategory = { [Op.in]: filters };
+    //   }
+    
+    //   const order = sort_order === 'oldest' ? [['created_at', 'ASC']] : [['created_at', 'DESC']];
+    
+    //   // Fetch the items
+    //   const items = await Item.findAll({ 
+    //     where: whereConditions,
+    //     limit,
+    //     offset,
+    //     order
+    //   });
+    
+    //   // Parse the image field for each item to ensure it's an array
+    //   const parsedItems = items.map(item => {
+    //     return {
+    //       ...item.dataValues,
+    //       image: JSON.parse(item.dataValues.image) // Convert the stringified array to a real array
+    //     };
+    //   });
+    
+    //   // Log the data being sent to the frontend
+    //   console.log("Parsed Data being sent to frontend:", parsedItems);
+    //   return parsedItems; // Return the parsed items
+    // },
 
 
    
