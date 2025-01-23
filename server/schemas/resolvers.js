@@ -201,13 +201,18 @@ const resolvers = {
 
       const order = sort_order === 'oldest' ? [['created_at', 'ASC']] : [['created_at', 'DESC']];
 
+
     
-      return await Item.findAll({ 
+      const items =  await Item.findAll({ 
         where: whereConditions,
         limit,
         offset,
         order
        });
+
+       console.log("Data being sent to frontend:", items);
+
+       return items; // Return the fetched items
     },
 
 
