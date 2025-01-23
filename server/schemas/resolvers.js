@@ -45,13 +45,36 @@ const resolvers = {
       }
     },
 
+    // itemById: async (parent, { _id }, context) => {
+    //   try {
+    //     console.log(_id);
+    //     const item = await Item.findOne({
+    //       where: { id: _id },
+    //     });
+
+    //     return item;
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // },
+
     itemById: async (parent, { _id }, context) => {
       try {
         console.log(_id);
         const item = await Item.findOne({
           where: { id: _id },
         });
-
+    
+        // Check if the item exists and if the image field is a string that needs parsing
+        if (item && item.image && typeof item.image === 'string') {
+          try {
+            // Attempt to parse the image string into an array
+            item.image = JSON.parse(item.image);
+          } catch (error) {
+            console.error("Error parsing image field:", error);
+          }
+        }
+    
         return item;
       } catch (err) {
         console.log(err);
@@ -75,20 +98,47 @@ const resolvers = {
       }
     },
 
-    allItemsById: async (parent, {_ids}, context) => {
+    // allItemsById: async (parent, {_ids}, context) => {
 
+    //   try {
+    //     const items = await Item.findAll({
+    //         where: {
+    //             id: _ids,  // Handles an array of IDs
+    //         },
+    //     });
+
+    //     return items;
+    // } catch (error) {
+    //     console.error(error);
+    //     throw new Error("Error fetching items by IDs");
+    // }
+    // },
+
+    allItemsById: async (parent, { _ids }, context) => {
       try {
         const items = await Item.findAll({
-            where: {
-                id: _ids,  // Handles an array of IDs
-            },
+          where: {
+            id: _ids, // Handles an array of IDs
+          },
         });
-
+    
+        // Loop through the fetched items to check and parse the image field if needed
+        items.forEach((item) => {
+          if (item.image && typeof item.image === 'string') {
+            try {
+              // Attempt to parse the image string into an array
+              item.image = JSON.parse(item.image);
+            } catch (error) {
+              console.error("Error parsing image field:", error);
+            }
+          }
+        });
+    
         return items;
-    } catch (error) {
+      } catch (error) {
         console.error(error);
         throw new Error("Error fetching items by IDs");
-    }
+      }
     },
 
     subcategoryById: async (parent, { category_id }, context) => {
@@ -147,6 +197,26 @@ const resolvers = {
       }
     },
 
+    // itemsByCategory: async (
+    //   parent,
+    //   { subcategory_id, limit, offset },
+    //   context
+    // ) => {
+    //   try {
+    //     const subcategory = await Item.findAll({
+    //       where: {
+    //         subcategory_id: subcategory_id,
+    //       },
+    //       limit,
+    //       offset,
+    //     });
+
+    //     return subcategory;
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // },
+
     itemsByCategory: async (
       parent,
       { subcategory_id, limit, offset },
@@ -160,12 +230,37 @@ const resolvers = {
           limit,
           offset,
         });
-
+    
+        // Loop through the fetched items to check and parse the image field if needed
+        subcategory.forEach((item) => {
+          if (item.image && typeof item.image === 'string') {
+            try {
+              // Attempt to parse the image string into an array
+              item.image = JSON.parse(item.image);
+            } catch (error) {
+              console.error("Error parsing image field:", error);
+            }
+          }
+        });
+    
         return subcategory;
       } catch (err) {
         console.log(err);
       }
     },
+
+    // allItemsByCategory: async (parent, { subcategory_id }, context) => {
+    //   try {
+    //     const subcategory = await Item.findAll({
+    //       where: {
+    //         subcategory_id: subcategory_id,
+    //       },
+    //     });
+    //     return subcategory;
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // },
 
     allItemsByCategory: async (parent, { subcategory_id }, context) => {
       try {
@@ -174,6 +269,19 @@ const resolvers = {
             subcategory_id: subcategory_id,
           },
         });
+    
+        // Loop through the fetched items to check and parse the image field if needed
+        subcategory.forEach((item) => {
+          if (item.image && typeof item.image === 'string') {
+            try {
+              // Attempt to parse the image string into an array
+              item.image = JSON.parse(item.image);
+            } catch (error) {
+              console.error("Error parsing image field:", error);
+            }
+          }
+        });
+    
         return subcategory;
       } catch (err) {
         console.log(err);
@@ -277,12 +385,38 @@ const resolvers = {
 
 
    
+    // searchByItem: async (parent, { item, limit, offset, sort_order }, context) => {
+    //   try {
+    //     let allItems;
+    //     if (item) {
+    //       const order = sort_order === 'oldest' ? [['created_at', 'ASC']] : [['created_at', 'DESC']];
+
+    //       allItems = await Item.findAll({
+    //         where: {
+    //           item: {
+    //             [Op.like]: `%${item}%`,
+    //           },
+    //         },
+    //         limit,
+    //         offset,
+    //         order
+    //       });
+    //     } else {
+    //       allItems = [];
+    //     }
+
+    //     return allItems;
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // },
+
     searchByItem: async (parent, { item, limit, offset, sort_order }, context) => {
       try {
         let allItems;
         if (item) {
           const order = sort_order === 'oldest' ? [['created_at', 'ASC']] : [['created_at', 'DESC']];
-
+    
           allItems = await Item.findAll({
             where: {
               item: {
@@ -293,15 +427,43 @@ const resolvers = {
             offset,
             order
           });
+    
+          // Loop through the fetched items to check and parse the image field if needed
+          allItems.forEach((item) => {
+            if (item.image && typeof item.image === 'string') {
+              try {
+                // Attempt to parse the image string into an array
+                item.image = JSON.parse(item.image);
+              } catch (error) {
+                console.error("Error parsing image field:", error);
+              }
+            }
+          });
         } else {
           allItems = [];
         }
-
+    
         return allItems;
       } catch (err) {
         console.log(err);
       }
     },
+
+    // searchItem: async (parent, { item }, context) => {
+    //   try {
+    //     const allItems = await Item.findAll({
+    //       where: {
+    //         item: {
+    //           [Op.like]: `%${item}%`,
+    //         },
+    //       },
+    //     });
+
+    //     return allItems;
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // },
 
     searchItem: async (parent, { item }, context) => {
       try {
@@ -312,7 +474,19 @@ const resolvers = {
             },
           },
         });
-
+    
+        // Loop through the fetched items to check and parse the image field if needed
+        allItems.forEach((item) => {
+          if (item.image && typeof item.image === 'string') {
+            try {
+              // Attempt to parse the image string into an array
+              item.image = JSON.parse(item.image);
+            } catch (error) {
+              console.error("Error parsing image field:", error);
+            }
+          }
+        });
+    
         return allItems;
       } catch (err) {
         console.log(err);

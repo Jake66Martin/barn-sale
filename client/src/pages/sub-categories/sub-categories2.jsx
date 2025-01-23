@@ -53,6 +53,7 @@ export default function Subcategories2() {
     data: paginationItems,
   } = useQuery(ITEM_CAT, {
     variables: { itemCategory: name, filters: selectedFilters },
+    fetchPolicy: "no-cache"
   });
 
   const {
@@ -61,6 +62,7 @@ export default function Subcategories2() {
     data: allItems,
   } = useQuery(ITEM_CAT2, {
     variables: { itemCategory: name, filters: selectedFilters, limit, offset: currentOffset, sortOrder },
+  fetchPolicy: "no-cache"
   });
 
   const numberOfPages = paginationItems?.ItemsByCategory2.length / 25;
