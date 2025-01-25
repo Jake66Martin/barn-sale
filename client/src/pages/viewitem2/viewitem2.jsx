@@ -35,17 +35,31 @@ const [altImages, setAltImages] = useState([]);
     variables: { id: id },
   });
 
+  // useEffect(() => {
+  //   if (data?.itemById?.image) {
+  //     setMainImage(data.itemById.image[0]);
+  //     setAltImages([
+  //       data.itemById.image[1],
+  //       data.itemById.image[2],
+  //       data.itemById.image[3],
+  //     ]);
+  //   }
+  // }, [data]);
+
+  
   useEffect(() => {
     if (data?.itemById?.image) {
+      // Set the main image
       setMainImage(data.itemById.image[0]);
-      setAltImages([
-        data.itemById.image[1],
-        data.itemById.image[2],
-        data.itemById.image[3],
-      ]);
+  
+      // Fill the altImages array to always have 3 slots, filling empty slots with placeholders
+      const filledAltImages = Array(3)
+        .fill("No Image Available") // Replace this with a placeholder image URL if needed
+        .map((placeholder, index) => data.itemById.image[index + 1] || placeholder);
+  
+      setAltImages(filledAltImages);
     }
   }, [data]);
-
   
 
   console.log(data?.itemById);
@@ -75,7 +89,7 @@ const [altImages, setAltImages] = useState([]);
         <div className={`${styles.imgcell}`}>
         <img src={mainImage} className={`${styles.mainimage}`} alt="Main Image" />
         </div>
-        <div className={`${styles.altimgcell}`}>
+        {/* <div className={`${styles.altimgcell}`}>
         {altImages.map((image, index) => (
           <div
             key={index}
@@ -95,7 +109,45 @@ const [altImages, setAltImages] = useState([]);
         ))}
           
            
+        </div> */}
+        <div className={`${styles.altimgcell}`}>
+  {altImages.map((image, index) => (
+    <div
+      key={index}
+      style={{
+        display: "flex",
+        justifyContent:
+          index === 0 ? "flex-start" : index === 1 ? "center" : "flex-end",
+      }}
+      onClick={() => image !== "No Image Available" && handleImageClick(image, index)} // Only allow clicking valid images
+    >
+      {image === "No Image Available" ? (
+        <div
+          className={`${styles.placeholder}`}
+          style={{
+            width: "90%", // Adjust size
+            height: "90%",
+            border: "1px dashed gray",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "gray",
+            fontSize: "12px",
+            textAlign: 'center'
+          }}
+        >
+          No Image Available
         </div>
+      ) : (
+        <img
+          src={image}
+          className={styles.imgsize}
+          alt={`Alternate Image ${index + 1}`}
+        />
+      )}
+    </div>
+  ))}
+</div>
       </div>
       <div className={`${styles.cell2}`}>
         <div className={`${styles.namecell} ${styles.flexcell}`} style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
