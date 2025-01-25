@@ -60,15 +60,28 @@ VALUES
 ("Chairs", 1, "LivingRoom"),
 ("SideTables", 1, "LivingRoom"),
 ("CoffeeTables", 1, "LivingRoom"),
-("Bookshelfs&StorageSolutions", "1", "LivingRoom"),
+("Bookshelfs&StorageSolutions", 1, "LivingRoom"),
 ("Lamps", 1, "LivingRoom"),
 ("Mirrors", 1, "LivingRoom"),
-("DiningSets", 2, "DiningRoom"),
+("Rugs", 1, "LivingRoom"),
+("Benches", 1, "LivingRoom"),
+("Electronics", 1, "LivingRoom"),
+("Chests", 1, "LivingRoom"),
 ("DiningTables", 2, "DiningRoom"),
 ("DiningChairs", 2, "DiningRoom"),
 ("Hutches&SideBoards", 2, "DiningRoom"),
+("CoatRacks", 2, "DiningRoom"),
+("FrontEntrance", 2, "DiningRoom"),
 ("Dressers", 4, "Bedroom"),
-("Beds&Mattresses", 4, "Bedroom"),
-("NightStands", 4, "Bedroom");
+("BedsFrames", 4, "Bedroom"),
+("Mattresses", 4, "Bedroom")
+("NightStands", 4, "Bedroom"),
+("Closet", 4, "Bedroom"),
+("Armoires", 4, "Bedroom"),
+("FilingCabinets", 6, "Office"),
+("OfficeChairs", 6, "Office"),
+("WallArt", 8, "HomeDecor"),
+("Statues&Sculptures", 8, "HomeDecor"),
+("Frames", 8, "HomeDecor");
 
 

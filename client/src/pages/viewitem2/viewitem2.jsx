@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { ITEM_ID } from "../../utils/queries";
 import { useState, useEffect } from "react";
 import {Link} from 'react-router-dom';
+import Swal from "sweetalert2";
+
 
 export default function Viewitem2() {
 const [mainImage, setMainImage] = useState(null);
@@ -78,6 +80,17 @@ const [altImages, setAltImages] = useState([]);
     } else {
       console.log("Item is already in the cart:", item._id);
     }
+
+    
+      console.log("Item added successfully to cart:", data);
+      Swal.fire({
+        position: "center-center",
+        icon: "success",
+        title: "Item has been successfully added to the shopping cart.",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    
   }
 
   return (

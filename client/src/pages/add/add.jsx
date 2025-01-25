@@ -92,81 +92,62 @@ export default function addRemove() {
             <option value="6">BookShelfs/StorageSolutions</option>
             <option value="7">Lamps</option>
             <option value="8">Mirrors</option>
+            <option value="9">Rugs</option>
+            <option value="10">Benches</option>
+            <option value="11">Electronics</option>
+            <option value="12">Chests</option>
           </>
         );
       case "2":
         return (
           <>
-            <option value="9">DiningSets</option>
-            <option value="10">DiningTables</option>
-            <option value="11">DiningChairs</option>
-            <option value="12">Hutches&SideBoards</option>
+            <option value="13">DiningTables</option>
+            <option value="14">DiningChairs</option>
+            <option value="15">Hutches&SideBoards</option>
+            <option value="16">CoatRacks</option>
+            <option value="17">FrontEntrance</option>
           </>
         );
       case "4":
         return (
           <>
-            <option value="13">Dressers</option>
-            <option value="14">Beds&Mattresses</option>
-            <option value="15">NightStands</option>
+            <option value="18">Dressers</option>
+            <option value="19">BedFrames</option>
+            <option value="20">Mattresses</option>
+            <option value="21">NightStands</option>
+            <option value="22">Armoires</option>
+            <option value="23">Closet</option>
           </>
         );
+        case "6":
+        return (
+          <>
+            <option value="24">FilingCabinets</option>
+            <option value="25">OfficeChairs</option>
+            
+          </>
+        );
+        case "8":
+        return (
+          <>
+            <option value="26">WallArt</option>
+            <option value="27">Statues&Sculptures</option>
+            <option value="28">Frames</option>
+            
+            
+          </>
+        );
+        
       default:
         return null;
     }
   };
 
   const disable = () => {
-    return ["3", "5", "6", "7", "8"].includes(categoryId);
+    return ["3", "5", "7"].includes(categoryId);
   };
 
-  // const handleFormSubmit = async (event) => {
-  //   event.preventDefault();
-  //   try {
-      
-  //     if (!image) {
-  //       Swal.fire({
-  //         position: "center-center",
-  //         icon: "error",
-  //         title: "Please add an image.",
-  //         showConfirmButton: false,
-  //         timer: 2000,
-  //       });
-
-  //       return
-  //     }
-      
-  //     const itemAdded = await addItem({
-  //       variables: {
-  //         item,
-  //         price,
-  //         location,
-  //         description,
-  //         image,
-  //         categoryId,
-  //         subcategoryId,
-  //         itemCategory,
-  //         itemSubcategory
-  //       },
-  //     });
-
-  //     localStorage.setItem("itemAdded", "true");
-
-
-  //     Swal.fire({
-  //       position: "center-center",
-  //       icon: "success",
-  //       title: "Item has been successfully added.",
-  //       showConfirmButton: false,
-  //       timer: 2000,
-  //     });
-
-  //     clearForm();
-  //     console.log(itemAdded);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+ 
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
