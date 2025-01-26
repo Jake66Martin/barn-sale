@@ -72,8 +72,6 @@ const startApolloServer = async () => {
               console.log(`Unhandled event type: ${event.type}`);
       }
 
-      // Respond to Stripe with a 200 status code to acknowledge receipt of the event
-      res.json({ received: true });
   });
 
 
