@@ -6,7 +6,7 @@ const path = require('path');
 const {ApolloServer} = require('@apollo/server');
 const {authMiddleware} = require('./utils/auth.js');
 const {graphqlUploadExpress} = require('graphql-upload')
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe = require('stripe')(process.env.STRIPE_TEST_KEY);
 const cors = require('cors');
 
 
@@ -112,8 +112,10 @@ const startApolloServer = async () => {
             line_items: lineItems,
 
             mode: 'payment',
-            success_url: `${process.env.CLIENT_URL2}/success?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${process.env.CLIENT_URL2}/cancel`,
+            // success_url: `${process.env.CLIENT_URL2}/success?session_id={CHECKOUT_SESSION_ID}`,
+            // cancel_url: `${process.env.CLIENT_URL2}/cancel`,
+            success_url: `${process.env.CLIENT_URL2}`,
+            cancel_url: `${process.env.CLIENT_URL2}`,
 
             shipping_address_collection: {
               allowed_countries: ['CA'], // Limit to these countries
@@ -144,28 +146,28 @@ const startApolloServer = async () => {
         });
     }
 
-    // db.sync({force: false}).then(() => {
-    //     app.listen(PORT,   () => {
-    //         // app.listen(PORT, '0.0.0.0',  () => {
-    //         console.log(`API servers running on port ${PORT}`);
-    //         console.log(`Use GraphQL at http://localhost:${PORT}/graphql`)
-    //     });
-    // });
-
-    if (process.env.NODE_ENV !== 'production') {
-        db.sync({force: false}).then(() => {
-            app.listen(PORT, '0.0.0.0', () => {
-                console.log(`API servers running on port ${PORT}`);
-                console.log(`Use GraphQL at http://localhost:${PORT}/graphql`)
-            });
-        });
-    } else {
-        // Just start the app without syncing in production
-        app.listen(PORT, '0.0.0.0', () => {
+    db.sync({force: false}).then(() => {
+        app.listen(PORT,   () => {
+            // app.listen(PORT, '0.0.0.0',  () => {
             console.log(`API servers running on port ${PORT}`);
             console.log(`Use GraphQL at http://localhost:${PORT}/graphql`)
         });
-    }
+    });
+
+    // if (process.env.NODE_ENV !== 'production') {
+    //     db.sync({force: false}).then(() => {
+    //         app.listen(PORT, '0.0.0.0', () => {
+    //             console.log(`API servers running on port ${PORT}`);
+    //             console.log(`Use GraphQL at http://localhost:${PORT}/graphql`)
+    //         });
+    //     });
+    // } else {
+    //     // Just start the app without syncing in production
+    //     app.listen(PORT, '0.0.0.0', () => {
+    //         console.log(`API servers running on port ${PORT}`);
+    //         console.log(`Use GraphQL at http://localhost:${PORT}/graphql`)
+    //     });
+    // }
 };
 
 startApolloServer();
