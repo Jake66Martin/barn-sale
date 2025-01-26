@@ -58,6 +58,7 @@ const startApolloServer = async () => {
               if (session.payment_status === 'paid') {
                 // Payment was successful
                 console.log('Payment was successful:', session);
+                console.log(session.metadata)
     
                 
             } else {
@@ -163,6 +164,9 @@ const startApolloServer = async () => {
 
             shipping_address_collection: {
               allowed_countries: ['CA'], // Limit to these countries
+            },
+            metadata: {
+              itemIds: cartItems.map(item => item.id), // Set metadata with item IDs
             },
 
             
