@@ -23,6 +23,8 @@ import Categories from './pages/categories/categories.jsx'
 // import ViewItem from './pages/viewitem/viewitem.jsx'
 import Checkout from './pages/checkout/checkout.jsx'
 import Viewitem2 from './pages/viewitem2/viewitem2.jsx'
+import Success from './pages/success/success.jsx'
+import Failure from './pages/failure/failure.jsx'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
@@ -50,7 +52,9 @@ const router = createBrowserRouter ([
       {path: '/Categories/:id', element: <Categories/>},
       // {path: '/ViewItem/:id', element: <ViewItem/>},
       {path: '/Viewitem2/:id', element: <Viewitem2/>},
-      {path: '/Checkout', element: <Checkout/>}
+      {path: '/Checkout', element: <Checkout/>},
+      {path: '/Success', element: <Success/>},
+      {path: '/Failure', element: <Failure/>}
     ]
   }
 ]);

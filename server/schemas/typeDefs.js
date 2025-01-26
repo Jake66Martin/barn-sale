@@ -76,7 +76,7 @@ type Mutation {
 
     addItem(item: String!, description: String!, price: Int!, location: String!, image:[JSON]!, category_id:ID!, subcategory_id:ID, item_category:String!, item_subcategory:String): Item,
     removeItem(_id: ID!): Item
-    removeItems(item: [String!]!): [Item]
+    removeItems(_id: [ID!]!): [Item]
 
     addCategory(name: String!): Category
     addSubcategory(name: String!, category_id:ID!, category_name:String!): Subcategory

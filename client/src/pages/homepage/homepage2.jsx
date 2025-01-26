@@ -452,52 +452,7 @@ export default function Homepage2() {
     }
   }
 
-  const checkPaymentStatus = async () => {
-    
-    const sessionId = new URLSearchParams(window.location.search).get('session_id');
-  
-  if (!sessionId) {
-    return; // Don't do anything if there's no session_id (user hasn't returned from Stripe)
-  }
-  
-    
-    try {
-      const response = await fetch('/stripe-webhook', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ session_id: sessionId }),
-      });
-      const result = await response.json();
-  
-      if (result.success) {
-        // Show success message with SweetAlert
-        Swal.fire({
-          position: "center-center",
-          icon: "success",
-          title: "Payment success.",
-          showConfirmButton: false,
-          timer: 2000,
-        });
-      } else {
-        // Show failure message if payment was not successful
-        Swal.fire({
-          position: "center-center",
-          icon: "error",
-          title: "Payment failed.",
-          showConfirmButton: true,
-        });
-      }
-    } catch (error) {
-      // Handle any network or unexpected errors
-      Swal.fire({
-        title: 'Error!',
-        text: 'There was an issue processing your request.',
-        icon: 'error',
-      });
-    }
-  };
+ 
 
   return (
     <>
