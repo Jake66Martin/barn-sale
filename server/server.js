@@ -7,7 +7,6 @@ const {ApolloServer} = require('@apollo/server');
 const {authMiddleware} = require('./utils/auth.js');
 const {graphqlUploadExpress} = require('graphql-upload')
 const stripe = require('stripe')(process.env.STRIPE_TEST_KEY);
-const webhook = process.env.WEBHOOK
 const cors = require('cors');
 
 
@@ -35,6 +34,49 @@ const startApolloServer = async () => {
       methods: ['GET', 'POST'],
       credentials: true
     }));
+
+
+    app.post('/stripe-webhook', express.raw({ type: 'application/json' }), async (req, res) => {
+      const sig = req.headers['stripe-signature'];
+
+      let event;
+
+      // Verify the webhook signature
+      try {
+          event = stripe.webhooks.constructEvent(req.body, sig, process.env.WEBHOOK);
+      } catch (err) {
+          console.error('Webhook signature verification failed:', err.message);
+          return res.status(400).send(`Webhook Error: ${err.message}`);
+      }
+
+      // Handle the event based on its type
+      switch (event.type) {
+          case 'checkout.session.completed':
+              const session = event.data.object;
+              if (session.payment_status === 'paid') {
+                // Payment was successful
+                console.log('Payment was successful:', session);
+    
+                
+            } else {
+                // Handle the case where the payment was not successful
+                console.log('Payment failed or was not completed successfully:', session);
+            }
+
+
+            res.status(200).json({ success: true, message: "Payment successful" });
+              break;
+
+          // Handle other events if needed
+          default:
+              console.log(`Unhandled event type: ${event.type}`);
+      }
+
+      // Respond to Stripe with a 200 status code to acknowledge receipt of the event
+      res.json({ received: true });
+  });
+
+
 
     app.use(express.urlencoded({extended: false}));
     app.use(express.json());
@@ -137,45 +179,7 @@ const startApolloServer = async () => {
 
 
 
-      app.post('/stripe-webhook', express.raw({ type: 'application/json' }), async (req, res) => {
-        const sig = req.headers['stripe-signature'];
-
-        let event;
-
-        // Verify the webhook signature
-        try {
-            event = stripe.webhooks.constructEvent(req.body, sig, webhook);
-        } catch (err) {
-            console.error('Webhook signature verification failed:', err.message);
-            return res.status(400).send(`Webhook Error: ${err.message}`);
-        }
-
-        // Handle the event based on its type
-        switch (event.type) {
-            case 'checkout.session.completed':
-                const session = event.data.object;
-                if (session.payment_status === 'paid') {
-                  // Payment was successful
-                  console.log('Payment was successful:', session);
-      
-                  
-              } else {
-                  // Handle the case where the payment was not successful
-                  console.log('Payment failed or was not completed successfully:', session);
-              }
-
-
-              res.status(200).json({ success: true, message: "Payment successful" });
-                break;
-
-            // Handle other events if needed
-            default:
-                console.log(`Unhandled event type: ${event.type}`);
-        }
-
-        // Respond to Stripe with a 200 status code to acknowledge receipt of the event
-        res.json({ received: true });
-    });
+     
 
       
 
