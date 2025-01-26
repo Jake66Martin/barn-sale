@@ -165,10 +165,11 @@ useEffect(() => {
         return {
           price_data: {
             currency: "cad",
-            product_data: { name: item.item, id: item._id },
+            product_data: { name: item.item },
             unit_amount: priceInCents, // Price in cents
           },
           quantity: 1,
+          id: item._id
         };
       }).filter(item => item !== null);
   
