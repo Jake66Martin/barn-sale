@@ -73,8 +73,8 @@ VALUES
 ("CoatRacks", 2, "DiningRoom"),
 ("FrontEntrance", 2, "DiningRoom"),
 ("Dressers", 4, "Bedroom"),
-("BedsFrames", 4, "Bedroom"),
-("Mattresses", 4, "Bedroom")
+("BedFrames", 4, "Bedroom"),
+("Mattresses", 4, "Bedroom"),
 ("NightStands", 4, "Bedroom"),
 ("Closet", 4, "Bedroom"),
 ("Armoires", 4, "Bedroom"),

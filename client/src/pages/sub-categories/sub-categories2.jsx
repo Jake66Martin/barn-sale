@@ -120,16 +120,25 @@ export default function Subcategories2() {
         "Book Shelf & Storage Solutions",
         "Lamps",
         "Mirrors",
+        "Rugs",
+        "Benches",
+        "Electronics",
+        "Chests"
       ];
     } else if (spacedName === "Dining Room") {
       return [
-        "Dining Sets",
         "Dining Tables",
         "Dining Chairs",
         "Hutches & Sideboards",
+        "Coat Racks",
+        "Front Entrance"
       ];
     } else if (spacedName === "Bedroom") {
-      return ["Dressers", "Beds & Mattresses", "Night Stands"];
+      return ["Dressers", "Bed Frames", "Mattresses", "Night Stands"];
+    } else if (spacedName === "Office"){
+      return ["Filing Cabinets", "Office Chairs"]
+    } else if (spacedName === "Home Decor") {
+      return ["Wall Art", "Statues & Sculptures", "Frames"]
     }
     return [];
   };

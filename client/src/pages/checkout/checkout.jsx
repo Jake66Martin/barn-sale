@@ -16,6 +16,9 @@ export default function Checkout() {
   const navigate = useNavigate();
 
 
+  
+
+
 
 
  useEffect(() => {
@@ -148,6 +151,40 @@ useEffect(() => {
       calculateTotal(newBasePrice, method, tax);  // Update total based on new base price and tax
     }
   }, [data, method, tax]); // Re-run when data, method, or tax changes
+
+  const handleCheckout = async () => {
+    try {
+      const cartItems = data?.allItemsById.map(item => {
+        
+        const priceInCents = Math.round(item.price * 100); // Convert price to cents
+      
+      // Log the value to ensure it's correct
+      console.log(`Price for ${item.item}: ${item.price}, Price in cents: ${priceInCents}`);
+      console.log(typeof item.price)
+        return {
+          price_data: {
+            currency: "cad",
+            product_data: { name: item.item },
+            unit_amount: priceInCents, // Price in cents
+          },
+          quantity: 1,
+        };
+      }).filter(item => item !== null);
+  
+      const response = await fetch("http://localhost:3001/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ cartItems, method }),
+      });
+  
+      const { url } = await response.json();
+      if (url) {
+        window.location.href = url; // Redirect to Stripe Checkout
+      }
+    } catch (error) {
+      console.error("Error creating checkout session:", error);
+    }
+  };
 
   return (
     <>
@@ -435,6 +472,7 @@ useEffect(() => {
               <button
                 className={`${styles.textstyle} ${styles.centerbutton} ${styles.border}`}
                 style={{ position: "relative", top: "70px", color: 'white' }}
+                onClick={handleCheckout}
               >
                 Checkout
               </button>

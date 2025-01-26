@@ -167,6 +167,15 @@
   .text{
     top: -20px;
   }
+
+  .filtergrid::after {
+    content: "";
+    position: absolute;
+    top: 180px;
+    left: 12.5%;
+    width: 73.5%; 
+    border-bottom: 1px solid #c0bcbc;
+  }
 }
 
 @media(max-width: 923px) {
@@ -245,6 +254,20 @@
   }
 }
 
+@media (max-width: 580px) {
+  .filtergrid{
+    height: 500px;
+  }
+  
+  .filtergrid::after {
+    content: "";
+    position: absolute;
+    top: 400px !important;
+    left: 12.5%;
+    width: 73.5%; 
+    border-bottom: 1px solid #c0bcbc;
+  }
+}
 
 @media(max-width: 562px) {
 .imgsize{

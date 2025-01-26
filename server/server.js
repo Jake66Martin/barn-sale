@@ -1,12 +1,16 @@
+require('dotenv').config();
+
 const express = require('express');
 const {expressMiddleware} = require('@apollo/server/express4');
 const path = require('path');
 const {ApolloServer} = require('@apollo/server');
 const {authMiddleware} = require('./utils/auth.js');
 const {graphqlUploadExpress} = require('graphql-upload')
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const cors = require('cors');
 
 
-require('dotenv').config();
+
 
 
 const {typeDefs, resolvers} = require('./schemas');
@@ -25,6 +29,12 @@ const startApolloServer = async () => {
 
     app.use(graphqlUploadExpress());
 
+    app.use(cors({
+      origin: 'http://localhost:3000',
+      methods: ['GET', 'POST'],
+      credentials: true
+    }));
+
     app.use(express.urlencoded({extended: false}));
     app.use(express.json());
 
@@ -33,6 +43,77 @@ const startApolloServer = async () => {
     app.use('/graphql', expressMiddleware(server, {
         context: authMiddleware,
     }));
+
+
+
+    app.post('/create-checkout-session', async (req, res) => {
+        const { cartItems, method } = req.body;
+        
+        
+        try {
+
+          console.log("Cart Items:", cartItems);
+          
+          const lineItems = cartItems.map(item => {
+            console.log("Item price:", item);
+            
+            return {
+              price_data: {
+                currency: 'cad',
+                product_data: {
+                  name: item.price_data.product_data.name,
+                },
+                unit_amount: item.price_data.unit_amount,
+              },
+              quantity: item.quantity,
+            };
+          });
+    
+          // Add a delivery fee if applicable
+          if (method === 'Hands Free Delivery') {
+            lineItems.push({
+              price_data: {
+                currency: 'cad',
+                product_data: {
+                  name: 'Hands Free Delivery Fee',
+                },
+                unit_amount: 9500, // $95 in cents
+              },
+              quantity: 1,
+            });
+          } else if (method === 'Front Door Delivery') {
+            lineItems.push({
+              price_data: {
+                currency: 'cad',
+                product_data: {
+                  name: 'Front Door Delivery Fee',
+                },
+                unit_amount: 4500, // $45 in cents
+              },
+              quantity: 1,
+            });
+          }
+    
+          // Create a Stripe Checkout session
+          const session = await stripe.checkout.sessions.create({
+            payment_method_types: ['card'],
+            line_items: lineItems,
+            mode: 'payment',
+            success_url: `${process.env.CLIENT_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${process.env.CLIENT_URL}/cancel`,
+          });
+    
+          res.status(200).json({ url: session.url });
+        } catch (error) {
+          console.log("Request body:", req.body);
+          console.error('Error creating checkout session:', error);
+          res.status(500).json({ error: 'Failed to create checkout session' });
+        }
+      });
+
+      
+
+
 
     if (process.env.NODE_ENV === 'production') {
         app.use(express.static(path.join(__dirname, '../client/dist')));
