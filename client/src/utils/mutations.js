@@ -71,3 +71,11 @@ mutation Mutation($file: Upload!) {
   }
 }
 `
+
+export const REMOVE_CHECKOUT = gql`
+mutation Mutation($id: ID!) {
+  removeItem(_id: $id) {
+    _id
+  }
+}
+`

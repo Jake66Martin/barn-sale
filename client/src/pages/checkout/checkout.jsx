@@ -1,6 +1,7 @@
 import styles from "./checkout.module.css";
 import { useQuery } from "@apollo/client";
 import { ALL_ITEMS_ID } from "../../utils/queries";
+import {REMOVE_CHECKOUT} from '../../utils/mutations'
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
@@ -97,7 +98,7 @@ useEffect(() => {
     taxAmount = (basePrice + 95) * 0.13
     }
 
-    setTax(taxAmount)
+    setTax(Math.round(taxAmount * 100) / 100)
   }
 
   function calculateTotal (basePrice, method, tax) {
@@ -112,7 +113,7 @@ useEffect(() => {
         total = basePrice + tax + 45
     }
 
-    setTotal(total)
+    setTotal(Math.round(total * 100) / 100)
   }
 
   useEffect(() => {

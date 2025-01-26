@@ -615,6 +615,21 @@ const resolvers = {
       }
     },
 
+    removeItems: async (parent, { _id }, context) => {
+      try {
+        // `_id` will always be an array, even if a single ID is passed.
+        console.log("IDs to remove:", _id);
+
+        // Remove items from the database
+        const deletedItems = await dataSources.itemAPI.deleteItemsByIds(_id);
+
+        return deletedItems; // Return the deleted items
+      } catch (error) {
+        console.error("Error removing items:", error);
+        throw new Error("Failed to remove items.");
+      }
+    },
+
     addCategory: async (parent, { name }, context) => {
       try {
         const category = await Category.create({ name });

@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 
 import styles from "./homepage2.module.css";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+
 
 export default function Homepage2() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -449,6 +451,45 @@ export default function Homepage2() {
       );
     }
   }
+
+  const checkPaymentStatus = async () => {
+    try {
+      const response = await fetch('/stripe-webhook', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ /* your data */ }),
+      });
+      const result = await response.json();
+  
+      if (result.success) {
+        // Show success message with SweetAlert
+        Swal.fire({
+          position: "center-center",
+          icon: "success",
+          title: "Payment success.",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      } else {
+        // Show failure message if payment was not successful
+        Swal.fire({
+          position: "center-center",
+          icon: "error",
+          title: "Payment failed.",
+          showConfirmButton: true,
+        });
+      }
+    } catch (error) {
+      // Handle any network or unexpected errors
+      Swal.fire({
+        title: 'Error!',
+        text: 'There was an issue processing your request.',
+        icon: 'error',
+      });
+    }
+  };
 
   return (
     <>
