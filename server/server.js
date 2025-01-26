@@ -155,7 +155,7 @@ const startApolloServer = async () => {
             mode: 'payment',
             // success_url: `${process.env.CLIENT_URL2}/success?session_id={CHECKOUT_SESSION_ID}`,
             // cancel_url: `${process.env.CLIENT_URL2}/cancel`,
-            success_url: `${process.env.CLIENT_URL2}`,
+            success_url: `${process.env.CLIENT_URL2}/success?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${process.env.CLIENT_URL2}`,
 
             shipping_address_collection: {
