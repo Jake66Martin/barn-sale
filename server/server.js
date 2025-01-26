@@ -104,13 +104,7 @@ const startApolloServer = async () => {
             });
           }
 
-          // const taxRate = await stripe.taxRates.create({
-          //   display_name: 'HST',
-          //   percentage: 13.0, // VAT percentage
-          //   inclusive: false, // If true, tax is included in the price
-          //   country: 'CA', // Specify country
-          //   state: 'ON', // Optional: specify a state (if applicable)
-          // });
+          
     
           // Create a Stripe Checkout session
           const session = await stripe.checkout.sessions.create({
@@ -127,9 +121,7 @@ const startApolloServer = async () => {
 
             
 
-            // automatic_tax: {
-            //   enabled: true,
-            // },
+            
           });
     
           res.status(200).json({ url: session.url });
@@ -152,28 +144,28 @@ const startApolloServer = async () => {
         });
     }
 
-    db.sync({force: false}).then(() => {
-        app.listen(PORT,   () => {
-            // app.listen(PORT, '0.0.0.0',  () => {
-            console.log(`API servers running on port ${PORT}`);
-            console.log(`Use GraphQL at http://localhost:${PORT}/graphql`)
-        });
-    });
-
-    // if (process.env.NODE_ENV !== 'production') {
-    //     db.sync({force: false}).then(() => {
-    //         app.listen(PORT, '0.0.0.0', () => {
-    //             console.log(`API servers running on port ${PORT}`);
-    //             console.log(`Use GraphQL at http://localhost:${PORT}/graphql`)
-    //         });
-    //     });
-    // } else {
-    //     // Just start the app without syncing in production
-    //     app.listen(PORT, '0.0.0.0', () => {
+    // db.sync({force: false}).then(() => {
+    //     app.listen(PORT,   () => {
+    //         // app.listen(PORT, '0.0.0.0',  () => {
     //         console.log(`API servers running on port ${PORT}`);
     //         console.log(`Use GraphQL at http://localhost:${PORT}/graphql`)
     //     });
-    // }
+    // });
+
+    if (process.env.NODE_ENV !== 'production') {
+        db.sync({force: false}).then(() => {
+            app.listen(PORT, '0.0.0.0', () => {
+                console.log(`API servers running on port ${PORT}`);
+                console.log(`Use GraphQL at http://localhost:${PORT}/graphql`)
+            });
+        });
+    } else {
+        // Just start the app without syncing in production
+        app.listen(PORT, '0.0.0.0', () => {
+            console.log(`API servers running on port ${PORT}`);
+            console.log(`Use GraphQL at http://localhost:${PORT}/graphql`)
+        });
+    }
 };
 
 startApolloServer();
