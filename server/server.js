@@ -113,6 +113,7 @@ const startApolloServer = async () => {
                 currency: 'cad',
                 product_data: {
                   name: item.price_data.product_data.name,
+                  id: item.price_data.product_data.id
                 },
                 unit_amount: item.price_data.unit_amount,
               },
