@@ -453,13 +453,21 @@ export default function Homepage2() {
   }
 
   const checkPaymentStatus = async () => {
+    
+    const sessionId = new URLSearchParams(window.location.search).get('session_id');
+  
+  if (!sessionId) {
+    return; // Don't do anything if there's no session_id (user hasn't returned from Stripe)
+  }
+  
+    
     try {
       const response = await fetch('/stripe-webhook', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ /* your data */ }),
+        body: JSON.stringify({ session_id: sessionId }),
       });
       const result = await response.json();
   
