@@ -166,7 +166,6 @@ useEffect(() => {
           price_data: {
             currency: "cad",
             product_data: { name: item.item },
-            product_id: {id: item._id},
             unit_amount: priceInCents, // Price in cents
           },
           quantity: 1,
