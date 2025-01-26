@@ -49,6 +49,13 @@ const startApolloServer = async () => {
     app.post('/create-checkout-session', async (req, res) => {
         const { cartItems, method } = req.body;
         
+        const taxRate = await stripe.taxRates.create({
+          display_name: 'HST',
+          percentage: 13.0, // VAT percentage
+          inclusive: false, // If true, tax is included in the price
+          country: 'CA', // Specify country
+          state: 'ON', // Optional: specify a state (if applicable)
+        });
         
         try {
 
@@ -66,6 +73,7 @@ const startApolloServer = async () => {
                 unit_amount: item.price_data.unit_amount,
               },
               quantity: item.quantity,
+              tax_rates: [taxRate.id],
             };
           });
     
@@ -80,6 +88,7 @@ const startApolloServer = async () => {
                 unit_amount: 9500, // $95 in cents
               },
               quantity: 1,
+              tax_rates: [taxRate.id],
             });
           } else if (method === 'Front Door Delivery') {
             lineItems.push({
@@ -91,16 +100,36 @@ const startApolloServer = async () => {
                 unit_amount: 4500, // $45 in cents
               },
               quantity: 1,
+              tax_rates: [taxRate.id],
             });
           }
+
+          // const taxRate = await stripe.taxRates.create({
+          //   display_name: 'HST',
+          //   percentage: 13.0, // VAT percentage
+          //   inclusive: false, // If true, tax is included in the price
+          //   country: 'CA', // Specify country
+          //   state: 'ON', // Optional: specify a state (if applicable)
+          // });
     
           // Create a Stripe Checkout session
           const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             line_items: lineItems,
+
             mode: 'payment',
             success_url: `${process.env.CLIENT_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${process.env.CLIENT_URL}/cancel`,
+
+            shipping_address_collection: {
+              allowed_countries: ['CA'], // Limit to these countries
+            },
+
+            
+
+            // automatic_tax: {
+            //   enabled: true,
+            // },
           });
     
           res.status(200).json({ url: session.url });
