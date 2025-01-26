@@ -144,7 +144,7 @@ const startApolloServer = async () => {
 
         // Verify the webhook signature
         try {
-            event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
+            event = stripe.webhooks.constructEvent(req.body, sig, webhook);
         } catch (err) {
             console.error('Webhook signature verification failed:', err.message);
             return res.status(400).send(`Webhook Error: ${err.message}`);
@@ -158,10 +158,7 @@ const startApolloServer = async () => {
                   // Payment was successful
                   console.log('Payment was successful:', session);
       
-                  // Example: remove items after successful payment
-                  const purchasedItemIds = session.metadata.item_ids.split(',');
-                  // Call your resolver or interact with the DB here to remove items
-                  // Example: await removeItemsFromDB(purchasedItemIds);
+                  
               } else {
                   // Handle the case where the payment was not successful
                   console.log('Payment failed or was not completed successfully:', session);
