@@ -57,7 +57,7 @@ const startApolloServer = async () => {
               const session = event.data.object;
               if (session.payment_status === 'paid') {
                 // Payment was successful
-                console.log('Payment was successful:', session);
+                // console.log('Payment was successful:', session);
                 console.log(session.metadata)
     
                 
