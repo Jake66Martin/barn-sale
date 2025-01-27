@@ -9,8 +9,8 @@ const {graphqlUploadExpress} = require('graphql-upload')
 const stripe = require('stripe')(process.env.STRIPE_TEST_KEY);
 const cors = require('cors');
 
-const { Item } = require('./models/index.js')
-const {deleteItems} = require('./schemas/index.js')
+const { Item } = require('./models/index.js');
+const {Op} = require('sequelize');
 
 
 
