@@ -88,7 +88,7 @@ const startApolloServer = async () => {
             }
 
 
-            res.status(200).json({ success: true, message: "Payment successful" });
+            // res.status(200).json({ success: true, message: "Payment successful" });
               break;
 
           // Handle other events if needed
