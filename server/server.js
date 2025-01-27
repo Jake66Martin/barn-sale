@@ -9,6 +9,8 @@ const {graphqlUploadExpress} = require('graphql-upload')
 const stripe = require('stripe')(process.env.STRIPE_TEST_KEY);
 const cors = require('cors');
 
+const { Item } = require('./models/index.js')
+const {deleteItems} = require('./schemas/index.js')
 
 
 
@@ -59,7 +61,26 @@ const startApolloServer = async () => {
                 // Payment was successful
                 // console.log('Payment was successful:', session);
                 console.log(session.metadata)
+                const itemIds = JSON.parse(session.metadata.itemIds);
     
+
+                try {
+                  // Perform deletion directly
+                  const deletedCount = await Item.destroy({
+                    where: {
+                      id: {
+                        [Op.in]: itemIds,
+                      },
+                    },
+                  });
+            
+                  console.log(`${deletedCount} item(s) removed successfully.`);
+                  res.status(200).json({ success: true, message: 'Payment successful and items removed' });
+                } catch (error) {
+                  console.error('Error removing items:', error);
+                  res.status(500).json({ success: false, message: 'Failed to remove items' });
+                }
+
                 
             } else {
                 // Handle the case where the payment was not successful

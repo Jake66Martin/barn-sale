@@ -617,27 +617,19 @@ const resolvers = {
 
     removeItems: async (parent, { _id }, context) => {
       try {
-        // If _id is a single value, convert it to an array for consistency
-        const idsToRemove = Array.isArray(_id) ? _id : [_id];
-    
-        // Log the IDs that are going to be removed
-        console.log("IDs to remove:", idsToRemove);
-    
-        // Use Sequelize's destroy method to delete the items by their IDs
-        const deletedItemsCount = await Item.destroy({
+        const deletedCount = await Item.destroy({
           where: {
-            id: idsToRemove, // This will delete all items with the given IDs
+            id: {
+              [Op.in]: _id, // Match any ID in the array
+            },
           },
         });
     
-        // Check if any items were deleted
-        if (deletedItemsCount > 0) {
-          console.log(`${deletedItemsCount} item(s) deleted successfully.`);
-          return { success: true, count: deletedItemsCount }; // Return success and count of deleted items
-        } else {
-          console.log("No items found with the provided IDs.");
-          return { success: false, message: "No items were deleted." };
-        }
+        return {
+          success: true,
+          message: `${deletedCount} item(s) removed successfully.`,
+          deletedCount, // Return the number of deleted items
+        };
       } catch (error) {
         console.error("Error removing items:", error);
         throw new Error("Failed to remove items.");
