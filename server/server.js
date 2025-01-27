@@ -118,7 +118,6 @@ const startApolloServer = async () => {
               },
               quantity: item.quantity,
               tax_rates: [taxRate.id],
-              id: item.id
             };
           });
     
