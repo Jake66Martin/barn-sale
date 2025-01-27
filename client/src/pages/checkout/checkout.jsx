@@ -169,14 +169,15 @@ useEffect(() => {
             unit_amount: priceInCents, // Price in cents
           },
           quantity: 1,
-          id: item._id
         };
       }).filter(item => item !== null);
+
+      const itemIds = data?.allItemsById.map(item => item._id);
   
       const response = await fetch("https://barn-sale.onrender.com/create-checkout-session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ cartItems, method }),
+        body: JSON.stringify({ cartItems, method, itemIds }),
       });
   
       const { url } = await response.json();

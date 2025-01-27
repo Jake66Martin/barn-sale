@@ -91,7 +91,7 @@ const startApolloServer = async () => {
 
 
     app.post('/create-checkout-session', async (req, res) => {
-        const { cartItems, method } = req.body;
+        const { cartItems, method, itemIds } = req.body;
         
         const taxRate = await stripe.taxRates.create({
           display_name: 'HST',
@@ -166,7 +166,7 @@ const startApolloServer = async () => {
               allowed_countries: ['CA'], // Limit to these countries
             },
             metadata: {
-              itemIds: cartItems.map(item => item.id), // Set metadata with item IDs
+              itemIds: JSON.stringify(itemIds), // Set metadata with item IDs
             },
 
             
