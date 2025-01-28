@@ -6,24 +6,25 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { Outlet } from "react-router-dom";
-import Header from './components/header/header'
-import Header2 from './components/header/header2'
-import Footer from './components/footer/footer'
-import Footer2 from './components/footer/footer2'
+import Header from "./components/header/header";
+import Header2 from "./components/header/header2";
+import Footer from "./components/footer/footer";
+import Footer2 from "./components/footer/footer2";
 import "./App.css";
-import { useLocation } from 'react-router-dom'
-import { concat } from '@apollo/client/link/core';
+import { useLocation } from "react-router-dom";
+import { concat } from "@apollo/client/link/core";
 import createUploadLink from "apollo-upload-client/createUploadLink.mjs";
+import  GlobalProvider  from "./components/Protection/protection";
 
 // const httpLink = createHttpLink({
 //   uri: '/graphql',
 // });
 
 const uploadLink = createUploadLink({
-  uri: '/graphql',
+  uri: "/graphql",
   headers: {
-    'Apollo-Require-Preflight': 'true'
-  }
+    "Apollo-Require-Preflight": "true",
+  },
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -50,16 +51,13 @@ const client = new ApolloClient({
 
 function App() {
   const location = useLocation();
-  const isContactPage = location.pathname === '/Contact';
-  const isAddPage = location.pathname === '/Add';
-  const isSearchPage = location.pathname === '/Search';
-  const isItemsPage = location.pathname.startsWith('/Items/');
-  const isViewItemsPage = location.pathname.startsWith('/ViewItem/');
-  const isAboutPage = location.pathname === '/About';
+  const isContactPage = location.pathname === "/Contact";
+  const isAddPage = location.pathname === "/Add";
+  const isSearchPage = location.pathname === "/Search";
+  const isItemsPage = location.pathname.startsWith("/Items/");
+  const isViewItemsPage = location.pathname.startsWith("/ViewItem/");
+  const isAboutPage = location.pathname === "/About";
 
-
-
-  
   return (
     <ApolloProvider client={client}>
       <>
@@ -67,11 +65,22 @@ function App() {
         <Header2 />
         {/* <main className={`main-height ${isContactPage ? 'contact-page' : isAddPage ?  'add-page' : isItemsPage ? 'items-page' : isSearchPage ? 'search-page' : isViewItemsPage ? 'view-item': isAboutPage ? 'about-page' : ''}`}> */}
         {/* <main className={`${isContactPage ? 'contact-page' : isAddPage ?  'add-page' : isItemsPage ? 'items-page' : isSearchPage ? 'search-page' : isViewItemsPage ? 'view-item': isAboutPage ? 'about-page' : ''}`}> */}
-        <main className={`${isContactPage ? 'contact-page' : isAddPage ?  'add-page' : isAboutPage ? 'about-page' : ''}`}>
-
-          <Outlet />
-        </main>
-        <Footer2/>
+        <GlobalProvider>
+          <main
+            className={`${
+              isContactPage
+                ? "contact-page"
+                : isAddPage
+                ? "add-page"
+                : isAboutPage
+                ? "about-page"
+                : ""
+            }`}
+          >
+            <Outlet />
+          </main>
+        </GlobalProvider>
+        <Footer2 />
         {/* <Footer /> */}
       </>
     </ApolloProvider>

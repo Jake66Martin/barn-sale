@@ -69,6 +69,7 @@
 
 .imgsize{
   width: 90%;
+  height: 90% !important;
 }
 
 .pagination{

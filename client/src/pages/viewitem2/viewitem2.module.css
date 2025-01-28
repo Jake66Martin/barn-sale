@@ -184,8 +184,8 @@ grid-column: 1;
 
   @media (max-width: 734px) {
     .imgsize {
-        height: 80px;
-        width: 80px;
+        height: 80px !important;
+        width: 80px !important;
     }
 
     .placeholder{

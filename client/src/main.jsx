@@ -25,6 +25,7 @@ import Checkout from './pages/checkout/checkout.jsx'
 import Viewitem2 from './pages/viewitem2/viewitem2.jsx'
 import Success from './pages/success/success.jsx'
 import Failure from './pages/failure/failure.jsx'
+import Protection from './components/Protection/protection.jsx'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'

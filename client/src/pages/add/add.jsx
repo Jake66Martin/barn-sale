@@ -5,8 +5,11 @@ import { ADD_ITEM } from "../../utils/mutations";
 import { useState, useRef } from "react";
 import Swal from "sweetalert2";
 import UploadWidget from "../../components/Uploadwidget/uploadwidget.jsx";
+import { useGlobalContext } from '../../components/Protection/protection.jsx'
 
 export default function addRemove() {
+
+  const { user, loading, error} = useGlobalContext();
 
   const [dataReceived, setDataReceived] = useState("");
   const [item, setItem] = useState("");
@@ -199,146 +202,293 @@ export default function addRemove() {
   };
 
   return (
-    <section className="bg-light py-3 py-md-5 height">
-      <Container>
-        <Row className="justify-content-lg-center">
-          <div className="col-12 col-lg-9">
-            <div className="bg-white border rounded shadow-sm overflow-hidden">
-              <Form onSubmit={handleFormSubmit}>
-                <Row className="gy-4 gy-xl-5 p-4 p-xl-5">
-                  <div className="col-12">
-                    <label htmlFor="category" className="form-label">
-                      Category
-                    </label>
-                    <select
-                      className="form-control"
-                      name="category"
-                      id="category"
-                      value={categoryId}
-                      onChange={
-                        handleFirstDrop
-                      }
-                      required
-                    >
-                      <option value="">Please select an option</option>
-                      <option value="1">LivingRoom</option>
-                      <option value="2">DiningRoom</option>
-                      <option value="3">Kitchen&Bath</option>
-                      <option value="4">Bedroom</option>
-                      <option value="5">Child&Nursery</option>
-                      <option value="6">Office</option>
-                      <option value="7">Garage&Exterior</option>
-                      <option value="8">HomeDecor</option>
-                    </select>
-                  </div>
-                  <div className="col-12">
-                    <label htmlFor="sub-category" className="form-label">
-                      Sub-Category (where applicable)
-                    </label>
-                    <select
-                      className="form-control"
-                      name="sub-category"
-                      id="sub-category"
-                      value={subcategoryId}
-                      disabled={disable()}
-                      onChange={(event) => {
-                        // setSubcategoryId(event.target.value);
-                        console.log(event.target.value);
-                        handleSecondDrop(event)
-                      }}
-                    >
-                      <option value="">Please select an option</option>
-                      {getSecondDropOptions()}
-                    </select>
-                  </div>
-                  <div className="col-12">
-                    <label htmlFor="item" className="form-label">
-                      Item
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="item"
-                      name="item"
-                      value={item}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  <div className="col-12 col-md-6">
-                    <label htmlFor="price" className="form-label">
-                      Price
-                    </label>
-                    <div className="input-group">
+    
+    <>
+    {user && user.email === 'jake66martin@hotmail.com' ? (
+      <section className="bg-light py-3 py-md-5 height">
+        <Container>
+          <Row className="justify-content-lg-center">
+            <div className="col-12 col-lg-9">
+              <div className="bg-white border rounded shadow-sm overflow-hidden">
+                <Form onSubmit={handleFormSubmit}>
+                  <Row className="gy-4 gy-xl-5 p-4 p-xl-5">
+                    <div className="col-12">
+                      <label htmlFor="category" className="form-label">
+                        Category
+                      </label>
+                      <select
+                        className="form-control"
+                        name="category"
+                        id="category"
+                        value={categoryId}
+                        onChange={handleFirstDrop}
+                        required
+                      >
+                        <option value="">Please select an option</option>
+                        <option value="1">LivingRoom</option>
+                        <option value="2">DiningRoom</option>
+                        <option value="3">Kitchen&Bath</option>
+                        <option value="4">Bedroom</option>
+                        <option value="5">Child&Nursery</option>
+                        <option value="6">Office</option>
+                        <option value="7">Garage&Exterior</option>
+                        <option value="8">HomeDecor</option>
+                      </select>
+                    </div>
+                    <div className="col-12">
+                      <label htmlFor="sub-category" className="form-label">
+                        Sub-Category (where applicable)
+                      </label>
+                      <select
+                        className="form-control"
+                        name="sub-category"
+                        id="sub-category"
+                        value={subcategoryId}
+                        disabled={disable()}
+                        onChange={(event) => {
+                          console.log(event.target.value);
+                          handleSecondDrop(event);
+                        }}
+                      >
+                        <option value="">Please select an option</option>
+                        {getSecondDropOptions()}
+                      </select>
+                    </div>
+                    <div className="col-12">
+                      <label htmlFor="item" className="form-label">
+                        Item
+                      </label>
                       <input
                         type="text"
                         className="form-control"
-                        id="price"
-                        name="price"
+                        id="item"
+                        name="item"
+                        value={item}
                         onChange={handleChange}
                         required
-                        value={price}
                       />
                     </div>
-                  </div>
-                  <div className="col-12 col-md-6">
-                    <label htmlFor="location" className="form-label">
-                      Location
-                    </label>
-                    <select
-                      className="form-control"
-                      name="location"
-                      id="location"
-                      value={location}
-                      onChange={(event) => setLocation(event.target.value)}
-                      required
-                    >
-                      <option value="">Please select an option</option>
-                      <option value="East - Hawkesbury, ON">
-                        East - Hawkesbury, ON
-                      </option>
-                      <option value="GQ - Orleans (Ottawa), ON">
-                        GQ - Orleans (Ottawa), ON
-                      </option>
-                      <option value="West - Dunrobin, ON">
-                        West - Dunrobin, ON
-                      </option>
-                    </select>
-                  </div>
-                  <div className="col-12">
-                    <label htmlFor="image" className="form-label mx-3">
-                      Image URL
-                    </label>
-                    <UploadWidget sendData={receiveUrlData}></UploadWidget>
-                  </div>
-                  <div className="col-12">
-                    <label htmlFor="description" className="form-label">
-                      Description
-                    </label>
-                    <textarea
-                      className="form-control"
-                      id="description"
-                      name="description"
-                      rows="3"
-                      value={description}
-                      onChange={handleChange}
-                      required
-                    ></textarea>
-                  </div>
-                  <div className="col-12">
-                    <div className="d-grid">
-                      <button className="btn btn-danger btn-lg" type="submit">
-                        Add Item
-                      </button>
+                    <div className="col-12 col-md-6">
+                      <label htmlFor="price" className="form-label">
+                        Price
+                      </label>
+                      <div className="input-group">
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="price"
+                          name="price"
+                          onChange={handleChange}
+                          required
+                          value={price}
+                        />
+                      </div>
                     </div>
-                  </div>
-                </Row>
-              </Form>
+                    <div className="col-12 col-md-6">
+                      <label htmlFor="location" className="form-label">
+                        Location
+                      </label>
+                      <select
+                        className="form-control"
+                        name="location"
+                        id="location"
+                        value={location}
+                        onChange={(event) => setLocation(event.target.value)}
+                        required
+                      >
+                        <option value="">Please select an option</option>
+                        <option value="East - Hawkesbury, ON">
+                          East - Hawkesbury, ON
+                        </option>
+                        <option value="GQ - Orleans (Ottawa), ON">
+                          GQ - Orleans (Ottawa), ON
+                        </option>
+                        <option value="West - Dunrobin, ON">
+                          West - Dunrobin, ON
+                        </option>
+                      </select>
+                    </div>
+                    <div className="col-12">
+                      <label htmlFor="image" className="form-label mx-3">
+                        Image URL
+                      </label>
+                      <UploadWidget sendData={receiveUrlData}></UploadWidget>
+                    </div>
+                    <div className="col-12">
+                      <label htmlFor="description" className="form-label">
+                        Description
+                      </label>
+                      <textarea
+                        className="form-control"
+                        id="description"
+                        name="description"
+                        rows="3"
+                        value={description}
+                        onChange={handleChange}
+                        required
+                      ></textarea>
+                    </div>
+                    <div className="col-12">
+                      <div className="d-grid">
+                        <button className="btn btn-danger btn-lg" type="submit">
+                          Add Item
+                        </button>
+                      </div>
+                    </div>
+                  </Row>
+                </Form>
+              </div>
             </div>
-          </div>
-        </Row>
-      </Container>
-    </section>
+          </Row>
+        </Container>
+      </section>
+    ) : (
+      <p>You are not authorized to access this page.</p>
+    )}
+  </>
+  //   { user && user.email === 'jake66martin@hotmail.com' ? (
+  //   <section className="bg-light py-3 py-md-5 height">
+  //     <Container>
+  //       <Row className="justify-content-lg-center">
+  //         <div className="col-12 col-lg-9">
+  //           <div className="bg-white border rounded shadow-sm overflow-hidden">
+  //             <Form onSubmit={handleFormSubmit}>
+  //               <Row className="gy-4 gy-xl-5 p-4 p-xl-5">
+  //                 <div className="col-12">
+  //                   <label htmlFor="category" className="form-label">
+  //                     Category
+  //                   </label>
+  //                   <select
+  //                     className="form-control"
+  //                     name="category"
+  //                     id="category"
+  //                     value={categoryId}
+  //                     onChange={
+  //                       handleFirstDrop
+  //                     }
+  //                     required
+  //                   >
+  //                     <option value="">Please select an option</option>
+  //                     <option value="1">LivingRoom</option>
+  //                     <option value="2">DiningRoom</option>
+  //                     <option value="3">Kitchen&Bath</option>
+  //                     <option value="4">Bedroom</option>
+  //                     <option value="5">Child&Nursery</option>
+  //                     <option value="6">Office</option>
+  //                     <option value="7">Garage&Exterior</option>
+  //                     <option value="8">HomeDecor</option>
+  //                   </select>
+  //                 </div>
+  //                 <div className="col-12">
+  //                   <label htmlFor="sub-category" className="form-label">
+  //                     Sub-Category (where applicable)
+  //                   </label>
+  //                   <select
+  //                     className="form-control"
+  //                     name="sub-category"
+  //                     id="sub-category"
+  //                     value={subcategoryId}
+  //                     disabled={disable()}
+  //                     onChange={(event) => {
+  //                       // setSubcategoryId(event.target.value);
+  //                       console.log(event.target.value);
+  //                       handleSecondDrop(event)
+  //                     }}
+  //                   >
+  //                     <option value="">Please select an option</option>
+  //                     {getSecondDropOptions()}
+  //                   </select>
+  //                 </div>
+  //                 <div className="col-12">
+  //                   <label htmlFor="item" className="form-label">
+  //                     Item
+  //                   </label>
+  //                   <input
+  //                     type="text"
+  //                     className="form-control"
+  //                     id="item"
+  //                     name="item"
+  //                     value={item}
+  //                     onChange={handleChange}
+  //                     required
+  //                   />
+  //                 </div>
+  //                 <div className="col-12 col-md-6">
+  //                   <label htmlFor="price" className="form-label">
+  //                     Price
+  //                   </label>
+  //                   <div className="input-group">
+  //                     <input
+  //                       type="text"
+  //                       className="form-control"
+  //                       id="price"
+  //                       name="price"
+  //                       onChange={handleChange}
+  //                       required
+  //                       value={price}
+  //                     />
+  //                   </div>
+  //                 </div>
+  //                 <div className="col-12 col-md-6">
+  //                   <label htmlFor="location" className="form-label">
+  //                     Location
+  //                   </label>
+  //                   <select
+  //                     className="form-control"
+  //                     name="location"
+  //                     id="location"
+  //                     value={location}
+  //                     onChange={(event) => setLocation(event.target.value)}
+  //                     required
+  //                   >
+  //                     <option value="">Please select an option</option>
+  //                     <option value="East - Hawkesbury, ON">
+  //                       East - Hawkesbury, ON
+  //                     </option>
+  //                     <option value="GQ - Orleans (Ottawa), ON">
+  //                       GQ - Orleans (Ottawa), ON
+  //                     </option>
+  //                     <option value="West - Dunrobin, ON">
+  //                       West - Dunrobin, ON
+  //                     </option>
+  //                   </select>
+  //                 </div>
+  //                 <div className="col-12">
+  //                   <label htmlFor="image" className="form-label mx-3">
+  //                     Image URL
+  //                   </label>
+  //                   <UploadWidget sendData={receiveUrlData}></UploadWidget>
+  //                 </div>
+  //                 <div className="col-12">
+  //                   <label htmlFor="description" className="form-label">
+  //                     Description
+  //                   </label>
+  //                   <textarea
+  //                     className="form-control"
+  //                     id="description"
+  //                     name="description"
+  //                     rows="3"
+  //                     value={description}
+  //                     onChange={handleChange}
+  //                     required
+  //                   ></textarea>
+  //                 </div>
+  //                 <div className="col-12">
+  //                   <div className="d-grid">
+  //                     <button className="btn btn-danger btn-lg" type="submit">
+  //                       Add Item
+  //                     </button>
+  //                   </div>
+  //                 </div>
+  //               </Row>
+  //             </Form>
+  //           </div>
+  //         </div>
+  //       </Row>
+  //     </Container>
+  //   </section>
+  // ) : (<p></p>)}
+  
   );
 }
 

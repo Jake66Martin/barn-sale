@@ -174,7 +174,7 @@ useEffect(() => {
 
       const itemIds = data?.allItemsById.map(item => item._id);
   
-      const response = await fetch("https://barn-sale.onrender.com/create-checkout-session", {
+      const response = await fetch("http://localhost:3001/create-checkout-session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ cartItems, method, itemIds }),

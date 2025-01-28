@@ -1,17 +1,25 @@
 import styles from "./viewitem2.module.css";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { ITEM_ID } from "../../utils/queries";
 import { useState, useEffect } from "react";
 import {Link} from 'react-router-dom';
 import Swal from "sweetalert2";
+import { ME } from '../../utils/queries';
+import Auth from '../../utils/auth';
+import { REMOVE_ITEM } from "../../utils/mutations";
 
 
 export default function Viewitem2() {
 const [mainImage, setMainImage] = useState(null);
 const [altImages, setAltImages] = useState([]);
 
-    
+const isAuthenticated = Auth.loggedIn();
+
+  const [removeItem] = useMutation(REMOVE_ITEM)
+
+
+  const {loading: meLoad, error: meError, data: meData} = isAuthenticated ? useQuery(ME) : { loading: false, error: null, data: null };
   
   
 
@@ -98,6 +106,33 @@ const [altImages, setAltImages] = useState([]);
       <div className={`${styles.cell1}`}>
         <div className={`${styles.pagecell}`} style={{display: 'flex', alignItems: 'center'}}>
             <p className={`${styles.textstyle} ${styles.itemlink}`}><Link to='/' style={{textDecoration: 'none', color: 'black'}}>Home</Link> {'>'} <Link to='/Browse' style={{textDecoration: 'none', color: 'black'}}>All Furniture</Link> {'>'} <Link to={`/Subcategories/${data?.itemById.item_category}`} style={{textDecoration: 'none', color: 'black'}}>{data?.itemById.item_category}</Link> {'>'} {data?.itemById.item} </p>
+            {meData?.me && meData?.me.email === "jake66martin@hotmail.com" && (
+      <button className="btn btn-danger btn-lg align-self-center m-3" 
+                                            onClick={() => {
+                                                            removeItem({
+                                                              variables: {
+                                                                id: id
+                                                              }
+                                                            })
+
+                                                            Swal.fire({
+                                                                position: "center-center",
+                                                                icon: "success",
+                                                                title: "Item has been deleted.",
+                                                                showConfirmButton: false,
+                                                                timer: 2000,
+                                                            });
+
+                                                            localStorage.setItem("itemAdded", "true");
+
+
+                                                            window.history.back();
+                                                            
+
+                                                    }}>
+                                        Delete Item
+                                    </button>)
+           }
         </div>
         <div className={`${styles.imgcell}`}>
         <img src={mainImage} className={`${styles.mainimage}`} alt="Main Image" />
