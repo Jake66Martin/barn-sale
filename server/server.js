@@ -180,8 +180,8 @@ const startApolloServer = async () => {
             
             // success_url: `${process.env.CLIENT_URL}/Success`,
             // cancel_url: `${process.env.CLIENT_URL}/Failure`,
-            success_url: `${process.env.CLIENT_URL}/Success`,
-            cancel_url: `${process.env.CLIENT_URL}/Failure`,
+            success_url: `${process.env.CLIENT_URL2}/Success`,
+            cancel_url: `${process.env.CLIENT_URL2}/Failure`,
 
             shipping_address_collection: {
               allowed_countries: ['CA'], // Limit to these countries
