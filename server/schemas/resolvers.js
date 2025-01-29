@@ -657,13 +657,14 @@ const resolvers = {
     submitContactForm: async (parent, { name, email, message }, context) => {
       try {
         const transporter = nodemailer.createTransport({
-          service: "hotmail",
-          host: "smtp-mail.outlook.com",
-          port: 587,
-          tls: {
-            ciphers: "TLSv1.2",
-            minVersion: "TLSv1.2",
-          },
+          service: "Gmail",
+          host: "smtp.gmail.com",
+          port: 465,
+          secure: true,
+          // tls: {
+          //   ciphers: "TLSv1.2",
+          //   minVersion: "TLSv1.2",
+          // },
           auth: {
             user: process.env.EMAIL,
             pass: process.env.PASSWORD,
@@ -671,8 +672,8 @@ const resolvers = {
         });
 
         const mailOptions = {
-          from: "alabamaslamma6@hotmail.com",
-          to: "alabamaslamma6@hotmail.com",
+          from: "thriftbarnfurniture@gmail.com",
+          to: "thriftbarnfurniture@gmail.com",
           subject: "Thrift-Barn-Furniture inquiry",
           text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
         };

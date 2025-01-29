@@ -286,7 +286,7 @@ export default function Header2() {
             style={{ color: "white", textAlign: "center" }}
             className={`${styles.textstyle} ${styles.annoucement}`}
           >
-            Announcements can go up here
+            “2786 HIGHWAY 34, HAWKESBURY - VISIT THE BARN, OPEN EVERY SUNDAY 8AM – 8PM”
           </h3>
         </div>
         <div className={`${styles.bottomrow} ${styles.grid2}`}>

@@ -18,9 +18,9 @@
 }
 
 .mainsection {
-  height: 1875px;
+  height: 1275px;
   display: grid;
-  grid-template-rows: 375px 375px 375px 150px 600px;
+  grid-template-rows: 375px 375px 375px 150px;
   grid-template-columns: 50% 50%;
 }
 
@@ -151,9 +151,9 @@
   }
 
   .mainsection {
-    height: 1425px;
+    height: 825px;
     display: grid;
-    grid-template-rows: 225px 225px 225px 150px 600px;
+    grid-template-rows: 225px 225px 225px 150px;
     grid-template-columns: 50% 50%;
   }
 
@@ -165,9 +165,9 @@
 
 @media (max-width: 1211px) {
   .mainsection {
-    height: 1450px;
+    height: 1175px;
     display: grid;
-    grid-template-rows: 275px 225px 225px 225px 225px 275px;
+    grid-template-rows: 275px 225px 225px 225px 225px;
     grid-template-columns: 1fr;
   }
 

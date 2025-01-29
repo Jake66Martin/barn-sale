@@ -66,6 +66,12 @@ input.nosubmit {
   background: transparent;
 }
 
+@media (max-width: 1292px) {
+  .annoucement{
+    font-size: 13px !important;
+  }
+}
+
 @media (max-width: 1145px) {
   input.nosubmit {
     width: 200px; /* Adjust width for smaller screens */
@@ -276,7 +282,7 @@ input.nosubmit {
 
 @media (max-width: 403px) {
   .annoucement {
-    font-size: 15px;
+    font-size: 12px;
   }
 }
 

@@ -1,8 +1,32 @@
 import styles from "./contact2.module.css";
 import { useState, useEffect } from "react";
+import Swal from "sweetalert2";
+import { SUBMIT_EMAIL} from '../../utils/mutations.js';
+import { useMutation } from "@apollo/client";
+
+
+
 
 export default function Contact2() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [submitContactForm] = useMutation(SUBMIT_EMAIL);
+
+
+  const emailValidation = /^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/;
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    return name === "fullname"
+      ? setName(value)
+      : name === "email"
+      ? setEmail(value)
+      : setMessage(value);
+  };
+
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -11,6 +35,59 @@ export default function Contact2() {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+
+
+  const formSubmit = async (event) => {
+    event.preventDefault()
+    try {
+      if (name === "" || email === "" || message === "") {
+        Swal.fire({
+             position: "center-center",
+             icon: "error",
+             title: "Must fill in required fields.",
+             showConfirmButton: false,
+             timer: 2500,
+           });
+       } else if (!emailValidation.test(email)) {
+        Swal.fire({
+             position: "center-center",
+             icon: "error",
+             title: "Please enter a valid email.",
+             showConfirmButton: false,
+             timer: 2500,
+           });
+       } else {
+
+         setName("");
+         setEmail("");
+         setMessage("");
+         Swal.fire({
+           position: "center-center",
+           icon: "success",
+           title: "Your message has been sent",
+           showConfirmButton: false,
+           timer: 2500,
+         });
+        }
+
+        const sentEmail = await submitContactForm({
+          variables: {
+            name,
+            email,
+            message
+          }
+        });
+        console.log(sentEmail)
+
+        return sentEmail
+
+    } catch (err) {
+       console.log(err)
+    }
+  };
+
+
 
   function smallIcons() {
     if (windowWidth < 700) {
@@ -60,7 +137,7 @@ export default function Contact2() {
                 Text or call 24/7 -365:
               </span>
               <br />
-              613-666-6666
+              613-805-8228
             </p>
             <p
               style={{
@@ -77,9 +154,9 @@ export default function Contact2() {
                 Address:
               </span>{" "}
               <br />
-              123 Street Name <br />
-              City Name, Province <br />
-              123 ABC
+              2786 Highway 34 <br />
+              Hawkesbury, Ontario <br />
+              K6A 0E5
             </p>
           </div>
           <div className={`${styles.cell3}`}>
@@ -126,8 +203,8 @@ export default function Contact2() {
                 In-Store Hours:
               </span>
               <br />
-              Weekdays: AM - PM <br />
-              Weekends: AM - PM
+              Sunday: 8AM - 8PM <br />
+              
             </p>
             <p
               style={{
@@ -137,7 +214,7 @@ export default function Contact2() {
                 position: 'relative',
                 right: '12px'
               }}
-              className={`${styles.textstyle2} ${styles.infop} ${styles.lino}`}
+              className={`${styles.textstyle2} ${styles.infop} ${styles.lino} ${styles.emailo}`}
             >
               <span
                 style={{
@@ -186,7 +263,7 @@ export default function Contact2() {
                 Text or call 24/7 -365:
               </span>
               <br />
-              613-666-6666
+              613-805-8228
             </p>
           </div>
           <div className={`${styles.cell2}`}>
@@ -208,9 +285,9 @@ export default function Contact2() {
                 Address:
               </span>{" "}
               <br />
-              123 Street Name <br />
-              City Name, Province <br />
-              123 ABC
+              2786 Highway 34<br />
+              Hawkesbury, Ontario <br />
+              K6A 0E5
             </p>
           </div>
           <div className={`${styles.cell3}`}>
@@ -239,8 +316,8 @@ export default function Contact2() {
                 In-Store Hours:
               </span>
               <br />
-              Weekdays: AM - PM <br />
-              Weekends: AM - PM
+              Sunday: 8AM - 8PM <br />
+              
             </p>
           </div>
           <div className={`${styles.cell4}`}>
@@ -298,26 +375,18 @@ export default function Contact2() {
                   textAlign: "center",
                 }}
               >
-                Lorum Ipsum
+                Contact Us
               </h2>
               <p
                 className={`${styles.textstyle2} ${styles.subp}`}
                 style={{ textAlign: "center" }}
               >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                Contact us whenever you want, however you want! <br/>
+                We pride ourselves on fostering a stress free customer
                 <br />
-                dapibus mollis nisl in mollis. Vivamus malesuada augue ut <br />
-                tincidunt dapibus. Done posuere elementum velit, eu dignissim{" "}
-                <br />
-                dui viverra non. Sed ac sagittis ex. Duis dignissim ullamcorper
-                <br />
-                nibh, quis rhoncus neque lacinia id. Aliquam laoreet fermentum
-                <br />
-                libero velit, eu dignissim dui viverra non. Sed ac sagittis ex.{" "}
-                <br />
-                Duis dignissim ullamcorper nibh, quis rhoncus neque lacinia id.{" "}
-                <br />
-                Aliquam laoreet fermentum libero.
+                customer service experience, we will get back to you as soon <br/>
+                as possible and thank you for supporting Thrift Barn Furniture. <br />
+                
               </p>
               <img
                 src="decor.jpg"
@@ -340,12 +409,22 @@ export default function Contact2() {
                 type="text"
                 style={{ display: "block", width: "700px" }}
                 className={`${styles.inputwidth}`}
+                value={name}
+                id="fullname"
+                      name="fullname"
+                      onChange={handleChange}
+                      required
               ></input>
               <label style={{ display: "block" }}>Email</label>
               <input
-                type="text"
+                type="email"
+                value={email}
                 style={{ display: "block", width: "700px" }}
                 className={`${styles.inputwidth}`}
+                id="email"
+                        name="email"
+                        onChange={handleChange}
+                        required
               ></input>
               <label style={{ display: "block" }}>Message</label>
               <textarea
@@ -357,10 +436,16 @@ export default function Contact2() {
                   resize: "none",
                 }}
                 className={`${styles.inputwidth} ${styles.inputheight}`}
+                value={message}
+                onChange={handleChange}
+                id="message"
+                name="message"
+                required
               ></textarea>
               <button
                 type="submit"
                 style={{ display: "block", margin: "12px auto" }}
+                onClick={formSubmit}
               >
                 Submit Message
               </button>
@@ -438,6 +523,7 @@ export default function Contact2() {
               <button
                 type="submit"
                 style={{ display: "block", margin: "12px 0" }}
+                onClick={formSubmit}
               >
                 Submit Message
               </button>

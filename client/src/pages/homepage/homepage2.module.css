@@ -158,10 +158,15 @@
 @media (max-width: 856px) {
   .info {
     position: relative;
-    height: 1150px;
+    height: 1200px;
     display: grid;
-    grid-template-rows: 350px 200px 200px 200px 200px;
+    grid-template-rows: 400px 200px 200px 200px 200px;
     grid-template-columns: 50% 50% !important;
+  }
+
+  .smallish{
+    position: relative;
+    bottom: 50px;
   }
 
   .item5 {
@@ -211,5 +216,20 @@
     grid-column: 2;
     display: flex;
     justify-content: center;
+  }
+}
+
+@media (max-width: 572px) {
+  .info {
+    position: relative;
+    height: 1200px;
+    display: grid;
+    grid-template-rows: 400px 200px 200px 200px 200px;
+    grid-template-columns: 50% 50% !important;
+  }
+
+  .smallish{
+    position: relative;
+    bottom: 50px;
   }
 }

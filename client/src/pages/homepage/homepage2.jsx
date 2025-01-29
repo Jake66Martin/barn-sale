@@ -31,14 +31,14 @@ export default function Homepage2() {
               Visit The Barn
             </h3>
             <p className={`${styles.textstyle2} ${styles.subp}`} style={{ fontSize: "14px", textAlign: 'center' }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Nestled in the serene countryside, The Barn is our 
               <br />
-              Nam dapibus mollis nisl in mollis. Vivamus malesuada <br />
-              augue ut tincidunt dapibus. Donec posuere elementum <br />
-              velit, eu dignissim dui viverra non. Sed ac sagittis ex.
+              massive 15,000 sq ft showroom in Hawkesbury, ON. A   <br />
+              beautiful drive east of Orleans, The Barn offers a<br />
+              a peaceful escape where you can disconnect from the 
               <br />
-              Duis dignissim ullamcorper nibh, quis rhoncus neque <br /> lacinia
-              id. Aliquam laoreet fermentum libero.
+              hustle and bustle and reconnect with nature. <br /> 
+              Join us at Thrift Barn Furniture!
             </p>
           </div>
         </div>
@@ -52,23 +52,21 @@ export default function Homepage2() {
               Address:
             </span>
             <br />
-            123 Street Name
+            2786 Highway 34
             <br />
-            City Name, Province
+            Hawkesbury, Ontario
             <br />
-            ABC 123
+            K6A 0E5
           </p>
         </div>
         <div className={`${styles.info3}`}>
           <p
-            style={{ alignSelf: "center", justifySelf: "start" }}
+            style={{ alignSelf: "center", justifySelf: "start", position: 'relative', bottom: '12px' }}
             className={styles.textstyle2}
           >
             <span style={{ color: "#da0404", fontWeight: "600" }}>Hours:</span>
             <br />
-            Weekdays: AM - PM
-            <br />
-            Weekends: AM - PM
+            Sunday: 8AM - 8PM
           </p>
         </div>
         </>
@@ -85,14 +83,14 @@ export default function Homepage2() {
               Visit The Barn
             </h3>
             <p className={styles.textstyle2} style={{ fontSize: "14px" }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Nestled in the serene countryside, The Barn is our 
               <br />
-              Nam dapibus mollis nisl in mollis. Vivamus malesuada <br />
-              augue ut tincidunt dapibus. Donec posuere elementum <br />
-              velit, eu dignissim dui viverra non. Sed ac sagittis ex.
+              massive 15,000 sq ft showroom in Hawkesbury, ON. A   <br />
+              beautiful drive east of Orleans, The Barn offers a<br />
+              a peaceful escape where you can disconnect from the 
               <br />
-              Duis dignissim ullamcorper nibh, quis rhoncus neque <br /> lacinia
-              id. Aliquam laoreet fermentum libero.
+              hustle and bustle and reconnect with nature. <br /> 
+              Join us at Thrift Barn Furniture!
             </p>
           </div>
         </div>
@@ -106,23 +104,21 @@ export default function Homepage2() {
               Address:
             </span>
             <br />
-            123 Street Name
+            2786 Highway 34
             <br />
-            City Name, Province
+            Hawkesbury, Ontario
             <br />
-            ABC 123
+            K6A 0E5
           </p>
         </div>
         <div style={{ display: "grid" }}>
           <p
-            style={{ alignSelf: "center", justifySelf: "start" }}
+            style={{ alignSelf: "center", justifySelf: "start", position: 'relative', bottom: '12px' }}
             className={styles.textstyle2}
           >
             <span style={{ color: "#da0404", fontWeight: "600" }}>Hours:</span>
             <br />
-            Weekdays: AM - PM
-            <br />
-            Weekends: AM - PM
+            Sunday: 8AM - 8PM
           </p>
         </div>
         </>
@@ -423,14 +419,16 @@ export default function Homepage2() {
           style={{ textAlign: "center", lineHeight: "1.5" }}
           className={`${styles.textstyle2} ${styles.subp}`}
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing <br/> elit. Nam dapibus
-          mollis nisl 
-          in mollis. Vivamus malesuada <br/> augue ut tincidunt dapibus. Donec posuere
-          elementum <br/>
-          velit, eu dignissim dui viverra non. Sed ac sagittis ex. Duis <br/>
-          dignissim ullamcorper
-          
-          nibh, quis rhoncus neque lacinia id. <br/> Aliquam laoreet fermentum libero.
+          At Thrift Barn Furniture, we envision a Canada <br/>
+          where sustainable living and community building <br/>
+          go hand-in-hand. By championing the recirculation<br/>
+          of quality used furniture, we see a future where<br />
+          Canadian-led, owned, and operated businesses pave <br/>
+          the path toward a healthier planet, reducing landfill <br/>
+          waste and strengthening the country. When Canadians<br/>
+          think of thrift, they will think of
+          Thrift Barn Furniture— <br/>a cornerstone of integrity, 
+          community, and sustainability.
         </p>
       );
     } else {
@@ -439,14 +437,16 @@ export default function Homepage2() {
           style={{ textAlign: "center", lineHeight: "1.5" }}
           className={`${styles.textstyle2} ${styles.subp}`}
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dapibus
-          mollis nisl <br />
-          in mollis. Vivamus malesuada augue ut tincidunt dapibus. Donec posuere
-          elementum <br />
-          velit, eu dignissim dui viverra non. Sed ac sagittis ex. Duis
-          dignissim ullamcorper
-          <br />
-          nibh, quis rhoncus neque lacinia id. Aliquam laoreet fermentum libero.
+          At Thrift Barn Furniture, we envision a Canada where sustainable 
+          living
+          and  <br />
+          community building go hand-in-hand. By championing the recirculation of quality<br />
+          used furniture, we see a future where Canadian-led,
+          owned, and operated businesses <br/>
+          pave the path toward a healthier planet, reducing landfill waste and strengthening the  <br/>
+          country. When Canadians think of thrift, they will think of
+          Thrift Barn Furniture— <br/>a cornerstone of integrity, 
+          community, and sustainability.
         </p>
       );
     }
@@ -511,7 +511,7 @@ export default function Homepage2() {
           }}
           className={styles.item5}
         >
-          <div style={{ display: "grid", justifyItems: "center" }}>
+          <div style={{ display: "grid", justifyItems: "center" }} className={`${styles.smallish}`}>
             <img src="/leaf.png" className={styles.leaflogo} />
 
             <h2

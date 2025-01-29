@@ -19,7 +19,7 @@ export default function About2() {
     if ( windowWidth < 1211) {
       return (
         <>
-          <div style={{ display: "grid", alignItems: "center" }}>
+          <div style={{ display: "grid", alignItems: "center", position: 'relative', top: '15px' }}>
             <img
               src="/leaf.png"
               className={styles.leaflogo}
@@ -34,18 +34,20 @@ export default function About2() {
               }}
               className={`${styles.textstyle} ${styles.subtit}`}
             >
-              Lorum Ipsum
+              Our Mission
             </h2>
             <p
               className={`${styles.textstyle2} ${styles.subp}`}
               style={{ textAlign: "center" }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br/> Nam
-              dapibus mollis nisl in mollis.  Vivamus malesuada <br/>augue ut
-              tincidunt dapibus. Donec posuere elementum <br/> velit, eu 
-              dignissim dui viverra non. Sed ac sagittis ex. Duis <br/>dignissim
-              ullamcorper nibh, quis  rhoncus neque lacinia id. <br/>Aliquam
-              laoreet fermentum libero.
+            Our mission at Thrift Barn Furniture (TBF) is to transform<br/>
+            the way Canadians furnish their homes by offering an exce-<br/>
+            ptional selection of affordable, high-quality pre-loved furniture<br/>
+            We are committed to supporting budget-conscious living and<br/>
+            nurturing a sustainable lifestyle where we provide not just <br/>
+            furniture, but a meaningful experience that extends beyond<br/>
+             customer satisfaction to genuine care for our community <br/>
+             and the environment.
             </p>
           </div>
           <div style={{ display: "grid" }}>
@@ -71,18 +73,18 @@ export default function About2() {
               }}
               className={`${styles.textstyle} ${styles.subtit}`}
             >
-              Lorum Ipsum
+              Values
             </h2>
             <p
               className={`${styles.textstyle2} ${styles.subp}`}
               style={{ textAlign: "center" }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam <br/>
-              dapibus mollis nisl in mollis.  Vivamus malesuada augue ut <br/>
-              tincidunt dapibus.  Donec posuere elementum velit, eu <br />
-              dignissim dui viverra non. Sed ac sagittis ex. Duis dignissim<br/>
-              ullamcorper nibh, quis  rhoncus neque lacinia id. Aliquam<br/>
-              laoreet fermentum libero.
+              TBF is built on six pillars of core values, instilled by our<br/>
+              veteran founder: service over self, duty, respect, integrity,<br/>
+              community engagement, and environmental stewardship.<br/>
+              These principles guide us in everything we do, ensuring that<br/>
+              our commitment extends beyond customer satisfaction to<br/>
+              genuine care for our community and the environment.
             </p>
           </div>
           <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
@@ -109,28 +111,18 @@ export default function About2() {
               }}
               className={`${styles.textstyle} ${styles.subtit}`}
             >
-              Lorum Ipsum
+              Join Us!
             </h2>
             <p
               className={`${styles.textstyle2} ${styles.subp}`}
               style={{ textAlign: "center" }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam <br/>
-              dapibus mollis nisl in mollis.  Vivamus malesuada augue ut<br/>
-              tincidunt dapibus. Donec posuere elementum velit, eu <br />
-              dignissim dui viverra non. Sed ac sagittis ex. Duis dignissim<br/>
-              ullamcorper nibh, quis rhoncus neque lacinia id. Aliquam<br/>
-              laoreet fermentum libero.
+              Join us at Thrift Barn Furniture, where each piece of   <br/>
+              furniture finds new life and each customer becomes <br/>
+              part of a larger storycelebrating sustainability,<br/> community, and change.
             </p>
           </div>
-          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-            <img
-              className={`${styles.img4}`}
-              src="garage.jpg"
-              alt="about me image"
-              style={{ alignSelf: "center", justifySelf: "center" }}
-            />
-          </div>
+          
         </>
       );
     } else {
@@ -143,15 +135,16 @@ export default function About2() {
               style={{ color: "#720909", fontSize: "35px" }}
               className={`${styles.textstyle} ${styles.subtit}`}
             >
-              Lorum Ipsum
+              Our Mission
             </h2>
             <p className={`${styles.textstyle2} ${styles.subp}`}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-              dapibus mollis nisl in mollis. <br /> Vivamus malesuada augue ut
-              tincidunt dapibus. Donec posuere elementum velit, eu <br />
-              dignissim dui viverra non. Sed ac sagittis ex. Duis dignissim
-              ullamcorper nibh, quis <br /> rhoncus neque lacinia id. Aliquam
-              laoreet fermentum libero.
+            Our mission at Thrift Barn Furniture (TBF) is to transform the way Canadians furnish their<br/>
+            homes by offering an exceptional selection of affordable, high-quality pre-loved furniture<br/>
+            We are committed to supporting budget-conscious living and nurturing a sustainable lifestyle <br/>
+            where we provide not just furniture, but a meaningful experience that extends beyond<br/>
+            customer satisfaction to genuine care for our community and the environment.
+              
+              
             </p>
           </div>
           <div
@@ -206,23 +199,20 @@ export default function About2() {
               style={{
                 color: "#720909",
                 fontSize: "35px",
-                // position: "absolute",
-                // left: "400px",
+                
               }}
               className={`${styles.textstyle} ${styles.subtit}`}
             >
-              Lorum Ipsum
+              Values
             </h2>
             <p
               className={`${styles.textstyle2} ${styles.subp}`}
-              // style={{ position: "absolute", top: "50px" }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-              dapibus mollis nisl in mollis. <br /> Vivamus malesuada augue ut
-              tincidunt dapibus. Donec posuere elementum velit, eu <br />
-              dignissim dui viverra non. Sed ac sagittis ex. Duis dignissim
-              ullamcorper nibh, quis <br /> rhoncus neque lacinia id. Aliquam
-              laoreet fermentum libero.
+              TBF is built on six pillars of core values, instilled by our veteran founder: service over self,<br/>
+              duty, respect, integrity, community engagement, and environmental stewardship. These<br/>
+              principles guide us in everything we do, ensuring that our commitment extends beyond <br/>
+              customer satisfaction to genuine care for our community and the environment.
+              
             </p>
           </div>
           <div className={`${styles.cell7}`}>
@@ -234,28 +224,18 @@ export default function About2() {
               }}
               className={`${styles.textstyle} ${styles.subtit}`}
             >
-              Lorum Ipsum
+              Join Us!
             </h2>
             <p
               className={`${styles.textstyle2} ${styles.subp}`}
               style={{ textAlign: "center" }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-              dapibus mollis nisl in mollis. <br /> Vivamus malesuada augue ut
-              tincidunt dapibus. Donec posuere elementum velit, eu <br />
-              dignissim dui viverra non. Sed ac sagittis ex. Duis dignissim
-              ullamcorper nibh, quis <br /> rhoncus neque lacinia id. Aliquam
-              laoreet fermentum libero.
+              Join us at Thrift Barn Furniture, where each piece of furniture  <br/>
+              finds new life and each customer becomes part of a larger story<br/>
+              celebrating sustainability, community, and change
             </p>
           </div>
-          <div className={`${styles.cell8}`} style={{ display: "grid" }}>
-            <img
-              className={`${styles.img4}`}
-              src="garage.jpg"
-              alt="about me image"
-              style={{ alignSelf: "center", justifySelf: "center" }}
-            />
-          </div>
+          
         </>
       );
     }

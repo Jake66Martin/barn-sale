@@ -199,4 +199,14 @@
   .downdo{
     bottom: 8px;
   }
+
+  .emailo{
+    top: 15px;
+  }
+}
+
+@media (max-width: 362px) {
+  .downnum{
+    top: 38px !important;
+  }
 }

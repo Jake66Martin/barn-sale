@@ -114,7 +114,7 @@ export default function Subcategories2() {
       return [
         "Couches & Sofas & Loveseats",
         "TV & Media Stand",
-        "Chairs",
+        "Living Room Chairs",
         "Side Tables",
         "Coffee Tables",
         "Book Shelf & Storage Solutions",
@@ -133,11 +133,19 @@ export default function Subcategories2() {
         "Coat Racks",
         "Front Entrance"
       ];
-    } else if (spacedName === "Bedroom") {
+    }
+    else if (spacedName === "Kitchen & Bath") {
+      return ["Kitchen Tables", "Kitchen Chairs", "Appliances", "Kitchen Tools"]
+    }
+    else if (spacedName === "Bedroom") {
       return ["Dressers", "Bed Frames", "Mattresses", "Night Stands"];
     } else if (spacedName === "Office"){
-      return ["Filing Cabinets", "Office Chairs"]
-    } else if (spacedName === "Home Decor") {
+      return ["Filing Cabinets", "Office Chairs", "Desks"]
+    } 
+    else if (spacedName === "Garage & Exterior") {
+      return ["Tools", "Garden Tools", "Garage Shelving", "Lawn Mowers", "Barbecues", "Snow Blowers", "Sheds"]
+    }
+    else if (spacedName === "Home Decor") {
       return ["Wall Art", "Statues & Sculptures", "Frames"]
     }
     return [];
@@ -195,7 +203,11 @@ export default function Subcategories2() {
           >
             {(spacedName === "Living Room" ||
               spacedName === "Dining Room" ||
-              spacedName === "Bedroom") && (
+              spacedName === "Bedroom" ||
+            spacedName === "Kitchen & Bath" ||
+          spacedName === "Office" ||
+        spacedName === "Garage & Exterior" ||
+      spacedName === "Home Decor") && (
               <div style={{ display: "flex"}}>
                 <p style={{ display: "inline" }}>FILTERS:</p>
                 <p
