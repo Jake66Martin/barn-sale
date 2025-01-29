@@ -225,7 +225,7 @@ export default function addRemove() {
   return (
     
     <>
-    {user && user.email === 'jake66martin@hotmail.com' ? (
+    {user && user.email === 'thriftbarnfurniture@gmail.com' ? (
       <section className="bg-light py-3 py-md-5 height">
         <Container>
           <Row className="justify-content-lg-center">
