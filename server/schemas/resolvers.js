@@ -10,9 +10,7 @@ const { Storage } = require("@google-cloud/storage");
 
 
 
-// const storage = new Storage({
-//     keyFilename: "../thrift-barn-furniture-5764a35c660f.json"
-// });
+
 
 const storage = new Storage ({
   keyFilename: "/etc/secrets/thrift-barn-furniture-5764a35c660f.json"
@@ -45,18 +43,7 @@ const resolvers = {
       }
     },
 
-    // itemById: async (parent, { _id }, context) => {
-    //   try {
-    //     console.log(_id);
-    //     const item = await Item.findOne({
-    //       where: { id: _id },
-    //     });
-
-    //     return item;
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // },
+    
 
     itemById: async (parent, { _id }, context) => {
       try {
@@ -65,10 +52,8 @@ const resolvers = {
           where: { id: _id },
         });
     
-        // Check if the item exists and if the image field is a string that needs parsing
         if (item && item.image && typeof item.image === 'string') {
           try {
-            // Attempt to parse the image string into an array
             item.image = JSON.parse(item.image);
           } catch (error) {
             console.error("Error parsing image field:", error);
@@ -98,35 +83,19 @@ const resolvers = {
       }
     },
 
-    // allItemsById: async (parent, {_ids}, context) => {
-
-    //   try {
-    //     const items = await Item.findAll({
-    //         where: {
-    //             id: _ids,  // Handles an array of IDs
-    //         },
-    //     });
-
-    //     return items;
-    // } catch (error) {
-    //     console.error(error);
-    //     throw new Error("Error fetching items by IDs");
-    // }
-    // },
+    
 
     allItemsById: async (parent, { _ids }, context) => {
       try {
         const items = await Item.findAll({
           where: {
-            id: _ids, // Handles an array of IDs
+            id: _ids,
           },
         });
     
-        // Loop through the fetched items to check and parse the image field if needed
         items.forEach((item) => {
           if (item.image && typeof item.image === 'string') {
             try {
-              // Attempt to parse the image string into an array
               item.image = JSON.parse(item.image);
             } catch (error) {
               console.error("Error parsing image field:", error);
@@ -197,25 +166,7 @@ const resolvers = {
       }
     },
 
-    // itemsByCategory: async (
-    //   parent,
-    //   { subcategory_id, limit, offset },
-    //   context
-    // ) => {
-    //   try {
-    //     const subcategory = await Item.findAll({
-    //       where: {
-    //         subcategory_id: subcategory_id,
-    //       },
-    //       limit,
-    //       offset,
-    //     });
-
-    //     return subcategory;
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // },
+    
 
     itemsByCategory: async (
       parent,
@@ -231,11 +182,9 @@ const resolvers = {
           offset,
         });
     
-        // Loop through the fetched items to check and parse the image field if needed
         subcategory.forEach((item) => {
           if (item.image && typeof item.image === 'string') {
             try {
-              // Attempt to parse the image string into an array
               item.image = JSON.parse(item.image);
             } catch (error) {
               console.error("Error parsing image field:", error);
@@ -249,19 +198,7 @@ const resolvers = {
       }
     },
 
-    // allItemsByCategory: async (parent, { subcategory_id }, context) => {
-    //   try {
-    //     const subcategory = await Item.findAll({
-    //       where: {
-    //         subcategory_id: subcategory_id,
-    //       },
-    //     });
-    //     return subcategory;
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // },
-
+    
     allItemsByCategory: async (parent, { subcategory_id }, context) => {
       try {
         const subcategory = await Item.findAll({
@@ -270,11 +207,9 @@ const resolvers = {
           },
         });
     
-        // Loop through the fetched items to check and parse the image field if needed
         subcategory.forEach((item) => {
           if (item.image && typeof item.image === 'string') {
             try {
-              // Attempt to parse the image string into an array
               item.image = JSON.parse(item.image);
             } catch (error) {
               console.error("Error parsing image field:", error);
@@ -290,15 +225,7 @@ const resolvers = {
 
     
 
-    // ItemsByCategory2: async (parent, { item_category, filters }, context) => {
-    //   let whereConditions = { item_category };
-      
-    //   if (filters.length > 0) {
-    //     whereConditions.item_subcategory = { [Op.in]: filters };
-    //   }
     
-    //   return await Item.findAll({ where: whereConditions });
-    // },
 
     ItemsByCategory2: async (parent, { item_category, filters }, context) => {
       let whereConditions = { item_category };
@@ -307,50 +234,28 @@ const resolvers = {
         whereConditions.item_subcategory = { [Op.in]: filters };
       }
     
-      // Fetch all items
       const items = await Item.findAll({ where: whereConditions });
     
-      // Parse the 'image' field to convert the stringified JSON into an array
       const parsedItems = items.map(item => {
-        // Parse image field if it exists and is a stringified array
         if (item.image && typeof item.image === 'string') {
           try {
-            // Attempt to parse the stringified JSON array into an actual array
             item.image = JSON.parse(item.image);
           } catch (error) {
             console.error("Error parsing image field:", error);
-            // If parsing fails, leave the image field as is or handle it accordingly
           }
         }
         return item;
       });
     
-      // Return the modified items with parsed image field
       return parsedItems;
     },
 
-    // AllItemsByCategory2: async (parent, { item_category, filters, limit, offset, sort_order }, context) => {
-    //   let whereConditions = { item_category };
-      
-    //   if (filters && filters.length > 0) {
-    //     whereConditions.item_subcategory = { [Op.in]: filters };
-    //   }
+  
 
-    //   const order = sort_order === 'oldest' ? [['created_at', 'ASC']] : [['created_at', 'DESC']];
 
 
     
-    //   const items =  await Item.findAll({ 
-    //     where: whereConditions,
-    //     limit,
-    //     offset,
-    //     order
-    //    });
-
-    //    console.log("Data being sent to frontend:", items);
-
-    //    return items; // Return the fetched items
-    // },
+    
 
     AllItemsByCategory2: async (parent, { item_category, filters, limit, offset, sort_order }, context) => {
       let whereConditions = { item_category };
@@ -361,7 +266,6 @@ const resolvers = {
     
       const order = sort_order === 'oldest' ? [['created_at', 'ASC']] : [['created_at', 'DESC']];
     
-      // Fetch the items
       const items = await Item.findAll({ 
         where: whereConditions,
         limit,
@@ -369,17 +273,13 @@ const resolvers = {
         order
       });
     
-      // Parse the image field for each item to ensure it's an array
       const parsedItems = items.map(item => {
         let parsedImage = item.dataValues.image;
     
-        // Check if the image field is a string and parse it, otherwise leave it as is
         if (typeof parsedImage === 'string') {
           try {
-            parsedImage = JSON.parse(parsedImage); // Convert the stringified array to a real array
           } catch (error) {
             console.error(`Error parsing image for item ID ${item.id}:`, error);
-            parsedImage = []; // Fallback to an empty array if parsing fails
           }
         }
     
@@ -389,38 +289,13 @@ const resolvers = {
         };
       });
     
-      // Log the data being sent to the frontend
       console.log("Parsed Data being sent to frontend:", parsedItems);
-      return parsedItems; // Return the parsed items
+      return parsedItems; 
     },
 
 
    
-    // searchByItem: async (parent, { item, limit, offset, sort_order }, context) => {
-    //   try {
-    //     let allItems;
-    //     if (item) {
-    //       const order = sort_order === 'oldest' ? [['created_at', 'ASC']] : [['created_at', 'DESC']];
-
-    //       allItems = await Item.findAll({
-    //         where: {
-    //           item: {
-    //             [Op.like]: `%${item}%`,
-    //           },
-    //         },
-    //         limit,
-    //         offset,
-    //         order
-    //       });
-    //     } else {
-    //       allItems = [];
-    //     }
-
-    //     return allItems;
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // },
+    
 
     searchByItem: async (parent, { item, limit, offset, sort_order }, context) => {
       try {
@@ -439,11 +314,9 @@ const resolvers = {
             order
           });
     
-          // Loop through the fetched items to check and parse the image field if needed
           allItems.forEach((item) => {
             if (item.image && typeof item.image === 'string') {
               try {
-                // Attempt to parse the image string into an array
                 item.image = JSON.parse(item.image);
               } catch (error) {
                 console.error("Error parsing image field:", error);
@@ -460,21 +333,7 @@ const resolvers = {
       }
     },
 
-    // searchItem: async (parent, { item }, context) => {
-    //   try {
-    //     const allItems = await Item.findAll({
-    //       where: {
-    //         item: {
-    //           [Op.like]: `%${item}%`,
-    //         },
-    //       },
-    //     });
-
-    //     return allItems;
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // },
+    
 
     searchItem: async (parent, { item }, context) => {
       try {
@@ -486,11 +345,9 @@ const resolvers = {
           },
         });
     
-        // Loop through the fetched items to check and parse the image field if needed
         allItems.forEach((item) => {
           if (item.image && typeof item.image === 'string') {
             try {
-              // Attempt to parse the image string into an array
               item.image = JSON.parse(item.image);
             } catch (error) {
               console.error("Error parsing image field:", error);
@@ -620,7 +477,7 @@ const resolvers = {
         const deletedCount = await Item.destroy({
           where: {
             id: {
-              [Op.in]: _id, // Match any ID in the array
+              [Op.in]: _id, 
             },
           },
         });
@@ -628,7 +485,7 @@ const resolvers = {
         return {
           success: true,
           message: `${deletedCount} item(s) removed successfully.`,
-          deletedCount, // Return the number of deleted items
+          deletedCount, 
         };
       } catch (error) {
         console.error("Error removing items:", error);
@@ -661,10 +518,7 @@ const resolvers = {
           host: "smtp.gmail.com",
           port: 465,
           secure: true,
-          // tls: {
-          //   ciphers: "TLSv1.2",
-          //   minVersion: "TLSv1.2",
-          // },
+         
           auth: {
             user: process.env.EMAIL,
             pass: process.env.PASSWORD,
@@ -692,7 +546,6 @@ const resolvers = {
       try {
         const { createReadStream, filename, mimetype } = await file;
 
-        // Generate a unique filename
         const newFilename = `${Date.now()}_${filename}`;
         const filePath = `item-images/${newFilename}`
 
@@ -704,7 +557,6 @@ const resolvers = {
             .pipe(fileStream)
             .on('error', (error) => reject(error))
             .on('finish', () => {
-              // // // Once the file has been uploaded, resolve with the public URL
               const publicUrl = `https://storage.googleapis.com/${process.env.GOOGLE_CLOUD_BUCKET_NAME}/${filePath}`;
               const fileObject = { url: publicUrl };
               resolve(fileObject);

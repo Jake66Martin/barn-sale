@@ -1,9 +1,0 @@
-.footer-height {
-    height: 15vh;
-}
-
-@media screen and (max-width: 437px) {
-    .text-size{
-      font-size: 13px;
-    }
-  }

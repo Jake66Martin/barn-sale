@@ -2,13 +2,10 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { Outlet } from "react-router-dom";
-import Header from "./components/header/header";
 import Header2 from "./components/header/header2";
-import Footer from "./components/footer/footer";
 import Footer2 from "./components/footer/footer2";
 import "./App.css";
 import { useLocation } from "react-router-dom";
@@ -16,9 +13,7 @@ import { concat } from "@apollo/client/link/core";
 import createUploadLink from "apollo-upload-client/createUploadLink.mjs";
 import  GlobalProvider  from "./components/Protection/protection";
 
-// const httpLink = createHttpLink({
-//   uri: '/graphql',
-// });
+
 
 const uploadLink = createUploadLink({
   uri: "/graphql",
@@ -44,10 +39,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-// const client = new ApolloClient({
-//   link: authLink.concat(httpLink),
-//   cache: new InMemoryCache(),
-// });
+
 
 function App() {
   const location = useLocation();
@@ -61,10 +53,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <>
-        {/* <Header /> */}
         <Header2 />
-        {/* <main className={`main-height ${isContactPage ? 'contact-page' : isAddPage ?  'add-page' : isItemsPage ? 'items-page' : isSearchPage ? 'search-page' : isViewItemsPage ? 'view-item': isAboutPage ? 'about-page' : ''}`}> */}
-        {/* <main className={`${isContactPage ? 'contact-page' : isAddPage ?  'add-page' : isItemsPage ? 'items-page' : isSearchPage ? 'search-page' : isViewItemsPage ? 'view-item': isAboutPage ? 'about-page' : ''}`}> */}
         <GlobalProvider>
           <main
             className={`${
@@ -81,7 +70,6 @@ function App() {
           </main>
         </GlobalProvider>
         <Footer2 />
-        {/* <Footer /> */}
       </>
     </ApolloProvider>
   );
